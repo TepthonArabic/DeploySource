@@ -18,7 +18,7 @@ from .utils import (
 )
 
 
-LOGS = logging.getLogger("Zelzal")
+LOGS = logging.getLogger("سورس تيبثون")
 cmdhr = Config.COMMAND_HAND_LER
 
 print(zthon.__copyright__)
