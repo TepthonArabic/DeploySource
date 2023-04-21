@@ -58,11 +58,11 @@ Malotha = f"**🖥┊يتبـع لـوحـة اوامـر 𝗧𝗘𝗣𝗧𝗛�
 Malootha = f"**🖥┊يتبـع لـوحـة اوامـر 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 الشفـافـه **\n**🧑🏻‍💻┊المستخـدم ↶** {mention} \n\n•⓯•** اوامــر الصيــد والتشيكــر **\n•⓰•** اوامــر النشــر التلقــائي **\n•⓱•** اوامــر تجميــع النقــاط **\n•⓲•** اوامــر الاشتـراك الإجبـاري **\n•⓳•** اوامــر الإضـافة والتفليــش**\n\n**•❐• للرجـوع للوحـه الـرئيسيـة اضغـط زر ⇒**\n**•❐• لعـرض الاوامـر مع الوصـف ارسـل** `.اوامري`\n**•❐• لعـرض شـروحـات الاوامـر ارسـل** `.مساعده` "
 TG_BOT = Config.TG_BOT_USERNAME
 TM = time.strftime("%I:%M")
-Channels = f"**•❐• مـرحبــاً عـزيـزي  {mention} **\n**•❐• اليـك مجمـوعــة قنـوات زدثـــون ↵ 𝙕𝙏𝙝𝙤𝙣 ♥️🦾**\n\n**•❐• استـخـدم الازرار بالاسفــل↓**"
+Channels = f"**•❐• مـرحبــاً عـزيـزي  {mention} **\n**•❐• إليـك مجمـوعــة قنـوات زدثـــون ↵ 𝙕𝙏𝙝𝙤𝙣 ♥️🦾**\n\n**•❐• استـخـدم الازرار بالاسفــل↓**"
 Zelzal = f"**•◈• اصــدار الســورس ⤽ 7.7**  \n**•◈• المستخــدم ⤽**  {mention}  \n**•◈• وقــت التشغيــل ⤽  {TM}  **\n**•◈• البــوت المســاعـد ⤽  {TG_BOT} **\n**•◈• قنــاة الســورس ⤽  @ZedThon **"
 TGT_BOT = Config.TG_BOT_USERNAME
 TM = time.strftime("%I:%M")
-Channels = f"**•❐• مـرحبــاً عـزيـزي  {mention} **\n**•❐• اليـك مجمـوعــة قنـوات زدثـــون ↵ 𝙕𝙏𝙝𝙤𝙣 ♥️🦾**\n\n**•❐• استـخـدم الازرار بالاسفــل↓**"
+Channels = f"**•❐• مـرحبــاً عـزيـزي  {mention} **\n**•❐• إليـك مجمـوعــة قنـوات زدثـــون ↵ 𝙕𝙏𝙝𝙤𝙣 ♥️🦾**\n\n**•❐• استـخـدم الازرار بالاسفــل↓**"
 Zelzal = f"**•◈• اصــدار الســورس ⤽ 7.7**  \n**•◈• المستخــدم ⤽**  {mention}  \n**•◈• وقــت التشغيــل ⤽  {TM}  **\n**•◈• البــوت المســاعـد ⤽  {TGT_BOT} **\n**•◈• قنــاة الســورس ⤽  @ZedThon **"
 
 
@@ -419,7 +419,7 @@ async def zed_handler(event):
     user = gvarstatus("who_id")
     zedth2 = user.first_name.replace("\u2060", "") if user.first_name else user.username
     if query.startswith("اليدوي") and event.query.user_id == zedub.uid:
-        zelzal = f"**• عـزيـزي ** [{zedth2}](tg://user?id={user.id}) \n**• اليـك شـرح اعـادة التشغيـل اليـدوي↓**"
+        zelzal = f"**• عـزيـزي ** [{zedth2}](tg://user?id={user.id}) \n**• إليـك شـرح اعـادة التشغيـل اليـدوي↓**"
         buttons = [[Button.url("اضغــط هنــا", "https://t.me/Tepthone1")]]
         result = builder.article(title="zedub",text=zelzal,buttons=buttons,link_preview=False)
         await event.answer([result] if result else None)
@@ -446,7 +446,7 @@ async def zed_handler(event):
     user = gvarstatus("who_id")
     zedth2 = user.first_name.replace("\u2060", "") if user.first_name else user.username
     if query.startswith("الفيزا") and event.query.user_id == zedub.uid:
-        zelzal = f"**• عـزيـزي ** [{zedth2}](tg://user?id={user.id}) \n**• اليـك الفيـزا الخـاصـه بهيـروكـو↓**"
+        zelzal = f"**• عـزيـزي ** [{zedth2}](tg://user?id={user.id}) \n**• إليـك الفيـزا الخـاصـه بهيـروكـو↓**"
         buttons = [[Button.url("اضغــط هنــا", "https://t.me/zzzlvv/64")]]
         result = builder.article(title="zedub",text=zelzal,buttons=buttons,link_preview=False)
         await event.answer([result] if result else None)
@@ -474,7 +474,7 @@ async def zed_handler(event):
     user = gvarstatus("who_id")
     zedth2 = user.first_name.replace("\u2060", "") if user.first_name else user.username
     if query.startswith("الهيروكو") and event.query.user_id == zedub.uid:
-        zelzal = f"**• عـزيـزي ** [{zedth2}](tg://user?id={user.id}) \n**• اليـك شـرح إنشـاء حسـاب هيـروكـو↓**"
+        zelzal = f"**• عـزيـزي ** [{zedth2}](tg://user?id={user.id}) \n**• إليـك شـرح إنشـاء حسـاب هيـروكـو↓**"
         buttons = [[Button.url("اضغــط هنــا", "https://t.me/zzzlvv/63")]]
         result = builder.article(title="zedub",text=zelzal,buttons=buttons,link_preview=False)
         await event.answer([result] if result else None)
@@ -501,8 +501,8 @@ async def zed_handler(event):
     user = gvarstatus("who_id")
     zedth2 = user.first_name.replace("\u2060", "") if user.first_name else user.username
     if query.startswith("التنصيب") and event.query.user_id == zedub.uid:
-        zelzal = f"**• عـزيـزي ** [{zedth2}](tg://user?id={user.id}) \n**• اليـك شـرح تنصيب السـورس ع هيـروكـو↓**"
-        buttons = [[Button.url("اضغــط هنــا", "https://t.me/zzzlvv/65")]]
+        zelzal = f"**• عـزيـزي ** [{zedth2}](tg://user?id={user.id}) \n**• إليـك شـرح تنصيب السـورس ع هيـروكـو↓**"
+        buttons = [[Button.url("اضغــط هنــا", "https://t.me/Tepthon")]]
         result = builder.article(title="zedub",text=zelzal,buttons=buttons,link_preview=False)
         await event.answer([result] if result else None)
 @zedub.zed_cmd(pattern="التنصيب(?: |$)(.*)")
