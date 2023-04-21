@@ -41,12 +41,12 @@ elif os.path.exists("config.py"):
     VPS_NOLOAD = ["heroku"]
 
 bot = zedub
-DEV = 1895219306
+DEV = 1260465030
 
 
 async def setup_bot():
     """
-    To set up bot for tepthon
+    To set up bot for zthon
     """
     try:
         await zedub.connect()
