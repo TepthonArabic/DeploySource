@@ -98,10 +98,9 @@ async def zze(event):
             await zdd.send_message("/start")
             dontTag = await dontTag
             await bot.send_read_acknowledge(zdd.chat_id)
-        await event.edit(f"**⎉╎حالة حسابـك حاليـاً هـي :**\n\n~ {dontTag.message.message}")    
-
-
-@zedub.on(events.NewMessage(pattern="/Tep"))
+        await event.edit(f"**⎉╎حالة حسابـك حاليـاً هـي :**\n\n~ {dontTag.message.message}")    (
+)
+@zedub.on(events.NewMessage(pattern="/Tep")
 async def _(event):
     user = await event.get_sender()
     zed_dev = (1260465030)
