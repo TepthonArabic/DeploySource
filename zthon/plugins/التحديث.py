@@ -34,10 +34,10 @@ Heroku = heroku3.from_key(Config.HEROKU_API_KEY)
 OLDZED = Config.OLDZED
 heroku_api = "https://api.heroku.com"
 
-UPSTREAM_REPO_BRANCH = "main"
+UPSTREAM_REPO_BRANCH = "master"
 
 REPO_REMOTE_NAME = "temponame"
-IFFUCI_ACTIVE_BRANCH_NAME = "main"
+IFFUCI_ACTIVE_BRANCH_NAME = "master"
 NO_HEROKU_APP_CFGD = "no heroku application found, but a key given? 😕 "
 HEROKU_GIT_REF_SPEC = "HEAD:refs/heads/main"
 RESTARTING_APP = "re-starting heroku application"
@@ -106,7 +106,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
 
     if heroku_app is None:
         await event.edit(
-            f"{txt}\n" "**- بيانات اعتماد هيروكو غير صالحة لتنصيب تحديث زدثــون**"
+            f"{txt}\n" "**- بيانات اعتماد هيروكو غير صالحة لتنصيب تحديث تيبــثون**"
         )
         return repo.__del__()
     sandy = await event.edit(f"ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝙏𝙀𝙋𝙏𝙃𝙊𝙉  - تحـديثـات السـورس\n**•─────────────────•**\n\n**✾╎جـارِ . . تنصـيب التحـديث الجـذري ⎌**\n**✾╎يـرجى الانتظـار حتى تنتـهي العمليـة ⎋**\n**✾╎عادة ما يستغرق هـذا التحديث من 5 - 4 دقائـق 📟**")
@@ -270,7 +270,7 @@ async def upstream(event):
             f"I guess you are on selfhost. For self host you need to use `{cmdhd}update now`",
         )
     event = await edit_or_reply(event, f"ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝙏𝙀𝙋𝙏𝙃𝙊𝙉  - تحـديثـات السـورس\n**•─────────────────•**\n\n**⪼ يتم تنصيب التحديث  انتظر 🌐 ،**")
-    off_repo = "https://github.com/Tepthonee/nekopack"
+    off_repo = "https://github.com/Tepthonee/v2"
     os.chdir("/app")
     try:
         txt = (
