@@ -46,7 +46,7 @@ DEV = 1895219306
 
 async def setup_bot():
     """
-    To set up bot for zthon
+    To set up bot for tepthon
     """
     try:
         await zedub.connect()
@@ -56,7 +56,7 @@ async def setup_bot():
                 if zedub.session.dc_id != option.id:
                     LOGS.warning(
                         f"ايـدي DC ثـابت فـي الجلسـة مـن {zedub.session.dc_id}"
-                        f" الـى {option.id}"
+                        f" إلى {option.id}"
                     )
                 zedub.session.set_dc(option.id, option.ip_address, option.port)
                 zedub.session.save()
