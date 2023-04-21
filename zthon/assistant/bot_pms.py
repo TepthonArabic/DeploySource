@@ -86,7 +86,7 @@ async def bot_start(event):
     my_last = user.last_name
     my_fullname = f"{my_first} {my_last}" if my_last else my_first
     my_username = f"@{user.username}" if user.username else my_mention
-    custompic = gvarstatus("BOT_START_PIC") or None
+    custompic = gvarstatus("BOT_START_PIC") or "https://graph.org/file/62797359a4b85ac2aecb5.jpg"
     if chat.id != Config.OWNER_ID:
         customstrmsg = gvarstatus("START_TEXT") or None
         if customstrmsg is not None:
@@ -104,13 +104,13 @@ async def bot_start(event):
                 my_mention=my_mention,
             )
         else:
-            start_msg = f"**❈╎مـرحباً بـك عزيـزي  {mention} **\
-                        \n**❈╎انـا {my_mention}' **\
-                        \n**❈╎ يمكنك التواصل مع مالك البوت فقط قم بـ ارسال رسالتك .**\
-                        \n\n**❈╎البـوت خـاص بسـورس :** [𝗧𝗘𝗣𝗧𝗛𝗢𝗡 𓅛](https://t.me/Tepthon)"
+            start_msg = f"**𖠟╎أهــلًا بـك عــزيـزي  {mention} **\
+                        \n**𖠟╎أنـــا {my_mention}' **\
+                        \n**𖠟╎ يمكنك التواصل مع مالك البوت فقط قم بـ إرسال رسالتك .**\
+                        \n\n**𖠟╎البـوت خـاص بسـورس :** [𝗧𝗘𝗣𝗧𝗛𝗢𝗡 𓅛](https://t.me/Tepthon)"
         buttons = [
             (
-                Button.url("قنـاة السـورس", "https://t.me/Tepthon"),
+                Button.url("قنـاة السـورس 𖠟", "https://t.me/Tepthon"),
                 Button.url(
                     "مطـور السـورس",
                     "https://t.me/PPF22",
@@ -118,7 +118,7 @@ async def bot_start(event):
             )
         ]
     else:
-        start_msg = "**❈╎مـرحباً بك مطـوري 🖤𓆰**\n\n**❈╎لرؤيـة الاوامـر الخاصـه بـك اضغـط :**  /help\n\n**❈╎لـ اوامـر الاختـراق اضغـط :**  /hack "
+        start_msg = "**𖠟╎مرحبًا بك مطـوري 🖤𓆰**\n\n**𖠟╎لرؤيـة الاوامـر الخاصـة بـك اضغـط :**  /help\n\n**❈╎لـ اوامـر الاختـراق اضغـط :**  /hack "
         buttons = None
     try:
         if custompic:
