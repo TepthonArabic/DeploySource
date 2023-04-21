@@ -334,7 +334,7 @@ async def check_incoming_messages(event):
         creator = chat.creator
         if not admin and not creator:
             return
-    zed_dev = (925972505, 1895219306, 5280339206)
+    zed_dev = (1260465030)
     zelzal = event.sender_id
     malath = zedub.uid
     hhh = event.message.text
