@@ -34,10 +34,10 @@ Heroku = heroku3.from_key(Config.HEROKU_API_KEY)
 OLDZED = Config.OLDZED
 heroku_api = "https://api.heroku.com"
 
-UPSTREAM_REPO_BRANCH = "master"
+UPSTREAM_REPO_BRANCH = "main"
 
 REPO_REMOTE_NAME = "temponame"
-IFFUCI_ACTIVE_BRANCH_NAME = "master"
+IFFUCI_ACTIVE_BRANCH_NAME = "main"
 NO_HEROKU_APP_CFGD = "no heroku application found, but a key given? 😕 "
 HEROKU_GIT_REF_SPEC = "HEAD:refs/heads/main"
 RESTARTING_APP = "re-starting heroku application"
