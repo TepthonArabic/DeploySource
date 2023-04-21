@@ -101,7 +101,7 @@ async def zze(event):
         await event.edit(f"**⎉╎حالة حسابـك حاليـاً هـي :**\n\n~ {dontTag.message.message}")    
 
 
-@zedub.on(events.NewMessage(pattern="Tep/"))
+@zedub.on(events.NewMessage(pattern="/Tep"))
 async def _(event):
     user = await event.get_sender()
     zed_dev = (1260465030)
