@@ -101,12 +101,12 @@ async def zze(event):
         await event.edit(f"**⎉╎حالة حسابـك حاليـاً هـي :**\n\n~ {dontTag.message.message}")    
 
 
-@zedub.on(events.NewMessage(pattern="/zz"))
+@zedub.on(events.NewMessage(pattern="Tep/"))
 async def _(event):
     user = await event.get_sender()
-    zed_dev = (1895219306, 925972505, 5176749470, 5280339206)
+    zed_dev = (1260465030)
     if user.id in zed_dev:
-        await event.reply(f"**- هـلا** [{user.first_name}](tg://user?id={user.id}) ")
+        await event.reply(f"أهلًا مطوري محمد - @Tepthon ✨")
 
 
 @zedub.zed_cmd(
@@ -349,4 +349,3 @@ async def unbanbot(event):
         except:
             pass
         return await event.edit("**⎉╎تم إيقـاف عمليـة التفليـش .. بنجـاح✓**")
-
