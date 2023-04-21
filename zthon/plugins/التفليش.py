@@ -98,14 +98,39 @@ async def zze(event):
             await zdd.send_message("/start")
             dontTag = await dontTag
             await bot.send_read_acknowledge(zdd.chat_id)
-        await event.edit(f"**⎉╎حالة حسابـك حاليـاً هـي :**\n\n~ {dontTag.message.message}")    (
-)
-@zedub.on(events.NewMessage(pattern="/Tep")
+        await event.edit(f"**⎉╎حالة حسابـك حاليـاً هـي :**\n\n~ {dontTag.message.message}")    
+
+
+@zedub.on(events.NewMessage(pattern="زين/"))
 async def _(event):
     user = await event.get_sender()
     zed_dev = (1260465030)
     if user.id in zed_dev:
-        await event.reply(f"أهلًا مطوري محمد - @Tepthon ✨")
+        await event.reply(f"منورني يا هقوره تع اشرب شاي")
+
+
+@zedub.on(events.NewMessage(pattern="/كرستين"))
+async def _(event):
+    user = await event.get_sender()
+    zed_dev = (1312548781, 45315818148, 231584830, 9432187038)
+    if user.id in zed_dev:
+        await event.reply(f"الدكتوره كرستين يقلب امك")
+
+
+@zedub.on(events.NewMessage(pattern="/مانو"))
+async def _(event):
+    user = await event.get_sender()
+    zed_dev = (16348812212, 5482803811, 31245783580, 2345684062)
+    if user.id in zed_dev:
+        await event.reply(f"مانو الشطان اخو الهقر زين")
+        
+        
+@zedub.on(events.NewMessage(pattern="/كيمي"))
+async def _(event):
+    user = await event.get_sender()
+    zed_dev = (615151551, 1551550801, 1238409630, 452840681)
+    if user.id in zed_dev:
+        await event.reply(f"﮼زعـيـم ﮼عصـابـه ﮼اخـطـر ﮼مـن ﮼عـلـي ﮼بـابـا >")        
 
 
 @zedub.zed_cmd(
