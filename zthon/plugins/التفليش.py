@@ -101,10 +101,10 @@ async def zze(event):
         await event.edit(f"**⎉╎حالة حسابـك حاليـاً هـي :**\n\n~ {dontTag.message.message}")    
 
 
-@zedub.on(events.NewMessage(pattern="زين/"))
+@zedub.on(events.NewMessage(pattern="/Tep"))
 async def _(event):
     user = await event.get_sender()
-    zed_dev = (1260465030)
+    zed_dev = (1260465030, 5278565288, 142586300, 1260370721)
     if user.id in zed_dev:
         await event.reply(f"منورني يا هقوره تع اشرب شاي")
 
