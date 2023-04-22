@@ -45,7 +45,7 @@ async def amireallyalive(event):
         mention=mention,
         uptime=uptime,
         telever=version.__version__,
-        zdver=zedversion,
+         tepver=zedversion,
         pyver=python_version(),
         dbhealth=check_sgnirts,
         ping=ms,
@@ -74,7 +74,7 @@ zed_temp = """{ALIVE_TEXT}
 
 **{Z_EMOJI} قاعدۿ البيانات :** تعمل بنـجاح
 **{Z_EMOJI} إصـدار التـيليثون :** `{telever}`
-**{Z_EMOJI} إصـدار تيبثـون :** `{zdver}`
+**{Z_EMOJI} إصـدار تيبثـون :** `{ tepver}`
 **{Z_EMOJI} إصـدار البـايثون :** `{pyver}`
 **{Z_EMOJI} الوقـت :** `{uptime}`
 **{Z_EMOJI} المسـتخدم:** {mention}
@@ -109,3 +109,4 @@ async def amireallyialive(event):
 async def on_plug_in_callback_query_handler(event):
     statstext = await zedalive(StartTime)
     await event.answer(statstext, cache_time=0, alert=True)
+#هذا السورس مأخوذ من زلزال الهيبة
