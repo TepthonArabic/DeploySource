@@ -13,7 +13,7 @@ from telethon.errors.rpcerrorlist import (
 )
 from telethon.events import CallbackQuery
 
-from zthon import StartTime, zedub, zedversion
+from zthon import StartTime, zedub, tepversion
 
 from ..Config import Config
 from ..core.managers import edit_or_reply
@@ -45,7 +45,7 @@ async def amireallyalive(event):
         mention=mention,
         uptime=uptime,
         telever=version.__version__,
-         tepver=zedversion,
+         tepver=tepversion,
         pyver=python_version(),
         dbhealth=check_sgnirts,
         ping=ms,
@@ -97,7 +97,7 @@ async def amireallyialive(event):
     Z_EMOJI = gvarstatus("ALIVE_EMOJI") or "✥┊"
     zed_caption = "** بـوت  تيبثـون 𝗧𝞝𝗣𝗧𝗛𝗢𝗡  يعمـل .. بنجـاح ☑️ 𓆩 **\n"
     zed_caption += f"**{Z_EMOJI} إصـدار التـيليثون :** `{version.__version__}\n`"
-    zed_caption += f"**{Z_EMOJI} إصـدار تيبثـون :** `{zedversion}`\n"
+    zed_caption += f"**{Z_EMOJI} إصـدار تيبثـون :** `{tepversion}`\n"
     zed_caption += f"**{Z_EMOJI} إصـدار البـايثون :** `{python_version()}\n`"
     zed_caption += f"**{Z_EMOJI} المسـتخدم :** {mention}\n"
     results = await event.client.inline_query(Config.TG_BOT_USERNAME, zed_caption)
