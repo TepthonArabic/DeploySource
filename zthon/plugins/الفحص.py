@@ -36,7 +36,7 @@ async def amireallyalive(event):
     ms = (end - start).microseconds / 1000
     _, check_sgnirts = check_data_base_heal_th()
     Z_EMOJI = gvarstatus("ALIVE_EMOJI") or "✥┊"
-    ALIVE_TEXT = gvarstatus("ALIVE_TEXT") or "** بـوت  تيبثـون 𝗧𝞝𝗣𝗧𝗛𝗢𝗡  يعمـل .. بنجـاح ☑️ 𓆩 **"
+    ALIVE_TEXT = gvarstatus("ALIVE_TEXT") or "** بـوت  تيبثـون 𝙕𝞝𝘿𝙏𝙃𝙊𝙉  يعمـل .. بنجـاح ☑️ 𓆩 **"
     ZED_IMG = gvarstatus("ALIVE_PIC")
     zed_caption = gvarstatus("ALIVE_TEMPLATE") or zed_temp
     caption = zed_caption.format(
@@ -45,7 +45,7 @@ async def amireallyalive(event):
         mention=mention,
         uptime=uptime,
         telever=version.__version__,
-         zedver=zedversion,
+        tepver=zedversion,
         pyver=python_version(),
         dbhealth=check_sgnirts,
         ping=ms,
@@ -74,7 +74,7 @@ zed_temp = """{ALIVE_TEXT}
 
 **{Z_EMOJI} قاعدۿ البيانات :** تعمل بنـجاح
 **{Z_EMOJI} إصـدار التـيليثون :** `{telever}`
-**{Z_EMOJI} إصـدار تيبثـون :** `{ zedver}`
+**{Z_EMOJI} إصـدار تيبثـون :** `{tepver}`
 **{Z_EMOJI} إصـدار البـايثون :** `{pyver}`
 **{Z_EMOJI} الوقـت :** `{uptime}`
 **{Z_EMOJI} المسـتخدم:** {mention}
@@ -109,4 +109,3 @@ async def amireallyialive(event):
 async def on_plug_in_callback_query_handler(event):
     statstext = await zedalive(StartTime)
     await event.answer(statstext, cache_time=0, alert=True)
-#هذا السورس مأخوذ من زلزال الهيبة
