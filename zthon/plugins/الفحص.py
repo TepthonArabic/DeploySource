@@ -45,7 +45,7 @@ async def amireallyalive(event):
         mention=mention,
         uptime=uptime,
         telever=version.__version__,
-         tepver=zedversion,
+         zedver=zedversion,
         pyver=python_version(),
         dbhealth=check_sgnirts,
         ping=ms,
@@ -74,7 +74,7 @@ zed_temp = """{ALIVE_TEXT}
 
 **{Z_EMOJI} قاعدۿ البيانات :** تعمل بنـجاح
 **{Z_EMOJI} إصـدار التـيليثون :** `{telever}`
-**{Z_EMOJI} إصـدار تيبثـون :** `{ tepver}`
+**{Z_EMOJI} إصـدار تيبثـون :** `{ zedver}`
 **{Z_EMOJI} إصـدار البـايثون :** `{pyver}`
 **{Z_EMOJI} الوقـت :** `{uptime}`
 **{Z_EMOJI} المسـتخدم:** {mention}
