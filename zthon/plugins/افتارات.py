@@ -83,7 +83,7 @@ async def _(event):
         )
         await zzevent.delete()
     except Exception:
-        await zzevent.edit("**╮•⎚ عـذراً .. لـم استطـع ايجـاد المطلـوب ☹️💔**")
+        await zzevent.edit("**╮•⎚ عذرًا .. لـم استطـع ايجـاد المطلـوب ☹️💔**")
 
 
 @zedub.zed_cmd(pattern="رمادي$")
@@ -104,7 +104,7 @@ async def _(event):
         )
         await zzevent.delete()
     except Exception:
-        await zzevent.edit("**╮•⎚ عـذراً .. لـم استطـع ايجـاد المطلـوب ☹️💔**")
+        await zzevent.edit("**╮•⎚ عذرًا .. لـم استطـع ايجـاد المطلـوب ☹️💔**")
 
 
 @zedub.zed_cmd(pattern="رماديه$")
@@ -125,7 +125,7 @@ async def _(event):
         )
         await zzevent.delete()
     except Exception:
-        await zzevent.edit("**╮•⎚ عـذراً .. لـم استطـع ايجـاد المطلـوب ☹️💔**")
+        await zzevent.edit("**╮•⎚ عذرًا .. لـم استطـع ايجـاد المطلـوب ☹️💔**")
 
 
 @zedub.zed_cmd(pattern="بيست$")
@@ -146,7 +146,7 @@ async def _(event):
         )
         await zzevent.delete()
     except Exception:
-        await zzevent.edit("**╮•⎚ عـذراً .. لـم استطـع ايجـاد المطلـوب ☹️💔**")
+        await zzevent.edit("**╮•⎚ عذرًا .. لـم استطـع ايجـاد المطلـوب ☹️💔**")
 
 
 @zedub.zed_cmd(pattern="حب$")
@@ -167,7 +167,7 @@ async def _(event):
         )
         await zzevent.delete()
     except Exception:
-        await zzevent.edit("**╮•⎚ عـذراً .. لـم استطـع ايجـاد المطلـوب ☹️💔**")
+        await zzevent.edit("**╮•⎚ عذرًا .. لـم استطـع ايجـاد المطلـوب ☹️💔**")
 
 
 @zedub.zed_cmd(pattern="رياكشن$")
@@ -188,7 +188,7 @@ async def _(event):
         )
         await zzevent.delete()
     except Exception:
-        await zzevent.edit("**╮•⎚ عـذراً .. لـم استطـع ايجـاد المطلـوب ☹️💔**")
+        await zzevent.edit("**╮•⎚ عذرًا .. لـم استطـع ايجـاد المطلـوب ☹️💔**")
 
 
 @zedub.zed_cmd(pattern="ادت$")
@@ -209,7 +209,7 @@ async def _(event):
         )
         await zzevent.delete()
     except Exception:
-        await zzevent.edit("**╮•⎚ عـذراً .. لـم استطـع ايجـاد المطلـوب ☹️💔**")
+        await zzevent.edit("**╮•⎚ عذرًا .. لـم استطـع ايجـاد المطلـوب ☹️💔**")
 
 
 @zedub.zed_cmd(pattern="غنيلي$")
@@ -230,7 +230,7 @@ async def _(event):
         )
         await zzevent.delete()
     except Exception:
-        await zzevent.edit("**╮•⎚ عـذراً .. لـم استطـع ايجـاد المطلـوب ☹️💔**")
+        await zzevent.edit("**╮•⎚ عذرًا .. لـم استطـع ايجـاد المطلـوب ☹️💔**")
         
 
 @zedub.zed_cmd(pattern="شعر$")
@@ -251,7 +251,7 @@ async def _(event):
         )
         await zzevent.delete()
     except Exception:
-        await zzevent.edit("**╮•⎚ عـذراً .. لـم استطـع ايجـاد المطلـوب ☹️💔**")
+        await zzevent.edit("**╮•⎚ عذرًا .. لـم استطـع ايجـاد المطلـوب ☹️💔**")
 
 
 @zedub.zed_cmd(pattern="ميمز$")
@@ -272,7 +272,7 @@ async def _(event):
         )
         await zzevent.delete()
     except Exception:
-        await zzevent.edit("**╮•⎚ عـذراً .. لـم استطـع ايجـاد المطلـوب ☹️💔**")
+        await zzevent.edit("**╮•⎚ عذرًا .. لـم استطـع ايجـاد المطلـوب ☹️💔**")
 
 
 @zedub.zed_cmd(pattern="ري اكشن$")
@@ -293,7 +293,7 @@ async def _(event):
         )
         await zzevent.delete()
     except Exception:
-        await zzevent.edit("**╮•⎚ عـذراً .. لـم استطـع ايجـاد المطلـوب ☹️💔**")
+        await zzevent.edit("**╮•⎚ عذرًا .. لـم استطـع ايجـاد المطلـوب ☹️💔**")
 
 
 @zedub.zed_cmd(pattern="معلومه$")
@@ -310,11 +310,11 @@ async def _(event):
         await event.client.send_file(
             event.chat_id,
             file=random.choice(zedph),
-            caption=f"**🎆┊صـورة ومعلومـة ➧ 🛤💡◟**\n\n[➧??𝙤𝙪𝙧𝙘𝙚 𝙕𝙚𝙙𝙏𝙝𝙤𝙣](https://t.me/Tepthon)",
+            caption=f"**🎆┊صـورة ومعلومـة ➧ 🛤💡◟**\n\n[➧??𝙤𝙪𝙧𝙘𝙚 𝙏𝙀𝙋𝙏𝙃𝙊𝙉](https://t.me/Tepthon)",
         )
         await zzevent.delete()
     except Exception:
-        await zzevent.edit("**╮•⎚ عـذراً .. لـم استطـع ايجـاد المطلـوب ☹️💔**")
+        await zzevent.edit("**╮•⎚ عذرًا .. لـم استطـع ايجـاد المطلـوب ☹️💔**")
 
 
 @zedub.zed_cmd(pattern="تويت$")
