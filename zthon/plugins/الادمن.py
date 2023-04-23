@@ -300,7 +300,7 @@ async def _ban_person(event):
     if user.id == 1260465030 or user.id == 1260465030 or user.id == 1260465030:
         return await edit_delete(event, "**╮ ❐ دي لا يمڪنني حظـر مطـور السـورس  ❏╰**")
     if user.id in zel_dev:
-        return await edit_delete(event, "**╮ ❐ دي لا يمڪنني حظـر احـد مسـاعدين السـورس  ❏╰**")
+        return await edit_delete(event, "**╮ ❐ دي لا يمڪنني حظـر مطور السـورس  ❏╰**")
     zedevent = await edit_or_reply(event, "**╮ ❐... جـاࢪِ الحـظـࢪ ...❏╰**")
     try:
         await event.client(EditBannedRequest(event.chat_id, user.id, BANNED_RIGHTS))
