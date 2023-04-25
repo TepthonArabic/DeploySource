@@ -153,7 +153,7 @@ async def hunterusername(event):
             await zedub.send_message(
                 event.chat_id, f"خطأ في انشاء القناة , الخطأ**-  : {str(e)}**"
             )
-    isclaim.clezed()
+    isclaim.clear()
     isclaim.append("on")
     for i in range(19000000):
         username = gen_user(choice)
@@ -198,7 +198,7 @@ async def hunterusername(event):
         else:
             pass
         trys[0] += 1
-    isclaim.clezed()
+    isclaim.clear()
     isclaim.append("off")
     await event.client.send_message(event.chat_id, "**- تم بنجاح الانتهاء من الصيد**")
 
@@ -223,7 +223,7 @@ async def _(event):
             await zedub.send_message(
                 event.chat_id, f"خطأ في انشاء القناة , الخطأ : {str(e)}"
             )
-    isauto.clezed()
+    isauto.clear()
     isauto.append("on")
     username = str(msg[1])
 
@@ -262,7 +262,7 @@ async def _(event):
         trys2[0] += 1
 
         await asyncio.sleep(1.3)
-    isclaim.clezed()
+    isclaim.clear()
     isclaim.append("off")
     await zedub.send_message(event.chat_id, "**- تم الانتهاء من التثبيت بنجاح**")
 
