@@ -1,5 +1,6 @@
-# by: t.me/Dar4k  ~ t.me/R0R77
-# ported to ZThon
+# by: t.me/Tepthon  ~ t.me/PPF22
+
+import asyncio
 import random
 
 import requests
@@ -24,7 +25,7 @@ def check_user(username):
         "User-Agent": generate_user_agent(),
         "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
         "Accept-Encoding": "gzip, deflate, br",
-        "Accept-Language": "ar-EG,ar;q=0.9,en-US;q=0.8,en;q=0.7",
+        "Accept-Language": "zed-EG,zed;q=0.9,en-US;q=0.8,en;q=0.7",
     }
 
     response = requests.get(url, headers=headers)
@@ -40,11 +41,40 @@ def check_user(username):
 
 
 def gen_user(choice):
-    if choice == "ثلاثيات":
+    if choice == "سداسي حرفين":
+        c = d = random.choices(a)
+        d = random.choices(b)
+        f = [c[0], d[0], c[0], c[0], c[0], d[0]]
+        random.shuffle(f)
+        username = "".join(f)
+
+    elif choice == "ثلاثيات":
         c = random.choices(a)
         d = random.choices(b)
         s = random.choices(e)
         f = [c[0], "_", d[0], "_", s[0]]
+        username = "".join(f)
+    elif choice == "سداسيات":
+        c = d = random.choices(a)
+        d = random.choices(e)
+        f = [c[0], c[0], c[0], c[0], c[0], d[0]]
+        random.shuffle(f)
+        username = "".join(f)
+    elif choice == "بوتات":
+        c = random.choices(a)
+        d = random.choices(e)
+        s = random.choices(e)
+        f = [c[0], s[0], d[0]]
+        # random.shuffle(f)
+        username = "".join(f)
+        username = username + "bot"
+
+    elif choice == "خماسي حرفين":
+        c = random.choices(a)
+        d = random.choices(e)
+
+        f = [c[0], d[0], c[0], c[0], d[0]]
+        random.shuffle(f)
         username = "".join(f)
 
     elif choice == "خماسي":
@@ -54,42 +84,12 @@ def gen_user(choice):
         random.shuffle(f)
         username = "".join(f)
 
-    elif choice == "خماسي حرفين":
-        c = random.choices(a)
-        d = random.choices(e)
-        f = [c[0], d[0], c[0], c[0], d[0]]
-        random.shuffle(f)
-        username = "".join(f)
-
-    elif choice == "سداسيات":
-        c = d = random.choices(a)
-        d = random.choices(e)
-        f = [c[0], c[0], c[0], c[0], c[0], d[0]]
-        random.shuffle(f)
-        username = "".join(f)
-
-    elif choice == "سداسي حرفين":
-        c = d = random.choices(a)
-        d = random.choices(b)
-        f = [c[0], d[0], c[0], c[0], c[0], d[0]]
-        random.shuffle(f)
-        username = "".join(f)
-
     elif choice == "سباعيات":
         c = d = random.choices(a)
         d = random.choices(b)
         f = [c[0], c[0], c[0], c[0], d[0], c[0], c[0]]
         random.shuffle(f)
         username = "".join(f)
-
-    elif choice == "بوتات":
-        c = random.choices(a)
-        d = random.choices(e)
-        s = random.choices(e)
-        f = [c[0], s[0], d[0]]
-        username = "".join(f)
-        username = username + "bot"
-
     elif choice == "تيست":
         c = d = random.choices(a)
         d = random.choices(b)
@@ -97,61 +97,68 @@ def gen_user(choice):
         random.shuffle(f)
         username = "".join(f)
     else:
-        raise ValueError("Invalid choice for username generation.")
+        return "error"
     return username
 
 
-ZelzalChecler_cmd = (
-    "𓆩 [𝗦𝗼𝘂𝗿𝗰𝗲 𝗧𝗘𝗣𝗧𝗵𝗢𝗡 - اوامـر الصيـد والتشيكـر](t.me/Tepthon) 𓆪\n\n"
-    "**✾╎قـائمـة اوامـر تشيكـر صيـد معـرفات تيليجـرام :** \n\n"
-    "**- النـوع :**\n"
-    "**(** `سداسي حرفين`/`ثلاثيات`/`سداسيات`/`بوتات`/`خماسي حرفين`/`خماسي`/`سباعيات` **)**\n\n"
-    "`.صيد` + النـوع\n"
-    "**⪼ لـ صيـد يـوزرات عشوائيـه على حسب النـوع**\n\n"
-    "`.تثبيت` + اليوزر\n"
-    "**⪼ لـ تثبيت اليـوزر بقنـاة معينـه اذا اصبح متاحـاً يتم اخـذه**\n\n"
-    "`.حالة الصيد`\n"
-    "**⪼ لـ معرفـة حالـة تقـدم عمليـة الصيـد**\n\n"
-    "`.حالة التثبيت`\n"
-    "**⪼ لـ معرفـة حالـة تقـدم التثبيت التلقـائـي**\n\n"
-    "`.ايقاف الصيد`\n"
-    "**⪼ لـ إيقـاف عمليـة الصيـد الجاريـه**\n\n"
-    "`.ايقاف التثبيت`\n"
-    "**⪼ لـ إيقـاف عمليـة التثبيت التلقـائـي**\n\n"
-)
-
-
 @zedub.zed_cmd(pattern="الصيد")
-async def cmd(zelzallll):
-    await edit_or_reply(zelzallll, ZelzalChecler_cmd)
+async def _(event):
+    await event.edit(
+        """
+أوامر الصيد الخاصة بسورس تيبثون : 
+
+ٴ— — — — — — — — — —
+
+النوع :(  سداسي حرفين/ ثلاثيات/ سداسيات/ بوتات/ خماسي حرفين/خماسي /سباعيات )
+
+الامر:  `.صيد` + النوع
+- يقوم بصيد معرفات عشوائية حسب النوع
+
+الامر:  `تثبيت` + معرف
+* وظيفة الامر : يقوم بالتثبيت على المعرف عندما يصبح متاح يأخذه
+
+ٴ— — — — — — — — — —
+الامر:   `.حالة الصيد`
+• لمعرفة عدد المحاولات للصيد
+
+الامر:  `.حالة التثبيت`
+• لمعرفة عدد المحاولات للصيد
+
+@Tepthon  - channle userbot 
+
+"""
+    )
 
 
 @zedub.zed_cmd(pattern="صيد (.*)")
 async def hunterusername(event):
-    choice = str(event.pattern_match.group(1))
-    await event.edit(f"**⎉╎تم بـدء الصيـد .. بنجـاح ☑️**\n**⎉╎لمعرفـة حالة تقـدم عمليـة الصيـد ارسـل (**`.حالة الصيد`**)**")
-
+    msg = event.text.split()
+    choice = str(msg[1])
     try:
-        ch = await zedub(
-            functions.channels.CreateChannelRequest(
-                title="⎉ صيـد تيبثـون 𝗧𝗘𝗣𝗧𝗵𝗢𝗡 ⎉",
-                about="This channel to hunt username by - @Tepthon ",
+        ch = str(msg[2])
+        if "@" in ch:
+            ch = ch.replace("@", "")
+        await event.edit(f"حسناً سيتم بدء الصيد في @{ch} .")
+    except:
+        try:
+            ch = await zedub(
+                functions.channels.CreateChannelRequest(
+                    title="Tepthon HUNTER - صيد تيبثون",
+                    about="This channel to hunt username by - @Tepthon ",
+                )
             )
-        )
-        ch = ch.updates[1].channel_id
-    except Exception as e:
-        await zedub.send_message(
-            event.chat_id, f"خطأ في انشاء القناة , الخطأ**-  : {str(e)}**"
-        )
-        sedmod = False
-
-    isclaim.clear()
+            ch = ch.updates[1].channel_id
+            await event.edit(f"**- تم تفعيل الصيد بنجاح الان**")
+        except Exception as e:
+            await zedub.send_message(
+                event.chat_id, f"خطأ في انشاء القناة , الخطأ**-  : {str(e)}**"
+            )
+    isclaim.clezed()
     isclaim.append("on")
-    sedmod = True
-    while sedmod:
+    for i in range(19000000):
         username = gen_user(choice)
         if username == "error":
-            await event.edit("**- يـرجى وضـع النـوع بشكـل صحيـح ...!!**")
+            await event.edit("**- يرجى وضع النوع بشكل صحيح**.")
             break
         isav = check_user(username)
         if isav == True:
@@ -163,20 +170,8 @@ async def hunterusername(event):
                 )
                 await event.client.send_message(
                     event.chat_id,
-                    "ᯓ 𝗧𝗘𝗣𝗧𝗵𝗢𝗡 𝗨𝘀𝗲𝗿𝗯𝗼𝘁 - صيـد زدثــون 💡\n**•────────────────────•**\n- UserName: ❲ @{} ❳\n- ClickS: ❲ {} ❳\n- Type: {}\n- Save: ❲ Channel ❳\n**•────────────────────•**\n- By ❲ @ZedThon ❳ ".format(
-                        username, trys, choice
-                    ),
+                    f"- Done : @{username} !\n- By : @PPF22 - @Tepthon !\n- Hunting Log {trys2[0]}",
                 )
-                await event.client.send_message(
-                    ch,
-                    "ᯓ 𝗧𝗘𝗣𝗧𝗵𝗢𝗡 𝗨𝘀𝗲𝗿𝗯𝗼𝘁 - صيـد زدثــون 💡\n**•────────────────────•**\n- UserName: ❲ @{} ❳\n- ClickS: ❲ {} ❳\n- Type: {}\n- Save: ❲ Channel ❳\n**•────────────────────•**\n- By ❲ @ZedThon ❳ ".format(
-                        username, trys, choice
-                    ),
-                )
-                await event.client.send_message(
-                    "@zzzzl1l", f"- Done : @{username} !\n- By : @ZedThon"
-                )
-                sedmod = False
                 break
             except telethon.errors.rpcerrorlist.UsernameInvalidError:
                 pass
@@ -187,26 +182,25 @@ async def hunterusername(event):
                 await zedub.send_message(
                     event.chat_id,
                     f"للاسف تبندت , مدة الباند**-  ({e.seconds}) ثانية .**",
+                    event.chat_id,
+                    f"للاسف تبندت , مدة الباند**-  ({e.seconds}) ثانية .**",
                 )
-                sedmod = False
                 break
             except Exception as eee:
                 if "the username is already" in str(eee):
-                    pass
-                if "USERNAME_PURCHASE_AVAILABLE" in str(eee):
                     pass
                 else:
                     await zedub.send_message(
                         event.chat_id,
                         f"""- خطأ مع @{username} , الخطأ :{str(eee)}""",
                     )
-                    sedmod = False
                     break
         else:
             pass
         trys[0] += 1
-    isclaim.clear()
+    isclaim.clezed()
     isclaim.append("off")
+    await event.client.send_message(event.chat_id, "**- تم بنجاح الانتهاء من الصيد**")
 
 
 @zedub.zed_cmd(pattern="تثبيت (.*)")
@@ -214,28 +208,26 @@ async def _(event):
     msg = event.text.split()
     try:
         ch = str(msg[2])
-        ch = ch.replace("@", "")
         await event.edit(f"حسناً سيتم بدء التثبيت في**-  @{ch} .**")
     except:
         try:
             ch = await zedub(
                 functions.channels.CreateChannelRequest(
-                    title="⎉ تثبيت تيبثـون 𝗧𝗘𝗣𝗧𝗵𝗢𝗡 ⎉",
+                    title="Tepthon HUNTER - صيد تيبثون",
                     about="This channel to hunt username by - @Tepthon ",
                 )
             )
             ch = ch.updates[1].channel_id
-            await event.edit(f"**- تم بـدء التثبيت .. بنجـاح ☑️**")
+            await event.edit(f"**- تم بنجاح بدأ التثبيت**")
         except Exception as e:
             await zedub.send_message(
                 event.chat_id, f"خطأ في انشاء القناة , الخطأ : {str(e)}"
             )
-    isauto.clear()
+    isauto.clezed()
     isauto.append("on")
     username = str(msg[1])
 
-    swapmod = True
-    while swapmod:
+    for i in range(1000000000000):
         isav = check_user(username)
         if isav == True:
             try:
@@ -245,58 +237,44 @@ async def _(event):
                     )
                 )
                 await event.client.send_message(
-                    ch,
-                    "ᯓ 𝗧𝗘𝗣𝗧𝗵𝗢𝗡 𝗨𝘀𝗲𝗿𝗯𝗼𝘁 - صيـد زدثــون 💡\n**•────────────────────•**\n- UserName: ❲ @{} ❳\n- ClickS: ❲ {} ❳\n- Save: ❲ Channel ❳\n**•────────────────────•**\n- By ❲ @ZedThon ❳ ".format(
-                        username, trys2
-                    ),
-                )
-                await event.client.send_message(
                     event.chat_id,
-                    "ᯓ 𝗧𝗘𝗣𝗧𝗵𝗢𝗡 𝗨𝘀𝗲𝗿𝗯𝗼𝘁 - صيـد زدثــون 💡\n**•────────────────────•**\n- UserName: ❲ @{} ❳\n- ClickS: ❲ {} ❳\n- Save: ❲ Channel ❳\n**•────────────────────•**\n- By ❲ @ZedThon ❳ ".format(
-                        username, trys2
-                    ),
+                    f"- Done : @{username} !\n- By : @PPF22 - @Tepthon !\n- Hunting Log {trys2[0]}",
                 )
-                await event.client.send_message(
-                    "@zzzzl1l",
-                    f"- Done : @{username} !\n- By : @ZedThon !\n- Hunting Log {trys2}",
-                )
-                swapmod = False
                 break
             except telethon.errors.rpcerrorlist.UsernameInvalidError:
                 await event.client.send_message(
-                    event.chat_id, f"**المعرف @{username} غير صالح ؟!**"
+                    event.chat_id, f"المعرف **-  @{username} غير صالح . **"
                 )
-                swapmod = False
                 break
             except telethon.errors.FloodError as e:
                 await zedub.send_message(
                     event.chat_id, f"للاسف تبندت , مدة الباند ({e.seconds}) ثانية ."
                 )
-                swapmod = False
                 break
             except Exception as eee:
                 await zedub.send_message(
                     event.chat_id,
                     f"""خطأ مع {username} , الخطأ :{str(eee)}""",
                 )
-                swapmod = False
                 break
         else:
             pass
         trys2[0] += 1
 
-    isclaim.clear()
+        await asyncio.sleep(1.3)
+    isclaim.clezed()
     isclaim.append("off")
+    await zedub.send_message(event.chat_id, "**- تم الانتهاء من التثبيت بنجاح**")
 
 
 @zedub.zed_cmd(pattern="حالة الصيد")
 async def _(event):
     if "on" in isclaim:
-        await event.edit(f"**- الصيد وصل لـ({trys[0]}) من المحـاولات**")
+        await event.edit(f"**- الصيد وصل لـ({trys[0]}) **من المحاولات")
     elif "off" in isclaim:
-        await event.edit("**- لا توجد عمليـة صيد جاريـه حاليـاً ؟!**")
+        await event.edit("**- الصيد بالاصل لا يعمل .**")
     else:
-        await event.edit("**- لقد حدث خطأ ما وتوقف الامر لديك**")
+        await event.edit("- لقد حدث خطأ ما وتوقف الامر لديك")
 
 
 @zedub.zed_cmd(pattern="حالة التثبيت")
@@ -304,50 +282,6 @@ async def _(event):
     if "on" in isauto:
         await event.edit(f"**- التثبيت وصل لـ({trys2[0]}) من المحاولات**")
     elif "off" in isauto:
-        await event.edit("**- لا توجد عمليـة تثبيث جاريـه حاليـاً ؟!**")
+        await event.edit("**- التثبيت بالاصل لا يعمل .**")
     else:
         await event.edit("-لقد حدث خطأ ما وتوقف الامر لديك")
-
-
-@zedub.zed_cmd(pattern="حاله الصيد")
-async def _(event):
-    if "on" in isclaim:
-        await event.edit(f"**- الصيد وصل لـ({trys[0]}) من المحـاولات**")
-    elif "off" in isclaim:
-        await event.edit("**- لا توجد عمليـة صيد جاريـه حاليـاً ؟!**")
-    else:
-        await event.edit("**- لقد حدث خطأ ما وتوقف الامر لديك**")
-
-
-@zedub.zed_cmd(pattern="حاله التثبيت")
-async def _(event):
-    if "on" in isauto:
-        await event.edit(f"**- التثبيت وصل لـ({trys2[0]}) من المحاولات**")
-    elif "off" in isauto:
-        await event.edit("**- لا توجد عمليـة تثبيث جاريـه حاليـاً ؟!**")
-    else:
-        await event.edit("-لقد حدث خطأ ما وتوقف الامر لديك")
-
-
-@zedub.zed_cmd(pattern="ايقاف الصيد")
-async def _(event):
-    if "on" in isclaim:
-        isclaim.clear()
-        isclaim.append("off")
-        return await event.edit("**- تم إيقـاف عمليـة الصيـد .. بنجـاح ✓**")
-    elif "off" in isclaim:
-        return await event.edit("**- لا توجد عمليـة صيد جاريـه حاليـاً ؟!**")
-    else:
-        return await event.edit("**- لقد حدث خطأ ما وتوقف الامر لديك**")
-
-
-@zedub.zed_cmd(pattern="ايقاف التثبيت")
-async def _(event):
-    if "on" in isauto:
-        isauto.clear()
-        isauto.append("off")
-        return await event.edit("**- تم إيقـاف عمليـة التثبيت .. بنجـاح ✓**")
-    elif "off" in isauto:
-        return await event.edit("**- لا توجد عمليـة تثبيث جاريـه حاليـاً ؟!**")
-    else:
-        return await event.edit("**-لقد حدث خطأ ما وتوقف الامر لديك**")
