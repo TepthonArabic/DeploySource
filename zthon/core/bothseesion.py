@@ -17,7 +17,7 @@ from ..core.logger import logging
 # https://github.com/pyrogram/pyrogram/blob/master/docs/source/faq/what-are-the-ip-addresses-of-telegram-data-centers.rst
 _PYRO_FORM = {351: ">B?256sI?", 356: ">B?256sQ?", 362: ">BI?256sQ?"}
 
-LOGS = logging.getLogger("زدثــون")
+LOGS = logging.getLogger("سورس تيبثون")
 
 DC_IPV4 = {
     1: "149.154.175.53",
