@@ -84,12 +84,12 @@ async def _(event):
             except:
                 bott = url.split('/')[-1]
                 await zedub(ImportChatInviteRequest(bott))
-            msg2 = await zedub.get_messages('@KBKBOT', limit=1)
+            msg2 = await zedub.get_messages('@zmmbot', limit=1)
             await msg2[0].click(text='تحقق')
             chs += 1
             await event.edit(f"**⎉╎تم بنجـاح الاشتـراك في {chs} قنـاة ...✓**")
         except:
-            msg2 = await zedub.get_messages('@KBKBOT', limit=1)
+            msg2 = await zedub.get_messages('@zmmbot', limit=1)
             await msg2[0].click(text='التالي')
             chs += 1
             await event.edit(f"**⎉╎القنـاة رقـم {chs} خطـأ .. يمكـن تبنـدت**")
@@ -130,12 +130,12 @@ async def _(event):
             except:
                 bott = url.split('/')[-1]
                 await zedub(ImportChatInviteRequest(bott))
-            msg2 = await zedub.get_messages('@KBKBOT', limit=1)
+            msg2 = await zedub.get_messages('@zmmbot', limit=1)
             await msg2[0].click(text='تحقق')
             chs += 1
             await event.edit(f"**⎉╎تم بنجـاح الاشتـراك في {chs} قنـاة ...✓**")
         except:
-            msg2 = await zedub.get_messages('@KBKBOT', limit=1)
+            msg2 = await zedub.get_messages('@zmmbot', limit=1)
             await msg2[0].click(text='التالي')
             chs += 1
             await event.edit(f"**⎉╎القنـاة رقـم {chs} خطـأ .. يمكـن تبنـدت**")
