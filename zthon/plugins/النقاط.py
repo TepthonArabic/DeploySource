@@ -54,7 +54,7 @@ async def _(event):
 @zedub.zed_cmd(pattern="المليار ?(.*)")
 async def _(event):
     con = event.pattern_match.group(1).lower()
-    await event.edit("**⎉╎حسنـاً .. تأكـد من انك مشتـرك بـ قنـوات الاشتـراك الاجبـاري لتجنب الأخطـاء @KBKBOT**")
+    await event.edit("**⎉╎حسنـاً .. تأكـد من انك مشتـرك بـ قنـوات الاشتـراك الاجبـاري لتجنب الأخطـاء @zmmbot**")
     channel_entity = await zedub.get_entity('@zmmbot')
     await zedub.send_message('@zmmbot', '/start')
     await asyncio.sleep(4)
