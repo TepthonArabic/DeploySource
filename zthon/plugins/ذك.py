@@ -61,7 +61,7 @@ async def zelzal_gpt(event):
                 await event.delete()
                 return await borg.send_message(event.chat_id, aa)
             await zed.delete()
-            await borg.send_message(event.chat_id, f"**س/ {zelzal}\n\n{malath}**\n\n───────────────────\n𝗭𝗧𝗵𝗼𝗻 𝗨**ꜱᴇʀʙᴏᴛ** 𝗧**ᴏᴏʟꜱ**\n\t\t\t\t\t\t\t\tᶻᵉˡᶻᵃˡ • ᴼᵖᵉⁿᴬᴵ")
+            await borg.send_message(event.chat_id, f"**س/ {zelzal}\n\n{malath}**\n\n───────────────────\n𝗧𝗲𝗽𝘁𝗵𝗼𝗻 𝗨𝘀𝗲𝗿𝗯𝗼𝘁**** 𝗧**ᴏᴏʟꜱ**\n\t\t\t\t\t\t\t\t@Tepthon • ᴼᵖᵉⁿᴬᴵ")
         except YouBlockedUserError: #code by t.me/zzzzl1l
             await zedub(unblock("GPT4Telegrambot"))
             await conv.send_message("/start")
@@ -85,7 +85,7 @@ async def zelzal_gpt(event):
                 zedthon = await conv.get_response()
                 malath = zedthon.text
             await zed.delete()
-            await borg.send_message(event.chat_id, f"**س/ {zelzal}\n\n{malath}**\n\n───────────────────\n𝗭𝗧𝗵𝗼𝗻 𝗨**ꜱᴇʀʙᴏᴛ** 𝗧**ᴏᴏʟꜱ**\n\t\t\t\t\t\t\t\tᶻᵉˡᶻᵃˡ • ᴼᵖᵉⁿᴬᴵ")
+            await borg.send_message(event.chat_id, f"**س/ {zelzal}\n\n{malath}**\n\n───────────────────\n𝗧𝗲𝗽𝘁𝗵𝗼𝗻 𝗨𝘀𝗲𝗿𝗯𝗼𝘁**** 𝗧**ᴏᴏʟꜱ**\n\t\t\t\t\t\t\t\t@Tepthon • ᴼᵖᵉⁿᴬᴵ")
 
 
 # تخمــط اهينـــك Fuk-You
@@ -124,7 +124,7 @@ async def zelzal_gpt(event):
                 zedthon = await conv.get_response()
                 malath = zedthon.text
             await zed.delete()
-            await borg.send_message(event.chat_id, f"**س/ {zelzal}\n\n{malath}**\n\n───────────────────\n𝗭𝗧𝗵𝗼𝗻 𝗨**ꜱᴇʀʙᴏᴛ** 𝗧**ᴏᴏʟꜱ**\n\t\t\t\t\t\t\t\tᶻᵉˡᶻᵃˡ • ᴼᵖᵉⁿᴬᴵ")
+            await borg.send_message(event.chat_id, f"**س/ {zelzal}\n\n{malath}**\n\n───────────────────\n𝗧𝗲𝗽𝘁𝗵𝗼𝗻 𝗨𝘀𝗲𝗿𝗯𝗼𝘁**** 𝗧**ᴏᴏʟꜱ**\n\t\t\t\t\t\t\t\t@Tepthon • ᴼᵖᵉⁿᴬᴵ")
         except YouBlockedUserError: #code by t.me/zzzzl1l
             await zedub(unblock("GPT4Telegrambot"))
             await conv.send_message("/start")
@@ -144,4 +144,4 @@ async def zelzal_gpt(event):
                 await event.delete()
                 return await borg.send_message(event.chat_id, aa)
             await zed.delete()
-            await borg.send_message(event.chat_id, f"**س/ {zelzal}\n\n{malath}**\n\n───────────────────\n𝗭𝗧𝗵𝗼𝗻 𝗨**ꜱᴇʀʙᴏᴛ** 𝗧**ᴏᴏʟꜱ**\n\t\t\t\t\t\t\t\tᶻᵉˡᶻᵃˡ • ᴼᵖᵉⁿᴬᴵ")
+            await borg.send_message(event.chat_id, f"**س/ {zelzal}\n\n{malath}**\n\n───────────────────\n𝗧𝗲𝗽𝘁𝗵𝗼𝗻 𝗨𝘀𝗲𝗿𝗯𝗼𝘁**** 𝗧**ᴏᴏʟꜱ**\n\t\t\t\t\t\t\t\t@Tepthon • ᴼᵖᵉⁿᴬᴵ")
