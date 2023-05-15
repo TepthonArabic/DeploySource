@@ -2,7 +2,7 @@ from somnium import Somnium
 
 from ..core.managers import edit_delete, edit_or_reply
 from ..helpers import GetStylesGraph, reply_id
-from ..sql_helper.globals import addgvzed, gvzedstatus
+from ..sql_helper.globals import addgvar, gvarstatus
 from . import zedub
 
 
