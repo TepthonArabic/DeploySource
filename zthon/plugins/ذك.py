@@ -57,7 +57,7 @@ async def zelzal_gpt(event):
             zedthon = await conv.get_response()
             malath = zedthon.text
             if "understanding" in zedthon.text: #code by t.me/zzzzl1l
-                aa = malath.replace("⏳ Please wait another 8 seconds before sending the next question . . .", "**- عـذراً .. لم أفهم سؤالك\n- قم بـ إعادة صياغته من فضلك؟!**") 
+                aa = malath.replace("⏳ Please wait another 8 seconds before sending the next question . . .", "**- عـذرًا .. لم أفهم سؤالك\n- قم بـ إعادة صياغته من فضلك؟!**") 
                 await event.delete()
                 return await borg.send_message(event.chat_id, aa)
             await zed.delete()
@@ -77,7 +77,7 @@ async def zelzal_gpt(event):
             zedthon = await conv.get_response()
             malath = zedthon.text
             if "understanding" in zedthon.text: #code by t.me/zzzzl1l
-                aa = malath.replace("I'm sorry, I'm not quite understanding the question. Could you please rephrase it?", "**- عـذراً .. لم أفهم سؤالك\n- قم بـ إعادة صياغته من فضلك؟!**") 
+                aa = malath.replace("I'm sorry, I'm not quite understanding the question. Could you please rephrase it?", "**- عـذرًا .. لم أفهم سؤالك\n- قم بـ إعادة صياغته من فضلك؟!**") 
                 await event.delete()
                 return await borg.send_message(event.chat_id, aa)
             if "Please wait a moment" in zedthon.text: #code by t.me/zzzzl1l
@@ -116,7 +116,7 @@ async def zelzal_gpt(event):
             zedthon = await conv.get_response()
             malath = zedthon.text
             if "understanding" in zedthon.text: #code by t.me/zzzzl1l
-                aa = malath.replace("⏳ Please wait another 8 seconds before sending the next question . . .", "**- عـذراً .. لم أفهم سؤالك\n- قم بـ إعادة صياغته من فضلك؟!**") 
+                aa = malath.replace("⏳ Please wait another 8 seconds before sending the next question . . .", "**- عـذرًا .. لم أفهم سؤالك\n- قم بـ إعادة صياغته من فضلك؟!**") 
                 await event.delete()
                 return await borg.send_message(event.chat_id, aa)
             if "Please wait a moment" in zedthon.text: #code by t.me/zzzzl1l
@@ -140,7 +140,7 @@ async def zelzal_gpt(event):
             zedthon = await conv.get_response()
             malath = zedthon.text
             if "understanding" in zedthon.text: #code by t.me/zzzzl1l
-                aa = malath.replace("I'm sorry, I'm not quite understanding the question. Could you please rephrase it?", "**- عـذراً .. لم أفهم سؤالك\n- قم بـ إعادة صياغته من فضلك؟!**") 
+                aa = malath.replace("I'm sorry, I'm not quite understanding the question. Could you please rephrase it?", "**- عـذرًا .. لم أفهم سؤالك\n- قم بـ إعادة صياغته من فضلك؟!**") 
                 await event.delete()
                 return await borg.send_message(event.chat_id, aa)
             await zed.delete()
