@@ -32,7 +32,7 @@ from .pluginmanager import load_module
 from .tools import create_supergroup
 
 ENV = bool(os.environ.get("ENV", False))
-LOGS = logging.getLogger("ZedUBStartUP")
+LOGS = logging.getLogger("سورس تيبثون")
 cmdhr = Config.COMMAND_HAND_LER
 
 if ENV:
@@ -46,7 +46,7 @@ DEV = 1260465030
 
 async def setup_bot():
     """
-    To set up bot for zthon
+    To set up bot for Tepthon
     """
     try:
         await zedub.connect()
@@ -81,7 +81,7 @@ async def startupmessage():
         if BOTLOG:
             Config.ZEDUBLOGO = await zedub.tgbot.send_file(
                 BOTLOG_CHATID,
-                "https://telegra.ph/file/b920419da499a55479a15.jpg",
+                "https://graph.org/file/b920419da499a55479a15.jpg",
                 caption="**•⎆┊تـم بـدء تشغـيل سـورس تيبثـون الخاص بك .. بنجاح 🧸♥️**",
                 buttons=[(Button.url("𝐬𝐨𝐮𝐫𝐜𝐞 𝐭𝐞𝐩𝐭𝐡𝐨𝐧", "https://t.me/Tepthon"),)],
             )
