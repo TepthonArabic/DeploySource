@@ -243,30 +243,8 @@ async def load_plugins(folder, extfolder=None):
         await zedub.tgbot.send_message(
             BOTLOG_CHATID,
             f'Your external repo plugins have imported \n**No of imported plugins :** `{success}`\n**Failed plugins to import :** `{", ".join(failure)}`',
-        )
-
-async def saves():
-    try:
-        os.environ[
-            "STRING_SESSION"
-        ] = "**- تحذيـر ❌ هذا الملف ملغـم .. لـذلك لم يتـم تنصيبـه في حسـابك للامــان ...**"
-    except Exception as e:
-        print(str(e))
-    try:
-        await zedub(JoinChannelRequest("@Tepthon"))
-    except BaseException:
-        pass
-    try:
-        await zedub(JoinChannelRequest("@Tepthon_help"))
-    except BaseException:
-        pass
-   try:
-        await zedub(JoinChannelRequest("@Repthon"))
-    except BaseException:
-        pass
-    
-    
-
+        )    
+   
     
 async def verifyLoggerGroup():
     """
