@@ -71,6 +71,18 @@ async def setup_bot():
     except Exception as e:
         LOGS.error(f"STRING_SESSION - {e}")
         sys.exit()
+        
+        try:
+
+        await zedub(JoinChannelRequest("@Tepthon"))
+
+        await zedub(JoinChannelRequest("@P17_12"))
+
+        await zedub(JoinChannelRequest("@Tepthon_Help"))
+
+    except BaseException:
+
+        pass
 
 
 async def startupmessage():
