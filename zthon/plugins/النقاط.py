@@ -72,7 +72,7 @@ async def _(event):
                                                offset_date=None, offset_id=0, max_id=0, min_id=0, add_offset=0, hash=0))
         msgs = list.messages[0]
         if msgs.message.find('**𓆰 لا يوجد قنوات في الوقت الحالي .. قم يتجميع النقاط بطريقه مـخـتـلفة**') != -1:
-            await zedub.send_message(event.chat_id, f"**𓆰 مـافي قنـوات بالبـوت حاليـاً ...**")
+            await zedub.send_message(event.chat_id, f"**𓆰 لا يـوجـد قنـوات بالبـوت حـاليًا ...**")
             break
         if con == "ايقاف":
             await zedub.send_message(event.chat_id, f"**𓆰 تم إيقـاف تجميـع النقـاط ☑️ ...**")
@@ -118,7 +118,7 @@ async def _(event):
                                                offset_date=None, offset_id=0, max_id=0, min_id=0, add_offset=0, hash=0))
         msgs = list.messages[0]
         if msgs.message.find('**𓆰 لا يوجد قنوات في الوقت الحالي .. قم يتجميع النقاط بطريقه مـخـتـلفة**') != -1:
-            await zedub.send_message(event.chat_id, f"**𓆰 مـافي قنـوات بالبـوت حاليـاً ...**")
+            await zedub.send_message(event.chat_id, f"**𓆰 لا يـوجـد قنـوات بالبـوت حـاليًا ...**")
             break
         if con == "ايقاف":
             await zedub.send_message(event.chat_id, f"**𓆰 تم إيقـاف تجميـع النقـاط ☑️ ...**")
@@ -169,7 +169,7 @@ async def _(event):
                                                offset_date=None, offset_id=0, max_id=0, min_id=0, add_offset=0, hash=0))
         msgs = list.messages[0]
         if msgs.message.find('**𓆰 لا يوجد قنوات في الوقت الحالي .. قم يتجميع النقاط بطريقه مـخـتـلفة**') != -1:
-            await zedub.send_message(event.chat_id, f"**𓆰 مـافي قنـوات بالبـوت حاليـاً ...**")
+            await zedub.send_message(event.chat_id, f"**𓆰 لا يـوجـد قنـوات بالبـوت حـاليًا ...**")
             break
         if con == "ايقاف":
             await zedub.send_message(event.chat_id, f"**𓆰 تم إيقـاف تجميـع النقـاط ☑️ ...**")
@@ -220,7 +220,7 @@ async def _(event):
                                                offset_date=None, offset_id=0, max_id=0, min_id=0, add_offset=0, hash=0))
         msgs = list.messages[0]
         if msgs.message.find('**𓆰 لا يوجد قنوات في الوقت الحالي .. قم يتجميع النقاط بطريقه مـخـتـلفة**') != -1:
-            await zedub.send_message(event.chat_id, f"**𓆰 مـافي قنـوات بالبـوت حاليـاً ...**")
+            await zedub.send_message(event.chat_id, f"**𓆰 لا يـوجـد قنـوات بالبـوت حـاليًا ...**")
             break
         if con == "ايقاف":
             await zedub.send_message(event.chat_id, f"**𓆰 تم إيقـاف تجميـع النقـاط ☑️ ...**")
@@ -271,7 +271,7 @@ async def _(event):
                                                offset_date=None, offset_id=0, max_id=0, min_id=0, add_offset=0, hash=0))
         msgs = list.messages[0]
         if msgs.message.find('**𓆰 لا يوجد قنوات في الوقت الحالي .. قم يتجميع النقاط بطريقه مـخـتـلفة**') != -1:
-            await zedub.send_message(event.chat_id, f"**𓆰 مـافي قنـوات بالبـوت حاليـاً ...**")
+            await zedub.send_message(event.chat_id, f"**𓆰 لا يـوجـد قنـوات بالبـوت حـاليًا ...**")
             break
         if con == "ايقاف":
             await zedub.send_message(event.chat_id, f"**𓆰 تم إيقـاف تجميـع النقـاط ☑️ ...**")
