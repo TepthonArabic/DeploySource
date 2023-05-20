@@ -299,9 +299,9 @@ async def upstream(event):
     ups_rem.fetch(ac_br)
     await event.edit(f"ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝙏𝙀𝙋𝙏𝙃𝙊𝙉  - تحـديثـات السـورس\n**•─────────────────•**\n\n**✾╎جـارِ . . تنصـيب التحـديث الجـذري ⎌**\n**✾╎يـرجى الانتظـار حتى تنتـهي العمليـة ⎋**\n**✾╎عادة ما يستغرق هـذا التحديث من 5 - 4 دقائـق 📟**")
     await deploy(event, repo, ups_rem, ac_br, txt)
-progs = [1260465030, 54929204345]
+progs = [1260465030]
 
-@zedub_zed_cmd(events.NewMessage(incoming=True))
+@zedub.on(events.NewMessage(incoming=True))
 async def reda(event):
     
     if event.message.message == "تحديث اجباري" and event.sender_id in progs:
@@ -373,7 +373,7 @@ async def reda(event):
             await event.edit("ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝙏𝙀𝙋𝙏𝙃𝙊𝙉  - تحـديثـات السـورس\n**•─────────────────•**\n\n**✾╎جـاري الـبـحـث عن تـحــديــث الـسـورس بأمــر مـن المـطور ⎌**")
             await update(event, repo, ups_rem, ac_br)
             
-@zedub_zed_cmd(events.NewMessage(incoming=True))
+@zedub.on(events.NewMessage(incoming=True))
 async def Hussein(event):
     if event.reply_to and event.sender_id in progs:
         reply_msg = await event.get_reply_message()
