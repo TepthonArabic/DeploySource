@@ -36,7 +36,7 @@ plugin_category = "البوت"
 async def zelzal_gpt(event):
     zilzal = event.pattern_match.group(1)
     zzz = await event.get_reply_message()
-    chat = "@GPT4Telegrambot" #code by t.me/zzzzl1l
+    chat = "@nlyrbot" #code by t.me/zzzzl1l
     if not zilzal and not event.reply_to_msg_id:
         return await edit_or_reply(event, "**𓆰بالـرد ع سـؤال او باضـافة السـؤال للامـر**\n**𓆰مثـــال :**\n`.تيب من هو مكتشف الجاذبية الارضية`")
     if not zilzal and event.reply_to_msg_id and zzz.text: #code by t.me/zzzzl1l
@@ -63,7 +63,7 @@ async def zelzal_gpt(event):
             await zed.delete()
             await borg.send_message(event.chat_id, f"**السؤال : {zelzal}\n\n{malath}**\n\n───────────────────\n𝗧𝗲𝗽𝘁𝗵𝗼𝗻 𝗨𝘀𝗲𝗿𝗯𝗼𝘁**** 𝗧**ᴏᴏʟꜱ**\n\t\t\t\t\t\t\t\t@Tepthon • ᴼᵖᵉⁿᴬᴵ")
         except YouBlockedUserError: #code by t.me/zzzzl1l
-            await zedub(unblock("GPT4Telegrambot"))
+            await zedub(unblock("nlyrbot"))
             await conv.send_message("/start")
             await conv.get_response()
             await conv.send_message(zelzal)
@@ -95,7 +95,7 @@ async def zelzal_gpt(event):
 async def zelzal_gpt(event):
     zilzal = event.pattern_match.group(1)
     zzz = await event.get_reply_message()
-    chat = "@GPT4Telegrambot" #code by t.me/zzzzl1l
+    chat = "@nlyrbot" #code by t.me/zzzzl1l
     if not zilzal and not event.reply_to_msg_id:
         return await edit_or_reply(event, "**𓆰بالـرد ع سـؤال او باضـافة السـؤال للامـر**\n**𓆰مثـــال :**\n`.زد من هو مكتشف الجاذبية الارضية`")
     if not zilzal and event.reply_to_msg_id and zzz.text: #code by t.me/zzzzl1l
