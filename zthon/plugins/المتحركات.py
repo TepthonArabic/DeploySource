@@ -24,11 +24,11 @@ plugin_category = "البحث"
     },
 )
 async def some(event):
-    """يرسل صور متحركة عشوائية من الاستعلام الخاص بك"""
+    """يرسل صـور متـحـركة عشوائية مــن الاستعلام الخاص بك"""
     inpt = event.pattern_match.group(1)
     reply_to_id = await reply_id(event)
     if not inpt:
-        await edit_delete(event, "`Give an input to search...`")
+        await edit_delete(event, "`قـم بـإعطائـي مدخـلات الـبحـث...`")
     count = 1
     if ";" in inpt:
         inpt, count = inpt.split(";")
