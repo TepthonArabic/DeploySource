@@ -20,7 +20,7 @@ async def lol(event):
         await event.edit(str(e))
 
 
-@zedub.zed_cmd(pattern="اضافه ([\s\S]*)")
+@zedub.zed_cmd(pattern="إضافه ([\s\S]*)")
 async def _(event):
     to_add_users = event.pattern_match.group(1)
     if not event.is_channel and event.is_group:
@@ -44,7 +44,7 @@ async def _(event):
             except Exception as e:
                 return await edit_delete(event, f"`{e}`", 5)
 
-    await edit_or_reply(event, f"**{to_add_users} تم اضافته بنجاح ✓**")
+    await edit_or_reply(event, f"**{to_add_users} تم إضافته بنجاح ✓**")
 
 
 @zedub.zed_cmd(pattern="ضيف ([\s\S]*)", groups_only=True)
@@ -52,7 +52,7 @@ async def get_users(event):
     legen_ = event.text[10:]
     input_str = event.pattern_match.group(1)
     zedub_chat = legen_.lower
-    zedb = await edit_or_reply(event, f"**جارِ اضأفه الاعضاء من  ** {legen_}")
+    zedb = await edit_or_reply(event, f"**جارِ إضأفه الاعضاء من  ** {legen_}")
     sender = await event.get_sender()
     me = await event.client.get_me()
     if not sender.id == me.id:
@@ -60,20 +60,20 @@ async def get_users(event):
     else:
         await zedb.edit("**⎉╎ جـارِ إتمـام العمليـة انتظــر ⅏ . . .**")
     if event.is_private:
-        return await zedb.edit("**╮  لا استطـيع اضافـة الاعضـاء هـنا 𓅫╰**")
+        return await zedb.edit("**╮  لا استطـيع إضافـة الاعضـاء هـنا 𓅫╰**")
     s = 0
     f = 0
     error = "None"
     chat = await event.client.get_entity(input_str)
-    await zedb.edit("**⎉╎حالة الأضافة:**\n\n**⎉╎تتم جمع معلومات المستخدمين 🔄 ...⏣**")
+    await zedb.edit("**⎉╎حالة الإضافة:**\n\n**⎉╎تتم جمع معلومات المستخدمين 🔄 ...⏣**")
     async for user in event.client.iter_participants(chat):
         try:
             if error.startswith("Too"):
-                return await zedb.edit(f"**حالة الأضافة انتهت مع الأخطاء**\n- (**ربما هنالك ضغط على الأمر حاول مجددا لاحقا **) \n**الخطأ** : \n`{error}`\n\n• اضافة `{s}` \n• خطأ بأضافة `{f}`")
+                return await zedb.edit(f"**حالة الإضافة انتهت مع الأخطاء**\n- (**ربما هنالك ضغط على الأمر حاول مجددا لاحقا **) \n**الخطأ** : \n`{error}`\n\n• إضافة `{s}` \n• خطأ بإضافة `{f}`")
             await zedub(InviteToChannelRequest(channel=event.chat_id, users=[user.id]))
             s = s + 1
-            await zedb.edit(f"**⎉╎تتم الأضافة **\n\n• اضيف `{s}` \n•  خطأ بأضافة `{f}` \n\n**× اخر خطأ:** `{error}`")
+            await zedb.edit(f"**⎉╎تتم الإضافة **\n\n• إضيف `{s}` \n•  خطأ بإضافة `{f}` \n\n**× اخر خطأ:** `{error}`")
         except Exception as e:
             error = str(e)
             f = f + 1
-    return await zedb.edit(f"**⎉╎اڪتملت الأضافة ✅** \n\n• تم بنجاح اضافة `{s}` \n• خطأ بأضافة `{f}`")
+    return await zedb.edit(f"**⎉╎اڪتملت الإضافة ✅** \n\n• تم بنجاح إضافة `{s}` \n• خطأ بإضافة `{f}`")
