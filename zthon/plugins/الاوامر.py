@@ -417,7 +417,7 @@ async def zed_handler(event):
     query = event.text
     await zedub.get_me()
     user = gvarstatus("who_id")
-    zedth2 = user.first_name.replace("\u2060", "") if user.first_name else user.username
+    name_zed = user_zed.first_name
     if query.startswith("اليدوي") and event.query.user_id == zedub.uid:
         zelzal = f"**• عـزيـزي ** [{zedth2}](tg://user?id={user.id}) \n**• إليـك شـرح إعـادة التشغيـل اليـدوي↓**"
         buttons = [[Button.url("اضغــط هنــا", "https://t.me/Tepthone1")]]
@@ -430,7 +430,7 @@ async def repozedub(event):
         return
     else:
     	addgvar("who_id", user)
-    zedth2 = user.first_name.replace("\u2060", "") if user.first_name else user.username
+    name_zed = user_zed.first_name
     response = await event.client.inline_query(Config.TG_BOT_USERNAME, "اليدوي")
     await response[0].click(event.chat_id)
     await event.delete()
@@ -444,7 +444,7 @@ async def zed_handler(event):
     query = event.text
     await zedub.get_me()
     user = gvarstatus("who_id")
-    zedth2 = user.first_name.replace("\u2060", "") if user.first_name else user.username
+    name_zed = user_zed.first_name
     if query.startswith("الفيزا") and event.query.user_id == zedub.uid:
         zelzal = f"**• عـزيـزي ** [{zedth2}](tg://user?id={user.id}) \n**• إليـك الفيـزا الــخـاصـة بهيـروكـو↓**"
         buttons = [[Button.url("اضغــط هنــا", "https://t.me/VisaTepthon")]]
@@ -457,7 +457,7 @@ async def repozedub(event):
         return
     else:
     	addgvar("who_id", user)
-    zedth2 = user.first_name.replace("\u2060", "") if user.first_name else user.username
+    name_zed = user_zed.first_name
     response = await event.client.inline_query(Config.TG_BOT_USERNAME, "الفيزا")
     await response[0].click(event.chat_id)
     await event.delete()
@@ -472,7 +472,7 @@ async def zed_handler(event):
     query = event.text
     await zedub.get_me()
     user = gvarstatus("who_id")
-    zedth2 = user.first_name.replace("\u2060", "") if user.first_name else user.username
+    name_zed = user_zed.first_name
     if query.startswith("الهيروكو") and event.query.user_id == zedub.uid:
         zelzal = f"**• عـزيـزي ** [{zedth2}](tg://user?id={user.id}) \n**• إليـك شـرح إنشـاء حسـاب هيـروكـو↓**"
         buttons = [[Button.url("اضغــط هنــا", "https://t.me/Tws_Tepthon/59")]]
@@ -485,7 +485,7 @@ async def repozedub(event):
         return
     else:
     	addgvar("who_id", user)
-    zedth2 = user.first_name.replace("\u2060", "") if user.first_name else user.username
+    name_zed = user_zed.first_name
     response = await event.client.inline_query(Config.TG_BOT_USERNAME, "الهيروكو")
     await response[0].click(event.chat_id)
     await event.delete()
@@ -499,7 +499,7 @@ async def zed_handler(event):
     query = event.text
     await zedub.get_me()
     user = gvarstatus("who_id")
-    zedth2 = user.first_name.replace("\u2060", "") if user.first_name else user.username
+    name_zed = user_zed.first_name
     if query.startswith("التنصيب") and event.query.user_id == zedub.uid:
         zelzal = f"**• عـزيـزي ** [{zedth2}](tg://user?id={user.id}) \n**• إليـك شـرح تنصيب السـورس ع هيـروكـو↓**"
         buttons = [[Button.url("اضغــط هنــا", "https://t.me/Tepthon/134")]]
