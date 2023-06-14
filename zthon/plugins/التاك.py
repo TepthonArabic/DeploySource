@@ -146,7 +146,7 @@ async def tagall(event):
 
 @zedub.zed_cmd(pattern="تبليغ$")
 async def _(event):
-    mentions = "- انتباه الى المشرفين تم تبليغكم \n@admin"
+    mentions = "- انتباه إلـى المشرفين تم تبليغكم \n@admin"
     chat = await event.get_input_chat()
     reply_to_id = await reply_id(event)
     async for x in event.client.iter_participants(
