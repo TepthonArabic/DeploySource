@@ -12,8 +12,8 @@ plugin_category = "البحث"
 
 
 @zedub.zed_cmd(
-    pattern="متحركه(?:\s|$)([\s\S]*)",
-    command=("متحركه", plugin_category),
+    pattern="متحركة(?:\s|$)([\s\S]*)",
+    command=("متحركة", plugin_category),
     info={
         "header": "Sends random gifs",
         "usage": "Search and send your desire gif randomly and in bulk",
