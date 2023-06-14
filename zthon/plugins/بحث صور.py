@@ -69,7 +69,7 @@ async def _(event):
                 f_d.write(await image_req_set.read())
             url_lst.append(image_save_path)
     if not url_lst:
-        await event.edit(f"**- اووبـس .. لم استطـع ايجـاد صـور عـن {zedthon} ؟!**\n**- حـاول مجـدداً واكتـب الكلمـه بشكـل صحيح**")
+        await event.edit(f"**- اووبـس .. لم استطـع ايجـاد صـور عـن {zedthon} ؟!**\n**- حـاول مجـددًا واكتـب الكلمـة بشكـل صحيح**")
         return
     await event.reply(
         file=url_lst,
@@ -82,7 +82,7 @@ async def _(event):
     end = datetime.now()
     ms = (end - start).seconds
     await event.edit(
-        f"**- اكتمـل البحث عـن {zedthon} في {ms} ثانيـه ✓**",
+        f"**- اكتمـل البحث عـن {zedthon} في {ms} ثانيـة ✓**",
         link_preview=False
     )
     await asyncio.sleep(5)
@@ -135,7 +135,7 @@ async def _(event):
                 f_d.write(await image_req_set.read())
             url_lst.append(image_save_path)
     if not url_lst:
-        await event.edit(f"**- اووبـس .. لم استطـع ايجـاد خلفيـات عـن {zedthon} ؟!**\n**- حـاول مجـدداً واكتـب الكلمـه بشكـل صحيح**")
+        await event.edit(f"**- اووبـس .. لم استطـع ايجـاد خلفيـات عـن {zedthon} ؟!**\n**- حـاول مجـددًا واكتـب الكلمـة بشكـل صحيح**")
         return
     await event.reply(
         file=url_lst,
@@ -148,7 +148,7 @@ async def _(event):
     end = datetime.now()
     ms = (end - start).seconds
     await event.edit(
-        f"**- اكتمـل البحث عـن {zedthon} في {ms} ثانيـه ✓**",
+        f"**- اكتمـل البحث عـن {zedthon} في {ms} ثانيـة ✓**",
         link_preview=False
     )
     await asyncio.sleep(5)
