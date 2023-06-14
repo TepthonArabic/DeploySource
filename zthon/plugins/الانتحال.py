@@ -10,7 +10,7 @@ from ..sql_helper.globals import gvarstatus
 plugin_category = "العروض"
 DEFAULTUSER = gvarstatus("FIRST_NAME") or ALIVE_NAME
 DEFAULTUSERBIO = Config.DEFAULT_BIO or "- ‏وحدي أضيء، وحدي أنطفئ انا قمري و كُل نجومي..🤍"
-ANTHAL = gvarstatus("ANTHAL") or "(اعادة الحساب|اعادة|اعاده)"
+ANTHAL = gvarstatus("ANTHAL") or "(إعـادة الحـسـاب|اعادة|اعاده)"
 
 
 @zedub.zed_cmd(pattern="نسخ(?:\s|$)([\s\S]*)")
@@ -41,7 +41,7 @@ async def _(event):
     except Exception as e:
         return await edit_delete(event, f"**اووبس خطـأ بالانتحـال:**\n__{e}__")
     await event.client(functions.photos.UploadProfilePhotoRequest(pfile))
-    await edit_delete(event, "**⎉╎تـم انتحـال الشخـص .. بنجـاح ༗**")
+    await edit_delete(event, "**𓆰 تـم انتحـال الشخـص .. بنجـاح ༗**")
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID,
@@ -78,7 +78,7 @@ async def _(event):
     except Exception as e:
         return await edit_delete(event, f"**اووبس خطـأ بالانتحـال:**\n__{e}__")
     await event.client(functions.photos.UploadProfilePhotoRequest(pfile))
-    await edit_delete(event, "**⎉╎تـم انتحـال الشخـص .. بنجـاح ༗**")
+    await edit_delete(event, "**𓆰 تـم انتحـال الشخـص .. بنجـاح ༗**")
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID,
@@ -99,7 +99,7 @@ async def revert(event):
     await event.client(functions.account.UpdateProfileRequest(about=bio))
     await event.client(functions.account.UpdateProfileRequest(first_name=firstname))
     await event.client(functions.account.UpdateProfileRequest(last_name=lastname))
-    await edit_delete(event, "**⎉╎تمت اعادة الحساب لوضعـه الاصلـي \n⎉╎والغـاء الانتحـال .. بنجـاح ✅**")
+    await edit_delete(event, "**𓆰 تمت إعـادة الحـسـاب لوضعـه الأصـلـي \n𓆰 وإلـغـاء الانتحـال .. بنجـاح ✅**")
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID,
