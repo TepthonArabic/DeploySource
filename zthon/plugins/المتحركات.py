@@ -24,7 +24,7 @@ plugin_category = "البحث"
     },
 )
 async def some(event):
-    """Sends random gifs of your query"""
+    """يرسل صور متحركة عشوائية من الاستعلام الخاص بك"""
     inpt = event.pattern_match.group(1)
     reply_to_id = await reply_id(event)
     if not inpt:
