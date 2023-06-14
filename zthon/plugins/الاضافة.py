@@ -52,7 +52,7 @@ async def get_users(event):
     legen_ = event.text[10:]
     input_str = event.pattern_match.group(1)
     zedub_chat = legen_.lower
-    zedb = await edit_or_reply(event, f"**جارِ إضأفه الاعضاء من  ** {legen_}")
+    zedb = await edit_or_reply(event, f"**جارِ إضـافـة الاعضاء من  ** {legen_}")
     sender = await event.get_sender()
     me = await event.client.get_me()
     if not sender.id == me.id:
