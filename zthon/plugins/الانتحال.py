@@ -39,7 +39,7 @@ async def _(event):
     try:
         pfile = await event.client.upload_file(profile_pic)
     except Exception as e:
-        return await edit_delete(event, f"**اووبس خطـأ بالانتحـال:**\n__{e}__")
+        return await edit_delete(event, f"**عـذرًا خطـأ بالانتحـال:**\n__{e}__")
     await event.client(functions.photos.UploadProfilePhotoRequest(pfile))
     await edit_delete(event, "**𓆰 تـم انتحـال الشخـص .. بنجـاح ༗**")
     if BOTLOG:
@@ -76,7 +76,7 @@ async def _(event):
     try:
         pfile = await event.client.upload_file(profile_pic)
     except Exception as e:
-        return await edit_delete(event, f"**اووبس خطـأ بالانتحـال:**\n__{e}__")
+        return await edit_delete(event, f"**عـذرًا خطـأ بالانتحـال:**\n__{e}__")
     await event.client(functions.photos.UploadProfilePhotoRequest(pfile))
     await edit_delete(event, "**𓆰 تـم انتحـال الشخـص .. بنجـاح ༗**")
     if BOTLOG:
