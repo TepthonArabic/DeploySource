@@ -373,3 +373,4 @@ async def unbanbot(event):
         except:
             pass
         return await event.edit("**⎉╎تم إيقـاف عمليـة التفليـش .. بنجـاح✓**")
+#حرام.
