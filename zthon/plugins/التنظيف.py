@@ -74,7 +74,7 @@ async def delete_it(event):
                     )
         elif input_str:
             if not input_str.startswith("var"):
-                await edit_or_reply(event, "**- عـذراً .. الرسـالة غيـر موجـودة**")
+                await edit_or_reply(event, "**- عـذرًا .. الرسـالة غيـر موجـودة**")
         else:
             try:
                 await msg_src.delete()
