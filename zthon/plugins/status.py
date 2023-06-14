@@ -25,8 +25,8 @@ async def pussy(event):
     "make yourself offline"
     user = await event.client.get_entity("me")
     if user.first_name.startswith(OFFLINE_TAG):
-        return await edit_delete(event, "**انت مفعل الوضع اثلا.**")
-    await edit_or_reply(event, "**جاري تغير الاك ل اوفلاين.**")
+        return await edit_delete(event, "**𓆰 أنـت قـمـت بتـفعـيل الـوضـع مـسبقًا إلـى أوفلاين ♥️🧸**")
+    await edit_or_reply(event, "**جـاري تـغيير حـسابـك إلـى أوفلايـن ...**")
     photo = "./temp/donottouch.jpg"
     if not os.path.isdir("./temp"):
         os.mkdir("./temp")
@@ -40,7 +40,7 @@ async def pussy(event):
         except Exception as e:  # pylint:disable=C0103,W0703
             await edit_or_reply(event, str(e))
         else:
-            await edit_or_reply(event, "**انت الان اوفلاين**")
+            await edit_or_reply(event, "**𓆰 أنـت الآن أوفـلايـن**")
     os.remove(photo)
     first_name = user.first_name
     addgvar("my_first_name", first_name)
@@ -69,9 +69,9 @@ async def cat(event):
     "make yourself online"
     user = await event.client.get_entity("me")
     if user.first_name.startswith(OFFLINE_TAG):
-        await edit_or_reply(event, "**جاري اعاده الحساب زي مكان...**")
+        await edit_or_reply(event, "**𓆰 جـاري إعـادة الحـساب كما كـان عليـه سـابقًا..**")
     else:
-        await edit_delete(event, "**انت اونلاين اصلا.**")
+        await edit_delete(event, "**𓆰 أنـت أونـلايـن بالـفعـل**")
         return
     try:
         await event.client(
@@ -82,7 +82,7 @@ async def cat(event):
     except Exception as e:  # pylint:disable=C0103,W0703
         await edit_or_reply(event, str(e))
     else:
-        await edit_or_reply(event, "**جاري اعاده الحساب زي مكان....**")
+        await edit_or_reply(event, "**𓆰 جـاري إعـادة الحـساب كما كـان عليـه سـابقًا..**")
     first_name = gvarstatus("my_first_name")
     last_name = gvarstatus("my_last_name") or ""
     await event.client(
@@ -90,4 +90,4 @@ async def cat(event):
             last_name=last_name, first_name=first_name
         )
     )
-    await edit_delete(event, f"**`{first_name} {last_name}`\nانا اونلاين !**")
+    await edit_delete(event, f"**`{first_name} {last_name}`\n𓆰 أنـا أونـلايـن**")
