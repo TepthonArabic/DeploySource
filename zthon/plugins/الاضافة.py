@@ -56,9 +56,9 @@ async def get_users(event):
     sender = await event.get_sender()
     me = await event.client.get_me()
     if not sender.id == me.id:
-        await zedb.edit("**⎉╎ جـارِ إتمـام العمليـة إنتظـر ⅏ . . .**")
+        await zedb.edit("**⎉╎ جـارِ إتمـام العمليـة انتظــر ⅏ . . .**")
     else:
-        await zedb.edit("**⎉╎ جـارِ إتمـام العمليـة إنتظـر ⅏ . . .**")
+        await zedb.edit("**⎉╎ جـارِ إتمـام العمليـة انتظــر ⅏ . . .**")
     if event.is_private:
         return await zedb.edit("**╮  لا استطـيع اضافـة الاعضـاء هـنا 𓅫╰**")
     s = 0
