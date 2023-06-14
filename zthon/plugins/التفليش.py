@@ -142,7 +142,7 @@ async def _(event):
     result = await event.client.get_permissions(event.chat_id, event.client.uid)
     if not result.participant.admin_rights.ban_users:
         return await edit_or_reply(
-            event, "**- ليس لديك صلاحيات لأستخدام هذا الامر هنا**"
+            event, "**- ليس لديك صلاحيات لاستخدام هذا الامر هنا**"
         )
     zedevent = await edit_or_reply(event, "**- جـارِ . . .**")
     admins = await event.client.get_participants(
@@ -175,7 +175,7 @@ async def _(event):
     result = await event.client.get_permissions(event.chat_id, event.client.uid)
     if not result.participant.admin_rights.ban_users:
         return await edit_or_reply(
-            event, "**- ليس لديك صلاحيات لأستخدام هذا الامر هنا**"
+            event, "**- ليس لديك صلاحيات لاستخدام هذا الامر هنا**"
         )
     zedevent = await edit_or_reply(event, "**- جـارِ . . .**")
     admins = await event.client.get_participants(
@@ -212,7 +212,7 @@ async def _(event):
     result = await event.client.get_permissions(event.chat_id, event.client.uid)
     if not result:
         return await edit_or_reply(
-            event, "**- ليس لديك صلاحيات لأستخدام هذا الامر هنا**"
+            event, "**- ليس لديك صلاحيات لاستخدام هذا الامر هنا**"
         )
     zedevent = await edit_or_reply(event, "**- جـارِ . . .**")
     admins = await event.client.get_participants(
@@ -247,7 +247,7 @@ async def _(event):
     result = await event.client.get_permissions(event.chat_id, event.client.uid)
     if not result:
         return await edit_or_reply(
-            event, "**- ليس لديك صلاحيات لأستخدام هذا الامر هنا**"
+            event, "**- ليس لديك صلاحيات لاستخدام هذا الامر هنا**"
         )
     zedevent = await edit_or_reply(event, "**- جـارِ . . .**")
     admins = await event.client.get_participants(
