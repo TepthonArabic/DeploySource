@@ -186,7 +186,7 @@ class ZedUserBotClient(TelegramClient):
                         )
                         text += f"- فقط قم بإعـادة توجيـه هـذه الرسـالة إلى مطـور السـورس {link}.\n\n"
                         text += (
-                            "- لـ اعـلام المطـور بالإشعـار .. حتـى يتـم ملاحظتـه\n\n"
+                            "- لـ إعـلام المطـور بالإشعـار .. حتـى يتـم ملاحظتـه\n\n"
                         )
                         text += f"**- رسـالة الإشعـار :** [{new['error']}]({pastelink})"
                         await check.client.send_message(
@@ -305,7 +305,7 @@ class ZedUserBotClient(TelegramClient):
                         text += "- يمكنك الإبـلاغ عن هـذا الإشعـار .. "
                         text += f"- فقط قم بإعـادة توجيـه هـذه الرسـالة إلى مطـور السـورس {link}.\n"
                         text += (
-                            "- لـ اعـلام المطـور بالإشعـار .. حتـى يتـم ملاحظتـه\n\n"
+                            "- لـ إعـلام المطـور بالإشعـار .. حتـى يتـم ملاحظتـه\n\n"
                         )
                         text += f"**- رسـالة الإشعـار :** [{new['error']}]({pastelink})"
                         await check.client.send_message(
