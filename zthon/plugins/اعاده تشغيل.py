@@ -33,8 +33,8 @@ async def _(event):
         await event.client.send_message(BOTLOG_CHATID, "#إعــادة_التشغيــل\n\n" "**⪼ بـوت تيبثـون في وضـع اعـادة التشغيـل انتظـر**\n\n" "**⪼ اذ لـم يستجـب البـوت بعـد خمـس دقائـق .. قـم بالذهـاب الـى حسـاب هيـروكو واعـادة التشغيـل اليـدوي**")
     sandy = await edit_or_reply(
         event,
-        f"**•⎆┊اهـلا عـزيـزي** - {mention}\n\n"
-        f"**•⎆┊يتـم الان اعـادة تشغيـل بـوت تيبثـون قـد يستغـرق الامـر 1-2 دقيقـه ▬▭ ...**",
+        f"**•⎆┊أهـلًا عـزيـزي** - {mention}\n\n"
+        f"**•⎆┊يتـم الان اعـادة تشغيـل بـوت تيبثـون قـد يستغـرق الامـر 1-2 دقيقـة ▬▭ ...**",
     )
     try:
         ulist = get_collectionlist_items()
@@ -104,7 +104,7 @@ async def _(event):
     command=("notify", plugin_category),
     info={
         "header": "To update the your chat after restart or reload .",
-        "الةصـف": "Will send the ping cmd as reply to the previous last msg of (restart/reload/update cmds).",
+        "الوصـف": "Will send the ping cmd as reply to the previous last msg of (restart/reload/update cmds).",
         "الاستخـدام": [
             "{tr}الاشعارات <تفعيل/تعطيل>",
         ],
