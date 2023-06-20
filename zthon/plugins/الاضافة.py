@@ -20,7 +20,7 @@ async def lol(event):
         await event.edit(str(e))
 
 
-@zedub.zed_cmd(pattern="إضافه ([\s\S]*)")
+@zedub.zed_cmd(pattern="اضافة ([\s\S]*)")
 async def _(event):
     to_add_users = event.pattern_match.group(1)
     if not event.is_channel and event.is_group:
@@ -60,7 +60,7 @@ async def get_users(event):
     else:
         await zedb.edit("**⎉╎ جـارِ إتمـام العمليـة انتظــر ⅏ . . .**")
     if event.is_private:
-        return await zedb.edit("**╮  لا استطـيع إضافـة الاعضـاء هـنا 𓅫╰**")
+        return await zedb.edit("**╮  لا استطـيع إضافـة الأعضـاء هـنا 𓅫╰**")
     s = 0
     f = 0
     error = "None"
