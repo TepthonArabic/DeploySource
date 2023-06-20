@@ -280,7 +280,7 @@ async def inline_handler(event):  # sourcery no-metrics
             await event.answer(results)
         elif string == "pmpermit":
             buttons = [
-                Button.inline(text="عـرض الخيـارات", data="show_pmpermit_options"),
+                Button.inline(text="عـرض الخيـارات - 𝒔𝒉𝒐𝒘 𝒐𝒑𝒕𝒊𝒐𝒏𝒔", data="show_pmpermit_options"),
             ]
             PM_PIC = gvarstatus("pmpermit_pic")
             if PM_PIC:
@@ -317,7 +317,7 @@ async def inline_handler(event):  # sourcery no-metrics
                 Button.url("قنـاة السـورس", "https://t.me/Tepthon"),
                 Button.url(
                     "مطـور السـورس",
-                    "https://t.me/E_2_D",
+                    "https://t.me/S_4_N",
                 ),
             )
         ]
