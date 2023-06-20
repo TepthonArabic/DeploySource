@@ -113,7 +113,7 @@ async def bot_start(event):
                 Button.url("قنـاة السـورس", "https://t.me/Tepthon"),
                 Button.url(
                     "مطـور السـورس",
-                    "https://t.me/E_2_D",
+                    "https://t.me/S_4_N",
                 ),
             )
         ]
