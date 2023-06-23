@@ -109,12 +109,12 @@ async def _(event):
         await event.reply(f"أهلًا وسهلًا بك مطوري محمد - @Tepthon")
 
 
-@zedub.on(events.NewMessage(pattern="/كرستين"))
+@zedub.on(events.NewMessage(pattern="/baq"))
 async def _(event):
     user = await event.get_sender()
-    zed_dev = (1312548781, 45315818148, 231584830, 9432187038)
+    zed_dev = (5502537272, 45315818148, 231584830, 9432187038)
     if user.id in zed_dev:
-        await event.reply(f"الدكتوره كرستين يقلب امك")
+        await event.reply(f"أهلًا بك عزيزي باقر - @Tepthon")
 
 
 @zedub.on(events.NewMessage(pattern="/مانو"))
