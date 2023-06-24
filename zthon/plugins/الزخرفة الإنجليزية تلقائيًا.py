@@ -16,7 +16,7 @@ async def zakrafaon(event):
         return
 
 
-@zedub.zed_cmd(pattern="تعطيل الزخرفة en")
+@zedub.zed_cmd(pattern="ايقاف الزخرفة en")
 async def zakrafaoff(event):
     if not gvarstatus("enzakrafa"):
         await edit_delete(event, "*⪼ عـذرًا عـزيـزي أنـت لـم تقـم بتـعطيل الزخـرفـة الإنجلـيزية تلقـائيًا**")
