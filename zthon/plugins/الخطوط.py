@@ -5,7 +5,7 @@ from ..sql_helper.globals import addgvar, delgvar, gvarstatus
 from ..core.managers import edit_delete
 from telethon import functions
 from telethon.errors.rpcerrorlist import MessageIdInvalidError
-@zedub.on(admin_cmd(pattern="(خط الغامق|خط غامق)"))
+@zedub.on(admin_cmd(pattern="(خط الغامق|غامق)"))
 async def btext(event):
     isbold = gvarstatus("bold")
     if not isbold:
@@ -18,7 +18,7 @@ async def btext(event):
         await edit_delete(event, "**⪼ تـم إطفـاء الخط الغامق بنجاح الآن **")
         return
 
-@zedub.on(admin_cmd(pattern="(خط رمز|خط الرمز)"))
+@zedub.on(admin_cmd(pattern="(رمز|خط الرمز)"))
 async def btext(event):
     isramz = gvarstatus("ramz")
     if not isramz:
