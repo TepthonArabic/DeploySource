@@ -5,7 +5,7 @@ from zthon import zedub
 from ..sql_helper.globals import addgvar, delgvar, gvarstatus
 
 
-@zedub.zed_cmd(pattern="تفعيل الزخرفة en")
+@zedub.zed_cmd(pattern="تفعيل الزخرفة الانجليزية")
 async def zakrafaon(event):
     if not gvarstatus("enzakrafa"):
         addgvar("enzakrafa", "on")
@@ -16,7 +16,7 @@ async def zakrafaon(event):
         return
 
 
-@zedub.zed_cmd(pattern="ايقاف الزخرفة en")
+@zedub.zed_cmd(pattern="ايقاف الزخرفة الانجليزية")
 async def zakrafaoff(event):
     if not gvarstatus("enzakrafa"):
         await edit_delete(event, "*⪼ عـذرًا عـزيـزي أنـت لـم تقـم بتـعطيل الزخـرفـة الإنجلـيزية تلقـائيًا**")
