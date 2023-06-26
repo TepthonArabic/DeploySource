@@ -16,8 +16,8 @@ plugin_category = "الادمن"
 NO_ADMIN = "**⎉╎  عذرا انا لست مشرف في المجموعة ❕**"
 NO_PERM = "**⎉╎ يبـدو انه ليس لديك صلاحيات كافية هذا حزين جدا 🥱♥**"
 
-tepthon_t8ed = ""
-tepthon_unt8ed = ""
+tepthon_t8ed = "https://graph.org/file/583151566478260c9ed82.jpg"
+tepthon_unt8ed = "https://graph.org/file/c8bd7c444d16bf362eccb.jpg"
 @zedub.zed_cmd(
     pattern="تقييد_مؤقت(?:\s|$)([\s\S]*)",
     command=("تقييد_مؤقت", plugin_category),
