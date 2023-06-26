@@ -65,6 +65,7 @@ LOGS = logging.getLogger(__name__)
 MUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=True)
 UNMUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=False)
 zel_dev = (1260465030, 2348181015, 95801588376, 1239602580)
+ttp = "https://graph.org/file/583151566478260c9ed82.jpg"
 
 plugin_category = "الادمن"
 
@@ -376,7 +377,7 @@ async def watcher(event):
 
 @zedub.zed_cmd(pattern=f"{MUTE}(?:\s|$)([\s\S]*)")
 async def startmute(event):
-    KTM_IMG = gvarstatus("KTM_PIC") or "https://telegra.ph/file/fbfcda1b054056c9264bf.mp4"
+    KTM_IMG = gvarstatus("KTM_PIC") or "https://graph.org/file/583151566478260c9ed82.jpg"
     if event.is_private:
         input_str = event.pattern_match.group(1)
         if input_str == "عام":
@@ -478,6 +479,7 @@ async def startmute(event):
 
 @zedub.zed_cmd(pattern=f"{UNMUTE}(?:\s|$)([\s\S]*)")
 async def endmute(event):
+KTM2_IMG = gvarstatus("KTM2_PIC") or "https://graph.org/file/c8bd7c444d16bf362eccb.jpg"    
     if event.is_private:
         replied_user = await event.client.get_entity(event.chat_id)
         input_str = event.pattern_match.group(1)
@@ -492,7 +494,19 @@ async def endmute(event):
         except Exception as e:
             await event.edit(f"**- خطــأ **\n`{e}`")
         else:
-            await event.edit(
+            await event.client.send_file(
+                event.chat_id,
+                KTM2_IMG,
+                caption=f"**⎉╎المستخـدم :** {_format.mentionuser(user.first_name ,user.id)}  \n**⎉╎تم كتمـه بنجـاح ☑️**\n\n**⎉╎السـبب :** {reason}",
+            )
+            await event.delete()
+        else:
+            await event.client.send_file(
+                event.chat_id,
+                KTM2_IMG,
+                caption=f"**⎉╎المستخـدم :** {_format.mentionuser(user.first_name ,user.id)}  \n**⎉╎تم كتمـه بنجـاح ☑️**\n\n",
+            )
+            await event.delete()
                 "**⎉╎تم الغــاء كتــم الشخـص هنـا .. بنجــاح ✓**"
             )
         if BOTLOG:
