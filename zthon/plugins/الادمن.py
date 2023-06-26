@@ -494,19 +494,7 @@ KTM2_IMG = gvarstatus("KTM2_PIC") or "https://graph.org/file/c8bd7c444d16bf362ec
         except Exception as e:
             await event.edit(f"**- خطــأ **\n`{e}`")
         else:
-            await event.client.send_file(
-                event.chat_id,
-                KTM2_IMG,
-                caption=f"**⎉╎المستخـدم :** {_format.mentionuser(user.first_name ,user.id)}  \n**⎉╎تم كتمـه بنجـاح ☑️**\n\n**⎉╎السـبب :** {reason}",
-            )
-            await event.delete()
-        else:
-            await event.client.send_file(
-                event.chat_id,
-                KTM2_IMG,
-                caption=f"**⎉╎المستخـدم :** {_format.mentionuser(user.first_name ,user.id)}  \n**⎉╎تم كتمـه بنجـاح ☑️**\n\n",
-            )
-            await event.delete()
+            await event.edit
                 "**⎉╎تم الغــاء كتــم الشخـص هنـا .. بنجــاح ✓**"
             )
         if BOTLOG:
