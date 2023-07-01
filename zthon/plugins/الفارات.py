@@ -29,7 +29,7 @@ from telethon.tl.types import MessageEntityMentionName
 from telethon.utils import get_display_name
 from urlextract import URLExtract
 
-from Zara import zedub
+fromzthon import zedub
 
 from ..Config import Config
 from ..core.logger import logging
