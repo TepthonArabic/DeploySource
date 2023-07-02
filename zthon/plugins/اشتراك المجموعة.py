@@ -3,7 +3,7 @@
 #
 # This file is a part of < https://github.com/Zed-Thon/ZelZal/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/Zed-Thon/ZelZal/blob/Zara/LICENSE/>.
+# <https://www.github.com/Zed-Thon/ZelZal/blob/zthon/LICENSE/>.
 #يبووووووووووووووووووو
 #هههههههههههههههههههههههههههههههههههههه
 import os
@@ -19,7 +19,7 @@ from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.types import ChatBannedRights
 
 from ..sql_helper.fsub_sql import *
-from Zara import zedub
+from zthon import zedub
 from . import BOTLOG, BOTLOG_CHATID, admin_groups, get_user_from_event
 
 # =========================================================== #
@@ -81,10 +81,10 @@ async def fs(event):
     permissions = await bot.get_permissions(event.chat_id, event.sender_id)
     if not permissions.is_admin:
         return await event.reply(
-            "**⌔╎عـذرًا .. عـزيـزي\n**⌔╎لا املك صلاحيات المشـرف هنـا**"
+            "**⌔╎عـذرًا .. عـزيـزي\n**⌔╎لا أمـلك صلاحيات المشـرف هنـا**"
         )
     if not await is_admin(event, zilzal):
-        return await event.reply("**⌔╎عـذرًا .. عـزيـزي\n**⌔╎لا املك صلاحيات المشـرف هنـا**")
+        return await event.reply("**⌔╎عـذرًا .. عـزيـزي\n**⌔╎لا أمـلك صلاحيات المشـرف هنـا**")
     if event.is_private:
         await edit_or_reply(event, "**✾╎عـذرًا .. هـذا الامـر خـاص بالمجمـوعـات فقـط**")
         return
@@ -141,14 +141,14 @@ async def f(event):
             rip = await check_him(channel, event.sender_id)
             if rip is False:
                 await bot.send_message(
-                    event.chat_id, f"[ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 - الاشتࢪاك الإجباࢪي](t.me/Tepthon)\n⋆┄─┄─┄─┄┄─┄─┄─┄─┄┄⋆\n\n⌔╎**مࢪحبـاً عـزيـزي 🫂** [{user.first_name}](tg://user?id={user.id}) \n⌔╎**لـ إلغـاء كتمـك 🔊**\n⌔╎**يُࢪجـى الإشتـࢪاك بالقنـاة @{channel} **", link_preview=False
+                    event.chat_id, f"[ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 - الاشتࢪاك الإجباࢪي](t.me/Tepthon)\n⋆┄─┄─┄─┄┄─┄─┄─┄─┄┄⋆\n\n⌔╎**مࢪحـبًا عـزيـزي 👋** [{user.first_name}](tg://user?id={user.id}) \n⌔╎**لـ إلغـاء كتمـك 🔊**\n⌔╎**يُࢪجـى الإشتـࢪاك بالقنـاة @{channel} **", link_preview=False
                 )
                 await event.delete()
         except:
             if not await rights(event):
                 await bot.send_message(
                     event.chat_id,
-                    "**⌔╎عـذرًا .. عـزيـزي\n**⌔╎لا املك صلاحيات المشـرف هنـا**",
+                    "**⌔╎عـذرًا .. عـزيـزي\n**⌔╎لا أمـلك صلاحيات المشـرف هنـا**",
                 )
 
 
