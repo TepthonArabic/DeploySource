@@ -19,11 +19,11 @@ plugin_category = "الادوات"
 
 
 @zedub.zed_cmd(
-    pattern="اعاده تشغيل$",
-    command=("اعاده تشغيل", plugin_category),
+    pattern="اعادة تشغيل$",
+    command=("اعادة تشغيل", plugin_category),
     info={
         "header": "لـ إعـادة تشغيـل البـوت",
-        "الاستخـدام": "{tr}اعاده تشغيل",
+        "الاستخـدام": "{tr}اعادة تشغيل",
     },
     disable_errors=True,
 )
@@ -60,7 +60,7 @@ async def _(event):
     command=("ايقاف البوت", plugin_category),
     info={
         "header": "لـ إطفـاء البـوت",
-        "الوصـف": "لـ إطفـاء الداينـو الخاص بتنصيبك بهيروكـو .. لا تستطيع اعاده التشغيل مرة اخرى عبر حسابك عليك الذهاب لحساب هيروكو واتباع الشرح التالي https://t.me/Tepthon",
+        "الوصـف": "لـ إطفـاء الداينـو الخاص بتنصيبك بهيروكـو .. لا تستطيع اعادة التشغيل مرة اخرى عبر حسابك عليك الذهاب لحساب هيروكو واتباع الشرح التالي https://t.me/Tepthon",
         "الاستخـدام": "{tr}ايقاف البوت",
     },
 )
@@ -85,7 +85,7 @@ async def _(event):
     },
 )
 async def _(event):
-    "لـ إيقـاف البـوت مؤقتـاً"
+    "لـ إيقـاف البـوت مؤقـتـًا"
     if " " not in event.pattern_match.group(1):
         return await edit_or_reply(event, "**- عـذراً .. قم بادخـال عـدد الثواني للامـر**\n**- مثــال :**\n`.نوم 60`")
     counter = int(event.pattern_match.group(1))
