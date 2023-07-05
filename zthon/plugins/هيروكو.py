@@ -56,7 +56,7 @@ async def variable(var):  # sourcery no-metrics
     if (Config.HEROKU_API_KEY is None) or (Config.HEROKU_APP_NAME is None):
         return await edit_delete(
             var,
-            "**- عــذراً .. لـديك خطـأ بالـفـارات**\n**-اذهـب الـى حسـابك هيـروكو ثم اعـدادات التطبيـق ثم الفـارات وقـم بالتـأكـد من الفـارات التـاليـه :**\n\n `HEROKU_API_KEY` \n `HEROKU_APP_NAME`",
+            "**- عــذراً .. لـديك خطـأ بالـفـارات**\n**-اذهـب إلـى حسـابك هيـروكو ثم إعـدادات التطبيـق ثم الفـارات وقـم بالتـأكـد من الفـارات التـاليـة :**\n\n `HEROKU_API_KEY` \n `HEROKU_APP_NAME`",
         )
     app = Heroku.app(Config.HEROKU_APP_NAME)
     exe = var.pattern_match.group(1)
@@ -143,7 +143,7 @@ async def variable(var):  # sourcery no-metrics
     if (Config.HEROKU_API_KEY is None) or (Config.HEROKU_APP_NAME is None):
         return await edit_delete(
             var,
-            "**- عــذراً .. لـديك خطـأ بالـفـارات**\n**-اذهـب الـى حسـابك هيـروكو ثم اعـدادات التطبيـق ثم الفـارات وقـم بالتـأكـد من الفـارات التـاليـه :**\n\n `HEROKU_API_KEY` \n `HEROKU_APP_NAME`",
+            "**- عــذراً .. لـديك خطـأ بالـفـارات**\n**-اذهـب إلـى حسـابك هيـروكو ثم إعـدادات التطبيـق ثم الفـارات وقـم بالتـأكـد من الفـارات التـاليـة :**\n\n `HEROKU_API_KEY` \n `HEROKU_APP_NAME`",
         )
     app = Heroku.app(Config.HEROKU_APP_NAME)
     exe = var.pattern_match.group(1)
@@ -219,7 +219,7 @@ async def dyno_usage(dyno):
     if (HEROKU_APP_NAME is None) or (HEROKU_API_KEY is None):
         return await edit_delete(
             dyno,
-            "**- عــذراً .. لـديك خطـأ بالـفـارات**\n**-اذهـب الـى حسـابك هيـروكو ثم اعـدادات التطبيـق ثم الفـارات وقـم بالتـأكـد من الفـارات التـاليـه :**\n\n `HEROKU_API_KEY` \n `HEROKU_APP_NAME`",
+            "**- عــذراً .. لـديك خطـأ بالـفـارات**\n**-اذهـب إلـى حسـابك هيـروكو ثم إعـدادات التطبيـق ثم الفـارات وقـم بالتـأكـد من الفـارات التـاليـة :**\n\n `HEROKU_API_KEY` \n `HEROKU_APP_NAME`",
         )
     dyno = await edit_or_reply(dyno, "**⌔∮ جــاري المعـالجـه ...**")
     useragent = (
@@ -290,7 +290,7 @@ async def _(dyno):
     if (HEROKU_APP_NAME is None) or (HEROKU_API_KEY is None):
         return await edit_delete(
             dyno,
-            "**- عــذراً .. لـديك خطـأ بالـفـارات**\n**-اذهـب الـى حسـابك هيـروكو ثم اعـدادات التطبيـق ثم الفـارات وقـم بالتـأكـد من الفـارات التـاليـه :**\n\n `HEROKU_API_KEY` \n `HEROKU_APP_NAME`",
+            "**- عــذراً .. لـديك خطـأ بالـفـارات**\n**-اذهـب إلـى حسـابك هيـروكو ثم إعـدادات التطبيـق ثم الفـارات وقـم بالتـأكـد من الفـارات التـاليـة :**\n\n `HEROKU_API_KEY` \n `HEROKU_APP_NAME`",
         )
     try:
         Heroku = heroku3.from_key(HEROKU_API_KEY)
