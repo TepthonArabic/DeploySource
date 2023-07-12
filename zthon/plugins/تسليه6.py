@@ -384,7 +384,7 @@ async def bluedevilbye(bye):
     await edit_or_reply(bye, O)
 
 
-@zedub.zed_cmd(pattern="خرا$")
+@zedub.zed_cmd(pattern="وخر$")
 async def bluedevilshitos(shitos):
     await edit_or_reply(shitos, P)
 
@@ -409,7 +409,7 @@ Fun6_cmd = (
 "  •  `.هلا`\n"
 "  •  `.حيه`\n"
 "  •  `.باي`\n"
-"  •  `.خرا`\n"
+"  •  `.وخر`\n"
 "  •  `.دس لايك`\n\n"
 
 "**- اضغـط ع الامـر لـ النسـخ"
