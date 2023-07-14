@@ -1,3 +1,6 @@
+#حقـوق_مـحمد_مطور_تيبثون
+#𝗧𝗘𝗣𝗧𝗛𝗢𝗡
+#@PPF22 .
 import os
 import urllib
 
