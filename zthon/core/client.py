@@ -158,7 +158,7 @@ class ZedUserBotClient(TelegramClient):
                         ftext = f"\nيتم تحميل هذا الملف فقط هنا ،\
                                   \n\nنسجل فقـط تقريـر الإشعـار وتـاريخـه ،\
                                   \n\nنحن نحترم خصوصيتك.\
-                                  \n\nفقـط قـم بإعـادة توجيـه هـذه الرسـالة إلى مطـور السـورس @R_6_B\
+                                  \n\nفقـط قـم بإعـادة توجيـه هـذه الرسـالة إلى مطـور السـورس @PPF22\
                                   \n\n--------بـدء تتبـع سجـل تيبثـون 𝗧𝗘𝗣𝗧𝗛𝗢𝗡--------\
                                   \n- التـاريـخ : {date}\n- ايـدي الكـروب : {str(check.chat_id)}\
                                   \n- ايـدي الشخـص : {str(check.sender_id)}\
@@ -179,7 +179,7 @@ class ZedUserBotClient(TelegramClient):
                         pastelink = await paste_message(
                             ftext, pastetype="s", markdown=False
                         )
-                        link = "[𝙈𝙊𝙃𝘼𝙈𝙈𝘼𝘿(https://t.me/R_6_B)"
+                        link = "[𝙈𝙊𝙃𝘼𝙈𝙈𝘼𝘿(https://t.me/PPF22)"
                         text = (
                             "**✘ تقـريـر إشعـار تيبثـون 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 ✘**\n\n"
                             + "- يمكنك الإبـلاغ عن هـذا الإشعـار .. "
@@ -279,7 +279,7 @@ class ZedUserBotClient(TelegramClient):
                         ftext = f"\nيتم تحميل هذا الملف فقط هنا ،\
                                   \n\nنسجل فقـط تقريـر الإشعـار وتـاريخـه ،\
                                   \n\nنحن نحترم خصوصيتك.\
-                                  \n\nفقـط قـم بإعـادة توجيـه هـذه الرسـالة إلى مطـور السـورس @R_6_B\
+                                  \n\nفقـط قـم بإعـادة توجيـه هـذه الرسـالة إلى مطـور السـورس @PPF22\
                                   \n\n--------بـدء تتبـع سجـل تيبثـون 𝗧𝗘𝗣𝗧𝗛𝗢𝗡--------\
                                   \n- التـاريـخ : {date}\n- ايـدي الكـروب : {str(check.chat_id)}\
                                   \n- ايـدي الشخـص : {str(check.sender_id)}\
@@ -301,7 +301,7 @@ class ZedUserBotClient(TelegramClient):
                             ftext, pastetype="s", markdown=False
                         )
                         text = "**✘ تقـريـر إشعـار تيبثـون 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 ✘**\n\n "
-                        link = "[𝙈𝙊𝙃𝘼𝙈𝙈𝘼𝘿(https://t.me/R_6_B)"
+                        link = "[𝙈𝙊𝙃𝘼𝙈𝙈𝘼𝘿(https://t.me/PPF22)"
                         text += "- يمكنك الإبـلاغ عن هـذا الإشعـار .. "
                         text += f"- فقط قم بإعـادة توجيـه هـذه الرسـالة إلى مطـور السـورس {link}.\n"
                         text += (
