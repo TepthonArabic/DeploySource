@@ -317,7 +317,7 @@ async def inline_handler(event):  # sourcery no-metrics
                 Button.url("قنـاة السـورس", "https://t.me/Tepthon"),
                 Button.url(
                     "مطـور السـورس",
-                    "https://t.me/W_4_7",
+                    "https://t.me/A_D_P",
                 ),
             )
         ]
