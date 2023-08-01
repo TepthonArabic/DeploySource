@@ -18,36 +18,17 @@ from ..core.managers import edit_or_reply
 
 
 
-@zedub.zed_cmd(pattern="زخرفه ?(.*)")
+@zedub.zed_cmd(pattern="رشق مشاهدات ?(.*)")
 async def zilzal(event):
     card = event.pattern_match.group(1)
-    chat = "@ZZ_ARBot"
+    chat = "@RSHQ1000bot"
     reply_id_ = await reply_id(event)
-    zed = await edit_or_reply(event, "**جـارِ الزخـرفـه العربيـة 💞🧸...**")
+    zed = await edit_or_reply(event, "**جـاري رشـق المشـاهـدات انتظـر قليـلًا ... 💡**")
     async with event.client.conversation(chat) as conv:
         try:
             await conv.send_message(card)
         except YouBlockedUserError:
             await zedub(unblock("ZZ_ARBot"))
-            await conv.send_message(card)
-        await asyncio.sleep(2)
-        response = await conv.get_response()
-        await event.client.send_read_acknowledge(conv.chat_id)
-        await event.client.send_message(event.chat_id, response.message)
-        await zed.delete()
-
-
-@zedub.zed_cmd(pattern="زغرفه ?(.*)")
-async def zelzal(event):
-    card = event.pattern_match.group(1)
-    chat = "@Z_ENBot"
-    reply_id_ = await reply_id(event)
-    zed = await edit_or_reply(event, "**جـارِ الزغـرفـه للانكـلش 💞🧸...**")
-    async with event.client.conversation(chat) as conv:
-        try:
-            await conv.send_message(card)
-        except YouBlockedUserError:
-            await zedub(unblock("Z_ENBot"))
             await conv.send_message(card)
         await asyncio.sleep(2)
         response = await conv.get_response()
