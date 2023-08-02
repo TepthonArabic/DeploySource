@@ -96,7 +96,6 @@ async def amireallyialive(event):
     reply_to_id = await reply_id(event)
     Z_EMOJI = gvarstatus("ALIVE_EMOJI") or "❈┊"
     zed_caption = "** بسُـورس TEᑭTᕼOᑎ يـَعمل بنـَجاح **\n
-    ———————
     zed_caption += f"**{Z_EMOJI} َِ🕊 ٰ𝖳َ𝖾ْ𝗅ِ𝖾𝖳َ𝗁𝗈ٍ𝖭 ُ𝖵ِ𝖾𝗋𝗌ْ𝗂𝗈َ𝗇 :** `{version.__version__}\n`"
     zed_caption += f"**{Z_EMOJI} َِ🕊 ٰ ُ𝖳َ𝖾ْ𝗉𝖳َ𝗁𝗈ٍ𝖭 𝖵ِ𝖾𝗋𝗌ْ𝗂𝗈َ𝗇 :** `{zedversion}`\n"
     zed_caption += f"**{Z_EMOJI} َِ🕊 ٰ ُ𝖯ِ𝗒َ𝖳𝗁𝗈ً𝖭 𝖵ِ𝖾𝗋𝗌ْ𝗂𝗈َ𝗇 :** `{python_version()}\n`"
