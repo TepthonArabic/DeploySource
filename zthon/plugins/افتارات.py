@@ -41,7 +41,7 @@ async def _(event):
         )
         await zzevent.delete()
     except Exception:
-        await zzevent.edit("**╮•⎚ عـذراً .. لـم استطـع ايجـاد المطلـوب ☹️💔**")
+        await zzevent.edit("**╮•⎚ عـذرًا .. لـم استطـع ايجـاد المطلـوب ☹️💔**")
 
 
 @zedub.zed_cmd(pattern="ستوري انمي$")
@@ -62,7 +62,7 @@ async def _(event):
         )
         await zzevent.delete()
     except Exception:
-        await zzevent.edit("**╮•⎚ عـذراً .. لـم استطـع ايجـاد المطلـوب ☹️💔**")
+        await zzevent.edit("**╮•⎚ عـذرًا .. لـم استطـع ايجـاد المطلـوب ☹️💔**")
 
 
 @zedub.zed_cmd(pattern="رقيه$")
@@ -335,7 +335,7 @@ async def _(event):
         )
         await zzevent.delete()
     except Exception:
-        await zzevent.edit("**╮•⎚ عـذراً .. لـم استطـع ايجـاد المطلـوب ☹️💔**")
+        await zzevent.edit("**╮•⎚ عـذرًا .. لـم استطـع ايجـاد المطلـوب ☹️💔**")
 
 
 @zedub.zed_cmd(pattern="خيرني$")
@@ -356,7 +356,7 @@ async def _(event):
         )
         await zzevent.delete()
     except Exception:
-        await zzevent.edit("**╮•⎚ عـذراً .. لـم استطـع ايجـاد المطلـوب ☹️💔**")
+        await zzevent.edit("**╮•⎚ عـذرًا .. لـم استطـع ايجـاد المطلـوب ☹️💔**")
 
 
 @zedub.zed_cmd(pattern="ولد انمي$")
@@ -377,7 +377,7 @@ async def _(event):
         )
         await zzevent.delete()
     except Exception:
-        await zzevent.edit("**╮•⎚ عـذراً .. لـم استطـع ايجـاد المطلـوب ☹️💔**")
+        await zzevent.edit("**╮•⎚ عـذرًا .. لـم استطـع ايجـاد المطلـوب ☹️💔**")
 
 
 @zedub.zed_cmd(pattern="بنت انمي$")
@@ -398,6 +398,6 @@ async def _(event):
         )
         await zzevent.delete()
     except Exception:
-        await zzevent.edit("**╮•⎚ عـذراً .. لـم استطـع ايجـاد المطلـوب ☹️💔**")
+        await zzevent.edit("**╮•⎚ عـذرًا .. لـم استطـع ايجـاد المطلـوب ☹️💔**")
 
 
