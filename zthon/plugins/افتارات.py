@@ -212,7 +212,7 @@ async def _(event):
         await zzevent.edit("**╮•⎚ عذرًا .. لـم استطـع ايجـاد المطلـوب ☹️💔**")
 
 
-@zedub.zed_cmd(pattern="غنيلي$")
+@zedub.zed_cmd(pattern="$ملغي أيضًا")
 async def _(event):
     zzevent = await edit_or_reply(event, "**╮•⎚ جـارِ تحميـل الاغنيـه ...𓅫╰**")
     try:
