@@ -93,7 +93,7 @@ zed_temp = """{ALIVE_TEXT}
 async def amireallyialive(event):
     "A kind of showing bot details by your inline bot"
     reply_to_id = await reply_id(event)
-    Z_EMOJI = gvarstatus("ALIVE_EMOJI") or "✥┊"
+    Z_EMOJI = gvarstatus("ALIVE_EMOJI") or " ⎉┊"
     zed_caption = "** سُـورس TEᑭTᕼOᑎ يـَعمل بنـَجاح **\n"
     zed_caption += f"**{Z_EMOJI} َِ🕊️ ٰ𝖳َ𝖾ْ𝗅ِ𝖾𝖳َ𝗁𝗈ٍ𝖭 ُ𝖵ِ𝖾𝗋𝗌ْ𝗂𝗈َ𝗇 :** `{version.__version__}\n`"
     zed_caption += f"**{Z_EMOJI} 🕊 𝖳َ𝖾ْ𝗉𝖳َ𝗁𝗈ٍ𝖭 َ𝖵𝖾𝗋ِ𝗌ْ𝗂𝗈َِ𝖭 :** `{zedversion}`\n"
