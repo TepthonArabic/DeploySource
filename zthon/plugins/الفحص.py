@@ -35,7 +35,7 @@ async def amireallyalive(event):
     end = datetime.now()
     ms = (end - start).microseconds / 1000
     _, check_sgnirts = check_data_base_heal_th()
-    Z_EMOJI = gvarstatus("ALIVE_EMOJI") or "❈┊"
+    Z_EMOJI = gvarstatus("ALIVE_EMOJI") or "✥┊"
     ALIVE_TEXT = gvarstatus("ALIVE_TEXT") or "** سُـورس TEᑭTᕼOᑎ يـَعمل بنـَجاح **"
     ZED_IMG = gvarstatus("ALIVE_PIC")
     zed_caption = gvarstatus("ALIVE_TEMPLATE") or zed_temp
@@ -45,7 +45,7 @@ async def amireallyalive(event):
         mention=mention,
         uptime=uptime,
         telever=version.__version__,
-        tepver=zedversion,
+        zdver=zedversion,
         pyver=python_version(),
         dbhealth=check_sgnirts,
         ping=ms,
@@ -72,20 +72,20 @@ async def amireallyalive(event):
 
 zed_temp = """{ALIVE_TEXT}
 
-**{Z_EMOJI} َِ🕊 ٍَ𝖣ٰ𝖺َ𝖳𝖺ِ𝖡𝗎َِ𝖲َ𝖾 : ** ᖴِᵘ𝖭𝖼𝖳ْ𝗂𝗈ً𝖭𝗂𝖭𝗀 
-**{Z_EMOJI} َِ🕊 ٰ𝖳َ𝖾ْ𝗅ِ𝖾𝖳َ𝗁𝗈ٍ𝖭 ُ𝖵ِ𝖾𝗋𝗌ْ𝗂𝗈َ𝗇 :** `{telever}`
-**{Z_EMOJI} َِ🕊 ٰ ُ𝖳َ𝖾ْ𝗉𝖳َ𝗁𝗈ٍ𝖭 𝖵ِ𝖾𝗋𝗌ْ𝗂𝗈َ𝗇 :** `{tepver}`
-**{Z_EMOJI} َِ🕊 ٰ ُ𝖯ِ𝗒َ𝖳𝗁𝗈ً𝖭 𝖵ِ𝖾𝗋𝗌ْ𝗂𝗈َ𝗇 :** `{pyver}`
+**{Z_EMOJI} قاعدۿ البيانات :** تعمل بنـجاح
+**{Z_EMOJI} َِ🕊️ ٰ𝖳َ𝖾ْ𝗅ِ𝖾𝖳َ𝗁𝗈ٍ𝖭 ُ𝖵ِ𝖾𝗋𝗌ْ𝗂𝗈َ𝗇 :** `{telever}`
+**{Z_EMOJI} 🕊 𝖳َ𝖾ْ𝗉𝖳َ𝗁𝗈ٍ𝖭 َ𝖵𝖾𝗋ِ𝗌ْ𝗂𝗈َِ𝖭** `{zdver}`
+**{Z_EMOJI} َِ🕊 𝖯ِ𝗒َ𝖳𝗁𝗈ً𝖭 𝖵𝖾𝗋𝗌𝗂𝗈َِ𝖭 :** `{pyver}`
 **{Z_EMOJI} َِ🕊 ٰ𝖴𝗉 َ𝖳ْ𝗂𝖬ِ𝖾 :** `{uptime}`
-**{Z_EMOJI} • ＴＨＥ ＵＳＥＲ - : ** {mention} 🤍 .
-**{Z_EMOJI} ☆ 𝚂OᑌᖇᑕE ᑕᕼᗩᑎᑎEᒪ TEᑭTᕼOᑎ ☆  :** [اضغـط هنـا](https://t.me/Tepthon)"""
+**{Z_EMOJI} • ＴＨＥ ＵＳＥＲ:** {mention} 🤍 .
+**{Z_EMOJI} 𝚂OᑌᖇᑕE ᑕᕼᗩᑎᑎEᒪ :** [TEᑭTᕼOᑎ](https://t.me/Tepthon)"""
 
 
 @zedub.zed_cmd(
     pattern="الفحص$",
     command=("الفحص", plugin_category),
     info={
-        "header": "- لـ التحـقق من ان البـوت يعمـل بنجـاح .. بخـاصيـة الانـلايـن ✓",
+        "header": "- لـ التحـقق مـن أن البـوت يعمـل بنجـاح .. بخـاصيـة الانـلايـن ✓",
         "الاسـتخـدام": [
             "{tr}الفحص",
         ],
@@ -94,12 +94,12 @@ zed_temp = """{ALIVE_TEXT}
 async def amireallyialive(event):
     "A kind of showing bot details by your inline bot"
     reply_to_id = await reply_id(event)
-    Z_EMOJI = gvarstatus("ALIVE_EMOJI") or "❈┊"
-    zed_caption = "** بسُـورس TEᑭTᕼOᑎ يـَعمل بنـَجاح **\n
-    zed_caption += f"**{Z_EMOJI} َِ🕊 ٰ𝖳َ𝖾ْ𝗅ِ𝖾𝖳َ𝗁𝗈ٍ𝖭 ُ𝖵ِ𝖾𝗋𝗌ْ𝗂𝗈َ𝗇 :** `{version.__version__}\n`"
-    zed_caption += f"**{Z_EMOJI} َِ🕊 ٰ ُ𝖳َ𝖾ْ𝗉𝖳َ𝗁𝗈ٍ𝖭 𝖵ِ𝖾𝗋𝗌ْ𝗂𝗈َ𝗇 :** `{zedversion}`\n"
-    zed_caption += f"**{Z_EMOJI} َِ🕊 ٰ ُ𝖯ِ𝗒َ𝖳𝗁𝗈ً𝖭 𝖵ِ𝖾𝗋𝗌ْ𝗂𝗈َ𝗇 :** `{python_version()}\n`"
-    zed_caption += f"**{Z_EMOJI}   ＴＨＥ ＵＳＥＲ - :  :** {mention}\n"
+    Z_EMOJI = gvarstatus("ALIVE_EMOJI") or "✥┊"
+    zed_caption = "** سُـورس TEᑭTᕼOᑎ يـَعمل بنـَجاح **\n"
+    zed_caption += f"**{Z_EMOJI} َِ🕊️ ٰ𝖳َ𝖾ْ𝗅ِ𝖾𝖳َ𝗁𝗈ٍ𝖭 ُ𝖵ِ𝖾𝗋𝗌ْ𝗂𝗈َ𝗇 :** `{version.__version__}\n`"
+    zed_caption += f"**{Z_EMOJI} 🕊 𝖳َ𝖾ْ𝗉𝖳َ𝗁𝗈ٍ𝖭 َ𝖵𝖾𝗋ِ𝗌ْ𝗂𝗈َِ𝖭 :** `{zedversion}`\n"
+    zed_caption += f"**{Z_EMOJI} َِ🕊 𝖯ِ𝗒َ𝖳𝗁𝗈ً𝖭 𝖵𝖾𝗋𝗌𝗂𝗈َِ𝖭 :** `{python_version()}\n`"
+    zed_caption += f"**{Z_EMOJI} • ＴＨＥ ＵＳＥＲ : -** {mention}\n"
     results = await event.client.inline_query(Config.TG_BOT_USERNAME, zed_caption)
     await results[0].click(event.chat_id, reply_to=reply_to_id, hide_via=True)
     await event.delete()
