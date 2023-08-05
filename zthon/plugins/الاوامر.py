@@ -55,7 +55,7 @@ ALIVE_NAME = Config.ALIVE_NAME
 thumb_image_path = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, "thumb_image.jpg")
 Malath = f"**☆┊لـَوحـة أوامـِر TEᑭTᕼOᑎ الشفـافَـة**\n**☆┊المستخـِدم ↶** {mention} \n\n ١**    ۦ اوامــࢪ الـبحـث والـتحميـل **\n ٢**    ۦ اوامــࢪ الـبـوت **\n ٣**    ۦ اوامــࢪ الـوقـتـي **\n ٤**    ۦ اوامــࢪ الـڪــروب¹ **\n ٥**    ۦ اوامــࢪ الـڪــروب² **\n ٦**    ۦ اوامــࢪ الحـسـاب **\n ٦**    ۦ اوامــࢪ الميـديـا والصيــغ **\n\n**•-⛥⤻ لـ؏ـࢪض بقـية الأوامـر اضـغط زࢪ⇒**\n**-⛥⤻ لعـرض الأوامِـࢪ مع الوصـِف أرسل** `.اوامري`\n**- ⛥⤻ لعـرض شـِروحـَات الأوامـر أࢪسـِل** `.مساعده` "
 Malotha = f"**‌‌‏⚚┃ يتبـع لـوحـة أوامـࢪ TEᑭTᕼOᑎ الشفـافـَة**\n**‌‌‏⚚┃ المستخـِدم -** {mention} \n\n- ٨ ⪧** اوامـِـࢪ الـفــارات **\n- ٩ ⪧** اوامـِـࢪ الخـدمــات الـعامــة **\n- ١٠ ⪧** اوامـِـࢪ الالعــاب **\n- ١١ ⪧** اوامـِـࢪ الـتســليــه**\n- ١٢ ⪧** اوامـِـࢪ التحشيـش**\n- ١٣ ⪧** اوامـِـࢪ الستـوريات**\n- ١٤ ⪧•** اوامـِـࢪ الآفتــارات**\n\n**-‌‌‏⚚⤶ للذهـاب للـوحـة التـاليـة اضغـط زࢪ ⤻  ᯽. **\n**-⛥⤻ لعـرض الأوامِـࢪ مع الوصـِف أرسل** `.اوامري`\n**- ⛥⤻ لعـرض شـِروحـَات الأوامـر أࢪسـِل** `.مساعده` "
-Malootha = f"**‌‌‏⚚┃ يتبـع لـوحـة أوامـࢪ TEᑭTᕼOᑎ الشفـافـَة**\n**‌‌‏⚚┃ المستخـِدم -** {mention} \n\n•⓯•** اوامـِـࢪ الصيــد والتشيكــر **\n•⓰•** اوامـِـࢪ النشــر التلقــائي **\n•⓱•** اوامـِـࢪ تجميــع النقــاط **\n•⓲•** اوامـِـࢪ الاشتـراك الإجبـاري **\n•⓳•** اوامـِـࢪ الإضـافة والتفليــش**\n\n**•❐• للرجـوع للوحـه الـرئيسيـة اضغـط زر ⇒**\n**-⛥⤻ لعـرض الأوامِـࢪ مع الوصـِف أرسل** `.اوامري`\n**- ⛥⤻ لعـرض شـِروحـَات الأوامـر أࢪسـِل** `.مساعده` "
+Malootha = f"**‌‌‏⚚┃ يتبـع لـوحـة أوامـࢪ TEᑭTᕼOᑎ الشفـافـَة**\n**‌‌‏⚚┃ المستخـِدم -** {mention} \n\n•⛥ ١٥•** اوامـِـࢪ الصيــد والتشيكــر **\n•⛥ ١٦•** اوامـِـࢪ النشــر التلقــائي **\n•⛥ ١٧•** اوامـِـࢪ تجميــع النقــاط **\n•⛥ ١٨•** اوامـِـࢪ الاشتـراك الإجبـاري **\n•⛥ ١٩•** اوامـِـࢪ الإضـافة والتفليــش**\n\n**•❐• للرجـوع للوحـه الـرئيسيـة اضغـط زر ⇒**\n**-⛥⤻ لعـرض الأوامِـࢪ مع الوصـِف أرسل** `.اوامري`\n**- ⛥⤻ لعـرض شـِروحـَات الأوامـر أࢪسـِل** `.مساعده` "
 TG_BOT = Config.TG_BOT_USERNAME
 TM = time.strftime("%I:%M")
 Channels = f"**•❐•  مرحبـًا عـزيـزي  {mention} **\n**•❐• إليـك مجمـوعــة قنـوات تيــبــثـون ↵ 𝗧𝗲𝗽𝘁𝗵𝗼𝗻 ♥️🧸**\n\n**•❐• استـخـدم الازرار بالاسفــل↓**"
@@ -75,7 +75,7 @@ async def zed_handler(event):
     query = event.text
     await zedub.get_me()
     if query.startswith("الاوامر") and event.query.user_id == zedub.uid:
-        buttons = [[Button.inline("❶", data="ahmed1"), Button.inline("❷", data="ahmed2"), Button.inline("❸", data="ahmed3"), Button.inline("❹", data="ahmed4"),],[Button.inline("❺", data="ahmed5"), Button.inline("❻", data="ahmed6"), Button.inline("❼", data="ahmed7"), Button.inline("⇒", data="back1"),]]
+        buttons = [[Button.inline("⛥ ١", data="ahmed1"), Button.inline("⛥ ٢", data="ahmed2"), Button.inline("⛥ ٣", data="ahmed3"), Button.inline("⛥ ٤", data="ahmed4"),],[Button.inline("⛥ ٥", data="ahmed5"), Button.inline("⛥ ٦", data="ahmed6"), Button.inline("⛥ ٧", data="ahmed7"), Button.inline("⇒", data="back1"),]]
         result = builder.article(title="zedub",text=Malath,buttons=buttons,link_preview=False)
         await event.answer([result] if result else None)
 @zedub.zed_cmd(pattern="الاوامر(?: |$)(.*)")
@@ -160,13 +160,13 @@ async def zed(event):
 @zedub.tgbot.on(CallbackQuery(data=re.compile(rb"aahmed")))
 @check_owner
 async def on_plug_in_callback_query_handler(event):
-    buttons = [[Button.inline("❶", data="ahmed1"), Button.inline("❷", data="ahmed2"), Button.inline("❸", data="ahmed3"), Button.inline("❹", data="ahmed4"),],[Button.inline("❺", data="ahmed5"), Button.inline("❻", data="ahmed6"), Button.inline("❼", data="ahmed7"), Button.inline("⇒", data="back1"),]]
+    buttons = [[Button.inline("⛥ ١", data="ahmed1"), Button.inline("⛥ ٢", data="ahmed2"), Button.inline("⛥ ٣", data="ahmed3"), Button.inline("⛥ ٤", data="ahmed4"),],[Button.inline("⛥ ٥", data="ahmed5"), Button.inline("⛥ ٦", data="ahmed6"), Button.inline("⛥ ٧", data="ahmed7"), Button.inline("⇒", data="back1"),]]
     await event.edit(Malath, buttons=buttons)
 @zedub.tgbot.on(CallbackQuery(data=re.compile(rb"back1")))
 @check_owner
 async def on_plug_in_callback_query_handler(event):
     zelzal = "⤶ عذرًا عـزيـزي 🤷🏻‍♀\n⤶ هـذه اللوحة لا تشتغل في الخاص\n⤶ لـ إظهـار لوحـة الأوامـر هنـا 👇\n\n⤶ ارســل (.اوامري)"
-    buttons = [[Button.inline("❽", data="ahmed8"), Button.inline("❾", data="ahmed9"), Button.inline("❿", data="ahmad10"), Button.inline("⓫", data="ahmad11"),],[Button.inline("⓬", data="ahmad12"), Button.inline("⓭", data="ahmad13"), Button.inline("⓮", data="ahmad14"), Button.inline("⇒", data="back2"),]]
+    buttons = [[Button.inline("⛥ ٨", data="ahmed8"), Button.inline("⛥ ٩", data="ahmed9"), Button.inline("⛥ ١٠", data="ahmad10"), Button.inline("⛥ ١١", data="ahmad11"),],[Button.inline("⛥ ١٢", data="ahmad12"), Button.inline("⛥ ١٣", data="ahmad13"), Button.inline("⛥ ١٤", data="ahmad14"), Button.inline("⇒", data="back2"),]]
     try:
         await event.edit(Malotha, buttons=buttons)
     except Exception:
@@ -174,7 +174,7 @@ async def on_plug_in_callback_query_handler(event):
 @zedub.tgbot.on(CallbackQuery(data=re.compile(rb"back2")))
 @check_owner
 async def on_plug_in_callback_query_handler(event):
-    buttons = [[Button.inline("⓯", data="ahmad15"), Button.inline("⓰", data="ahmad16"), Button.inline("⓱", data="ahmad17"),],[Button.inline("⓲", data="ahmad18"), Button.inline("⓳", data="ahmad19"), Button.inline("⇒", data="aahmed"),]]
+    buttons = [[Button.inline("⛥ ١٥", data="ahmad15"), Button.inline("⛥ ١٦", data="ahmad16"), Button.inline("⛥ ١٧", data="ahmad17"),],[Button.inline("⛥ ١٨", data="ahmad18"), Button.inline("⛥ ١٩", data="ahmad19"), Button.inline("⇒", data="aahmed"),]]
     await event.edit(Malootha, buttons=buttons)
 @zedub.tgbot.on(CallbackQuery(data=re.compile(rb"ahmed1")))
 @check_owner
