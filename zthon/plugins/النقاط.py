@@ -17,7 +17,7 @@ ZelzalCoins_cmd = (
     "[ᯓ 𝘀𝗼𝘂𝗿𝗰𝗲 𝘁𝗲𝗽𝘁𝗵𝗼𝗻 - اوامـر تجميـع النقـاط](tmme/Tepthon) 𓆪\n\n"
     "**𓆰 قـائمـة اوامـر تجميـع نقـاط بوتـات تمـويـل الخاص بسـورس تيبـثون🦾 :** \n\n"
     "`.المليار`\n"
-    "**⪼ لـ تجميـع النقـاط مـن بـوت المليـار ( @zmmbot ) .. تلقائيًا ✓**\n\n"
+    "**⪼ لـ تجميـع النقـاط مـن بـوت المليـار ( @EEOBot ) .. تلقائيًا ✓**\n\n"
     "`.الجوكر`\n"
     "**⪼ لـ تجميـع النقـاط مـن بـوت الجوكـر ( @A_MAN9300BOT ) .. تلقائيًا ✓**\n\n"
     "`.الجنرال`\n"
@@ -48,20 +48,20 @@ ZelzalCoins_cmd = (
 
 @zedub.zed_cmd(pattern="بوت المليار$")
 async def _(event):
-    await event.edit('@zmmbot')
+    await event.edit('@EEOBot')
 
 # Copyright (C) 2022 Zed-Thon . All Rights Reserved
 @zedub.zed_cmd(pattern="المليار ?(.*)")
 async def _(event):
     con = event.pattern_match.group(1).lower()
-    await event.edit("**𓆰 حـسنـًا .. تأكـد من انك مشتـرك بـ قنـوات الاشتـراك الاجبـاري لتجنب الأخطـاء @zmmbot**")
-    channel_entity = await zedub.get_entity('@zmmbot')
-    await zedub.send_message('@zmmbot', '/start')
+    await event.edit("**𓆰 حـسنـًا .. تأكـد من انك مشتـرك بـ قنـوات الاشتـراك الاجبـاري لتجنب الأخطـاء @EEOBot**")
+    channel_entity = await zedub.get_entity('@EEOBot')
+    await zedub.send_message('@EEOBot', '/start')
     await asyncio.sleep(4)
-    msg0 = await zedub.get_messages('@zmmbot', limit=1)
+    msg0 = await zedub.get_messages('@EEOBot', limit=1)
     await msg0[0].click(2)
     await asyncio.sleep(4)
-    msg1 = await zedub.get_messages('@zmmbot', limit=1)
+    msg1 = await zedub.get_messages('@EEOBot', limit=1)
     await msg1[0].click(0)
 
     chs = 1
@@ -84,12 +84,12 @@ async def _(event):
             except:
                 bott = url.split('/')[-1]
                 await zedub(ImportChatInviteRequest(bott))
-            msg2 = await zedub.get_messages('@zmmbot', limit=1)
+            msg2 = await zedub.get_messages('@EEOBot', limit=1)
             await msg2[0].click(text='تحقق')
             chs += 1
             await event.edit(f"**𓆰 تم بنجـاح الاشتـراك في {chs} قنـاة .❗**")
         except:
-            msg2 = await zedub.get_messages('@zmmbot', limit=1)
+            msg2 = await zedub.get_messages('@EEOBot', limit=1)
             await msg2[0].click(text='التالي')
             chs += 1
             await event.edit(f"**𓆰 القنـاة رقـم {chs} خطـأ .. يمكـن تبنـدت**")
@@ -100,14 +100,14 @@ async def _(event):
 @zedub.zed_cmd(pattern="تجميع المليار ?(.*)")
 async def _(event):
     con = event.pattern_match.group(1).lower()
-    await event.edit("**𓆰 حـسنـًا .. تأكـد من انك مشتـرك بـ قنـوات الاشتـراك الاجبـاري لتجنب الأخطـاء @zmmbot**")
-    channel_entity = await zedub.get_entity('@zmmbot')
-    await zedub.send_message('@zmmbot', '/start')
+    await event.edit("**𓆰 حـسنـًا .. تأكـد من انك مشتـرك بـ قنـوات الاشتـراك الاجبـاري لتجنب الأخطـاء @EEOBot**")
+    channel_entity = await zedub.get_entity('@EEOBot')
+    await zedub.send_message('@EEOBot', '/start')
     await asyncio.sleep(4)
-    msg0 = await zedub.get_messages('@zmmbot', limit=1)
+    msg0 = await zedub.get_messages('@EEOBot', limit=1)
     await msg0[0].click(2)
     await asyncio.sleep(4)
-    msg1 = await zedub.get_messages('@zmmbot', limit=1)
+    msg1 = await zedub.get_messages('@EEOBot', limit=1)
     await msg1[0].click(0)
 
     chs = 1
@@ -130,12 +130,12 @@ async def _(event):
             except:
                 bott = url.split('/')[-1]
                 await zedub(ImportChatInviteRequest(bott))
-            msg2 = await zedub.get_messages('@zmmbot', limit=1)
+            msg2 = await zedub.get_messages('@EEOBot', limit=1)
             await msg2[0].click(text='تحقق')
             chs += 1
             await event.edit(f"**𓆰 تم بنجـاح الاشتـراك في {chs} قنـاة .❗**")
         except:
-            msg2 = await zedub.get_messages('@zmmbot', limit=1)
+            msg2 = await zedub.get_messages('@EEOBot', limit=1)
             await msg2[0].click(text='التالي')
             chs += 1
             await event.edit(f"**𓆰 القنـاة رقـم {chs} خطـأ .. يمكـن تبنـدت**")
