@@ -36,7 +36,7 @@ async def amireallyalive(event):
     ms = (end - start).microseconds / 1000
     _, check_sgnirts = check_data_base_heal_th()
     Z_EMOJI = gvarstatus("ALIVE_EMOJI") or " ⎉┊"
-    ALIVE_TEXT = gvarstatus("ALIVE_TEXT") or "** سُـورس TEᑭTᕼOᑎ يـَعمل بنـَجاح **"
+    ALIVE_TEXT = gvarstatus("ALIVE_TEXT") or "** ☼ TEᑭTᕼOᑎ ᗯOᖇKՏ ՏᑌᑕᑕEՏՏᖴᑌᒪᒪY ‌‌‏𓅓 . **"
     ZED_IMG = gvarstatus("ALIVE_PIC")
     zed_caption = gvarstatus("ALIVE_TEMPLATE") or zed_temp
     caption = zed_caption.format(
@@ -71,13 +71,13 @@ async def amireallyalive(event):
 
 
 zed_temp = """{ALIVE_TEXT}
-**{Z_EMOJI} َِ🕊 ٍَ𝖣ٰ𝖺َ𝖳𝖺ِ𝖡𝗎َِ𝖲َ𝖾 :** ᖴِᵘ𝖭𝖼𝖳ْ𝗂𝗈ً𝖭𝗂𝖭𝗀 
-**{Z_EMOJI} َِ🕊️ ٰ𝖳َ𝖾ْ𝗅ِ𝖾𝖳َ𝗁𝗈ٍ𝖭 ُ𝖵ِ𝖾𝗋𝗌ْ𝗂𝗈َ𝗇 :** `{telever}`
-**{Z_EMOJI} 🕊 𝖳َ𝖾ْ𝗉𝖳َ𝗁𝗈ٍ𝖭 َ𝖵𝖾𝗋ِ𝗌ْ𝗂𝗈َِ𝖭** `{zdver}`
-**{Z_EMOJI} َِ🕊 𝖯ِ𝗒َ𝖳𝗁𝗈ً𝖭 𝖵𝖾𝗋𝗌𝗂𝗈َِ𝖭 :** `{pyver}`
-**{Z_EMOJI} َِ🕊 ٰ𝖴𝗉 َ𝖳ْ𝗂𝖬ِ𝖾 :** `{uptime}`
-**{Z_EMOJI} • ＴＨＥ ＵＳＥＲ:** {mention} 🤍 .
-**{Z_EMOJI} 𝚂OᑌᖇᑕE ᑕᕼᗩᑎᑎEᒪ :** [TEᑭTᕼOᑎ](https://t.me/Tepthon)"""
+———————⛥ ———————
+**{Z_EMOJI} َTEᒪETᕼOᑎ 𓋪** `{telever}`
+**{Z_EMOJI} TEᑭTᕼOᑎ 𓋪** `{zdver}`
+**{Z_EMOJI} َᑭYTᕼOᑎ 𓋪** `{pyver}`
+**{Z_EMOJI} ᑌᑭTIᗰE 𓋪** `{uptime}`
+**{Z_EMOJI} OᗯᑎEᖇ 𓋪** {mention}"""
+———————⛥———————
 
 
 @zedub.zed_cmd(
@@ -94,10 +94,10 @@ async def amireallyialive(event):
     "A kind of showing bot details by your inline bot"
     reply_to_id = await reply_id(event)
     Z_EMOJI = gvarstatus("ALIVE_EMOJI") or " ⎉┊"
-    zed_caption = "** سُـورس TEᑭTᕼOᑎ يـَعمل بنـَجاح **\n"
-    zed_caption += f"**{Z_EMOJI} َِ🕊️ ٰ𝖳َ𝖾ْ𝗅ِ𝖾𝖳َ𝗁𝗈ٍ𝖭 ُ𝖵ِ𝖾𝗋𝗌ْ𝗂𝗈َ𝗇 :** `{version.__version__}\n`"
-    zed_caption += f"**{Z_EMOJI} 🕊 𝖳َ𝖾ْ𝗉𝖳َ𝗁𝗈ٍ𝖭 َ𝖵𝖾𝗋ِ𝗌ْ𝗂𝗈َِ𝖭 :** `{zedversion}`\n"
-    zed_caption += f"**{Z_EMOJI} َِ🕊 𝖯ِ𝗒َ𝖳𝗁𝗈ً𝖭 𝖵𝖾𝗋𝗌𝗂𝗈َِ𝖭 :** `{python_version()}\n`"
+    zed_caption = "** ☼ TEᑭTᕼOᑎ ᗯOᖇKՏ ՏᑌᑕᑕEՏՏᖴᑌᒪᒪY ‌‌‏𓅓 . **\n"
+    zed_caption += f"**{Z_EMOJI} َِTEᒪETᕼOᑎ 𓋪** `{version.__version__}\n`"
+    zed_caption += f"**{Z_EMOJI} TEᑭTᕼOᑎ 𓋪 :** `{zedversion}`\n"
+    zed_caption += f"**{Z_EMOJI} َِᑭYTᕼOᑎ 𓋪** `{python_version()}\n`"
     zed_caption += f"**{Z_EMOJI} • ＴＨＥ ＵＳＥＲ : -** {mention}\n"
     results = await event.client.inline_query(Config.TG_BOT_USERNAME, zed_caption)
     await results[0].click(event.chat_id, reply_to=reply_to_id, hide_via=True)
