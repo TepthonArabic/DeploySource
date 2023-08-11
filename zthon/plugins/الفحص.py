@@ -93,10 +93,10 @@ async def amireallyialive(event):
     reply_to_id = await reply_id(event)
     Z_EMOJI = gvarstatus("ALIVE_EMOJI") or "☼ ⤶"
     zed_caption = "** ☼ TEᑭTᕼOᑎ ᗯOᖇKՏ ՏᑌᑕᑕEՏՏᖴᑌᒪᒪY ‌‌‏𓅓 . **\n"
-    zed_caption += f"**{Z_EMOJI} َِTEᒪETᕼOᑎ 𓋪** `{version.__version__}\n`"
+    zed_caption += f"**{Z_EMOJI} َTEᒪETᕼOᑎ 𓋪** `{version.__version__}\n`"
     zed_caption += f"**{Z_EMOJI} TEᑭTᕼOᑎ 𓋪 :** `{zedversion}`\n"
-    zed_caption += f"**{Z_EMOJI} َِᑭYTᕼOᑎ 𓋪** `{python_version()}\n`"
-    zed_caption += f"**{Z_EMOJI} • ＴＨＥ ＵＳＥＲ : -** {mention}\n"
+    zed_caption += f"**{Z_EMOJI} َᑭYTᕼOᑎ 𓋪** `{python_version()}\n`"
+    zed_caption += f"**{Z_EMOJI} OᗯᑎEᖇ 𓋪** {mention}\n"
     results = await event.client.inline_query(Config.TG_BOT_USERNAME, zed_caption)
     await results[0].click(event.chat_id, reply_to=reply_to_id, hide_via=True)
     await event.delete()
