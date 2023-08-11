@@ -71,6 +71,7 @@ async def amireallyalive(event):
 
 
 zed_temp = """{ALIVE_TEXT}
+———————⛥ ———————
 **{Z_EMOJI} َTEᒪETᕼOᑎ 𓋪** `{telever}`
 **{Z_EMOJI} TEᑭTᕼOᑎ 𓋪** `{zdver}`
 **{Z_EMOJI} َᑭYTᕼOᑎ 𓋪** `{pyver}`
