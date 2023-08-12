@@ -1,6 +1,7 @@
 """ 
+zthon
 OpenAi & ChatGpt for Tepthon™ t.me/Tepthon
-Write file by MUHAMMAD t.me/PPF22
+Write file by zilzal t.me/zzzzl1l
 ها خماط بعدك تخمط مني .. ماتستحي ؟
 متى راح تصير مطور وانت مقضيها خمط تعب وحقوق الناس
 زلزال
