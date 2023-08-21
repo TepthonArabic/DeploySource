@@ -72,7 +72,7 @@ font_list = [
 )
 async def maccmd(event):  # sourcery no-metrics
     # sourcery skip: low-code-quality
-    "لـ اضافة فرام للصور والملصقات"
+    "لـ إضافـة فرام للصور والملصقات"
     reply = await event.get_reply_message()
     mediatype = await media_type(reply)
     if not reply or not mediatype or mediatype not in ["Photo", "Sticker"]:
@@ -231,15 +231,15 @@ async def memes(event):
     pattern="الخطوط(?:\s|$)([\s\S]*)",
     command=("الخطوط", plugin_category),
     info={
-        "header": "لعـرض قائمـة خطـوط زدثــون",
+        "header": "لعـرض قائمـة خطـوط تيبثـون",
         "الاستخـدام": "{tr}.الخطوط",
     },
 )
 async def lang(event):
-    "لعـرض قائمـة خطـوط زدثــون"
+    "لعـرض قائمـة خطـوط تيبثــون"
     input_str = event.pattern_match.group(1)
     if not input_str:
-        await event.edit(f"**⎉╎قائمـة خطـوط زدثــون هـي :-**\n**قم بنسخ اسم الخط ثم ارسل (.خط + اسم الخط)**\n\n{FONTS}")
+        await event.edit(f"**⎉╎قائمـة خطـوط تيبثــون هـي :-**\n**قم بنسخ اسم الخط ثم ارسل (.خط + اسم الخط)**\n\n{FONTS}")
         return
     else:
         return
@@ -271,7 +271,7 @@ async def lang(event):
     else:
         arg = f"zthon/helpers/styles/{input_str}"
         addgvar("ZED_FONTS", arg)
-        await edit_or_reply(event, f"**⎉╎تم تغييـر خـط كتابـة الحقـوق الـى :-** `{input_str}`")
+        await edit_or_reply(event, f"**⎉╎تم تغييـر خـط كتابـة الحقـوق إلـى :-** `{input_str}`")
 
 
 @zedub.zed_cmd(
@@ -292,7 +292,7 @@ async def memes(event):
     zedinput = event.pattern_match.group(1)
     reply = await event.get_reply_message()
     if not reply:
-        return await edit_delete(event, "**⎉╎قم بالـرد ع وسـائط مدعومـه ...**")
+        return await edit_delete(event, "**⎉╎قم بالـرد علــى وسـائط مدعومـة ...**")
     san = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
     catid = await reply_id(event)
     if not os.path.isdir("./temp"):
