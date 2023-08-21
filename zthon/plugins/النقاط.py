@@ -336,11 +336,9 @@ async def _(event):
                 await zedub(ImportChatInviteRequest(bott))
             msg2 = await zedub.get_messages('@DamKombot', limit=1)
             await msg2[0].click(text='اشتركت ✅')
-            chs += 1
             await event.edit(f"**𓆰 تم بنجـاح الاشتـراك في {chs} قنـاة .❗**")
         except:
             msg2 = await zedub.get_messages('@DamKombot', limit=1)
-            chs += 1
             await event.edit(f"**𓆰 القنـاة رقـم {chs} خطـأ .. يمكـن تبنـدت**")
     await zedub.send_message(event.chat_id, "**𓆰 تم الانتهـاء مـن تجميـع النقـاط .. حاول من جديد في وقت آخر ✓**")
 
