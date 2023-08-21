@@ -45,3 +45,4 @@ async def reda(event):
             await event.edit(f"`{event.message.message}`")
         except MessageIdInvalidError:
             pass
+#jmthon
