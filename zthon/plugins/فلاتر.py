@@ -263,7 +263,7 @@ async def lang(event):
     if input_str == "عربي":
         arr = f"zthon/helpers/styles/zarz.ttf"
         addgvar("ZED_FONTS", arr)
-        await edit_or_reply(event, "**⎉╎تم تغييـر خـط كتابـة الحقـوق الـى العربيـة**")
+        await edit_or_reply(event, "**⎉╎تم تغييـر خـط كتابـة الحقـوق إلـى العربيـة**")
     if input_str not in font_list:
         catevent = await edit_or_reply(event, "**⎉╎قم بكتابه اسم الخط بشكل صحيح ...؟!**")
         await asyncio.sleep(1)
