@@ -56,7 +56,7 @@ async def _(event):
 @zedub.zed_cmd(pattern="المليار ?(.*)")
 async def _(event):
     con = event.pattern_match.group(1).lower()
-    await event.edit("**𓆰 حـسنـًا .. تأكـد من انك مشتـرك بـ قنـوات الاشتـراك الاجبـاري لتجنب الأخطـاء @EEOBot**")
+    await event.edit("**𓆰 حـسنـًا .. تأكـد من انك مشتـرك بـ قنـوات الاشتـراك الإجبـاري لتجنب الأخطـاء @EEOBot**")
     channel_entity = await zedub.get_entity('@EEOBot')
     await zedub.send_message('@EEOBot', '/start')
     await asyncio.sleep(4)
@@ -102,7 +102,7 @@ async def _(event):
 @zedub.zed_cmd(pattern="تجميع المليار ?(.*)")
 async def _(event):
     con = event.pattern_match.group(1).lower()
-    await event.edit("**𓆰 حـسنـًا .. تأكـد من انك مشتـرك بـ قنـوات الاشتـراك الاجبـاري لتجنب الأخطـاء @EEOBot**")
+    await event.edit("**𓆰 حـسنـًا .. تأكـد من انك مشتـرك بـ قنـوات الاشتـراك الإجبـاري لتجنب الأخطـاء @EEOBot**")
     channel_entity = await zedub.get_entity('@EEOBot')
     await zedub.send_message('@EEOBot', '/start')
     await asyncio.sleep(4)
@@ -153,7 +153,7 @@ async def _(event):
 @zedub.zed_cmd(pattern="العرب ?(.*)")
 async def _(event):
     con = event.pattern_match.group(1).lower()
-    await event.edit("**𓆰 حـسنـًا .. تأكـد من انك مشتـرك بـ قنـوات الاشتـراك الاجبـاري لتجنب الأخطـاء @xnsex21bot**")
+    await event.edit("**𓆰 حـسنـًا .. تأكـد من انك مشتـرك بـ قنـوات الاشتـراك الإجبـاري لتجنب الأخطـاء @xnsex21bot**")
     channel_entity = await zedub.get_entity('@xnsex21bot')
     await zedub.send_message('@xnsex21bot', '/start')
     await asyncio.sleep(4)
@@ -199,7 +199,7 @@ async def _(event):
 @zedub.zed_cmd(pattern="تجميع العرب ?(.*)")
 async def _(event):
     con = event.pattern_match.group(1).lower()
-    await event.edit("**𓆰 حـسنـًا .. تأكـد من انك مشتـرك بـ قنـوات الاشتـراك الاجبـاري لتجنب الأخطـاء @xnsex21bot**")
+    await event.edit("**𓆰 حـسنـًا .. تأكـد من انك مشتـرك بـ قنـوات الاشتـراك الإجبـاري لتجنب الأخطـاء @xnsex21bot**")
     channel_entity = await zedub.get_entity('@xnsex21bot')
     await zedub.send_message('@xnsex21bot', '/start')
     await asyncio.sleep(4)
@@ -250,7 +250,7 @@ async def _(event):
 @zedub.zed_cmd(pattern="الجوكر ?(.*)")
 async def _(event):
     con = event.pattern_match.group(1).lower()
-    await event.edit("**𓆰 حـسنـًا .. تأكـد من انك مشتـرك بـ قنـوات الاشتـراك الاجبـاري لتجنب الأخطـاء @A_MAN9300BOT**")
+    await event.edit("**𓆰 حـسنـًا .. تأكـد من انك مشتـرك بـ قنـوات الاشتـراك الإجبـاري لتجنب الأخطـاء @A_MAN9300BOT**")
     channel_entity = await zedub.get_entity('@A_MAN9300BOT')
     await zedub.send_message('@A_MAN9300BOT', '/start')
     await asyncio.sleep(4)
@@ -301,7 +301,7 @@ async def _(event):
 @zedub.zed_cmd(pattern="الجنرال ?(.*)")
 async def _(event):
     con = event.pattern_match.group(1).lower()
-    await event.edit("**𓆰 حـسنـًا .. تأكـد من انك مشتـرك بـ قنـوات الاشتـراك الاجبـاري لتجنب الأخطـاء @MARKTEBOT**")
+    await event.edit("**𓆰 حـسنـًا .. تأكـد من انك مشتـرك بـ قنـوات الاشتـراك الإجبـاري لتجنب الأخطـاء @MARKTEBOT**")
     channel_entity = await zedub.get_entity('@MARKTEBOT')
     await zedub.send_message('@MARKTEBOT', '/start')
     await asyncio.sleep(4)
@@ -352,7 +352,7 @@ async def _(event):
 @zedub.zed_cmd(pattern="المليون ?(.*)")
 async def _(event):
     con = event.pattern_match.group(1).lower()
-    await event.edit("**𓆰 حـسنـًا .. تأكـد من انك مشتـرك بـ قنـوات الاشتـراك الاجبـاري لتجنب الأخطـاء @qweqwe1919bot**")
+    await event.edit("**𓆰 حـسنـًا .. تأكـد من انك مشتـرك بـ قنـوات الاشتـراك الإجبـاري لتجنب الأخطـاء @qweqwe1919bot**")
     channel_entity = await zedub.get_entity('@qweqwe1919bot')
     await zedub.send_message('@qweqwe1919bot', '/start')
     await asyncio.sleep(4)
