@@ -30,12 +30,12 @@ plugin_category = "البوت"
 
 
 # code by t.me/zzzzl1l
-@zedub.zed_cmd(pattern="cc(?:\s|$)([\s\S]*)")
+@zedub.zed_cmd(pattern="فحص فيزات(?:\s|$)([\s\S]*)")
 async def song2(event):
     song = event.pattern_match.group(1)
     chat = "@SDBB_Bot" # code by t.me/zzzzl1l
     reply_id_ = await reply_id(event)
-    zed = await edit_or_reply(event, "**⎉╎جـارِ فحص البطـاقـه ...**")
+    zed = await edit_or_reply(event, "**⎉╎جـارِ فحص البطـاقـةُ ...**")
     async with event.client.conversation(chat) as conv:
         try:
             gool = "/chk {}".format(song)
