@@ -400,6 +400,7 @@ async def _(event):
     except Exception:
         await zzevent.edit("**╮•⎚ عـذرًا .. لـم استطـع ايجـاد المطلـوب ☹️💔**")
 
+
 @zedub.zed_cmd(pattern="$صورة تمبلر")
 async def _(event):
     zzevent = await edit_or_reply(event, "**╮ - جـارِ العثـور علـى صـور تمبلـر انتظـر ..**")
