@@ -553,4 +553,3 @@ async def repozedub(event):
     await event.delete()
     
     
-   
