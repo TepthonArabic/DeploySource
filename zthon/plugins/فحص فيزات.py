@@ -110,7 +110,7 @@ async def song2(event):
 # code by t.me/zzzzl1l
 @zedub.zed_cmd(pattern="فيزا(?:\s|$)([\s\S]*)")
 async def song2(event):
-    been = "410039xxxxxxxxxx|xx|xxxx|xxx" # code by t.me/zzzzl1l
+    been = "415464xxxxxxxxxx|xx|xxxx|xxx" # code by t.me/zzzzl1l
     chat = "@SDBB_Bot" # code by t.me/zzzzl1l
     reply_id_ = await reply_id(event)
     zed = await edit_or_reply(event, f"**⎉╎جـارِ تولـيد 𝚅𝙸𝚂𝙴💲...**\n**⎉╎لـ البين {been}  ...**\n**⎉╎عـدد 10 بطاقـات 💳**")
