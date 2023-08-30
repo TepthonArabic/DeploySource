@@ -522,4 +522,35 @@ async def repozedub(event):
     response = await event.client.inline_query(Config.TG_BOT_USERNAME, "التنصيب")
     await response[0].click(event.chat_id)
     await event.delete()
+    
+    
+@zedub.tgbot.on(events.InlineQuery)
+@check_owner
+async def zed_handler(event):
+    builder = event.builder
+    result = None
+    query = event.text
+    await zedub.get_me()
+    user = gvarstatus("who_id")
+    name_zed = user_zed.first_name
 
+    if query.startswith("اعادة تشغيل يدوي") and event.query.user_id == zedub.uid:
+        zelzal = f"**• عـزيـزي ** [{zedth2}](tg://user?id={user.id}) \n**• إليـك شـرح إعـادة التشغيـل يـدويـًا↓**"
+        buttons = [[Button.url("اضغــط هنــا", "https://t.me/Tws_Tepthon/63")]]
+        result = builder.article(title="zedub",text=zelzal,buttons=buttons,link_preview=False)
+        await event.answer([result] if result else None)
+@zedub.zed_cmd(pattern="اعادة تشغيل يدوي(?: |$)(.*)")
+async def repozedub(event):
+    user, custom = await get_user_from_event(event)
+    if not user:
+        return
+    else:
+    	addgvar("who_id", user)
+    name_zed = user_zed.first_name
+
+    response = await event.client.inline_query(Config.TG_BOT_USERNAME, "الهيروكو")
+    await response[0].click(event.chat_id)
+    await event.delete()
+    
+    
+   
