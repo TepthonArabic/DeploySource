@@ -33,7 +33,7 @@ plugin_category = "البوت"
 @zedub.zed_cmd(pattern="فحص فيزات 2(?:\s|$)([\s\S]*)")
 async def song2(event):
     song = event.pattern_match.group(1)
-    chat = "@SDBB_Bot" # code by t.me/zzzzl1l
+    chat = "@SakuraRendibot" # code by t.me/zzzzl1l
     reply_id_ = await reply_id(event)
     zed = await edit_or_reply(event, "**⎉╎جـارِ فحص البطـاقـةُ ...**")
     async with event.client.conversation(chat) as conv:
