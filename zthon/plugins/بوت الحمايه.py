@@ -158,6 +158,9 @@ async def _(event):
     if input_str == "الروابط":
         update_lock(zed_id, "url", True)
         return await edit_or_reply(event, "**⎆ تـم قفـل {} بنجـاح ✅ •**\n\n**⎆ خاصيـة المسـح والتحذيـر •**".format(input_str))
+     if input_str == "الصور":
+        update_lock(zed_id, "picture", True)
+        return await edit_or_reply(event, "**⎆ تـم قفـل {} بنجـاح ✅ •**\n\n**⎆ خاصيـة المسـح والتحذيـر •**".format(input_str))
     if input_str == "الكل":
         update_lock(zed_id, "bots", True)
         update_lock(zed_id, "game", True)
@@ -172,6 +175,7 @@ async def _(event):
         update_lock(zed_id, "video", True)
         update_lock(zed_id, "sticker", True)
         update_lock(zed_id, "voice", True)
+        update_lock(zed_id, "picture", True)
         return await edit_or_reply(event, "**⎆ تـم قفـل {} بنجـاح ✅ •**\n\n**⎆ خاصيـة المسـح - الطـرد - التقييـد - التحذيـر •**".format(input_str))
     else:
         if input_str:
@@ -248,6 +252,8 @@ async def _(event):
         return await edit_or_reply(event, "**⎆ تـم فتـح** {} **بنجـاح ✅ 𓆰•**".format(input_str))
     if input_str == "الانلاين":
         update_lock(zed_id, "inline", False)
+    if input_str == "الصور":
+        update_lock(zed_id, "picture", False)
         return await edit_or_reply(event, "**⎆ تـم فتـح** {} **بنجـاح ✅ 𓆰•**".format(input_str))
     if input_str == "الكل":
         update_lock(zed_id, "bots", False)
@@ -263,6 +269,7 @@ async def _(event):
         update_lock(zed_id, "video", False)
         update_lock(zed_id, "sticker", False)
         update_lock(zed_id, "voice", False)
+        update_lock(zed_id, "picture", False)
         return await edit_or_reply(event, "**⎆ تـم فتـح** {} **بنجـاح ✅ 𓆰•**".format(input_str))
     if input_str == "الفارسيه":
         update_lock(zed_id, "egame", False)
