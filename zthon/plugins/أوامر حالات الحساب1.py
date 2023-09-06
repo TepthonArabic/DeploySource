@@ -12,12 +12,12 @@ from zthon.sql_helper.globals import addgvar, gvarstatus
 plugin_category = "utils"
 
 
-OFFLINE_TAG = ᴍᴏʜᴀᴍᴍᴀᴅ 𓅃""
+OFFLINE_TAG = "نائم"
 
 
 @zedub.zed_cmd(
-    pattern="$اسم محمد",
-    command=("اسم محمد", plugin_category),
+    pattern="نائم$",
+    command=("نائم", plugin_category),
     info={
         "header": "To your status as offline",
         "description": " it change your pic as offline, and add offline tag in name.",
@@ -28,8 +28,8 @@ async def pussy(event):
     "make yourself offline"
     user = await event.client.get_entity("me")
     if user.first_name.startswith(OFFLINE_TAG):
-        return await edit_delete(event, "**قمت بترتيب حسابـك تلقائـيـًا مسبقـًا ..**")
-    await edit_or_reply(event, "**جـاري ترتيـب حسـابك ..**")
+        return await edit_delete(event, "**𓆰 أنـت قـمـت بتـفعـيل وضـع النـوم من قبـل ...**")
+    await edit_or_reply(event, "**جـاري تـغيير حـسابـك إلـى وضع النـوم ...**")
     photo = "./temp/donottouch.jpg"
     if not os.path.isdir("./temp"):
         os.mkdir("./temp")
@@ -43,7 +43,7 @@ async def pussy(event):
         except Exception as e:  # pylint:disable=C0103,W0703
             await edit_or_reply(event, str(e))
         else:
-            await edit_or_reply(event, "**𓆰 تم !**")
+            await edit_or_reply(event, "**𓆰 تصبـح علـى خيـر ...**")
     os.remove(photo)
     first_name = user.first_name
     addgvar("my_first_name", first_name)
@@ -60,8 +60,8 @@ async def pussy(event):
 
 
 @zedub.zed_cmd(
-    pattern="$اعادة الاسم",
-    command=("اعادة اسم", plugin_category),
+    pattern="مستيقظ$",
+    command=("مستيقظ", plugin_category),
     info={
         "header": "To your status as online",
         "description": " it change your pic back normal, and remove offline tag in name.",
