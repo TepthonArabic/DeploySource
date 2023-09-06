@@ -16,8 +16,8 @@ OFFLINE_TAG = ᴍᴏʜᴀᴍᴍᴀᴅ 𓅃""
 
 
 @zedub.zed_cmd(
-    pattern="$اسم محمد",
-    command=("اسم محمد", plugin_category),
+    pattern="$اسمي محمد",
+    command=("اسمي محمد", plugin_category),
     info={
         "header": "To your status as offline",
         "description": " it change your pic as offline, and add offline tag in name.",
