@@ -12,12 +12,12 @@ from zthon.sql_helper.globals import addgvar, gvarstatus
 plugin_category = "utils"
 
 
-OFFLINE_TAG = "هه"
+OFFLINE_TAG = "نائم"
 
 
 @zedub.zed_cmd(
-    pattern="هلا$",
-    command=("هلا", plugin_category),
+    pattern="نائم$",
+    command=("نائم", plugin_category),
     info={
         "header": "To your status as offline",
         "description": " it change your pic as offline, and add offline tag in name.",
