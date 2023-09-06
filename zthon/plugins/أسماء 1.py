@@ -60,8 +60,8 @@ async def pussy(event):
 
 
 @zedub.zed_cmd(
-    pattern="مستيقظ$",
-    command=("مستيقظ", plugin_category),
+    pattern="اعادة$",
+    command=("اعادة", plugin_category),
     info={
         "header": "To your status as online",
         "description": " it change your pic back normal, and remove offline tag in name.",
