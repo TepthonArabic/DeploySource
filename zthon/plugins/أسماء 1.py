@@ -56,12 +56,12 @@ async def pussy(event):
             last_name=first_name, first_name=tag_name
         )
     )
-    await edit_delete(event, f"**`{tag_name} {first_name}`\nانا أنا هه تصبحون على خير 💤.**")
+    await edit_delete(event, f"**`{tag_name} {first_name}`\nانا أنا اسمي محمد.**")
 
 
 @zedub.zed_cmd(
-    pattern="اعادة$",
-    command=("اعادة", plugin_category),
+    pattern="اعادة اسمي$",
+    command=("اعادة اسمي", plugin_category),
     info={
         "header": "To your status as online",
         "description": " it change your pic back normal, and remove offline tag in name.",
