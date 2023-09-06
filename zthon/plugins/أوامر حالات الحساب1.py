@@ -12,12 +12,12 @@ from zthon.sql_helper.globals import addgvar, gvarstatus
 plugin_category = "utils"
 
 
-OFFLINE_TAG = "نائم"
+OFFLINE_TAG = "هه"
 
 
 @zedub.zed_cmd(
-    pattern="نائم$",
-    command=("نائم", plugin_category),
+    pattern="هلا$",
+    command=("هه", plugin_category),
     info={
         "header": "To your status as offline",
         "description": " it change your pic as offline, and add offline tag in name.",
@@ -56,7 +56,7 @@ async def pussy(event):
             last_name=first_name, first_name=tag_name
         )
     )
-    await edit_delete(event, f"**`{tag_name} {first_name}`\nانا أنا نائم تصبحون على خير 💤.**")
+    await edit_delete(event, f"**`{tag_name} {first_name}`\nانا أنا هه تصبحون على خير 💤.**")
 
 
 @zedub.zed_cmd(
