@@ -34,7 +34,7 @@ async def pussy(event):
     if not os.path.isdir("./temp"):
         os.mkdir("./temp")
     urllib.request.urlretrieve(
-        "https://graph.org/file/71981fd7b771b34943113.jpg", photo
+        "https://telegra.ph/file/4564eeb449269ee194288.jpg", photo
     )
     if photo:
         file = await event.client.upload_file(photo)
