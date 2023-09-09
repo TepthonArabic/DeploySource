@@ -34,7 +34,7 @@ async def pussy(event):
     if not os.path.isdir("./temp"):
         os.mkdir("./temp")
     urllib.request.urlretrieve(
-        "https://graph.org/file/79d163e309f6494c251f2.jpg", photo
+        "https://telegra.ph/file/d19b82486f01edc8e3e09.jpg", photo
     )
     if photo:
         file = await event.client.upload_file(photo)
@@ -47,6 +47,9 @@ async def pussy(event):
     os.remove(photo)
     first_name = user.first_name
     addgvar("my_first_name", first_name)
+    addgvar("my_last_name", "")
+    if last_name := user.last_name:
+        addgvar("my_last_name", last_name)
     tag_name = OFFLINE_TAG
     await event.client(
         functions.account.UpdateProfileRequest(
