@@ -12,12 +12,12 @@ from zthon.sql_helper.globals import addgvar, gvarstatus
 plugin_category = "utils"
 
 
-OFFLINE_TAG = "- َِ𝘮َِ𝘦َِ𝘮َِ𝘰 ."
+OFFLINE_TAG = "- َِ𝗠َِ𝗼َِ𝗱َِ𝗶 ."
 
 
 @zedub.zed_cmd(
-    pattern="اسمي ميمو$",
-    command=("اسمي ميمو", plugin_category),
+    pattern="اسمي مودي$",
+    command=("اسمي مودي", plugin_category),
     info={
         "header": "To your status as offline",
         "description": " it change your pic as offline, and add offline tag in name.",
@@ -29,7 +29,7 @@ async def pussy(event):
     user = await event.client.get_entity("me")
     if user.first_name.startswith(OFFLINE_TAG):
         return await edit_delete(event, "**𓆰 لقد قمت بوضع اسمك مسبقًا**")
-    await edit_or_reply(event, "**جـاري وضع اسم ميمو على حسابـك**")
+    await edit_or_reply(event, "**جـاري وضع اسم مودي على حسابـك**")
     photo = "./temp/donottouch.jpg"
     if not os.path.isdir("./temp"):
         os.mkdir("./temp")
@@ -56,7 +56,7 @@ async def pussy(event):
             last_name=first_name, first_name=tag_name
         )
     )
-    await edit_delete(event, f"**`{tag_name} {first_name}`\nانا أنا اسمي ميمو.**")
+    await edit_delete(event, f"**`{tag_name} {first_name}`\nانا أنا اسمي مودي.**")
 
 
 @zedub.zed_cmd(
@@ -93,5 +93,5 @@ async def cat(event):
             last_name=last_name, first_name=first_name
         )
     )
-    await edit_delete(event, f"**`{first_name} {last_name}`\n𓆰 أنا اسمي ميمو**")
+    await edit_delete(event, f"**`{first_name} {last_name}`\n𓆰 أنا اسمي مودي**")
     
