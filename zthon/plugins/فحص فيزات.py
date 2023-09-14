@@ -108,7 +108,7 @@ async def song2(event): # code by t.me/zzzzl1l
 
 
 # code by t.me/zzzzl1l
-@zedub.zed_cmd(pattern="معلومات فيزا(?:\s|$)([\s\S]*)")
+@zedub.zed_cmd(pattern="معلومات فيزا وهمية(?:\s|$)([\s\S]*)")
 async def song2(event):
     song = event.pattern_match.group(1)
     chat = "@SDBB_Bot" # code by t.me/zzzzl1l
