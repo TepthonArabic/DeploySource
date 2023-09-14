@@ -108,6 +108,32 @@ async def song2(event): # code by t.me/zzzzl1l
 
 
 # code by t.me/zzzzl1l
+@zedub.zed_cmd(pattern="معلومات فيزا(?:\s|$)([\s\S]*)")
+async def song2(event):
+    song = event.pattern_match.group(1)
+    chat = "@SDBB_Bot" # code by t.me/zzzzl1l
+    reply_id_ = await reply_id(event)
+    zed = await edit_or_reply(event, "**⎉╎جـار جلب معلومـات الفيـزا ...**")
+    async with event.client.conversation(chat) as conv:
+        try:
+            gool = "/fake {}".format(song)
+            await conv.send_message(gool)
+        except YouBlockedUserError:
+            await zedub(unblock("SDBB_Bot"))
+            gool = "/fake {}".format(song)
+            await conv.send_message(gool)
+        await asyncio.sleep(22)
+        response = await conv.get_response()
+        if response.text.startswith("ANTI_SPAM:"):
+        	return await zed.edit("**- حاول مجـدداً ولا تستخـدم سبـام ...**")
+        if response.text.startswith("RISK:"):
+        	return await zed.edit("**- خطـأ :**\n**أعد محاولة فحص هذه البطاقه ...لاحقًا**")
+        await event.client.send_read_acknowledge(conv.chat_id)
+        await event.client.send_message(event.chat_id, response.message)
+        await zed.delete()
+        
+        
+# code by t.me/zzzzl1l
 @zedub.zed_cmd(pattern="توليد(?:\s|$)([\s\S]*)")
 async def song2(event):
     been = event.pattern_match.group(1)
