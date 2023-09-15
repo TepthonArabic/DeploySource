@@ -18,14 +18,14 @@ from ..sql_helper.globals import addgvar, delgvar, gvarstatus
 from . import BOTLOG, BOTLOG_CHATID
 
 plugin_category = "الخدمات"
-SPAM = gvarstatus(" Z_SPAM") or "(مؤقت|مكرر)"
+SPAM = gvarstatus(" Z_SPAM") or "(مؤقت|تلقائي)"
 UNSPAM = gvarstatus("Z_UNSPAM") or "ايقاف مؤقت"
 
 ZelzalSP_cmd = (
     "𓆩 [𝗦𝗼𝘂𝗿𝗰𝗲 𝗧𝗘𝗣𝗧𝗛𝗢𝗡  - اوامـر السبـام والتكـرار](t.me/Tepthon) 𓆪\n\n"
     "`.كرر` + عـدد + كلمـه\n"
     "**⪼ لـ تكـرار كلمـه معينـه لعـدد معيـن من المـرات**\n\n"
-    "`.مكرر` + الوقت بالثواني + العدد + النص\n"
+    "`.تلقائي` + الوقت بالثواني + العدد + النص\n"
     "**⪼ لـ تكـرار نص لوقت معين وعدد معين من المـرات**\n"
     "**⪼ الامر يفيد جماعة الاعلانات وكروبات الشراء**\n\n"
     "`.تكرار ملصق`\n"
@@ -34,7 +34,7 @@ ZelzalSP_cmd = (
     "**⪼ لـ تكـرار كلمـة او جملـة نصيـه**\n\n"
     "`.وسبام` + كلمـه\n"
     "**⪼ لـ تكـرار حـروف كلمـة على حرف حرف**\n\n"
-    "`.تعبير مكرر`\n"
+    "`.تعبير تلقائي`\n"
     "**⪼ لـ تكـرار تفاعـلات رياكشـن** 👍👎❤🔥🥰👏😁🤔🤯😱🤬😢🎉🤩🤮💩\n\n"
     "`.ايقاف التلقائي`\n"
     "**⪼ لـ إيقـاف أي تكـرار جـاري تنفيـذه**\n\n"
@@ -341,7 +341,7 @@ async def spammer(event):
     await spam_function(event, reply, zed, sleeptimem, sleeptimet, DelaySpam=True)
 
 
-@zedub.zed_cmd(pattern="تعبير مكرر$")
+@zedub.zed_cmd(pattern="تعبير تلقائي$")
 async def react_spam(event):
     msg = await event.get_reply_message()
     if not msg:
