@@ -52,9 +52,9 @@ async def song(event):
     elif reply and reply.message:
         query = reply.message
     else:
-        return await edit_or_reply(event, "**⎉╎قم باضافـة الاغنيـه للامـر .. بحث + اسـم الاغنيـه**")
+        return await edit_or_reply(event, "**⎉╎قم باضافـة الشيء المراد البحث عنه ..**")
     zed = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
-    zedevent = await edit_or_reply(event, "**╮ جـارِ البحث ؏ـن الاغنيـٓه... 🎧♥️╰**")
+    zedevent = await edit_or_reply(event, "**╮ جـارِ البحث ؏ـن الشيء المطلـوب**")
     video_link = await yt_search(str(query))
     if not url(video_link):
         return await zedevent.edit(
