@@ -9,7 +9,7 @@ from telethon.tl.functions.channels import JoinChannelRequest
 from telethon.tl.functions.messages import ImportChatInviteRequest
 from telethon.tl.functions.users import GetFullUserRequest
 
-from zthon import zthon
+from zthon import zedub
 from ..Config import Config
 from ..core.managers import edit_delete, edit_or_reply
 from ..sql_helper.globals import addgvar, delgvar, gvarstatus
@@ -73,100 +73,100 @@ ZelzalCoins_cmd = (
     "**⪼ سيتم اضـافـه المزيـد من البوتـات بالتحديثـات الجايـه .. اذا تريـد اضافـة بـوت محـدد راسـل مطـور السـورس @zzzzl1l**"
 )
 
-@zthon.zed_cmd(pattern="بوت المليار$")
+@zedub.zed_cmd(pattern="بوت المليار$")
 async def _(event):
     await event.edit('@EEOBot')
 
 # Copyright (C) 2022 Zed-Thon . All Rights Reserved
-@zthon.zed_cmd(pattern="المليار(?: |$)(.*)")
+@zedub.zed_cmd(pattern="المليار(?: |$)(.*)")
 async def _(event):
     con = event.pattern_match.group(1).lower()
     await event.edit("**⎉╎حسنـاً .. تأكـد من انك مشتـرك بـ قنـوات الاشتـراك الاجبـاري لتجنب الأخطـاء @EEOBot**")
-    channel_entity = await zthon.get_entity('@EEOBot')
-    await zthon.send_message('@EEOBot', '/start')
+    channel_entity = await zedub.get_entity('@EEOBot')
+    await zedub.send_message('@EEOBot', '/start')
     await asyncio.sleep(3)
-    msg0 = await zthon.get_messages('@EEOBot', limit=1)
+    msg0 = await zedub.get_messages('@EEOBot', limit=1)
     await msg0[0].click(2)
     await asyncio.sleep(3)
-    msg1 = await zthon.get_messages('@EEOBot', limit=1)
+    msg1 = await zedub.get_messages('@EEOBot', limit=1)
     await msg1[0].click(0)
     chs = 1
     for i in range(100):
         await asyncio.sleep(2)
-        list = await zthon(GetHistoryRequest(peer=channel_entity, limit=1, offset_date=None, offset_id=0, max_id=0, min_id=0, add_offset=0, hash=0))
+        list = await zedub(GetHistoryRequest(peer=channel_entity, limit=1, offset_date=None, offset_id=0, max_id=0, min_id=0, add_offset=0, hash=0))
         msgs = list.messages[0]
         if msgs.message.find('**⎉╎لا يوجد قنوات في الوقت الحالي .. قم يتجميع النقاط بطريقه مختلفه**') != -1:
-            await zthon.send_message(event.chat_id, "**⎉╎مـافي قنـوات بالبـوت حاليـاً ...**")
+            await zedub.send_message(event.chat_id, "**⎉╎مـافي قنـوات بالبـوت حاليـاً ...**")
             break
         if con == "ايقاف": #Code by T.me/zzzzl1l
-            await zthon.send_message(event.chat_id, "**⎉╎تم إيقـاف تجميـع النقـاط .. بنجـاح☑️**")
+            await zedub.send_message(event.chat_id, "**⎉╎تم إيقـاف تجميـع النقـاط .. بنجـاح☑️**")
             break
         url = msgs.reply_markup.rows[0].buttons[0].url
         try:
             try:
-                await zthon(JoinChannelRequest(url))
+                await zedub(JoinChannelRequest(url))
             except:
                 bott = url.split('/')[-1]
-                await zthon(ImportChatInviteRequest(bott))
-            msg2 = await zthon.get_messages('@EEOBot', limit=1)
+                await zedub(ImportChatInviteRequest(bott))
+            msg2 = await zedub.get_messages('@EEOBot', limit=1)
             await msg2[0].click(text='تحقق')
             chs += 1
             await event.edit(f"**⎉╎تم الاشتـراك في القنـاة  {chs} ...✓**")
         except: #Code by T.me/zzzzl1l
-            msg2 = await zthon.get_messages('@EEOBot', limit=1)
+            msg2 = await zedub.get_messages('@EEOBot', limit=1)
             await msg2[0].click(text='التالي')
             chs += 1
             await event.edit(f"**⎉╎القنـاة رقـم {chs} .. يمكـن تبنـدت**")
-    await zthon.send_message(event.chat_id, "**⎉╎تم الانتهـاء مـن تجميـع النقـاط .. حاول من جديد في وقت آخر ✓**")
+    await zedub.send_message(event.chat_id, "**⎉╎تم الانتهـاء مـن تجميـع النقـاط .. حاول من جديد في وقت آخر ✓**")
 
 
-@zthon.zed_cmd(pattern="بوت العرب$")
+@zedub.zed_cmd(pattern="بوت العرب$")
 async def _(event):
     await event.edit('@xnsex21bot')
 
-@zthon.zed_cmd(pattern="العرب(?: |$)(.*)")
+@zedub.zed_cmd(pattern="العرب(?: |$)(.*)")
 async def _(event):
     con = event.pattern_match.group(1).lower()
     await event.edit("**⎉╎حسنـاً .. تأكـد من انك مشتـرك بـ قنـوات الاشتـراك الاجبـاري لتجنب الأخطـاء @xnsex21bot**")
-    channel_entity = await zthon.get_entity('@xnsex21bot')
-    await zthon.send_message('@xnsex21bot', '/start')
+    channel_entity = await zedub.get_entity('@xnsex21bot')
+    await zedub.send_message('@xnsex21bot', '/start')
     await asyncio.sleep(3)
-    msg0 = await zthon.get_messages('@xnsex21bot', limit=1)
+    msg0 = await zedub.get_messages('@xnsex21bot', limit=1)
     await msg0[0].click(2)
     await asyncio.sleep(3)
-    msg1 = await zthon.get_messages('@xnsex21bot', limit=1)
+    msg1 = await zedub.get_messages('@xnsex21bot', limit=1)
     await msg1[0].click(0)
     chs = 1
     for i in range(100):
         await asyncio.sleep(2)
-        list = await zthon(GetHistoryRequest(peer=channel_entity, limit=1, offset_date=None, offset_id=0, max_id=0, min_id=0, add_offset=0, hash=0))
+        list = await zedub(GetHistoryRequest(peer=channel_entity, limit=1, offset_date=None, offset_id=0, max_id=0, min_id=0, add_offset=0, hash=0))
         msgs = list.messages[0]
         if msgs.message.find('**⎉╎لا يوجد قنوات في الوقت الحالي .. قم يتجميع النقاط بطريقه مختلفه**') != -1:
-            await zthon.send_message(event.chat_id, "**⎉╎مـافي قنـوات بالبـوت حاليـاً ...**")
+            await zedub.send_message(event.chat_id, "**⎉╎مـافي قنـوات بالبـوت حاليـاً ...**")
             break
         if con == "ايقاف": #Code by T.me/zzzzl1l
-            await zthon.send_message(event.chat_id, "**⎉╎تم إيقـاف تجميـع النقـاط .. بنجـاح☑️**")
+            await zedub.send_message(event.chat_id, "**⎉╎تم إيقـاف تجميـع النقـاط .. بنجـاح☑️**")
             break
         url = msgs.reply_markup.rows[0].buttons[0].url
         try:
             try:
-                await zthon(JoinChannelRequest(url))
+                await zedub(JoinChannelRequest(url))
             except:
                 bott = url.split('/')[-1]
-                await zthon(ImportChatInviteRequest(bott))
-            msg2 = await zthon.get_messages('@xnsex21bot', limit=1)
+                await zedub(ImportChatInviteRequest(bott))
+            msg2 = await zedub.get_messages('@xnsex21bot', limit=1)
             await msg2[0].click(text='تحقق')
             chs += 1
             await event.edit(f"**⎉╎تم الاشتـراك في القنـاة  {chs} ...✓**")
         except: #Code by T.me/zzzzl1l
-            msg2 = await zthon.get_messages('@xnsex21bot', limit=1)
+            msg2 = await zedub.get_messages('@xnsex21bot', limit=1)
             await msg2[0].click(text='التالي')
             chs += 1
             await event.edit(f"**⎉╎القنـاة رقـم {chs} .. يمكـن تبنـدت**")
-    await zthon.send_message(event.chat_id, "**⎉╎تم الانتهـاء مـن تجميـع النقـاط .. حاول من جديد في وقت آخر ✓**")
+    await zedub.send_message(event.chat_id, "**⎉╎تم الانتهـاء مـن تجميـع النقـاط .. حاول من جديد في وقت آخر ✓**")
 
 
-@zthon.zed_cmd(pattern="بوت التجميع$")
+@zedub.zed_cmd(pattern="بوت التجميع$")
 async def _(event):
     zpoint = gvarstatus("Z_Point")
     if gvarstatus("Z_Point") is None:
@@ -175,7 +175,7 @@ async def _(event):
         await event.edit(f"**⎉╎بوت التجميـع المضـاف حاليـاً**\n**⎉╎هـو** {zpoint}")
 
 # Copyright (C) 2022 Zed-Thon . All Rights Reserved
-@zthon.zed_cmd(pattern="تجميع(?: |$)(.*)")
+@zedub.zed_cmd(pattern="تجميع(?: |$)(.*)")
 async def _(event):
     con = event.pattern_match.group(1).lower()
     zpoint = gvarstatus("Z_Point")
@@ -184,331 +184,331 @@ async def _(event):
     if gvarstatus("Z_Point") is None:
         return await event.edit("**⎉╎لايوجـد بـوت تجميـع مضـاف للفـارات ؟!\n⎉╎لـ اضافة بـوت تجميـع\n⎉╎ارسـل** `.اضف بوت التجميع` **بالـرد ع معـرف البـوت\n\n⎉╎او استخـدم امر تجميع** `.المليار`")
     await event.edit(f"**⎉╎حسنـاً .. تأكـد من انك مشتـرك بـ قنـوات الاشتـراك الاجبـاري لتجنب الأخطـاء {zpoint} .**")
-    channel_entity = await zthon.get_entity(zpoint)
-    await zthon.send_message(zpoint, '/start')
+    channel_entity = await zedub.get_entity(zpoint)
+    await zedub.send_message(zpoint, '/start')
     await asyncio.sleep(3)
-    msg0 = await zthon.get_messages(zpoint, limit=1)
+    msg0 = await zedub.get_messages(zpoint, limit=1)
     await msg0[0].click(2)
     await asyncio.sleep(3)
-    msg1 = await zthon.get_messages(zpoint, limit=1)
+    msg1 = await zedub.get_messages(zpoint, limit=1)
     await msg1[0].click(0)
     chs = 1
     for i in range(100):
         await asyncio.sleep(2)
-        list = await zthon(GetHistoryRequest(peer=channel_entity, limit=1, offset_date=None, offset_id=0, max_id=0, min_id=0, add_offset=0, hash=0))
+        list = await zedub(GetHistoryRequest(peer=channel_entity, limit=1, offset_date=None, offset_id=0, max_id=0, min_id=0, add_offset=0, hash=0))
         msgs = list.messages[0]
         if msgs.message.find('**⎉╎لا يوجد قنوات في الوقت الحالي .. قم يتجميع النقاط بطريقه مختلفه**') != -1:
-            await zthon.send_message(event.chat_id, "**⎉╎مـافي قنـوات بالبـوت حاليـاً ...**")
+            await zedub.send_message(event.chat_id, "**⎉╎مـافي قنـوات بالبـوت حاليـاً ...**")
             break
         if con == "ايقاف": #Code by T.me/zzzzl1l
-            await zthon.send_message(event.chat_id, "**⎉╎تم إيقـاف تجميـع النقـاط .. بنجـاح☑️**")
+            await zedub.send_message(event.chat_id, "**⎉╎تم إيقـاف تجميـع النقـاط .. بنجـاح☑️**")
             break
         url = msgs.reply_markup.rows[0].buttons[0].url
         try:
             try:
-                await zthon(JoinChannelRequest(url))
+                await zedub(JoinChannelRequest(url))
             except:
                 bott = url.split('/')[-1]
-                await zthon(ImportChatInviteRequest(bott))
-            msg2 = await zthon.get_messages(zpoint, limit=1)
+                await zedub(ImportChatInviteRequest(bott))
+            msg2 = await zedub.get_messages(zpoint, limit=1)
             await msg2[0].click(text='تحقق')
             chs += 1
             await event.edit(f"**⎉╎تم الاشتـراك في القنـاة  {chs} ...✓**")
         except: #Code by T.me/zzzzl1l
-            msg2 = await zthon.get_messages(zpoint, limit=1)
+            msg2 = await zedub.get_messages(zpoint, limit=1)
             await msg2[0].click(text='التالي')
             chs += 1
             await event.edit(f"**⎉╎القنـاة رقـم {chs} .. يمكـن تبنـدت**")
-    await zthon.send_message(event.chat_id, "**⎉╎تم الانتهـاء مـن تجميـع النقـاط .. حاول من جديد في وقت آخر ✓**")
+    await zedub.send_message(event.chat_id, "**⎉╎تم الانتهـاء مـن تجميـع النقـاط .. حاول من جديد في وقت آخر ✓**")
 
 
-@zthon.zed_cmd(pattern="بوت الجوكر$")
+@zedub.zed_cmd(pattern="بوت الجوكر$")
 async def _(event):
     await event.edit('@A_MAN9300BOT')
 
 # Copyright (C) 2022 Zed-Thon . All Rights Reserved
-@zthon.zed_cmd(pattern="الجوكر(?: |$)(.*)")
+@zedub.zed_cmd(pattern="الجوكر(?: |$)(.*)")
 async def _(event):
     con = event.pattern_match.group(1).lower()
     await event.edit("**⎉╎حسنـاً .. تأكـد من انك مشتـرك بـ قنـوات الاشتـراك الاجبـاري لتجنب الأخطـاء @A_MAN9300BOT**")
-    channel_entity = await zthon.get_entity('@A_MAN9300BOT')
-    await zthon.send_message('@A_MAN9300BOT', '/start')
+    channel_entity = await zedub.get_entity('@A_MAN9300BOT')
+    await zedub.send_message('@A_MAN9300BOT', '/start')
     await asyncio.sleep(3)
-    msg0 = await zthon.get_messages('@A_MAN9300BOT', limit=1)
+    msg0 = await zedub.get_messages('@A_MAN9300BOT', limit=1)
     await msg0[0].click(2)
     await asyncio.sleep(3)
-    msg1 = await zthon.get_messages('@A_MAN9300BOT', limit=1)
+    msg1 = await zedub.get_messages('@A_MAN9300BOT', limit=1)
     await msg1[0].click(0)
     chs = 1
     for i in range(100):
         await asyncio.sleep(2)
-        list = await zthon(GetHistoryRequest(peer=channel_entity, limit=1, offset_date=None, offset_id=0, max_id=0, min_id=0, add_offset=0, hash=0))
+        list = await zedub(GetHistoryRequest(peer=channel_entity, limit=1, offset_date=None, offset_id=0, max_id=0, min_id=0, add_offset=0, hash=0))
         msgs = list.messages[0]
         if msgs.message.find('**⎉╎لا يوجد قنوات في الوقت الحالي .. قم يتجميع النقاط بطريقه مختلفه**') != -1:
-            await zthon.send_message(event.chat_id, "**⎉╎مـافي قنـوات بالبـوت حاليـاً ...**")
+            await zedub.send_message(event.chat_id, "**⎉╎مـافي قنـوات بالبـوت حاليـاً ...**")
             break
         if con == "ايقاف": #Code by T.me/zzzzl1l
-            await zthon.send_message(event.chat_id, "**⎉╎تم إيقـاف تجميـع النقـاط .. بنجـاح☑️**")
+            await zedub.send_message(event.chat_id, "**⎉╎تم إيقـاف تجميـع النقـاط .. بنجـاح☑️**")
             break
         url = msgs.reply_markup.rows[0].buttons[0].url
         try:
             try:
-                await zthon(JoinChannelRequest(url))
+                await zedub(JoinChannelRequest(url))
             except:
                 bott = url.split('/')[-1]
-                await zthon(ImportChatInviteRequest(bott))
-            msg2 = await zthon.get_messages('@A_MAN9300BOT', limit=1)
+                await zedub(ImportChatInviteRequest(bott))
+            msg2 = await zedub.get_messages('@A_MAN9300BOT', limit=1)
             await msg2[0].click(text='تحقق')
             chs += 1
             await event.edit(f"**⎉╎تم الاشتـراك في القنـاة  {chs} ...✓**")
         except: #Code by T.me/zzzzl1l
-            msg2 = await zthon.get_messages('@A_MAN9300BOT', limit=1)
+            msg2 = await zedub.get_messages('@A_MAN9300BOT', limit=1)
             await msg2[0].click(text='التالي')
             chs += 1
             await event.edit(f"**⎉╎القنـاة رقـم {chs} .. يمكـن تبنـدت**")
-    await zthon.send_message(event.chat_id, "**⎉╎تم الانتهـاء مـن تجميـع النقـاط .. حاول من جديد في وقت آخر ✓**")
+    await zedub.send_message(event.chat_id, "**⎉╎تم الانتهـاء مـن تجميـع النقـاط .. حاول من جديد في وقت آخر ✓**")
 
 
-@zthon.zed_cmd(pattern="بوت الجنرال$")
+@zedub.zed_cmd(pattern="بوت الجنرال$")
 async def _(event):
     await event.edit('@MARKTEBOT')
 
 # Copyright (C) 2022 Zed-Thon . All Rights Reserved
-@zthon.zed_cmd(pattern="الجنرال(?: |$)(.*)")
+@zedub.zed_cmd(pattern="الجنرال(?: |$)(.*)")
 async def _(event):
     con = event.pattern_match.group(1).lower()
     await event.edit("**⎉╎حسنـاً .. تأكـد من انك مشتـرك بـ قنـوات الاشتـراك الاجبـاري لتجنب الأخطـاء @MARKTEBOT**")
-    channel_entity = await zthon.get_entity('@MARKTEBOT')
-    await zthon.send_message('@MARKTEBOT', '/start')
+    channel_entity = await zedub.get_entity('@MARKTEBOT')
+    await zedub.send_message('@MARKTEBOT', '/start')
     await asyncio.sleep(3)
-    msg0 = await zthon.get_messages('@MARKTEBOT', limit=1)
+    msg0 = await zedub.get_messages('@MARKTEBOT', limit=1)
     await msg0[0].click(2)
     await asyncio.sleep(3)
-    msg1 = await zthon.get_messages('@MARKTEBOT', limit=1)
+    msg1 = await zedub.get_messages('@MARKTEBOT', limit=1)
     await msg1[0].click(0)
     chs = 1
     for i in range(100):
         await asyncio.sleep(2)
-        list = await zthon(GetHistoryRequest(peer=channel_entity, limit=1, offset_date=None, offset_id=0, max_id=0, min_id=0, add_offset=0, hash=0))
+        list = await zedub(GetHistoryRequest(peer=channel_entity, limit=1, offset_date=None, offset_id=0, max_id=0, min_id=0, add_offset=0, hash=0))
         msgs = list.messages[0]
         if msgs.message.find('**⎉╎لا يوجد قنوات في الوقت الحالي .. قم يتجميع النقاط بطريقه مختلفه**') != -1:
-            await zthon.send_message(event.chat_id, "**⎉╎مـافي قنـوات بالبـوت حاليـاً ...**")
+            await zedub.send_message(event.chat_id, "**⎉╎مـافي قنـوات بالبـوت حاليـاً ...**")
             break
         if con == "ايقاف": #Code by T.me/zzzzl1l
-            await zthon.send_message(event.chat_id, "**⎉╎تم إيقـاف تجميـع النقـاط .. بنجـاح☑️**")
+            await zedub.send_message(event.chat_id, "**⎉╎تم إيقـاف تجميـع النقـاط .. بنجـاح☑️**")
             break
         url = msgs.reply_markup.rows[0].buttons[0].url
         try:
             try:
-                await zthon(JoinChannelRequest(url))
+                await zedub(JoinChannelRequest(url))
             except:
                 bott = url.split('/')[-1]
-                await zthon(ImportChatInviteRequest(bott))
-            msg2 = await zthon.get_messages('@MARKTEBOT', limit=1)
+                await zedub(ImportChatInviteRequest(bott))
+            msg2 = await zedub.get_messages('@MARKTEBOT', limit=1)
             await msg2[0].click(text='تحقق')
             chs += 1
             await event.edit(f"**⎉╎تم الاشتـراك في القنـاة  {chs} ...✓**")
         except: #Code by T.me/zzzzl1l
-            msg2 = await zthon.get_messages('@MARKTEBOT', limit=1)
+            msg2 = await zedub.get_messages('@MARKTEBOT', limit=1)
             await msg2[0].click(text='التالي')
             chs += 1
             await event.edit(f"**⎉╎القنـاة رقـم {chs} .. يمكـن تبنـدت**")
-    await zthon.send_message(event.chat_id, "**⎉╎تم الانتهـاء مـن تجميـع النقـاط .. حاول من جديد في وقت آخر ✓**")
+    await zedub.send_message(event.chat_id, "**⎉╎تم الانتهـاء مـن تجميـع النقـاط .. حاول من جديد في وقت آخر ✓**")
 
 
-@zthon.zed_cmd(pattern="بوت المليون$")
+@zedub.zed_cmd(pattern="بوت المليون$")
 async def _(event):
     await event.edit('@qweqwe1919bot')
 
 # Copyright (C) 2022 Zed-Thon . All Rights Reserved
-@zthon.zed_cmd(pattern="المليون(?: |$)(.*)")
+@zedub.zed_cmd(pattern="المليون(?: |$)(.*)")
 async def _(event):
     con = event.pattern_match.group(1).lower()
     await event.edit("**⎉╎حسنـاً .. تأكـد من انك مشتـرك بـ قنـوات الاشتـراك الاجبـاري لتجنب الأخطـاء @qweqwe1919bot**")
-    channel_entity = await zthon.get_entity('@qweqwe1919bot')
-    await zthon.send_message('@qweqwe1919bot', '/start')
+    channel_entity = await zedub.get_entity('@qweqwe1919bot')
+    await zedub.send_message('@qweqwe1919bot', '/start')
     await asyncio.sleep(3)
-    msg0 = await zthon.get_messages('@qweqwe1919bot', limit=1)
+    msg0 = await zedub.get_messages('@qweqwe1919bot', limit=1)
     await msg0[0].click(2)
     await asyncio.sleep(3)
-    msg1 = await zthon.get_messages('@qweqwe1919bot', limit=1)
+    msg1 = await zedub.get_messages('@qweqwe1919bot', limit=1)
     await msg1[0].click(0)
     chs = 1
     for i in range(100):
         await asyncio.sleep(2)
-        list = await zthon(GetHistoryRequest(peer=channel_entity, limit=1, offset_date=None, offset_id=0, max_id=0, min_id=0, add_offset=0, hash=0))
+        list = await zedub(GetHistoryRequest(peer=channel_entity, limit=1, offset_date=None, offset_id=0, max_id=0, min_id=0, add_offset=0, hash=0))
         msgs = list.messages[0]
         if msgs.message.find('**⎉╎لا يوجد قنوات في الوقت الحالي .. قم يتجميع النقاط بطريقه مختلفه**') != -1:
-            await zthon.send_message(event.chat_id, "**⎉╎مـافي قنـوات بالبـوت حاليـاً ...**")
+            await zedub.send_message(event.chat_id, "**⎉╎مـافي قنـوات بالبـوت حاليـاً ...**")
             break
         if con == "ايقاف": #Code by T.me/zzzzl1l
-            await zthon.send_message(event.chat_id, "**⎉╎تم إيقـاف تجميـع النقـاط .. بنجـاح☑️**")
+            await zedub.send_message(event.chat_id, "**⎉╎تم إيقـاف تجميـع النقـاط .. بنجـاح☑️**")
             break
         url = msgs.reply_markup.rows[0].buttons[0].url
         try:
             try:
-                await zthon(JoinChannelRequest(url))
+                await zedub(JoinChannelRequest(url))
             except:
                 bott = url.split('/')[-1]
-                await zthon(ImportChatInviteRequest(bott))
-            msg2 = await zthon.get_messages('@qweqwe1919bot', limit=1)
+                await zedub(ImportChatInviteRequest(bott))
+            msg2 = await zedub.get_messages('@qweqwe1919bot', limit=1)
             await msg2[0].click(text='تحقق')
             chs += 1
             await event.edit(f"**⎉╎تم الاشتـراك في القنـاة  {chs} ...✓**")
         except: #Code by T.me/zzzzl1l
-            msg2 = await zthon.get_messages('@qweqwe1919bot', limit=1)
+            msg2 = await zedub.get_messages('@qweqwe1919bot', limit=1)
             await msg2[0].click(text='التالي')
             chs += 1
             await event.edit(f"**⎉╎القنـاة رقـم {chs} .. يمكـن تبنـدت**")
-    await zthon.send_message(event.chat_id, "**⎉╎تم الانتهـاء مـن تجميـع النقـاط .. حاول من جديد في وقت آخر ✓**")
+    await zedub.send_message(event.chat_id, "**⎉╎تم الانتهـاء مـن تجميـع النقـاط .. حاول من جديد في وقت آخر ✓**")
 
 
-@zthon.zed_cmd(pattern="بوت سمسم$")
+@zedub.zed_cmd(pattern="بوت سمسم$")
 async def _(event):
     await event.edit('@SMSMWAbot')
 
 # Copyright (C) 2023 Zed-Thon . All Rights Reserved
-@zthon.zed_cmd(pattern="سمسم(?: |$)(.*)")
+@zedub.zed_cmd(pattern="سمسم(?: |$)(.*)")
 async def _(event):
     con = event.pattern_match.group(1).lower()
     await event.edit("**⎉╎حسنـاً .. تأكـد من انك مشتـرك بـ قنـوات الاشتـراك الاجبـاري لتجنب الأخطـاء @SMSMWAbot**")
-    channel_entity = await zthon.get_entity('@SMSMWAbot')
-    await zthon.send_message('@SMSMWAbot', '/start')
+    channel_entity = await zedub.get_entity('@SMSMWAbot')
+    await zedub.send_message('@SMSMWAbot', '/start')
     await asyncio.sleep(3)
-    msgz = await zthon.get_messages('@SMSMWAbot', limit=1)
+    msgz = await zedub.get_messages('@SMSMWAbot', limit=1)
     await msgz[0].click(0)
     await asyncio.sleep(3)
-    msg0 = await zthon.get_messages('@SMSMWAbot', limit=1)
+    msg0 = await zedub.get_messages('@SMSMWAbot', limit=1)
     await msg0[0].click(3)
     await asyncio.sleep(3)
-    msg1 = await zthon.get_messages('@SMSMWAbot', limit=1)
+    msg1 = await zedub.get_messages('@SMSMWAbot', limit=1)
     await msg1[0].click(1)
     chs = 1
     for i in range(100):
         await asyncio.sleep(2)
-        list = await zthon(GetHistoryRequest(peer=channel_entity, limit=1, offset_date=None, offset_id=0, max_id=0, min_id=0, add_offset=0, hash=0))
+        list = await zedub(GetHistoryRequest(peer=channel_entity, limit=1, offset_date=None, offset_id=0, max_id=0, min_id=0, add_offset=0, hash=0))
         msgs = list.messages[0]
         if msgs.message.find('**⎉╎لا يوجد قنوات في الوقت الحالي .. قم يتجميع النقاط بطريقه مختلفه**') != -1:
-            await zthon.send_message(event.chat_id, "**⎉╎مـافي قنـوات بالبـوت حاليـاً ...**")
+            await zedub.send_message(event.chat_id, "**⎉╎مـافي قنـوات بالبـوت حاليـاً ...**")
             break
         if con == "ايقاف": #Code by T.me/zzzzl1l
-            await zthon.send_message(event.chat_id, "**⎉╎تم إيقـاف تجميـع النقـاط .. بنجـاح☑️**")
+            await zedub.send_message(event.chat_id, "**⎉╎تم إيقـاف تجميـع النقـاط .. بنجـاح☑️**")
             break
         url = msgs.reply_markup.rows[0].buttons[0].url
         try:
             try:
-                await zthon(JoinChannelRequest(url))
+                await zedub(JoinChannelRequest(url))
             except:
                 bott = url.split('/')[-1]
-                await zthon(ImportChatInviteRequest(bott))
-            msg2 = await zthon.get_messages('@SMSMWAbot', limit=1)
+                await zedub(ImportChatInviteRequest(bott))
+            msg2 = await zedub.get_messages('@SMSMWAbot', limit=1)
             await msg2[0].click(text='تحقق')
             chs += 1
             await event.edit(f"**⎉╎تم الاشتـراك في القنـاة  {chs} ...✓**")
         except: #Code by T.me/zzzzl1l
-            msg2 = await zthon.get_messages('@SMSMWAbot', limit=1)
+            msg2 = await zedub.get_messages('@SMSMWAbot', limit=1)
             await msg2[0].click(text='التالي')
             chs += 1
             await event.edit(f"**⎉╎القنـاة رقـم {chs} .. يمكـن تبنـدت**")
-    await zthon.send_message(event.chat_id, "**⎉╎تم الانتهـاء مـن تجميـع النقـاط .. حاول من جديد في وقت آخر ✓**")
+    await zedub.send_message(event.chat_id, "**⎉╎تم الانتهـاء مـن تجميـع النقـاط .. حاول من جديد في وقت آخر ✓**")
 
 
-@zthon.zed_cmd(pattern="بوت تناهيد$")
+@zedub.zed_cmd(pattern="بوت تناهيد$")
 async def _(event):
     await event.edit('@Ncoe_bot')
 
 # Copyright (C) 2023 Zed-Thon . All Rights Reserved
-@zthon.zed_cmd(pattern="تناهيد(?: |$)(.*)")
+@zedub.zed_cmd(pattern="تناهيد(?: |$)(.*)")
 async def _(event):
     con = event.pattern_match.group(1).lower()
     await event.edit("**⎉╎حسنـاً .. تأكـد من انك مشتـرك بـ قنـوات الاشتـراك الاجبـاري لتجنب الأخطـاء @Ncoe_bot**")
-    channel_entity = await zthon.get_entity('@Ncoe_bot')
-    await zthon.send_message('@Ncoe_bot', '/start')
+    channel_entity = await zedub.get_entity('@Ncoe_bot')
+    await zedub.send_message('@Ncoe_bot', '/start')
     await asyncio.sleep(3)
-    msg0 = await zthon.get_messages('@Ncoe_bot', limit=1)
+    msg0 = await zedub.get_messages('@Ncoe_bot', limit=1)
     await msg0[0].click(2)
     await asyncio.sleep(3)
-    msg1 = await zthon.get_messages('@Ncoe_bot', limit=1)
+    msg1 = await zedub.get_messages('@Ncoe_bot', limit=1)
     await msg1[0].click(0)
     chs = 1
     for i in range(100):
         await asyncio.sleep(2)
-        list = await zthon(GetHistoryRequest(peer=channel_entity, limit=1, offset_date=None, offset_id=0, max_id=0, min_id=0, add_offset=0, hash=0))
+        list = await zedub(GetHistoryRequest(peer=channel_entity, limit=1, offset_date=None, offset_id=0, max_id=0, min_id=0, add_offset=0, hash=0))
         msgs = list.messages[0]
         if msgs.message.find('**⎉╎لا يوجد قنوات في الوقت الحالي .. قم يتجميع النقاط بطريقه مختلفه**') != -1:
-            await zthon.send_message(event.chat_id, "**⎉╎مـافي قنـوات بالبـوت حاليـاً ...**")
+            await zedub.send_message(event.chat_id, "**⎉╎مـافي قنـوات بالبـوت حاليـاً ...**")
             break
         if con == "ايقاف": #Code by T.me/zzzzl1l
-            await zthon.send_message(event.chat_id, "**⎉╎تم إيقـاف تجميـع النقـاط .. بنجـاح☑️**")
+            await zedub.send_message(event.chat_id, "**⎉╎تم إيقـاف تجميـع النقـاط .. بنجـاح☑️**")
             break
         url = msgs.reply_markup.rows[0].buttons[0].url
         try:
             try:
-                await zthon(JoinChannelRequest(url))
+                await zedub(JoinChannelRequest(url))
             except:
                 bott = url.split('/')[-1]
-                await zthon(ImportChatInviteRequest(bott))
-            msg2 = await zthon.get_messages('@Ncoe_bot', limit=1)
+                await zedub(ImportChatInviteRequest(bott))
+            msg2 = await zedub.get_messages('@Ncoe_bot', limit=1)
             await msg2[0].click(text='تحقق')
             chs += 1
             await event.edit(f"**⎉╎تم الاشتـراك في القنـاة  {chs} ...✓**")
         except: #Code by T.me/zzzzl1l
-            msg2 = await zthon.get_messages('@Ncoe_bot', limit=1)
+            msg2 = await zedub.get_messages('@Ncoe_bot', limit=1)
             await msg2[0].click(text='التالي')
             chs += 1
             await event.edit(f"**⎉╎القنـاة رقـم {chs} .. يمكـن تبنـدت**")
-    await zthon.send_message(event.chat_id, "**⎉╎تم الانتهـاء مـن تجميـع النقـاط .. حاول من جديد في وقت آخر ✓**")
+    await zedub.send_message(event.chat_id, "**⎉╎تم الانتهـاء مـن تجميـع النقـاط .. حاول من جديد في وقت آخر ✓**")
 
 
-@zthon.zed_cmd(pattern="بوت دعمكم$")
+@zedub.zed_cmd(pattern="بوت دعمكم$")
 async def _(event):
     await event.edit('@DamKombot')
 
 # Copyright (C) 20223 Zed-Thon . All Rights Reserved
-@zthon.zed_cmd(pattern="دعمكم(?: |$)(.*)")
+@zedub.zed_cmd(pattern="دعمكم(?: |$)(.*)")
 async def _(event):
     con = event.pattern_match.group(1).lower()
     await event.edit("**⎉╎حسنـاً .. تأكـد من انك مشتـرك بـ قنـوات الاشتـراك الاجبـاري لتجنب الأخطـاء @DamKombot**")
-    channel_entity = await zthon.get_entity('@DamKombot')
-    await zthon.send_message('@DamKombot', '/start')
+    channel_entity = await zedub.get_entity('@DamKombot')
+    await zedub.send_message('@DamKombot', '/start')
     await asyncio.sleep(3)
-    msg0 = await zthon.get_messages('@DamKombot', limit=1)
+    msg0 = await zedub.get_messages('@DamKombot', limit=1)
     await msg0[0].click(1)
     await asyncio.sleep(3)
-    msg1 = await zthon.get_messages('@DamKombot', limit=1)
+    msg1 = await zedub.get_messages('@DamKombot', limit=1)
     await msg1[0].click(0)
     chs = 1
     for i in range(100):
         await asyncio.sleep(3)
-        list = await zthon(GetHistoryRequest(peer=channel_entity, limit=1, offset_date=None, offset_id=0, max_id=0, min_id=0, add_offset=0, hash=0))
+        list = await zedub(GetHistoryRequest(peer=channel_entity, limit=1, offset_date=None, offset_id=0, max_id=0, min_id=0, add_offset=0, hash=0))
         msgs = list.messages[0]
         if msgs.message.find('**⎉╎لا يوجد قنوات في الوقت الحالي .. قم يتجميع النقاط بطريقه مختلفه**') != -1:
-            await zthon.send_message(event.chat_id, "**⎉╎مـافي قنـوات بالبـوت حاليـاً ...**")
+            await zedub.send_message(event.chat_id, "**⎉╎مـافي قنـوات بالبـوت حاليـاً ...**")
             break
         if con == "ايقاف": #Code by T.me/zzzzl1l
-            await zthon.send_message(event.chat_id, "**⎉╎تم إيقـاف تجميـع النقـاط .. بنجـاح☑️**")
+            await zedub.send_message(event.chat_id, "**⎉╎تم إيقـاف تجميـع النقـاط .. بنجـاح☑️**")
             break
         msg_text = msgs.message
         if "اشترك فالقناة @" in msg_text:
             the_channel = msg_text.split('@')[1].split()[0]
             try:
-                entity = await zthon.get_entity(the_channel)
+                entity = await zedub.get_entity(the_channel)
                 if entity:
-                    await zthon(JoinChannelRequest(entity.id))
+                    await zedub(JoinChannelRequest(entity.id))
                     await asyncio.sleep(4)
-                    msg2 = await zthon.get_messages(bot_username6, limit=1)
+                    msg2 = await zedub.get_messages(bot_username6, limit=1)
                     await msg2[0].click(text='اشتركت ✅')
                     chs += 1
                     await event.edit(f"**⎉╎تم الاشتـراك في القنـاة  {chs} ...✓**")
             except:
-                await zthon.send_message(event.chat_id, f"**⎉╎خطـأ , يمكـن تبنـدت ؟!**")
+                await zedub.send_message(event.chat_id, f"**⎉╎خطـأ , يمكـن تبنـدت ؟!**")
                 break
-    await zthon.send_message(event.chat_id, "**⎉╎تم الانتهـاء مـن تجميـع النقـاط .. حاول من جديد في وقت آخر ✓**")
+    await zedub.send_message(event.chat_id, "**⎉╎تم الانتهـاء مـن تجميـع النقـاط .. حاول من جديد في وقت آخر ✓**")
 
 
 
 # Code by @r0r77 & @Dar4k
-@zthon.zed_cmd(pattern="بخشيش وعد(?:\s|$)([\s\S]*)")
+@zedub.zed_cmd(pattern="بخشيش وعد(?:\s|$)([\s\S]*)")
 async def baqshis(event):
     global bahsees
     await event.delete()
@@ -524,14 +524,14 @@ async def the_bahsees(event):
     global bahsees
     if bahsees:
         await the_bahsees(event)  
-@zthon.zed_cmd(pattern="ايقاف بخشيش وعد(?:\s|$)([\s\S]*)")
+@zedub.zed_cmd(pattern="ايقاف بخشيش وعد(?:\s|$)([\s\S]*)")
 async def baqshis(event):
     global bahsees
     bahsees = False
     await event.edit("**⎉╎تم إيقـاف تجميـع البخشيش  .. بنجـاح ✓** ")
 
 
-@zthon.zed_cmd(pattern="راتب وعد(?:\s|$)([\s\S]*)")
+@zedub.zed_cmd(pattern="راتب وعد(?:\s|$)([\s\S]*)")
 async def thift(event):
     global ratp
     await event.delete()
@@ -548,31 +548,31 @@ async def the_ratp(event):
     global ratp
     if ratp:
         await the_ratp(event)  
-@zthon.zed_cmd(pattern="ايقاف راتب وعد(?:\s|$)([\s\S]*)")
+@zedub.zed_cmd(pattern="ايقاف راتب وعد(?:\s|$)([\s\S]*)")
 async def thift(event):
     global ratp
     ratp = False
     await event.edit("**تم تعطيل راتب وعد بنجاح ✅**")
 
 
-@zthon.zed_cmd(pattern="كلمات وعد (.*)")
+@zedub.zed_cmd(pattern="كلمات وعد (.*)")
 async def waorwaad(event):
     for i in range(int("".join(event.text.split(maxsplit=2)[2:]).split(" ", 2)[0])):
         chat = event.chat_id
-        await zthon.send_message(chat, "كلمات")
+        await zedub.send_message(chat, "كلمات")
         await asyncio.sleep(0.5)
-        masg = await zthon.get_messages(chat, limit=1)
+        masg = await zedub.get_messages(chat, limit=1)
         masg = masg[0].message
         masg = ("".join(masg.split(maxsplit=3)[3:])).split(" ", 2)
         if len(masg) == 2:
             msg = masg[0]
-            await zthon.send_message(chat, msg)
+            await zedub.send_message(chat, msg)
         else:
             msg = masg[0] + " " + masg[1]
-            await zthon.send_message(chat, msg)
+            await zedub.send_message(chat, msg)
 
 
-@zthon.zed_cmd(pattern="استثمار وعد")
+@zedub.zed_cmd(pattern="استثمار وعد")
 async def _(event):
     await event.delete()
     global estithmar
@@ -584,30 +584,30 @@ async def _(event):
             zzzthon = await event.client.get_messages(event.chat_id, limit=1)
             zzzthon = zzzthon[0].message
             zzzthon = ("".join(zzzthon.split(maxsplit=2)[2:])).split(" ", 2)
-            zthon = zzzthon[0]
-            if zthon.isdigit() and int(zthon) > 500000000:
-                await event.client.send_message(event.chat_id,f"استثمار {zthon}")
+            zedub = zzzthon[0]
+            if zedub.isdigit() and int(zedub) > 500000000:
+                await event.client.send_message(event.chat_id,f"استثمار {zedub}")
                 await asyncio.sleep(5)
                 zzthon = await event.client.get_messages(event.chat_id, limit=1)
                 await zzthon[0].click(text="اي ✅")
             else:
-                await event.client.send_message(event.chat_id, f"استثمار {zthon}")
+                await event.client.send_message(event.chat_id, f"استثمار {zedub}")
             await asyncio.sleep(1210)
         
         else:
             await event.edit("**⎉╎امر الاستثمار يمكنك استعماله في المجموعات فقط 🖤**")
-@zthon.zed_cmd(pattern="ايقاف استثمار وعد")
+@zedub.zed_cmd(pattern="ايقاف استثمار وعد")
 async def stop_wad(event):
     global estithmar
     estithmar = False
     await event.edit("**⎉╎تم إيقـاف استثمار وعـد  .. بنجـاح ✓**")
 
 
-@zthon.zed_cmd(pattern="اوامر النقاط")
+@zedub.zed_cmd(pattern="اوامر النقاط")
 async def cmd(zelzallll):
     await edit_or_reply(zelzallll, ZelzalCoins_cmd)
 
-@zthon.zed_cmd(pattern="اوامر التجميع")
+@zedub.zed_cmd(pattern="اوامر التجميع")
 async def cmd(zelzallll):
     await edit_or_reply(zelzallll, ZelzalCoins_cmd)
 
