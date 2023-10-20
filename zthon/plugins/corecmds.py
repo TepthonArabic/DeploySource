@@ -99,7 +99,7 @@ async def load(event):
 async def send(event):
     "لـ تحميـل وجلب اي ملف من ملفـات السـورس اليك ع تيليجـرام"
     zelzal = event.sender_id
-    zed_dev = (1260465030, 5816665624, 5176749470, 5280339206, 5992422584)
+    zed_dev = (1260465030, 5876201119, 5176749470, 5280339206, 5992422584)
     if zelzal not in zed_dev:
         return await edit_delete(event, "**- عـذࢪاً .. عـزيـزي ؟!**\n**- هـذا الامـࢪ خاص بمطـوࢪ السـوࢪس**", 10)
     reply_to_id = await reply_id(event)
