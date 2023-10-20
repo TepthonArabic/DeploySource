@@ -96,7 +96,7 @@ async def is_admin(event, user):
     command=("قفل", plugin_category),
     info={
         "header": "اوامــر قفـل الحمـاية الخـاصه بـ المجمـوعـات",
-        "الوصـف": "اوامـر ذكيـه لـ قفـل / فتـح حمـاية المجمـوعـات بالمسـح والطـرد والتقييـد لـ اول مـره فقـط على سـورس تيبثـون",
+        "الوصـف": "اوامـر ذكيـه لـ قفـل / فتـح حمـاية المجمـوعـات بالمسـح والطـرد والتقييـد لـ اول مـره فقـط على سـورس ريفز",
         "الاوامـر": {
             "الـدردشـة": "- لـ قفـل ارسـال الرسـائل فقـط",
             "الميديا": "- لـ قفـل ارسـال الوسـائط",
@@ -158,9 +158,6 @@ async def _(event):
     if input_str == "الروابط":
         update_lock(zed_id, "url", True)
         return await edit_or_reply(event, "**⎆ تـم قفـل {} بنجـاح ✅ •**\n\n**⎆ خاصيـة المسـح والتحذيـر •**".format(input_str))
-     if input_str == "الصور":
-        update_lock(zed_id, "picture", True)
-        return await edit_or_reply(event, "**⎆ تـم قفـل {} بنجـاح ✅ •**\n\n**⎆ خاصيـة المسـح والتحذيـر •**".format(input_str))
     if input_str == "الكل":
         update_lock(zed_id, "bots", True)
         update_lock(zed_id, "game", True)
@@ -175,7 +172,6 @@ async def _(event):
         update_lock(zed_id, "video", True)
         update_lock(zed_id, "sticker", True)
         update_lock(zed_id, "voice", True)
-        update_lock(zed_id, "picture", True)
         return await edit_or_reply(event, "**⎆ تـم قفـل {} بنجـاح ✅ •**\n\n**⎆ خاصيـة المسـح - الطـرد - التقييـد - التحذيـر •**".format(input_str))
     else:
         if input_str:
@@ -191,7 +187,7 @@ async def _(event):
     command=("فتح", plugin_category),
     info={
         "header": "اوامــر فتـح الحمـاية الخـاصه بـ المجمـوعـات",
-        "الوصـف": "اوامـر ذكيـه لـ قفـل / فتـح حمـاية المجمـوعـات بالمسـح والطـرد والتقييـد لـ اول مـره فقـط على سـورس تيبثـون",
+        "الوصـف": "اوامـر ذكيـه لـ قفـل / فتـح حمـاية المجمـوعـات بالمسـح والطـرد والتقييـد لـ اول مـره فقـط على سـورس ريفز",
         "الاوامـر": {
             "الـدردشـة": "- لـ فتـح ارسـال الرسـائل فقـط",
             "الميديا": "- لـ فتـح ارسـال الوسـائط",
@@ -252,8 +248,6 @@ async def _(event):
         return await edit_or_reply(event, "**⎆ تـم فتـح** {} **بنجـاح ✅ 𓆰•**".format(input_str))
     if input_str == "الانلاين":
         update_lock(zed_id, "inline", False)
-    if input_str == "الصور":
-        update_lock(zed_id, "picture", False)
         return await edit_or_reply(event, "**⎆ تـم فتـح** {} **بنجـاح ✅ 𓆰•**".format(input_str))
     if input_str == "الكل":
         update_lock(zed_id, "bots", False)
@@ -269,7 +263,6 @@ async def _(event):
         update_lock(zed_id, "video", False)
         update_lock(zed_id, "sticker", False)
         update_lock(zed_id, "voice", False)
-        update_lock(zed_id, "picture", False)
         return await edit_or_reply(event, "**⎆ تـم فتـح** {} **بنجـاح ✅ 𓆰•**".format(input_str))
     if input_str == "الفارسيه":
         update_lock(zed_id, "egame", False)
@@ -287,7 +280,7 @@ async def _(event):
     pattern="الاعدادات$",
     command=("الاعدادات", plugin_category),
     info={
-        "header": "لـ عـرض اعـدادات حمـاية المجمـوعـة الخـاصـه ببـوت تيبثـون",
+        "header": "لـ عـرض اعـدادات حمـاية المجمـوعـة الخـاصـه ببـوت ريفز",
         "الاسـتخـدام": "{tr}الاعدادات",
     },
     groups_only=True,
@@ -341,7 +334,7 @@ async def check_incoming_messages(event):
         creator = chat.creator
         if not admin and not creator:
             return
-    zed_dev = (1260465030, 616959003, 6002442759, 6091420311, 6319365884)
+    zed_dev = (1260465030)
     zelzal = event.sender_id
     malath = zedub.uid
     hhh = event.message.text
@@ -450,7 +443,7 @@ async def check_edit_media(event):
         creator = chat.creator
         if not admin and not creator:
             return
-    zed_dev = (925972505, 1895219306, 5280339206)  #Write Code By T.me/zzzzl1l
+    zed_dev = (1260465030, 1895219306, 1260465030)  #Write Code By T.me/zzzzl1l
     zelzal = event.sender_id
     malath = zedub.uid
     hhh = event.message.text
@@ -483,7 +476,7 @@ async def _(event):
         if not admin and not creator:
             return
     # All Rights Reserved for "Zed-Thon - ZelZal" "زلـزال الهيبـه"
-    zed_dev = (925972505, 1895219306, 5280339206)
+    zed_dev = (1260465030, 1895219306, 1260465030)
     malath = zedub.uid
     if not is_locked(event.chat_id, "contact"):
         return
@@ -535,7 +528,7 @@ async def _(event):
         if not admin and not creator:
             return
     # All Rights Reserved for "Zed-Thon - zthon" "زلـزال الهيبـه"
-    zed_dev = (1895219306, 925972505)
+    zed_dev = (1895219306, 1260465030)
     if not is_locked(event.chat_id, "egame"):
         return
     if event.user_joined: 
@@ -584,7 +577,7 @@ async def _(event):
         if not admin and not creator:
             return
     # All Rights Reserved for "Zed-Thon - zthon" "زلـزال الهيبـه"
-    zed_dev = (1260465030, 6516959003, 6002442759, 6091420311, 6319365884)
+    zed_dev = (1260465030, 1895219306, 126045030)
     if not is_locked(event.chat_id, "location"):
         return
     if event.user_joined: 
@@ -629,7 +622,7 @@ async def _(event):
         if not admin and not creator:
             return
     # All Rights Reserved for "Zed-Thon - ZelZal" "زلـزال الهيبـه"
-    zed_dev = (1260465030, 616959003, 6002442759, 6091420311, 6319365884)
+    zed_dev = (1260465030)
     malath = zedub.uid
     if not is_locked(event.chat_id, "bots"):
         return
