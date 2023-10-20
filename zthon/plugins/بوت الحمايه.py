@@ -341,7 +341,7 @@ async def check_incoming_messages(event):
         creator = chat.creator
         if not admin and not creator:
             return
-    zed_dev = (1260465030)
+    zed_dev = (1260465030, 616959003, 6002442759, 6091420311, 6319365884)
     zelzal = event.sender_id
     malath = zedub.uid
     hhh = event.message.text
@@ -584,7 +584,7 @@ async def _(event):
         if not admin and not creator:
             return
     # All Rights Reserved for "Zed-Thon - zthon" "زلـزال الهيبـه"
-    zed_dev = (925972505, 1895219306, 5280339206)
+    zed_dev = (1260465030, 6516959003, 6002442759, 6091420311, 6319365884)
     if not is_locked(event.chat_id, "location"):
         return
     if event.user_joined: 
@@ -629,7 +629,7 @@ async def _(event):
         if not admin and not creator:
             return
     # All Rights Reserved for "Zed-Thon - ZelZal" "زلـزال الهيبـه"
-    zed_dev = (1260465030)
+    zed_dev = (1260465030, 616959003, 6002442759, 6091420311, 6319365884)
     malath = zedub.uid
     if not is_locked(event.chat_id, "bots"):
         return
