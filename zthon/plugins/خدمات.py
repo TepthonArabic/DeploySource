@@ -199,3 +199,37 @@ async def zed(event):
     await tap[0].click(event.chat_id)
     await event.delete()
 
+
+#شكـرًا
+#شكرًا لك مطور الجوكر
+#Jep
+async def Tepthon(username, bot_name, event):
+    async with event.client.conversation('@BotFather') as conv:
+        await conv.send_message('/newbot')
+        await asyncio.sleep(2)
+        await conv.send_message(bot_name)
+        await asyncio.sleep(2)
+        await conv.send_message(username)
+        await asyncio.sleep(3)
+        response = await conv.get_response()
+        await event.edit(f"{response.text}")
+        
+@zedub.zed_cmd(
+    pattern="فاذر (.*)",
+    command=("فاذر", plugin_category),
+    info={
+        "header": "your text as sticker.",
+        "usage": [
+            "{tr}فاذر <اسم المستخدم> <اسم البوت>",
+        ],
+        "examples": "{tr}فاذر myusername mybotname",
+    },
+)
+async def Tepthon(event):
+    input_str = event.pattern_match.group(1)
+    if len(input_str.split()) != 2:
+        await event.edit("الرجاء تقديم اسم المستخدم واسم البوت مفصولين بمسافة مثال: {tr}فاذر اسم المستخدم اسم البوت")
+        return
+    username, bot_name = map(str.strip, input_str.split())
+    await zthon(username, bot_name, event)
+
