@@ -4,7 +4,7 @@ from telethon.errors.rpcbaseerrors import ForbiddenError
 from telethon.errors.rpcerrorlist import PollOptionInvalidError
 from telethon.tl.types import InputMediaPoll, Poll
 
-from zthon import zedub
+from Tepthon import zedub
 
 from ..core.managers import edit_or_reply
 from . import Build_Poll, reply_id
