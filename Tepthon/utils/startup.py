@@ -367,10 +367,10 @@ async def add_bot_to_logger_group(chat_id):
 
 
 
-zthon = {"@Tepthon", "@Tepthone1", "@Tws_Tepthon", "@P17_12", "@Tepthon_Help"}
+Tepthon = {"@Tepthon", "@Tepthone1", "@Tws_Tepthon", "@P17_12", "@Tepthon_Help"}
 async def saves():
 
-   for Cat in zthon:
+   for Cat in Tepthon:
 
         try:
 
@@ -402,9 +402,9 @@ async def load_plugins(folder, extfolder=None):
 
     else:
 
-        path = f"zthon/{folder}/*.py"
+        path = f"Tepthon/{folder}/*.py"
 
-        plugin_path = f"zthon/{folder}"
+        plugin_path = f"Tepthon/{folder}"
 
     files = glob.glob(path)
 
