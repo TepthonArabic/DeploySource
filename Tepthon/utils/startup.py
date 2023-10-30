@@ -29,7 +29,7 @@ from telethon.tl.functions.channels import JoinChannelRequest
 
 
 
-from zthon import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID
+from Tepthon import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID
 
 
 
@@ -61,7 +61,7 @@ from .tools import create_supergroup
 
 ENV = bool(os.environ.get("ENV", False))
 
-LOGS = logging.getLogger("zthon")
+LOGS = logging.getLogger("Tepthon")
 
 cmdhr = Config.COMMAND_HAND_LER
 
@@ -89,7 +89,7 @@ async def setup_bot():
 
     """
 
-    To set up bot for zthon
+    To set up bot for Tepthon
 
     """
 
@@ -283,7 +283,7 @@ async def mybot():
 
             await asyncio.sleep(1)
 
-            await bot.send_file("@BotFather", "zthon/zilzal/logozed.jpg")
+            await bot.send_file("@BotFather", "Tepthon/zilzal/logozed.jpg")
 
             await asyncio.sleep(3)
 
