@@ -3,7 +3,7 @@ import json
 from bs4 import BeautifulSoup
 from requests import get
 
-from zthon import zedub
+from Tepthon import zedub
 
 from ..core.managers import edit_delete, edit_or_reply
 
