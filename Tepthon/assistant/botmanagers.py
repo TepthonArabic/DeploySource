@@ -3,7 +3,7 @@ from math import floor
 
 from telethon.utils import get_display_name
 
-from zthon import zedub
+from Tepthon import zedub
 
 from ..Config import Config
 from ..core.logger import logging
