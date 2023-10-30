@@ -4,7 +4,7 @@ import re
 
 from telethon.events import CallbackQuery
 
-from zthon import zedub
+from Tepthon import zedub
 from ..sql_helper.globals import gvarstatus
 
 
@@ -17,8 +17,8 @@ async def on_plug_in_callback_query_handler(event):
         zzz = await event.client.get_entity(ussr)
     except ValueError:
         return
-    if os.path.exists("./zthon/secret.txt"):
-        jsondata = json.load(open("./zthon/secret.txt"))
+    if os.path.exists("./Tepthon/secret.txt"):
+        jsondata = json.load(open("./Tepthon/secret.txt"))
         try:
             message = jsondata[f"{timestamp}"]
             userid = message["userid"]
