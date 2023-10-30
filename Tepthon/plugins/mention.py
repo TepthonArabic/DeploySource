@@ -1,6 +1,6 @@
 from telethon.tl.types import ChannelParticipantsAdmins
 
-from zthon import zedub
+from Tepthon import zedub
 
 from ..helpers.utils import get_user_from_event, reply_id
 
