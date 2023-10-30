@@ -1,7 +1,7 @@
 import requests
 from validators.url import url
 
-from zthon import zedub
+from Tepthon import zedub
 
 from ..core.managers import edit_delete, edit_or_reply
 
