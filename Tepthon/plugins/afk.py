@@ -3,7 +3,7 @@ from datetime import datetime
 
 from telethon.tl import functions, types
 
-from zthon import zedub
+from Tepthon import zedub
 
 from ..Config import Config
 from ..core.logger import logging
