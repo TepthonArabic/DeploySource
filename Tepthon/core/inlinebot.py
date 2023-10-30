@@ -12,7 +12,7 @@ from telethon.errors import QueryIdInvalidError
 from telethon.events import CallbackQuery, InlineQuery
 from youtubesearchpython import VideosSearch
 
-from zthon import zedub
+from Tepthon import zedub
 
 from ..Config import Config
 from ..helpers.functions import rand_key
@@ -99,7 +99,7 @@ async def inline_handler(event):  # sourcery no-metrics
                     user_list.append(u.id)
                     sandy += " "
                 sandy = sandy[:-1]
-            old_msg = os.path.join("./zthon", f"{info_type[0]}.txt")
+            old_msg = os.path.join("./Tepthon", f"{info_type[0]}.txt")
             try:
                 jsondata = json.load(open(old_msg))
             except Exception:
