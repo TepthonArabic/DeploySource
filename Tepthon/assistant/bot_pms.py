@@ -8,7 +8,7 @@ from telethon.errors import UserIsBlockedError
 from telethon.events import CallbackQuery, StopPropagation
 from telethon.utils import get_display_name
 
-from zthon import Config, zedub
+from Tepthon import Config, zedub
 
 from ..core import check_owner, pool
 from ..core.logger import logging
