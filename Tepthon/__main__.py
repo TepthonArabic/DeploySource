@@ -1,7 +1,7 @@
 from telethon.tl.functions.messages import GetMessagesViewsRequest
 import sys, asyncio
-import zthon
-from zthon import BOTLOG_CHATID, HEROKU_APP, PM_LOGGER_GROUP_ID
+import Tepthon
+from Tepthon import BOTLOG_CHATID, HEROKU_APP, PM_LOGGER_GROUP_ID
 from telethon import functions
 from .Config import Config
 from .core.logger import logging
@@ -12,8 +12,8 @@ from .utils import add_bot_to_logger_group, load_plugins, setup_bot, startupmess
 LOGS = logging.getLogger("سورس تيبثون")
 cmdhr = Config.COMMAND_HAND_LER
 
-print(zthon.__copyright__)
-print(f"المرخصة بموجب شروط  {zthon.__license__}")
+print(Tepthon.__copyright__)
+print(f"المرخصة بموجب شروط  {Tepthon.__license__}")
 
 cmdhr = Config.COMMAND_HAND_LER
 
