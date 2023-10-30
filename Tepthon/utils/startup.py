@@ -648,7 +648,7 @@ async def verifyLoggerGroup():
 
         executable = sys.executable.replace(" ", "\\ ")
 
-        args = [executable, "-m", "zthon"]
+        args = [executable, "-m", "Tepthon"]
 
         os.execle(executable, *args, os.environ)
 
@@ -710,4 +710,4 @@ async def install_externalrepo(repo, branch, cfolder):
 
         await runcmd(f"pip3 install --no-cache-dir -r {rpath}")
 
-    await load_plugins(folder="zthon", extfolder=cfolder)
+    await load_plugins(folder="Tepthon", extfolder=cfolder)
