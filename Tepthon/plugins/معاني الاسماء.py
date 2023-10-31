@@ -9,7 +9,7 @@ import os
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
-from zthon import zedub
+from Tepthon import zedub
 
 from ..core.managers import edit_delete, edit_or_reply
 from ..helpers.utils import reply_id, _format
