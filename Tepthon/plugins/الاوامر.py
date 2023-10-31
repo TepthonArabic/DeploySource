@@ -27,7 +27,7 @@ from telethon.errors import QueryIdInvalidError
 from telethon.events import CallbackQuery, InlineQuery
 from telethon.utils import get_display_name
 from telethon.tl.types import InputMessagesFilterDocument
-from zthon import StartTime, zedub, zedversion
+from Tepthon import StartTime, zedub, zedversion
 from ..Config import Config
 from ..helpers.functions import rand_key
 from ..core import check_owner, pool
