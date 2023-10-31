@@ -20,7 +20,7 @@ from telethon.tl import functions
 
 from telethon.tl.types import ChannelParticipantsAdmins
 
-from zthon import zedub
+from Tepthon import zedub
 
 from ..core.logger import logging
 from ..core.managers import edit_delete, edit_or_reply
