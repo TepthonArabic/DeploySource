@@ -16,8 +16,8 @@ from telethon.tl.functions.messages import ExportChatInviteRequest
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.types import ChatBannedRights
 
-from zthon import zedub
-from zthon import BOTLOG_CHATID
+from Tepthon import zedub
+from Tepthon import BOTLOG_CHATID
 from ..sql_helper.globals import addgvar, delgvar, gvarstatus
 from ..Config import Config
 from ..core.managers import edit_delete, edit_or_reply
