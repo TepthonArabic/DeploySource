@@ -1,4 +1,4 @@
-from zthon import zedub
+from Tepthon import zedub
 
 from ..core.managers import edit_delete, edit_or_reply
 from ..sql_helper.echo_sql import (
