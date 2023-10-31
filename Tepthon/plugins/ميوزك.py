@@ -1,6 +1,6 @@
 # Code For T.me/IQThon
 # Edit By T.me/ZedThon
-from zthon.core.logger import logging
+from Tepthon.core.logger import logging
 from telethon import TelegramClient, client, events
 
 from telethon.tl.functions.phone import CreateGroupCallRequest as startvc
@@ -21,7 +21,7 @@ from pytgcalls import StreamType
 from pytgcalls.types.input_stream import AudioVideoPiped, AudioPiped
 from pytgcalls.types.input_stream.quality import HighQualityAudio
 from pytgcalls.types.input_stream.quality import HighQualityVideo
-from zthon import zedub
+from Tepthon import zedub
 
 from ..Config import Config
 from telethon.sessions import StringSession
