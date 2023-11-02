@@ -6,7 +6,7 @@ from telethon.tl.functions.messages import GetHistoryRequest, ImportChatInviteRe
 from telethon.tl.functions.channels import JoinChannelRequest
 from telethon.tl.functions.messages import ImportChatInviteRequest
 
-from zthon import zedub
+from Tepthon import zedub
 from ..Config import Config
 from ..core.managers import edit_delete, edit_or_reply
 from ..helpers.utils import reply_id
