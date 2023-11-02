@@ -6,7 +6,7 @@ import textwrap
 from PIL import Image, ImageDraw, ImageFont
 from telethon.tl.types import InputMessagesFilterDocument
 
-from zthon import zedub
+from Tepthon import zedub
 
 from ..core.managers import edit_or_reply
 from ..helpers.functions import deEmojify, hide_inlinebot, waifutxt
