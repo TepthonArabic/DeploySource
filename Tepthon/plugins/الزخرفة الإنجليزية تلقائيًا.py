@@ -1,6 +1,6 @@
 from telethon import events
 
-from zthon import zedub
+from Tepthon import zedub
 
 from ..sql_helper.globals import addgvar, delgvar, gvarstatus
 
