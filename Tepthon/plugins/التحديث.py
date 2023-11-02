@@ -10,7 +10,7 @@ import urllib3
 from git import Repo
 from git.exc import GitCommandError, InvalidGitRepositoryError, NoSuchPathError
 
-from zthon import HEROKU_APP, UPSTREAM_REPO_URL, zedub
+from Tepthon import HEROKU_APP, UPSTREAM_REPO_URL, zedub
 
 from ..Config import Config
 from ..core.logger import logging
@@ -332,9 +332,9 @@ async def reda(event):
             origin = repo.create_remote("upstream", off_repo)
             origin.fetch()
             force_update = True
-            repo.create_head("zthon", origin.refs.zthon)
-            repo.heads.zthon.set_tracking_branch(origin.refs.zthon)
-            repo.heads.zthon.checkout(True)
+            repo.create_head("Tepthon", origin.refs.Tepthon)
+            repo.heads.Tepthon.set_tracking_branch(origin.refs.Tepthon)
+            repo.heads.Tepthon.checkout(True)
         ac_br = repo.active_branch.name
         if ac_br != UPSTREAM_REPO_BRANCH:
             await event.edit(
@@ -407,9 +407,9 @@ async def Hussein(event):
                     origin = repo.create_remote("upstream", off_repo)
                     origin.fetch()
                     force_update = True
-                    repo.create_head("zthon", origin.refs.zthon)
-                    repo.heads.zthon.set_tracking_branch(origin.refs.zthon)
-                    repo.heads.zthon.checkout(True)
+                    repo.create_head("Tepthon", origin.refs.Tepthon)
+                    repo.heads.Tepthon.set_tracking_branch(origin.refs.Tepthon)
+                    repo.heads.Tepthon.checkout(True)
                 ac_br = repo.active_branch.name
                 if ac_br != UPSTREAM_REPO_BRANCH:
                     await event.edit(
