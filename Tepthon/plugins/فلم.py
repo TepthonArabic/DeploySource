@@ -8,7 +8,7 @@ import os
 from justwatch import JustWatch, justwatchapi
 from pySmartDL import SmartDL
 
-from zthon import zedub
+from Tepthon import zedub
 
 from ..Config import Config
 from ..core.logger import logging
