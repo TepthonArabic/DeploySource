@@ -6,8 +6,8 @@ import random
 from urllib.parse import quote_plus
 from collections import deque
 from telethon.tl.types import ChannelParticipantsAdmins
-from zthon.core.logger import logging
-from zthon import zedub
+from Tepthon.core.logger import logging
+from Tepthon import zedub
 from ..Config import Config
 from ..core.managers import edit_delete, edit_or_reply
 from . import ALIVE_NAME, deEmojify, mention
