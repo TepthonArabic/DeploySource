@@ -1,7 +1,7 @@
 import os
 import asyncio
 from PIL import Image, ImageDraw, ImageFont
-from zthon import zedub
+from Tepthon import zedub
 
 from ..core.managers import edit_delete, edit_or_reply
 from . import BOTLOG, BOTLOG_CHATID, mention
