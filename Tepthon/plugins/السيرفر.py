@@ -7,7 +7,7 @@ import asyncio
 import glob
 import os
 
-from zthon import zedub
+from Tepthon import zedub
 
 from ..core.managers import edit_delete, edit_or_reply
 from ..helpers.utils import _zedutils
