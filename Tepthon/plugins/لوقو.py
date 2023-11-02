@@ -24,9 +24,9 @@ from PIL import Image, ImageDraw, ImageFont
 from telethon.tl.types import InputMessagesFilterDocument, InputMessagesFilterPhotos
 from telethon import events
 
-from zthon import zedub
+from Tepthon import zedub
 
-from zthon.core.logger import logging
+from Tepthon.core.logger import logging
 from ..core.managers import edit_delete, edit_or_reply as eor
 from ..helpers import reply_id, get_user_from_event
 from ..sql_helper.globals import addgvar, gvarstatus
