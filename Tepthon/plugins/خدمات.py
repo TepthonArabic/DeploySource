@@ -40,7 +40,7 @@ from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 
 
 
-from zthon import zedub
+from Tepthon import zedub
 
 from ..Config import Config
 
@@ -405,7 +405,7 @@ async def zed(event):
 #@Jepthon
 #شكـرًا لـ مطور الجوكر .
 client = zedub
-async def zthon(username, bot_name, event):
+async def Tepthon(username, bot_name, event):
     async with event.client.conversation('@BotFather') as conv:
         await conv.send_message('/newbot')
         await asyncio.sleep(2)
@@ -428,11 +428,11 @@ async def zthon(username, bot_name, event):
         "examples": "{tr}فاذر myusername mybotname",
     },
 )
-async def zthon(event):
+async def Tepthon(event):
     input_str = event.pattern_match.group(1)
     if len(input_str.split()) != 2:
         await event.edit("الرجاء تقديم اسم المستخدم واسم البوت مفصولين بمسافة مثال: {tr}فاذر اسم المستخدم اسم البوت")
         return
     username, bot_name = map(str.strip, input_str.split())
-    await zthon(username, bot_name, event)
+    await Tepthon(username, bot_name, event)
     
