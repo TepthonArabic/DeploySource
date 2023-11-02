@@ -19,7 +19,7 @@ __copyright__ = f"ZThon Copyright (C) 2021 - 2022  {__author__}"
 
 zedub.version = __version__
 zedub.tgbot.version = __version__
-LOGS = logging.getLogger("نيٕبـثون")
+LOGS = logging.getLogger("تيبثـون")
 bot = zedub
 
 
