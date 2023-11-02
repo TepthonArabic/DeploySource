@@ -24,7 +24,7 @@ from telethon.errors import UserNotParticipantError
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.channels import GetParticipantRequest
 
-from zthon import zedub
+from Tepthon import zedub
 
 from ..Config import Config
 from ..core.logger import logging
