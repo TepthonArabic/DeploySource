@@ -1,5 +1,5 @@
 #اشهد أن لا إله إلا الله واشهد أن محمدًا عبده ورسوله 
-from zthon import zedub
+from Tepthon import zedub
 from telethon.tl.functions.messages import GetHistoryRequest
 from telethon.tl.functions.channels import JoinChannelRequest
 from telethon.tl.functions.messages import ImportChatInviteRequest
