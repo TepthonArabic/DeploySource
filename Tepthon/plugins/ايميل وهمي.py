@@ -21,7 +21,7 @@ from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.contacts import UnblockRequest as unblock
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 
-from zthon import zedub
+from Tepthon import zedub
 from ..core.managers import edit_delete, edit_or_reply
 from ..helpers.utils import reply_id
 
