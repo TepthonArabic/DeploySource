@@ -9,7 +9,7 @@ from datetime import datetime
 import psutil
 from telethon import __version__
 
-from zthon import zedub
+from Tepthon import zedub
 
 from ..core.managers import edit_or_reply
 from ..helpers.utils import _zedutils
