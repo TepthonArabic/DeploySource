@@ -3,13 +3,13 @@ import shutil
 from asyncio import sleep
 from telethon import events
 
-from zthon import zedub
-from zthon.core.logger import logging
+from Tepthon import zedub
+from Tepthon.core.logger import logging
 from ..helpers.utils import _format
 from ..sql_helper.globals import addgvar, delgvar, gvarstatus
 from ..sql_helper.echo_sql import addecho, get_all_echos, get_echos, is_echo, remove_all_echos, remove_echo, remove_echos
 
-from zthon.core.logger import logging
+from Tepthon.core.logger import logging
 from . import BOTLOG, BOTLOG_CHATID
 plugin_category = "الادوات"
 LOGS = logging.getLogger(__name__)
