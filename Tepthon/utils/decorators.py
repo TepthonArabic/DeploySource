@@ -157,7 +157,7 @@ def errors_handler(func):
             ftext += result
             pastelink = await paste_message(ftext)
             text = "**هنالك مـشكلة مـعينة لديك**\n\n"
-            link = "[˛ َِ𝙃َِ𝘮َِ𝘿 .](https://t.me/A_D_P)"
+            link = "[˛ َِ𝙃َِ𝘮َِ𝘿 .](https://t.me/PPF22)"
             text += "اذا اردت يمكنك التبليغ عن المـشكلة"
             text += f"- فقط قم بتوجيه الرسالة إلى  {link}.\n"
             text += f"**التقرير عن الخطأ : ** [{new['error']}]({pastelink})"
