@@ -1,6 +1,6 @@
 from telethon.tl.functions.messages import GetMessagesViewsRequest
 import sys, asyncio
-import Tepthon
+from Tepthon import zedub
 from Tepthon import BOTLOG_CHATID, HEROKU_APP, PM_LOGGER_GROUP_ID
 from telethon import functions
 from .Config import Config
