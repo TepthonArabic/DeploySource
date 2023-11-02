@@ -13,7 +13,7 @@ from telethon.errors.rpcerrorlist import (
 )
 from telethon.events import CallbackQuery
 
-from zthon import StartTime, zedub, zedversion
+from Tepthon import StartTime, zedub, zedversion
 
 from ..Config import Config
 from ..core.managers import edit_or_reply
