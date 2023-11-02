@@ -12,7 +12,7 @@ import requests
 from selenium import webdriver
 from validators.url import url
 
-from zthon import zedub
+from Tepthon import zedub
 
 from ..Config import Config
 from ..core.managers import edit_or_reply
