@@ -7,7 +7,7 @@ import random
 from urllib.parse import quote_plus
 from collections import deque
 from ..core.logger import logging
-from zthon import zedub
+from Tepthon import zedub
 from ..Config import Config
 from ..helpers import get_user_from_event
 from ..core.managers import edit_delete, edit_or_reply
