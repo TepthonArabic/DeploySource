@@ -3,7 +3,7 @@ import os
 
 import requests
 
-from zthon import zedub
+from Tepthon import zedub
 
 from ..Config import Config
 from ..core.managers import edit_delete, edit_or_reply
