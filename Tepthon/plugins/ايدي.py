@@ -25,8 +25,8 @@ from requests import get
 from telethon.tl.functions.photos import GetUserPhotosRequest
 from telethon.tl.functions.users import GetFullUserRequest
 
-from zthon import zedub
-from zthon.core.logger import logging
+from Tepthon import zedub
+from Tepthon.core.logger import logging
 
 from ..Config import Config
 from ..core.managers import edit_or_reply, edit_delete
