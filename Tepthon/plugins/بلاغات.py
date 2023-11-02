@@ -23,7 +23,7 @@ from telethon.tl.functions.messages import GetStickerSetRequest
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 from telethon.utils import get_display_name
 
-from zthon import zedub
+from Tepthon import zedub
 
 from ..core.managers import edit_delete, edit_or_reply
 from ..helpers import media_type, unsavegif
