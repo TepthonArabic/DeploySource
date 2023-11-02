@@ -4,7 +4,7 @@
 import random, re
 import asyncio
 from telethon import events
-from zthon import zedub
+from Tepthon import zedub
 
 from ..core.managers import edit_delete, edit_or_reply
 
