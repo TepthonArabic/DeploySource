@@ -31,7 +31,7 @@ def load_module(shortname, plugin_path=None):
     else:
         if plugin_path is None:
             path = Path(f"Tepthon/plugins/{shortname}.py")
-            name = f"zthon.plugins.{shortname}"
+            name = f"Tepthon.plugins.{shortname}"
         else:
             path = Path((f"{plugin_path}/{shortname}.py"))
             name = f"{plugin_path}/{shortname}".replace("/", ".")
