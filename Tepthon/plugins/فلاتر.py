@@ -9,7 +9,7 @@ import string
 from PIL import Image, ImageFilter
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 
-from zthon import Convert, zedub
+from Tepthon import Convert, zedub
 
 from ..core.managers import edit_delete, edit_or_reply
 from ..helpers import asciiart, zed_meeme, zed_meme, media_type, meme_type
@@ -191,7 +191,7 @@ async def memes(event):
     meme_file = output[1]
     meme = os.path.join("./temp", "catmeme.jpg")
     if gvarstatus("ZED_FONTS") is None:
-        ZED_FONTS = "zthon/helpers/styles/Terserah.ttf"
+        ZED_FONTS = "Tepthon/helpers/styles/Terserah.ttf"
     else:
         ZED_FONTS = gvarstatus("ZED_FONTS")
     if max(len(top), len(bottom)) < 21:
@@ -261,7 +261,7 @@ async def lang(event):
         await event.edit(f"**⎉╎قم بكتابة الامـر كالتالـي :**\n`.خط` **+ رقـم الخـط**\n**⎉╎لعـرض قائمـة الخطـوط ارسـل** `.الخطوط`")
         return
     if input_str == "عربي":
-        arr = f"zthon/helpers/styles/zarz.ttf"
+        arr = f"Tepthon/helpers/styles/zarz.ttf"
         addgvar("ZED_FONTS", arr)
         await edit_or_reply(event, "**⎉╎تم تغييـر خـط كتابـة الحقـوق إلـى العربيـة**")
     if input_str not in font_list:
@@ -269,7 +269,7 @@ async def lang(event):
         await asyncio.sleep(1)
         await catevent.edit(f"**⎉╎قائمـة خطـوط تيبثـون هـي :-**\n\n{FONTS}")
     else:
-        arg = f"zthon/helpers/styles/{input_str}"
+        arg = f"Tepthon/helpers/styles/{input_str}"
         addgvar("ZED_FONTS", arg)
         await edit_or_reply(event, f"**⎉╎تم تغييـر خـط كتابـة الحقـوق إلـى :-** `{input_str}`")
 
