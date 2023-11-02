@@ -60,7 +60,7 @@ from telethon.errors import (
     ChatAdminRequiredError,
     UserAdminInvalidError,
 )
-from zthon import zedub
+from Tepthon import zedub
 from ..utils import is_admin
 from ..sql_helper.locks_sql import get_locks, is_locked, update_lock
 from ..core.managers import edit_delete, edit_or_reply
