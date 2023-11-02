@@ -5,7 +5,7 @@
 import telethon.password as pwd_mod
 from telethon.tl import functions
 
-from zthon import zedub
+from Tepthon import zedub
 
 from ..Config import Config
 from ..sql_helper.globals import gvarstatus
