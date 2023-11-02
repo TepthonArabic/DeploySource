@@ -49,7 +49,7 @@ from prettytable import PrettyTable
 from emoji import emojize
 from pathlib import Path
 
-from zthon import zedub
+from Tepthon import zedub
 
 from ..core.logger import logging
 from ..core.managers import edit_delete, edit_or_reply
