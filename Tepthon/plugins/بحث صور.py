@@ -18,7 +18,7 @@ from datetime import datetime
 from telethon.utils import guess_extension
 from urllib.parse import urlencode
 
-from zthon import zedub
+from Tepthon import zedub
 from ..Config import Config
 
 ZELZAL_APP_ID = "6e65179ed1d879f3d905e28ef8803625"
