@@ -8,8 +8,8 @@ import os
 
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
-from zthon import zedub
-from zthon.core.logger import logging
+from Tepthon import zedub
+from Tepthon.core.logger import logging
 
 from ..Config import Config
 from ..core.managers import edit_delete, edit_or_reply
