@@ -4,7 +4,7 @@ from PIL import Image
 
 from Tepthon.core.logger import logging
 from Tepthon.core.managers import edit_or_reply
-from zthon.helpers.functions.vidtools import take_screen_shot
+from Tepthon.helpers.functions.vidtools import take_screen_shot
 from Tepthon.helpers.tools import fileinfo, media_type, meme_type
 from Tepthon.helpers.utils.utils import runcmd
 
