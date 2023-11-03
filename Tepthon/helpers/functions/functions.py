@@ -98,8 +98,8 @@ async def covidindia(state):
 async def post_to_telegraph(
     page_title,
     html_format_content,
-    auth_name="Zed-Thon",
-    auth_url="https://t.me/ZedThon",
+    auth_name="Tepthon",
+    auth_url="https://t.me/Tepthon",
 ):
     post_client = TelegraphPoster(use_api=True)
     post_client.create_api_token(auth_name)
@@ -323,7 +323,7 @@ def higlighted_text(
         else (int(1024 * raw_width / raw_height), 1024)
     )
     if font_name is None:
-        font_name = "zthon/helpers/styles/impact.ttf"
+        font_name = "Tepthon/helpers/styles/impact.ttf"
     font = ImageFont.truetype(font_name, font_size)
     extra_width, extra_height = position
     # get text size
