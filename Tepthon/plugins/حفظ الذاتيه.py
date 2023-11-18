@@ -35,7 +35,7 @@ async def tept(event):
     chat = await event.get_chat()
     hm = await event.get_reply_message()
     xl = await hm.download_media()
-    await event.respond("- تم حفظ الميديا المقيدة\n @tepthon 🥇")
+    await client.send_message("- تم حفظ الميديا المقيدة\n @tepthon 🥇")
 
 @zedub.zed_cmd(pattern="الذاتية")
 async def cmd(zelzallll):
