@@ -30,27 +30,26 @@ ZelzalSelf_cmd = (
 )
 
 
-@zedub.zed_cmd(pattern="الذاتيه")
+@zedub.zed_cmd(pattern="$مقيد")
+async def tept(event):
+    chat = await event.get_chat()
+    hm = await event.get_reply_message()
+    xl = await hm.download_media()
+    await event.respond("- تم حفظ الميديا المقيدة\n @tepthon 🥇")
+
+@zedub.zed_cmd(pattern="الذاتية")
 async def cmd(zelzallll):
-    await edit_or_reply(zelzallll, ZelzalSelf_cmd)
+    await edit_or_reply(zelzallll, ZelzalSelf_cmd)
 
 @zedub.zed_cmd(pattern=f"{POSC}(?: |$)(.*)")
 async def oho(event):
-    if not event.is_reply:
-        return await event.edit("**- ❝ ⌊بالـرد علـى صورة ذاتيـة التدميـر 𓆰...**")
-    zzzzl1l = await event.get_reply_message()
-    pic = await zzzzl1l.download_media()
-    await zedub.send_file("me", pic, caption=f"**𓆰تم حفـظ الصـورة الذاتـيـة .. بنجـاح ☑️𓆰**")
-    await event.delete()
-
-@zedub.zed_cmd(pattern="(تفعيل الذاتيه|تفعيل الذاتية)")
-async def start_datea(event):
-    global zedself
-    if zedself:
-        return await edit_or_reply(event, "**𓆰حفظ الذاتيـة التلقـائي .. مفعـله مسـبـقًا ☑️**")
-    zedself = True
-    await edit_or_reply(event, "**𓆰تم تفعيـل حفظ الذاتيـة التلقائـي .. بنجـاح ☑️**")
-
+    if not event.is_reply:
+        return await event.respond("- ❝ ⌊بالـرد علـى صورة ذاتيـة التدميـر 𓆰...")
+    
+    zzzzl1l = await event.get_reply_message()
+    pic = await zzzzl1l.download_media()
+    await zedub.send_file("me", pic, caption=f"𓆰تم حفـظ الصـورة الذاتـيـة .. بنجـاح ☑️𓆰")
+    await event.delete()
 @zedub.zed_cmd(pattern="(تعطيل الذاتيه|تعطيل الذاتية)")
 async def stop_datea(event):
     global zedself
