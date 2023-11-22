@@ -91,3 +91,5 @@ async def cat(event):
         )
     )
     await edit_delete(event, f"**`{first_name} {last_name}`\n𓆰 أنـا أونـلايـن**")
+
+#شكـرًا_لـ_سورس_كرستيـن
