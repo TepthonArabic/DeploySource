@@ -162,7 +162,7 @@ async def back(event):
 async def up(event):
     num = event.pattern_match.group(1).decode("UTF-8")
     if num == "File":
-        await event.answer("هـذا ملـف ياغبـي ؟!", alert=True)
+        await event.answer("هـذا ملـف عزيـزي ؟!", alert=True)
     else:
         num1 = int(num) - 1
         path = PATH[0]
@@ -177,7 +177,7 @@ async def up(event):
 async def down(event):
     num = event.pattern_match.group(1).decode("UTF-8")
     if num == "File":
-        await event.answer("هـذا ملـف ياغبـي ؟!", alert=True)
+        await event.answer("هـذا ملـف عزيـزي ؟!", alert=True)
     else:
         path = PATH[0]
         num1 = int(num) + 1
@@ -192,7 +192,7 @@ async def down(event):
 async def forth(event):
     npath = event.pattern_match.group(1).decode("UTF-8")
     if npath == "File":
-        await event.answer("هـذا ملـف ياغبـي ؟!", alert=True)
+        await event.answer("هـذا ملـف عزيـزي ؟!", alert=True)
     else:
         path = PATH[0]
         npath = npath[2:-4]
