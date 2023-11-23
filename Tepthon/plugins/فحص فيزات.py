@@ -90,7 +90,7 @@ async def song2(event):
     zed = await edit_or_reply(event, "**⎉╎جـارِ معرفـة تاريـخ إنشاء حسابـك**")
     async with event.client.conversation(chat) as conv:
         try:
-            gool = "/start {}".format(song)
+            gool = "{}".format(song)
             await conv.send_message(gool)
         except YouBlockedUserError:
             await zedub(unblock("inf0tlebot"))
