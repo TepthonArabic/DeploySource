@@ -64,7 +64,7 @@ async def ytsearch(query, limit):
             textresult += f"**- الوصـف : **`{v['descriptionSnippet'][-1]['text']}`\n"
         except Exception:
             textresult += "**- الوصـف : **`None`\n"
-        textresult += f"**- المـده : **{v['duration']}  **- المشـاهـدات : **{v['viewCount']['short']}\n"
+        textresult += f"**- المـدة : **{v['duration']}  **- المشـاهـدات : **{v['viewCount']['short']}\n"
         result += f"☞ {textresult}\n"
     return result
 
@@ -160,7 +160,7 @@ async def result_formatter(results: list):
             out += "<code>{}</code>\n\n".format(
                 "".join(x.get("text") for x in r.get("descriptionSnippet"))
             )
-        out += f'<b>❯  المـده :</b> {r.get("accessibility").get("duration")}\n'
+        out += f'<b>❯  المـدة :</b> {r.get("accessibility").get("duration")}\n'
         views = f'<b>❯  المشـاهـدات :</b> {r.get("viewCount").get("short")}\n'
         out += views
         out += f'<b>❯  تاريـخ الرفـع :</b> {r.get("publishedTime")}\n'
@@ -219,9 +219,9 @@ def download_button(vid: str, body: bool = False):  # sourcery no-metrics
         vid_data = {"formats": []}
     buttons = [
         [
-            Button.inline("⭐️ اعلى دقـه - 📹 MKV", data=f"ytdl_download_{vid}_mkv_v"),
+            Button.inline("⭐️ أعـلى دقـة - 📹 MKV", data=f"ytdl_download_{vid}_mkv_v"),
             Button.inline(
-                "⭐️ اعلى دقـه - 📹 WebM/MP4",
+                "⭐️ أعـلى دقـة - 📹 WebM/MP4",
                 data=f"ytdl_download_{vid}_mp4_v",
             ),
         ]
@@ -261,7 +261,7 @@ def download_button(vid: str, body: bool = False):  # sourcery no-metrics
             )
     buttons += sublists(video_btns, width=2)
     buttons += [
-        [Button.inline("⭐️ اعلى دقـه - 🎵 320Kbps - MP3", data=f"ytdl_download_{vid}_mp3_a")]
+        [Button.inline("⭐️ أعـلى دقـة - 🎵 320Kbps - MP3", data=f"ytdl_download_{vid}_mp3_a")]
     ]
     buttons += sublists(
         [
@@ -302,7 +302,7 @@ def _tubeDl(url: str, starttime, uid: str):
     except DownloadError as e:
         LOGS.error(e)
     except GeoRestrictedError:
-        LOGS.error("هذا الفيديو غير متاح  في بلدك")
+        LOGS.error("خطـأ ‼️: هذا الفيديـو غير متـاح في بلـدك .")
     else:
         return x
 
@@ -335,4 +335,4 @@ def _mp3Dl(url: str, starttime, uid: str):
         LOGS.exception(y_e)
         return y_e
     else:
-        return dloader
+        return dloader 
