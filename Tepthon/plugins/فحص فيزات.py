@@ -101,7 +101,7 @@ async def song2(event):
         if response.text.startswith("ANTI_SPAM:"):
         	return await zed.edit("**- حاول مجـدداً ولا تستخـدم سبـام ...**")
         if response.text.startswith("RISK:"):
-        	return await zed.edit("**- خطـأ :**\n**أعد محاولة فحص هذه البطاقه ...لاحقًا**")
+        	return await zed.edit("**- خطـأ :**\n**أعد المحاولـة ...لاحقًا**")
         await event.client.send_read_acknowledge(conv.chat_id)
         await event.client.send_message(event.chat_id, response.message)
         await zed.delete()
