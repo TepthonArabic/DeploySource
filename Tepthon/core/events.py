@@ -63,7 +63,7 @@ class NewMessage(events.NewMessage):
                 is_admin = event.chat.admin_rights
 
             if not is_creator and not is_admin:
-                text = "- لاستخدام هذا الامر تحتاج الى صلاحيات المشرف اولاً "
+                text = "- لاستخدام هذا الامر تحتاج إلـى صلاحيات المشرف  أولًا "
 
                 event._client.loop.create_task(edit_or_reply(event, text))
                 return
@@ -368,7 +368,7 @@ async def send_file(
                 **kwargs,
             )
         msglink = await client.get_msg_link(response)
-        msg = f"**- عذراً لا يمكنني ارسال هذه الرسالة في المجموعات العامة لانها تحتوي بيانات حساسه اقرئها في** [مجموعة التخزين]({msglink})."
+        msg = f"**- عـذرًا لا يمكنني إرسـال هذه الرسالة في المجموعات العامة لانها تحتوي بيانات حساسـة اقرأها في** [مجموعة التخزين]({msglink})."
         return await client.sendmessage(
             entity=chatid,
             message=msg,
@@ -467,7 +467,7 @@ async def edit_message(
                 schedule=schedule,
             )
         msglink = await client.get_msg_link(response)
-        msg = f"**- عذراً لا يمكنني ارسال هذه الرسالة في المجموعات العامة لانها تحتوي بيانات حساسه اقرئها في** [مجموعة التخزين]({msglink})."
+        msg = f"**- عـذرًا لا يمكنني إرسـال هذه الرسالة في المجموعات العامة لانها تحتوي بيانات حساسـة اقرأها في** [مجموعة التخزين]({msglink})."
         return await client.editmessage(
             entity=chatid,
             message=message,
