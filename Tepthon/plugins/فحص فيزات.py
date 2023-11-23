@@ -94,7 +94,7 @@ async def song2(event):
             await conv.send_message(gool)
         except YouBlockedUserError:
             await zedub(unblock("inf0tlebot"))
-            gool = "/start {}".format(song)
+            gool = "{}".format(song)
             await conv.send_message(gool)
         await asyncio.sleep(22)
         response = await conv.get_response()
