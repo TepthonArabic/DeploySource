@@ -159,7 +159,7 @@ async def VideoFileToVoiceChat(event):
                 edit = await event.edit('**- جـارِ تشغيـل مقطـٓـع الفيـٓـديو ... 🎧♥️**')
                 filename = await event.client.download_media(message_media.messages[0], 'video')
                 
-                edit = await event.edit("**- تم التشغيل .. بنجـاح 🎧♥️\n\n- قناة السورس : @ZedThon**")
+                edit = await event.edit("**- تم التشغيل .. بنجـاح 🎧♥️\n\n- قناة السورس : @Tepthon**")
                 try:
                     stream = await JoinThenStreamVideo(f'{event.chat_id}', filename)
                     edit = await event.edit('**⎉╎تم .. بنجـاح☑️**')
