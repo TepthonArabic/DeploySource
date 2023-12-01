@@ -1,1 +1,1 @@
-web: bash start.sh
+سورس فاشل 
