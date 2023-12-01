@@ -5,12 +5,12 @@ from ..core.logger import logging
 LOGS = logging.getLogger(__name__)
 
 
-# للتأكد من الادمن
-async def is_admin(tepthon, chat_id, userid):
+# Admin checker by uniborg
+async def is_admin(zedub, chat_id, userid):
     if not str(chat_id).startswith("-100"):
         return False
     try:
-        req_jo = await tepthon.get_permissions(chat_id, userid)
+        req_jo = await zedub.get_permissions(chat_id, userid)
         chat_participant = req_jo.participant
         if isinstance(
             chat_participant, (ChannelParticipantCreator, ChannelParticipantAdmin)
