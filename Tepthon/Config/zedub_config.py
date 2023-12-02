@@ -2,7 +2,7 @@
 
 import os
 
-ENV = bool(os.environ.get("ENV", False))
+ENV = bool(os.environ.get("ENV", "ANYTHING"))
 
 if ENV:
     from sample_config import Config  # noqa
