@@ -1,1 +1,1 @@
-from .Tepthon_config import Config
+from .zedub_config import Config
