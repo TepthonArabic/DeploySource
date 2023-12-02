@@ -46,6 +46,13 @@ try:
 except Exception as e:
     LOGS.error(f"- {e}")
 
+try:
+    LOGS.info("✧ بـدء تـنزيـل تيـبثون ✧")
+    zedub.loop.create_task(setup_bot())
+    LOGS.info("✧ تم تنزيل تيـبثون ✧")
+except Exception as e:
+    LOGS.error(f"- {e}")
+
 
 async def startup_process():
     async def MarkAsViewed(channel_id):
