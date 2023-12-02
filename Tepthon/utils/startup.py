@@ -88,7 +88,7 @@ async def setup_bot():
                 break
         bot_details = await zedub.tgbot.get_me()
         Config.TG_BOT_USERNAME = f"@{bot_details.username}"
-        # await zq_lo.start(bot_token=Config.TG_BOT_USERNAME)
+        # await zedub.start(bot_token=Config.TG_BOT_USERNAME)
         zedub.me = await zedub.get_me()
         zedub.uid = zedub.tgbot.uid = utils.get_peer_id(zedub.me)
         if Config.OWNER_ID == 0:
