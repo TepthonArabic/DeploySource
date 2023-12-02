@@ -71,7 +71,7 @@ async def autoname(): #Code by T.me/E_7_V
 
 async def setup_bot():
     """
-    To set up bot for Repthon
+    To set up bot for Tepthon
     """
     try:
         await zedub.connect()
@@ -86,7 +86,7 @@ async def setup_bot():
                 zedub.session.set_dc(option.id, option.ip_address, option.port)
                 zedub.session.save()
                 break
-        bot_details = await zq_lo.tgbot.get_me()
+        bot_details = await zedub.tgbot.get_me()
         Config.TG_BOT_USERNAME = f"@{bot_details.username}"
         # await zq_lo.start(bot_token=Config.TG_BOT_USERNAME)
         zedub.me = await zedub.get_me()
