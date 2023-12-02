@@ -7,7 +7,7 @@ from telethon import functions
 from .Config import Config
 from .core.logger import logging
 from .core.session import zedub
-from .utils import mybot, saves
+from .utils import mybot, autovars, autoname
 from .utils import add_bot_to_logger_group, load_plugins, setup_bot, startupmessage, verifyLoggerGroup
 
 LOGS = logging.getLogger("سورس تيبثون")
@@ -19,9 +19,9 @@ print(f"المرخصة بموجب شروط  {Tepthon.__license__}")
 cmdhr = Config.COMMAND_HAND_LER
 
 try:
-    LOGS.info("✧ بـدء تنزيـل تيبــثون ✧")
-    zedub.loop.run_until_complete(setup_bot())
-    LOGS.info("✧ بـدء تشغيـل البـوت ✧")
+    LOGS.info("✧ جـاري تحميـل الملحقـات ✧")
+    zedub.loop.run_until_complete(autovars())
+    LOGS.info("✓ تـم تحميـل الملحقـات .. بنجـاح ✓")
 except Exception as e:
     LOGS.error(f"{str(e)}")
     sys.exit()
@@ -32,17 +32,17 @@ class CatCheck:
 Catcheck = CatCheck()
 
 try:
-    LOGS.info("✧ جـار تفعيـل وضـع الانـلاين ✧")
-    zedub.loop.run_until_complete(mybot())
-    LOGS.info("✓ تـم تفعيـل الانـلاين .. بـنجـاح ✓")
+    LOGS.info("✧ بـدء اضـافـة الاسـم الـتـلقـائي ✧")
+    zedub.loop.run_until_complete(autoname())
+    LOGS.info("✓ تـم اضـافـة الاسـم الـتـلقـائي .. بـنجـاح ✓")
 except Exception as e:
     LOGS.error(f"- {e}")
 
 
 try:
-    LOGS.info("✧ جـاري تحميـل الملحقـات ✧")
-    zedub.loop.create_task(saves())
-    LOGS.info("✓ تـم تحميـل الملحقـات .. بنجـاح ✓")
+    LOGS.info("✧ جـاري تـفـعـيل وضـع الانـلاين ✧")
+    zedub.loop.create_task(mybot())
+    LOGS.info("✓ تـم تـفـعـيل وضع الانـلاين .. بنجـاح ✓")
 except Exception as e:
     LOGS.error(f"- {e}")
 
