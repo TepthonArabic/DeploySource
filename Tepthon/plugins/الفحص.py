@@ -90,7 +90,7 @@ tep_temp = """{ALIVE_TEXT}
 **{T_EMOJI} ᑌᑭTIᗰE 𓋪** `{uptime}`
 **{T_EMOJI} OᗯᑎEᖇ 𓋪** {mention}
 **{T_EMOJI} ᗪᗩTᗴ 𓋪** {Tepthon_Tare5}"""
-     send_new_message = await event.client.send_message(entity=event.chat_id, message=final_message, file=random.choice(RANDOM_MEDIA))
+send_new_message = await event.client.send_message(entity=event.chat_id, message=final_message, file=random.choice(RANDOM_MEDIA))
 
 
 @zedub.zed_cmd(
