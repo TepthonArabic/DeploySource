@@ -27,16 +27,7 @@ STATS = gvarstatus("Z_STATS") or "فحص"
 #احمد - @RNRYR
 #باقر - @E_7_V ولو ماشتغل بالكود بس يلا بئرة
 
-@zedub.zed_cmd(
-    pattern="الفحص$",
-    command=("الفحص", plugin_category),
-    info={
-        "header": "- لـ التحـقق مـن أن البـوت يعمـل بنجـاح .. بخـاصيـة الانـلايـن ✓",
-        "الاسـتخـدام": [
-            "{tr}الفحص",
-        ],
-    },
-)
+@zedub.zed_cmd(pattern="فحص$")
 async def amireallyalive(event):
     reply_to_id = await reply_id(event)
     uptime = await get_readable_time((time.time() - StartTime))
