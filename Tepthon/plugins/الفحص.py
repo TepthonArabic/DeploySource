@@ -91,4 +91,4 @@ zed_temp = """{ALIVE_TEXT}
 {Z_EMOJI} اެݪبۅٛت : {tgbot} .
 {Z_EMOJI} ۅٛقت اެݪتشغيݪ : `{uptime}` .
 {Z_EMOJI} اެݪماެݪك : {mention} ."""
-    send_new_message = await event.client.send_message(entity=event.chat_id, message=final_message, file=random.choice(random_media))
+send_new_message = await event.client.send_message(entity=event.chat_id, message=final_message, file=random.choice(random_media))
