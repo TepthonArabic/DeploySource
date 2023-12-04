@@ -43,7 +43,6 @@ async def amireallyalive(event):
     delete = await event.delete()
     user = await event.client.get_entity(event.chat_id)
     my_mention=my_mention,
-    mention=mention,
     telever=version.__version__,
     zdver=zedversion,
     pyver=python_version(),
