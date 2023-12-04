@@ -44,7 +44,7 @@ async def amireallyalive(event):
     Z_EMOJI = gvarstatus("ALIVE_EMOJI") or "•"
     ALIVE_TEXT = gvarstatus("ALIVE_TEXT") or "** سۅٛࢪس تيبثۅٛن يعمݪ بنجاެح **"
     ZED_IMG = gvarstatus("ALIVE_PIC")
-    zed_caption = gvarstatus("ALIVE_TEMPLATE") or zed_temp
+    zed_caption = gvarstatus("ALIVE_TEMPLATE") or final_message
     caption = zed_caption.format(
         ALIVE_TEXT=ALIVE_TEXT,
         Z_EMOJI=Z_EMOJI,
@@ -80,7 +80,8 @@ async def amireallyalive(event):
         )
 
 
-zed_temp = """{ALIVE_TEXT}
+    final_message = f"""
+{ALIVE_TEXT}
 --  --  --  --  --  --  --  --
 {Z_EMOJI} اެسِمِكَ : {my_mention} .
 {Z_EMOJI} اެصداެࢪ اެݪتيݪيثۅٛن : `{telever}` .
@@ -90,5 +91,5 @@ zed_temp = """{ALIVE_TEXT}
 {Z_EMOJI} اެݪۅٛقت : `{RNRYRTM}` .
 {Z_EMOJI} اެݪبۅٛت : {tgbot} .
 {Z_EMOJI} ۅٛقت اެݪتشغيݪ : `{uptime}` .
-{Z_EMOJI} اެݪماެݪك : {mention} ."""
-send_new_message = await event.client.send_message(entity=event.chat_id, message=final_message, file=random.choice(random_media))
+{Z_EMOJI} اެݪماެݪك : {mention} .\n--  --  --  --  --  --  --  --"""
+    send_new_message = await event.client.send_message(entity=event.chat_id, message=final_message, file=random.choice(random_media))
