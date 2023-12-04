@@ -38,7 +38,7 @@ async def amireallyalive(event):
     RNRYRTM = time.strftime("%I:%M")
     RNRYRDATE = time.strftime("%Y/%m/%d")
     tgbot = Config.TG_BOT_USERNAME
-        me = await event.client.get_me()
+    me = await event.client.get_me()
     my_first = me.first_name
     my_mention = f"[{me.first_name}](tg://user?id={me.id})"
     Z_EMOJI = gvarstatus("ALIVE_EMOJI") or "•"
