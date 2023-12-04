@@ -26,7 +26,16 @@ plugin_category = "العروض"
 STATS = gvarstatus("Z_STATS") or "فحص"
 
 
-@zedub.zed_cmd(pattern=f"{STATS}$")
+@zedub.zed_cmd(
+    pattern="الفحص$",
+    command=("الفحص", plugin_category),
+    info={
+        "header": "- لـ التحـقق مـن أن البـوت يعمـل بنجـاح .. بخـاصيـة الانـلايـن ✓",
+        "الاسـتخـدام": [
+            "{tr}الفحص",
+        ],
+    },
+)
 async def amireallyalive(event):
     reply_to_id = await reply_id(event)
     uptime = await get_readable_time((time.time() - StartTime))
@@ -35,8 +44,11 @@ async def amireallyalive(event):
     end = datetime.now()
     ms = (end - start).microseconds / 1000
     _, check_sgnirts = check_data_base_heal_th()
-    Z_EMOJI = gvarstatus("ALIVE_EMOJI") or "☼ ⤶"
-    ALIVE_TEXT = gvarstatus("ALIVE_TEXT") or "** ☼ TEᑭTᕼOᑎ ᗯOᖇKՏ ՏᑌᑕᑕEՏՏᖴᑌᒪᒪY ‌‌‏𓅓 . **"
+    random_media = ["https://telegra.ph/file/6fa698c2e409a2bf41bd6.mp4","https://telegra.ph/file/1131ec8fee887ddcc06bd.mp4"]
+    RNRYRTM = time.strftime("%I:%M")
+    RNRYRDATE = time.strftime("%Y/%m/%d")
+    Z_EMOJI = gvarstatus("ALIVE_EMOJI") or "•"
+    ALIVE_TEXT = gvarstatus("ALIVE_TEXT") or "** سۅٛࢪس تيبثۅٛن يعمݪ بنجاެح **"
     ZED_IMG = gvarstatus("ALIVE_PIC")
     zed_caption = gvarstatus("ALIVE_TEMPLATE") or zed_temp
     caption = zed_caption.format(
@@ -49,6 +61,8 @@ async def amireallyalive(event):
         pyver=python_version(),
         dbhealth=check_sgnirts,
         ping=ms,
+        RNRYRTM=RNRYRTM,
+        RNRYRDATE=RNRYRDATE,
     )
     if ZED_IMG:
         ZED = [x for x in ZED_IMG.split()]
@@ -71,39 +85,11 @@ async def amireallyalive(event):
 
 
 zed_temp = """{ALIVE_TEXT}
-———————⛥ ———————
-**{Z_EMOJI} َTEᒪETᕼOᑎ 𓋪** `{telever}`
-**{Z_EMOJI} TEᑭTᕼOᑎ 𓋪** `{zdver}`
-**{Z_EMOJI} َᑭYTᕼOᑎ 𓋪** `{pyver}`
-**{Z_EMOJI} ᑌᑭTIᗰE 𓋪** `{uptime}`
-**{Z_EMOJI} OᗯᑎEᖇ 𓋪** {mention}"""
-
-
-@zedub.zed_cmd(
-    pattern="الفحص$",
-    command=("الفحص", plugin_category),
-    info={
-        "header": "- لـ التحـقق مـن أن البـوت يعمـل بنجـاح .. بخـاصيـة الانـلايـن ✓",
-        "الاسـتخـدام": [
-            "{tr}الفحص",
-        ],
-    },
-)
-async def amireallyialive(event):
-    "A kind of showing bot details by your inline bot"
-    reply_to_id = await reply_id(event)
-    Z_EMOJI = gvarstatus("ALIVE_EMOJI") or "☼ ⤶"
-    zed_caption = "** ☼ TEᑭTᕼOᑎ ᗯOᖇKՏ ՏᑌᑕᑕEՏՏᖴᑌᒪᒪY ‌‌‏𓅓 . **\n"
-    zed_caption += f"**{Z_EMOJI} َTEᒪETᕼOᑎ 𓋪** `{version.__version__}\n`"
-    zed_caption += f"**{Z_EMOJI} TEᑭTᕼOᑎ 𓋪 :** `{zedversion}`\n"
-    zed_caption += f"**{Z_EMOJI} َᑭYTᕼOᑎ 𓋪** `{python_version()}\n`"
-    zed_caption += f"**{Z_EMOJI} OᗯᑎEᖇ 𓋪** {mention}\n"
-    results = await event.client.inline_query(Config.TG_BOT_USERNAME, zed_caption)
-    await results[0].click(event.chat_id, reply_to=reply_to_id, hide_via=True)
-    await event.delete()
-
-
-@zedub.tgbot.on(CallbackQuery(data=re.compile(b"stats")))
-async def on_plug_in_callback_query_handler(event):
-    statstext = await zedalive(StartTime)
-    await event.answer(statstext, cache_time=0, alert=True)
+--  --  --  --  --  --  --  --
+{Z_EMOJI} اެصداެࢪ اެݪتيݪيثۅٛن : `{telever}` .
+{Z_EMOJI} اެصداެࢪ اެݪسۅٛࢪس : `{zdver}` .
+{Z_EMOJI} اެصداެࢪ اެݪباެيثۅٛن : `{pyver}` .
+{Z_EMOJI} اެݪتاެࢪيخ : `{RNRYRDATE}` .
+{Z_EMOJI} اެݪۅٛقت : `{RNRYRTM}` .
+{Z_EMOJI} ۅٛقت اެݪتشغيݪ : `{uptime}` .
+{Z_EMOJI} اެݪماެݪك : {mention} .\n--  --  --  --  --  --  --  --"""
