@@ -40,13 +40,8 @@ async def amireallyalive(event):
     me = await event.client.get_me()
     my_first = me.first_name
     my_mention = f"[{me.first_name}](tg://user?id={me.id})"
-    Z_EMOJI = gvarstatus("ALIVE_EMOJI") or "~"
-    ALIVE_TEXT = gvarstatus("ALIVE_TEXT") or "** سۅٛࢪس تيبثۅٛن يعمݪ بنجاެح **"
-    ZED_IMG = gvarstatus("ALIVE_PIC")
     delete = await event.delete()
     user = await event.client.get_entity(event.chat_id)
-        ALIVE_TEXT=ALIVE_TEXT,
-        Z_EMOJI=Z_EMOJI,
         mention=mention,
         uptime=uptime,
         telever=version.__version__,
@@ -60,15 +55,15 @@ async def amireallyalive(event):
         my_mention=my_mention,
 
     final_message = f"""
-{ALIVE_TEXT}
+~ سۅٛࢪس تيبثۅٛن يعمݪ بنجاެح
 --  --  --  --  --  --  --  --
-{Z_EMOJI} اެسِمِكَ : {my_mention} .
-{Z_EMOJI} اެصداެࢪ اެݪتيݪيثۅٛن : `{telever}` .
-{Z_EMOJI} اެصداެࢪ اެݪسۅٛࢪس : `{zdver}` .
-{Z_EMOJI} اެصداެࢪ اެݪباެيثۅٛن : `{pyver}` .
-{Z_EMOJI} اެݪتاެࢪيخ : `{RNRYRDATE}` .
-{Z_EMOJI} اެݪۅٛقت : `{RNRYRTM}` .
-{Z_EMOJI} اެݪبۅٛت : {tgbot} .
-{Z_EMOJI} ۅٛقت اެݪتشغيݪ : `{uptime}` .
-{Z_EMOJI} اެݪماެݪك : {mention} .\n--  --  --  --  --  --  --  --"""
+~ اެسِمِكَ : {my_mention} .
+~ اެصداެࢪ اެݪتيݪيثۅٛن : `{telever}` .
+~ اެصداެࢪ اެݪسۅٛࢪس : `{zdver}` .
+~ اެصداެࢪ اެݪباެيثۅٛن : `{pyver}` .
+~ اެݪتاެࢪيخ : `{RNRYRDATE}` .
+~ اެݪۅٛقت : `{RNRYRTM}` .
+~ اެݪبۅٛت : {tgbot} .
+~ ۅٛقت اެݪتشغيݪ : `{uptime}` .
+~ اެݪماެݪك : {mention} .\n--  --  --  --  --  --  --  --"""
     send_new_message = await event.client.send_message(entity=event.chat_id, message=final_message, file=random.choice(random_media))
