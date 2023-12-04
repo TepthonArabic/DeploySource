@@ -22,8 +22,6 @@ from ..helpers.utils import reply_id
 from ..sql_helper.globals import gvarstatus
 from . import mention
 
-plugin_category = "العروض"
-STATS = gvarstatus("Z_STATS") or "فحص"
 #احمد - @RNRYR
 #باقر - @E_7_V ولو ماشتغل بالكود بس يلا بئرة
 
@@ -92,5 +90,5 @@ zed_temp = """{ALIVE_TEXT}
 {Z_EMOJI} اެݪۅٛقت : `{RNRYRTM}` .
 {Z_EMOJI} اެݪبۅٛت : {tgbot} .
 {Z_EMOJI} ۅٛقت اެݪتشغيݪ : `{uptime}` .
-{Z_EMOJI} اެݪماެݪك : {mention} .\n--  --  --  --  --  --  --  --"""
+{Z_EMOJI} اެݪماެݪك : {mention} ."""
     send_new_message = await event.client.send_message(entity=event.chat_id, message=final_message, file=random.choice(random_media))
