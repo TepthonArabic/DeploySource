@@ -30,7 +30,6 @@ async def amireallyalive(event):
     reply_to_id = await reply_id(event)
     uptime = await get_readable_time((time.time() - StartTime))
     start = datetime.now()
-    zedevent = await edit_or_reply(event, "**⛥ ⤻ انتـظࢪ جـاࢪي فـحص بـ ـوت TEᑭTᕼOᑎ الخـاص بـِك   ۦ**")
     end = datetime.now()
     ms = (end - start).microseconds / 1000
     _, check_sgnirts = check_data_base_heal_th()
@@ -41,11 +40,11 @@ async def amireallyalive(event):
     me = await event.client.get_me()
     my_first = me.first_name
     my_mention = f"[{me.first_name}](tg://user?id={me.id})"
-    Z_EMOJI = gvarstatus("ALIVE_EMOJI") or "•"
+    Z_EMOJI = gvarstatus("ALIVE_EMOJI") or "~"
     ALIVE_TEXT = gvarstatus("ALIVE_TEXT") or "** سۅٛࢪس تيبثۅٛن يعمݪ بنجاެح **"
     ZED_IMG = gvarstatus("ALIVE_PIC")
-    zed_caption = gvarstatus("ALIVE_TEMPLATE") or final_message
-    caption = zed_caption.format(
+    delete = await event.delete()
+    user = await event.client.get_entity(event.chat_id)
         ALIVE_TEXT=ALIVE_TEXT,
         Z_EMOJI=Z_EMOJI,
         mention=mention,
@@ -59,26 +58,6 @@ async def amireallyalive(event):
         RNRYRDATE=RNRYRDATE,
         tgbot=tgbot,
         my_mention=my_mention,
-    )
-    if ZED_IMG:
-        ZED = [x for x in ZED_IMG.split()]
-        PIC = random.choice(ZED)
-        try:
-            await event.client.send_file(
-                event.chat_id, PIC, caption=caption, reply_to=reply_to_id
-            )
-            await zedevent.delete()
-        except (WebpageMediaEmptyError, MediaEmptyError, WebpageCurlFailedError):
-            return await edit_or_reply(
-                zedevent,
-                f"**⌔∮ عـذراً عليـك الـرد ع صـوره او ميـديـا  ⪼  `.اضف صورة الفحص` <بالرد ع الصـوره او الميـديـا> ",
-            )
-    else:
-        await edit_or_reply(
-            zedevent,
-            caption,
-        )
-
 
     final_message = f"""
 {ALIVE_TEXT}
