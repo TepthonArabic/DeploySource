@@ -42,16 +42,16 @@ async def amireallyalive(event):
     my_mention = f"[{me.first_name}](tg://user?id={me.id})"
     delete = await event.delete()
     user = await event.client.get_entity(event.chat_id)
-    my_mention=my_mention,
-    telever=version.__version__,
-    zdver=zedversion,
-    pyver=python_version(),
-    dbhealth=check_sgnirts,
-    ping=ms,
-    RNRYRTM=RNRYRTM,
-    RNRYRDATE=RNRYRDATE,
-    tgbot=tgbot,
-    uptime=uptime,
+    my_mention=my_mention
+    telever=version.__version__
+    zdver=zedversion
+    pyver=python_version()
+    dbhealth=check_sgnirts
+    ping=ms
+    RNRYRTM=RNRYRTM
+    RNRYRDATE=RNRYRDATE
+    tgbot=tgbot
+    uptime=uptime
 
     final_message = f"""
 ~ سۅٛࢪس تيبثۅٛن يعمݪ بنجاެح
