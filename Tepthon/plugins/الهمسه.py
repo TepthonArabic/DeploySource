@@ -1,7 +1,7 @@
 from telethon import events
 from asyncio import sleep
 import os, sys, random, re
-from zthon import zedub
+from Tepthon import zedub
 from ..core.managers import edit_delete, edit_or_reply
  
 
@@ -16,4 +16,3 @@ async def wspr(event):
     tap = await bot.inline_query(botusername, wwwspr)
     await tap[0].click(event.chat_id)
     await event.delete()
-    
