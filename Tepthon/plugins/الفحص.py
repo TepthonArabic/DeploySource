@@ -3,6 +3,7 @@ import re
 import time
 from datetime import datetime
 from platform import python_version
+from random import choice
 
 import requests
 from telethon import version
@@ -14,7 +15,7 @@ from telethon.errors.rpcerrorlist import (
 from telethon.events import CallbackQuery
 
 
-from Tepthon import StartTime, zedub, zedversion
+from Tepthon import StartTime, zedub, tepversion
 
 
 from ..Config import Config
@@ -48,7 +49,7 @@ async def amireallyalive(event):
     user = await event.client.get_entity(event.chat_id)
     my_mention=my_mention
     telever=version.__version__
-    zdver=zedversion
+    tepver=tepversion
     pyver=python_version()
     dbhealth=check_sgnirts
     ping=ms
@@ -63,7 +64,7 @@ async def amireallyalive(event):
 --  --  --  --  --  --  --  --
 ~ اެسِمِكَ : {my_mention} .
 ~ اެصداެࢪ اެݪتيݪيثۅٛن : `{telever}` .
-~ اެصداެࢪ اެݪسۅٛࢪس : `{zdver}` .
+~ اެصداެࢪ اެݪسۅٛࢪس : `{tepver}` .
 ~ اެصداެࢪ اެݪباެيثۅٛن : `{pyver}` .
 ~ اެݪتاެࢪيخ : `{RNRYRDATE}` .
 ~ اެݪۅٛقت : `{RNRYRTM}` .
