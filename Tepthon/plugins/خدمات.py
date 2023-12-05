@@ -22,7 +22,7 @@ from ..Config import Config
 from ..core.managers import edit_delete, edit_or_reply
 from ..helpers.utils import reply_id
 
-
+plugin_category = "الادوات"
 
 #الملـف كتابـة زلـزال الهيبـه ⤶ @zzzzl1l خاص بسـورس ⤶ 𝙕𝙚𝙙𝙏𝙝𝙤𝙣
 #الملف متعوب عليه So تخمط وماتذكـر المصـدر == اهينـك
