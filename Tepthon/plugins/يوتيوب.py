@@ -835,7 +835,6 @@ async def yt_search(event):
     reply_text = f"**⎉╎اليك عزيزي قائمة بروابط الكلمة اللتي بحثت عنها:**\n`{query}`\n\n**⎉╎النتائج:**\n{full_response}"
     await edit_or_reply(video_q, reply_text)
 
-rnryr = "@msaver_bot"
 @zedub.zed_cmd(
     pattern="ستوري(?: |$)(\d*)? ?([\s\S]*)",
     command=("ستوري", plugin_category),
@@ -854,6 +853,7 @@ async def _(event):
         await event.edit("**⎉╎ يجب إضافة رابط الستوري مع الامر**")
     else:
         await event.edit("**⎉╎ يتم الان تحميل الستوري انتظر قليلا**")
+        rnryr = "@msaver_bot"
     async with bot.conversation(rnryr) as conv:
         try:
             msg = await conv.send_message(rnryr_link)
