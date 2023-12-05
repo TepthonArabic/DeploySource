@@ -24,7 +24,7 @@ bot = zedub
 
 
 StartTime = time.time()
-zedversion = "3.1.1" #باقر لاتغيره مراح يشتغل ملف وقتي ولا نرد ولا فحص اذا خليته tepversion
+tepversion = "3.1.1"
 
 
 def close_connection(*_):
