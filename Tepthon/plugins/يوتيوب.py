@@ -853,8 +853,8 @@ async def _(event):
         await event.edit("**⎉╎ يجب إضافة رابط الستوري مع الامر**")
     else:
         await event.edit("**⎉╎ يتم الان تحميل الستوري انتظر قليلا**")
-        rnryr = "@msaver_bot"
-    async with bot.conversation(rnryr) as conv:
+        chat = "@msaver_bot"
+    async with bot.conversation(chat) as conv:
         try:
             msg = await conv.send_message(rnryr_link)
             video = await conv.get_response()
