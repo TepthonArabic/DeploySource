@@ -4,6 +4,7 @@ import os
 import sys
 from asyncio.exceptions import CancelledError
 from time import sleep
+from telethon import events
 
 import heroku3
 import urllib3
