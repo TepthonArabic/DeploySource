@@ -4,16 +4,17 @@ from Tepthon import BOTLOG_CHATID, PM_LOGGER_GROUP_ID
 from .Config import Config
 from .core.logger import logging
 from .core.session import zedub
-from .utils import mybot, autoname, autovars, saves
+from .utils import mybot, saves
 from .utils import (
     add_bot_to_logger_group,
     load_plugins,
+    saves,
     setup_bot,
     startupmessage,
     verifyLoggerGroup,
 )
 
-LOGS = logging.getLogger("سورس تيبثون")
+LOGS = logging.getLogger("𝐑𝐞𝐩𝐭𝐡𝐨𝐧")
 
 print(Tepthon.__copyright__)
 print(f"المرخصة بموجب شروط  {Tepthon.__license__}")
@@ -21,17 +22,17 @@ print(f"المرخصة بموجب شروط  {Tepthon.__license__}")
 cmdhr = Config.COMMAND_HAND_LER
 
 try:
-    LOGS.info("⌭ جـاري تحميـل الملحقـات ⌭")
-    zedub.loop.run_until_complete(saves())
-    LOGS.info("✓ تـم تحميـل الملحقـات .. بنجـاح ✓")
+    LOGS.info("⌭ بـدء تنزيـل ريبـــثون ⌭")
+    zedub.loop.run_until_complete(setup_bot())
+    LOGS.info("⌭ بـدء تشغيـل البـوت ⌭")
 except Exception as e:
     LOGS.error(f"{e}")
     sys.exit()
 
 try: #Code by T.me/E_7_V
-    LOGS.info("⌭ بـدء تنزيـل تيـبثون ⌭")
-    zedub.loop.run_until_complete(setup_bot())
-    LOGS.info("⌭ بـدء تشغيل البـوت ⌭")
+    LOGS.info("⌭ جـاري تحميـل الملحقـات ⌭")
+    zedub.loop.run_until_complete(saves())
+    LOGS.info("✓ تـم تحميـل الملحقـات .. بنجـاح ✓")
 except Exception as e:
     LOGS.error(f"- {e}")
 
@@ -48,12 +49,12 @@ async def startup_process():
     await verifyLoggerGroup()
     await load_plugins("plugins")
     await load_plugins("assistant")
-    print("➖➖➖➖➖ سورس تيبثون™ ➖➖➖➖➖")
+    print("➖➖➖➖➖ 𝐑𝐞𝐩𝐭𝐡𝐨𝐧™ ➖➖➖➖➖")
     print("تـم التنصـيب .. بنجـاح ✓")
     print(
-        f"⌔┊تـم تنصيـب تيبثـون يـوزر بـوت . . بنجـاح 🧸♥️ \n\n⌔┊تحيـاتي ..  محـمد\n⌔┊قنـاة السـورس ↶.\n🌐┊@Tepthon"
+        f"⌔┊تـم تنصيـب ريبثون يـوزربـوت . . بنجـاح 🧸♥️ \n\n⌔┊تحيـاتي ..  روجر\n⌔┊قنـاة السـورس ↶.\n🌐┊@Repthon"
     )
-    print("➖➖➖➖➖ سورس تيبثون™ ➖➖➖➖➖")
+    print("➖➖➖➖➖ 𝐑𝐞𝐩𝐭𝐡𝐨𝐧™ ➖➖➖➖➖")
     await verifyLoggerGroup()
     await add_bot_to_logger_group(BOTLOG_CHATID)
     if PM_LOGGER_GROUP_ID != -100:
