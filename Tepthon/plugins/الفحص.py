@@ -27,7 +27,7 @@ from . import mention
 
 
 #احمد - @RNRYR
-#باقر - @E_7_V ولو ماشتغل بالكود بس يلا بئرة
+#باقر - @E_7_V ولو ماشتغل بالكود بس يلا بئرة غير فقط متغير varsion
 
 
 @zedub.zed_cmd(pattern="فحص$")
