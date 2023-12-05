@@ -6,6 +6,7 @@ import heroku3
 import urllib.request
 from datetime import timedelta
 from pathlib import Path
+from time import sleep
 
 from telethon import Button, functions, types, utils
 from telethon.tl.functions.channels import JoinChannelRequest
