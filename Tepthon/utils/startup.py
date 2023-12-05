@@ -1,14 +1,22 @@
+import time
 import asyncio
+import importlib
+import logging
 import glob
 import os
 import sys
-import heroku3
 import urllib.request
 from datetime import timedelta
 from pathlib import Path
+from random import randint
+from datetime import datetime as dt
+from pytz import timezone
+import requests
+import heroku3
 
 from telethon import Button, functions, types, utils
 from telethon.tl.functions.channels import JoinChannelRequest
+from telethon.tl.functions.contacts import UnblockRequest
 
 from Tepthon import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID
 
@@ -21,7 +29,7 @@ from ..sql_helper.global_collection import (
     del_keyword_collectionlist,
     get_item_collectionlist,
 )
-from ..sql_helper.globals import addgvar, gvarstatus
+from ..sql_helper.globals import addgvar, delgvar, gvarstatus
 from .pluginmanager import load_module
 from .tools import create_supergroup
 
@@ -46,17 +54,19 @@ elif os.path.exists("config.py"):
 bot = zedub
 DEV = 1260465030
 
+
 async def autovars(): #Code by T.me/E_7_V
     if "ENV" in heroku_var:
         return
     LOGS.info("جـارِ اضافـة بقيـة الفـارات .. تلقائيـاً")
-    rrenv = "ANYTHING"
-    rrcom = "."
-    rrrtz = "Asia/Baghdad"
-    heroku_var["ENV"] = rrenv
-    heroku_var["COMMAND_HAND_LER"] = rrcom
-    heroku_var["TZ"] = rrrtz
+    ttenv = "ANYTHING"
+    ttcom = "."
+    ttttz = "Asia/Baghdad"
+    heroku_var["ENV"] = ttenv
+    heroku_var["COMMAND_HAND_LER"] = ttcom
+    heroku_var["TZ"] = ttttz
     LOGS.info("تم اضافـة بقيـة الفـارات .. بنجـاح")
+
 
 async def autoname(): #Code by T.me/E_7_V
     if Config.ALIVE_NAME:
@@ -65,9 +75,22 @@ async def autoname(): #Code by T.me/E_7_V
     await asyncio.sleep(15)
     LOGS.info("جـارِ اضافة فـار الاسـم التلقـائـي .. انتظـر قليـلاً")
     baqir = await bot.get_me()
-    rrname = f"{baqir.first_name}"
-    LOGS.info(f"تم اضافـة اسـم المستخـدم {rrname} .. بنجـاح")
-    heroku_var["ALIVE_NAME"] = rrname
+    ttname = f"{baqir.first_name}"
+    tz = Config.TZ
+    tzDateTime = dt.now(timezone(tz))
+    tdate = tzDateTime.strftime('%Y/%m/%d')
+    militaryTime = tzDateTime.strftime('%H:%M')
+    ttime = dt.strptime(militaryTime, "%H:%M").strftime("%I:%M %p")
+    ttd = f"‹ {tdate} ›"
+    ttt = f"‹ {ttime} ›"
+    if gvarstatus("t_date") is None:
+        td = "t_date"
+        tt = "t_time"
+        addgvar(td, ttd)
+        addgvar(tt, ttt)
+    LOGS.info(f"تم اضافـة اسـم المستخـدم {ttname} .. بنجـاح")
+    heroku_var["ALIVE_NAME"] = ttname
+
 
 async def setup_bot():
     """
@@ -94,21 +117,71 @@ async def setup_bot():
         if Config.OWNER_ID == 0:
             Config.OWNER_ID = utils.get_peer_id(zedub.me)
     except Exception as e:
-        LOGS.error(f"STRING_SESSION - {e}")
+        LOGS.error(f"كـود تيرمكس - {str(e)}")
         sys.exit()
+
+
+async def mybot(): #Code by T.me/zzzzl1l
+    BAQIR = bot.me.first_name
+    TAIBA = bot.uid
+    ba_tep = f"[{BAQIR}](tg://user?id={TAIBA})"
+    f"ـ {zel_zal}"
+    f"•⎆┊هــذا البــوت خــاص بـ {ba_tep} يمكـنك التواصــل معـه هـنا 🧸♥️"
+    babot = await zedub.tgbot.get_me()
+    bot_name = babot.first_name
+    botname = f"@{babot.username}"
+    if bot_name.startswith("مسـاعـد"):
+        print("تم تشغيل البوت بنجــاح")
+    else:
+        try:
+            await bot.send_message("@BotFather", "/setinline")
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", botname)
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", "تيـبثون")
+            await asyncio.sleep(3)
+            await bot.send_message("@BotFather", "/setname")
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", botname)
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", f"مسـاعـد - {bot.me.first_name} ")
+            await asyncio.sleep(3)
+            await bot.send_message("@BotFather", "/setuserpic")
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", botname)
+            await asyncio.sleep(1)
+            await bot.send_file("@BotFather", "Tepthon/zilzal/logozed.jpg")
+            await asyncio.sleep(3)
+            await bot.send_message("@BotFather", "/setabouttext")
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", botname)
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", f"- بـوت تيـبثون المسـاعـد ♥️🦾 الخـاص بـ  {bot.me.first_name} ")
+            await asyncio.sleep(3)
+            await bot.send_message("@BotFather", "/setdescription")
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", botname)
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", f"•⎆┊انـا البــوت المسـاعـد الخــاص بـ {ba_tep} \n•⎆┊بـواسطـتـي يمكـنك التواصــل مـع مـالكـي 🧸♥️\n•⎆┊قنـاة السـورس 🌐 @Tepthon 🌐")
+        except Exception as e:
+            print(e)
 
 
 async def startupmessage():
     """
     Start up message in telegram logger group
     """
+    if gvarstatus("PMLOG") and gvarstatus("PMLOG") != "false":
+        delgvar("PMLOG")
+    if gvarstatus("GRPLOG") and gvarstatus("GRPLOG") != "false":
+        delgvar("GRPLOG")
     try:
         if BOTLOG:
             Config.ZEDUBLOGO = await zedub.tgbot.send_file(
                 BOTLOG_CHATID,
                 "https://graph.org/file/b920419da499a55479a15.jpg",
-                caption="**•⎆┊تـم بـدء تشغـيل سـورس تـيـبثـون الخاص بك .. بنجاح 🧸♥️**",
-                buttons=[(Button.url("𝐬𝐨𝐮𝐫𝐜𝐞 𝐭𝐞𝐩𝐭𝐡𝐨𝐧", "https://t.me/Tepthon"),)],
+                caption="**•⎆┊تـم بـدء تشغـيل سـورس تيـبثون الخاص بك .. بنجاح 🧸♥️**",
+                buttons=[(Button.url("𝐬𝐨𝐮𝐫𝐜𝐞 𝐭𝐞𝐩𝐭𝐡𝐨𝐧𓅛", "https://t.me/Tepthon"),)],
             )
     except Exception as e:
         LOGS.error(e)
@@ -137,53 +210,6 @@ async def startupmessage():
     except Exception as e:
         LOGS.error(e)
         return None
-
-
-async def mybot():
-    ROGER = bot.me.first_name
-    Narcissus = bot.uid
-    ba_roger = f"[{ROGER}](tg://user?id={Narcissus})"
-    f"ـ {ba_roger}"
-    f"•⎆┊هــذا البــوت خــاص بـ {ba_roger} يمكـنك التواصــل معـه هـنا 🧸♥️"
-    babot = await zedub.tgbot.get_me()
-    bot_name = babot.first_name
-    botname = f"@{babot.username}"
-    if bot_name.endswith("Assistant"):
-        print("تم تشغيل البوت بنجــاح")
-    else:
-        try:
-            await bot.send_message("@BotFather", "/setinline")
-            await asyncio.sleep(1)
-            await bot.send_message("@BotFather", botname)
-            await asyncio.sleep(1)
-            await bot.send_message("@BotFather", "تيـبثون")
-            await asyncio.sleep(3)
-            await bot.send_message("@BotFather", "/setname")
-            await asyncio.sleep(1)
-            await bot.send_message("@BotFather", botname)
-            await asyncio.sleep(1)
-            await bot.send_message("@BotFather", f"مسـاعـد - {bot.me.first_name} ")
-            await asyncio.sleep(3)
-            await bot.send_message("@BotFather", "/setuserpic")
-            await asyncio.sleep(1)
-            await bot.send_message("@BotFather", botname)
-            await asyncio.sleep(1)
-            await zedub.send_file("@BotFather", "Tepthon/zilzal/logozed.jpg")
-            await asyncio.sleep(3)
-            await bot.send_message("@BotFather", "/setabouttext")
-            await asyncio.sleep(1)
-            await bot.send_message("@BotFather", botname)
-            await asyncio.sleep(1)
-            await bot.send_message("@BotFather", f"- بـوت تيـبثون المسـاعـد ♥️🦾 الخـاص بـ  {bot.me.first_name} ")
-            await asyncio.sleep(3)
-            await bot.send_message("@BotFather", "/setdescription")
-            await asyncio.sleep(1)
-            await bot.send_message("@BotFather", botname)
-            await asyncio.sleep(1)
-            await bot.send_message("@BotFather", f"•⎆┊انـا البــوت المسـاعـد الخــاص بـ {ba_roger} \n•⎆┊بـواسطـتـي يمكـنك التواصــل مـع مـالكـي 🧸♥️\n•⎆┊قنـاة السـورس 🌐 @Tepthon 🌐")
-        except Exception as e:
-            print(e)
-
 
 
 async def add_bot_to_logger_group(chat_id):
@@ -271,23 +297,6 @@ async def load_plugins(folder, extfolder=None):
         )
 
 
-async def saves():
-    try:
-        os.environ[
-            "STRING_SESSION"
-        ] = "**- تحذيـر ❌ هذا الملف ملغـم .. لـذلك لم يتـم تنصيبـه في حسـابك للامــان ...**"
-    except Exception as e:
-        print(str(e))
-    try:
-        await zedub(JoinChannelRequest("@Tepthon"))
-    except BaseException:
-        pass
-    try:
-        await zedub(JoinChannelRequest("@Tepthon_help"))
-    except BaseException:
-        pass
-
-
 
 async def verifyLoggerGroup():
     """
@@ -323,7 +332,7 @@ async def verifyLoggerGroup():
         descript = "لا تقم بحذف هذه المجموعة أو التغيير إلى مجموعة عامه (وظيفتهـا تخزيـن كـل سجـلات وعمليـات البـوت.)"
         photozed = await zedub.upload_file(file="zedthon/malath/Tepthon.jpg")
         _, groupid = await create_supergroup(
-            "كـروب السجـل تيـبثون ", zedub, Config.TG_BOT_USERNAME, descript, photozed
+            "كـروب السجـل تيـبثون", zedub, Config.TG_BOT_USERNAME, descript, photozed
         )
         addgvar("PRIVATE_GROUP_BOT_API_ID", groupid)
         print(
@@ -365,15 +374,16 @@ async def verifyLoggerGroup():
 
 
 async def install_externalrepo(repo, branch, cfolder):
-    REPREPO = repo
-    if REPBRANCH := branch:
-        repourl = os.path.join(REPREPO, f"tree/{REPBRANCH}")
-        gcmd = f"git clone -b {REPBRANCH} {REPREPO} {cfolder}"
-        errtext = f"There is no branch with name `{REPBRANCH}` in your external repo {REPREPO}. Recheck branch name and correct it in vars(`EXTERNAL_REPO_BRANCH`)"
+    zedREPO = repo
+    rpath = os.path.join(cfolder, "requirements.txt")
+    if zedBRANCH := branch:
+        repourl = os.path.join(zedREPO, f"tree/{zedBRANCH}")
+        gcmd = f"git clone -b {zedBRANCH} {zedREPO} {cfolder}"
+        errtext = f"There is no branch with name `{zedBRANCH}` in your external repo {zedREPO}. Recheck branch name and correct it in vars(`EXTERNAL_REPO_BRANCH`)"
     else:
-        repourl = REPREPO
-        gcmd = f"git clone {REPREPO} {cfolder}"
-        errtext = f"The link({REPREPO}) you provided for `EXTERNAL_REPO` in vars is invalid. please recheck that link"
+        repourl = zedREPO
+        gcmd = f"git clone {zedREPO} {cfolder}"
+        errtext = f"The link({zedREPO}) you provided for `EXTERNAL_REPO` in vars is invalid. please recheck that link"
     response = urllib.request.urlopen(repourl)
     if response.code != 200:
         LOGS.error(errtext)
@@ -381,13 +391,12 @@ async def install_externalrepo(repo, branch, cfolder):
     await runcmd(gcmd)
     if not os.path.exists(cfolder):
         LOGS.error(
-            "There was a problem in cloning the external repo. please recheck external repo link"
+            "- حدث خطأ اثناء استدعاء رابط الملفات الاضافية .. قم بالتأكد من الرابط اولاً..."
         )
         return await zedub.tgbot.send_message(
             BOTLOG_CHATID,
-            "There was a problem in cloning the external repo. please recheck external repo link",
+            "**- حدث خطأ اثناء استدعاء رابط الملفات الاضافية .. قم بالتأكد من الرابط اولاً...**",
         )
-    if os.path.exists(os.path.join(cfolder, "requirements.txt")):
-        rpath = os.path.join(cfolder, "requirements.txt")
-        await runcmd(f"pip3 install --no-cache-dir {rpath}")
+    if os.path.exists(rpath):
+        await runcmd(f"pip3 install --no-cache-dir -r {rpath}")
     await load_plugins(folder="Tepthon", extfolder=cfolder)
