@@ -14,7 +14,7 @@ from .utils import (
     verifyLoggerGroup,
 )
 
-LOGS = logging.getLogger("𝐑𝐞𝐩𝐭𝐡𝐨𝐧")
+LOGS = logging.getLogger("سورس تيبثون")
 
 print(Tepthon.__copyright__)
 print(f"المرخصة بموجب شروط  {Tepthon.__license__}")
