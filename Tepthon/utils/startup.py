@@ -147,9 +147,9 @@ async def startupmessage():
 
 
 async def mybot():
-    MOHAMMED = bot.me.first_name
+    ROGER = bot.me.first_name
     Narcissus = bot.uid
-    ba_roger = f"[{MOHAMMED}](tg://user?id={Narcissus})"
+    ba_roger = f"[{ROGER}](tg://user?id={Narcissus})"
     f"ـ {ba_roger}"
     f"•⎆┊هــذا البــوت خــاص بـ {ba_roger} يمكـنك التواصــل معـه هـنا 🧸♥️"
     babot = await zedub.tgbot.get_me()
