@@ -15,6 +15,8 @@ from Tepthon import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID
 from ..Config import Config
 from ..core.logger import logging
 from ..core.session import zedub
+from ..core.server import web_server
+from aiohttp import web
 from ..helpers.utils import install_pip
 from ..helpers.utils.utils import runcmd
 from ..sql_helper.global_collection import (
@@ -89,6 +91,11 @@ async def setup_bot():
         bot_details = await zedub.tgbot.get_me()
         Config.TG_BOT_USERNAME = f"@{bot_details.username}"
         # await zedub.start(bot_token=Config.TG_BOT_USERNAME)
+        app = web.AppRunner(await web_server())
+        await app.setup()
+        bind_address = "0.0.0.0"
+        baqirport = Config.PORT
+        await web.TCPSite(app, bind_address, baqirport).start()
         zedub.me = await zedub.get_me()
         zedub.uid = zedub.tgbot.uid = utils.get_peer_id(zedub.me)
         if Config.OWNER_ID == 0:
