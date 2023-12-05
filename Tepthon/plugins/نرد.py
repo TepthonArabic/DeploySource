@@ -1,5 +1,3 @@
-""" ©ZED™ - @ZlZZl77 """
-
 import asyncio
 import random
 import pyfiglet
@@ -11,7 +9,7 @@ from telethon.events import CallbackQuery, InlineQuery
 from telethon.utils import get_display_name
 from telethon.errors import QueryIdInvalidError
 from telethon.tl.types import InputMessagesFilterDocument
-from Tepthon import StartTime, zedub, zedversion
+from Tepthon import StartTime, zedub, tepversion
 from ..Config import Config
 from ..core import check_owner, pool
 from ..core.logger import logging
