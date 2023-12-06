@@ -114,13 +114,13 @@ async def variable(event):
     zed = await edit_or_reply(event, "**❈╎جـاري اضـافة الفـار الـى بـوتك ...**")
     # All Rights Reserved for "Zed-Thon" "زلـزال الهيبـه"
     if input_str == "كليشة الفحص" or input_str == "كليشه الفحص":
-        variable = "ALIVE_TEMPLATE"
+        variable = "final_message"
         await asyncio.sleep(1.5)
-        if gvarstatus("ALIVE_TEMPLATE") is None:
+        if gvarstatus("final_message") is None:
             await zed.edit("**❈╎تم تغييـر {} بنجـاح ☑️**\n**❈╎الكليشـة الجـديده** \n {} \n\n**❈╎الآن قـم بـ ارسـال الامـر ↶** `.فحص` **لـ التحقـق مـن الكليشـة . .**".format(input_str, vinfo))
         else:
             await zed.edit("**❈╎تم إضـافـة {} بنجـاح ☑️**\n**❈╎الكليشـة المضـافه** \n {} \n\n**❈╎الآن قـم بـ ارسـال الامـر ↶** `.فحص` **لـ التحقـق مـن الكليشـة . .**".format(input_str, vinfo))
-        addgvar("ALIVE_TEMPLATE", vinfo)
+        addgvar("final_message", vinfo)
     elif input_str == "كليشة الحماية" or input_str == "كليشه الحمايه" or input_str == "كليشه الحماية" or input_str == "كليشة الحمايه":
         variable = "pmpermit_txt"
         await asyncio.sleep(1.5)
