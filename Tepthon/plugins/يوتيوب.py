@@ -850,7 +850,7 @@ async def _(event):
         return
     rnryr_link = event.pattern_match.group(1)
     chat = "@msaver_bot"
-  async with event.client.conversation(chat) as conv:
+        async with event.client.conversation(chat) as conv:
         except YouBlockedUserError:
             await event.edit("⎉╎ فـك حـظر البـوت وحـاول مجـددا @msaver_bot")
             return
