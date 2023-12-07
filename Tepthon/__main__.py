@@ -56,6 +56,8 @@ async def startup_process():
     await verifyLoggerGroup()
     await load_plugins("plugins")
     await load_plugins("assistant")
+async def qruan_process():
+    await verifyLoggerGroup()
     await load_plugins("tgcalls")
     print("➖➖➖➖➖ سورس تيبثون™ ➖➖➖➖➖")
     print("تـم التنصـيب .. بنجـاح ✓")
@@ -71,6 +73,7 @@ async def startup_process():
     return
 
 zedub.loop.run_until_complete(startup_process())
+zedub.loop.run_until_complete(qruan_process())
 if len(sys.argv) not in (1, 3, 4):
     zedub.disconnect()
 else:
