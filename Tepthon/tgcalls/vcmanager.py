@@ -1,7 +1,6 @@
 import os
 import asyncio
 import logging
-from telethon import TelegramClient
 from Tepthon import zedub
 from Tepthon.core.managers import edit_delete, edit_or_reply
 from Tepthon.helpers.utils import mentionuser
@@ -11,10 +10,6 @@ from telethon.tl.types import Channel, Chat, User
 from .tgcalls.stream_helper import Stream
 from .tgcalls.tg_downloader import tg_dl
 from .tgcalls.vcp_helper import thesource
-
-plugin_category = "extra"
-
-logging.getLogger("pytgcalls").setLevel(logging.ERROR)
 
 @zedub.zed_cmd(pattern="انضمام")
 async def joinVoicechat(event):
