@@ -849,7 +849,7 @@ async def _(event):
     if event.fwd_from:
         return
     rnryr_link = event.pattern_match.group(1)
-        chat = "@msaver_bot"
+    chat = "@msaver_bot"
     async with bot.conversation(chat) as conv:
         try:
         except YouBlockedUserError:
