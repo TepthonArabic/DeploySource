@@ -4,6 +4,13 @@ from Tepthon.helpers.utils import mentionuser
 from telethon import functions
 from telethon.errors import ChatAdminRequiredError, UserAlreadyInvitedError
 from telethon.tl.types import Channel, Chat, User
+from .tgcalls.stream_helper import Stream
+from .tgcalls.tg_downloader import tg_dl
+from .tgcalls.vcp_helper import zedub
+
+plugin_category = "extra"
+
+logging.getLogger("pytgcalls").setLevel(logging.ERROR)
 
 @zedub.zed_cmd(
     pattern="انضمام ?(\S+)? ?(?:-as)? ?(\S+)?",
