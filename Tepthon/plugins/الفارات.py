@@ -528,6 +528,36 @@ async def variable(event):
     heroku_var = app.config()
     zed = await edit_or_reply(event, "**❈╎جـاري حـذف الفـار مـن بـوتك 🚮...**")
     # All Rights Reserved for "Zed-Thon" "زلـزال الهيبـه"
+
+@zedub.zed_cmd(pattern="لوك$")
+async def _(dyno):
+    if (HEROKU_APP_NAME is None) or (HEROKU_API_KEY is None):
+        return await edit_delete(
+            dyno,
+            "عزيزي المستخدم يجب ان تعين معلومات الفارات التالية لاستخدام اوامر الفارات\n `HEROKU_API_KEY`\n `HEROKU_APP_NAME`.",
+        )
+    try:
+        Heroku = heroku3.from_key(HEROKU_API_KEY)
+        app = Heroku.app(HEROKU_APP_NAME)
+    except BaseException:
+        return await dyno.reply(
+            " يجب التذكر من ان قيمه الفارات التاليه ان تكون بشكل صحيح \nHEROKU_APP_NAME\n HEROKU_API_KEY"
+        )
+    data = app.get_log()
+    await edit_or_reply(
+        dyno, data, deflink=True, linktext="**اخر 100 سطر في لوك هيروكو: **"
+    )
+
+
+def prettyjson(obj, indent=4, maxlinelength=80):
+    items, _ = getsubitems(
+        obj,
+        itemkey="",
+        islast=True,
+        maxlinelength=maxlinelength - indent,
+        indent=indent,
+    )
+    
     if input_str == "كليشة الفحص" or input_str == "كليشه الفحص":
         variable = gvarstatus("ALIVE_TEMPLATE")
         await asyncio.sleep(1.5)
@@ -738,6 +768,42 @@ async def variable(event):
         	return await zed.edit("**❈╎عـذࢪاً عـزيـزي .. انت لـم تقـم بإضـافـة فـار {} أصـلًا...**".format(input_str))
         await zed.edit("**❈╎تم حـذف {} بنجـاح ☑️**\n**❈╎المتغيـر المحـذوف : ↶**\n `{}` \n**❈╎يتم الآن إعـادة تشغيـل بـوت تيبثـون يستغـرق الامر 2-1 دقيـقة ▬▭ ...**".format(input_str, heroku_var[variable]))
         del heroku_var[variable]
+
+@zedub.zed_cmd(pattern="قران(?:\s|$)([\s\S]*)")
+async def variable(event):
+    if Config.HEROKU_API_KEY is None:
+        return await edit_delete(
+            event,
+            "اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب الى حسابك في هيروكو ثم الى الاعدادات ستجده بالاسفل انسخه ودخله في الفار. ",
+        )
+    if Config.HEROKU_APP_NAME is not None:
+        app = Heroku.app(Config.HEROKU_APP_NAME)
+    else:
+        return await ed(
+            event,
+            "اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_APP_NAME` اسم التطبيق اذا كنت لاتعلم.",
+        )
+    input_str = event.pattern_match.group(1)
+    heroku_var = app.config()
+    thesource = await edit_or_reply(event, "**جارِ تغير وضع القران . . .**")
+    if input_str == "تفعيل":
+        variable = "VCMODE"
+        tepinfo = "True"
+        await asyncio.sleep(1.5)
+        if variable in heroku_var:
+            await thesource.edit("**❈︙ تم بنجاح تغيير وضع القرآن\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**".format(input_str))
+        else:
+            await thesource.edit("**❈︙ تم بنجاح تغيير وضع القرآن\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**".format(input_str))
+        heroku_var[variable] = tepinfo
+    elif input_str == "تعطيل":
+        variable = "VCMODE"
+        tepinfo = "False"
+        await asyncio.sleep(1.5)
+        if variable in heroku_var:
+            await thesource.edit("**❈︙ تم بنجاح تغيير وضع القرآن\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**".format(input_str))
+        else:
+            await thesource.edit("**❈︙ تم بنجاح تغيير وضع القرآن\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**".format(input_str))
+        heroku_var[variable] = tepinfo
 
     elif input_str == "اسمي التلقائي" or input_str == "الاسم التلقاائي":
         variable = "AUTONAME"
