@@ -16,7 +16,7 @@ logging.getLogger("pytgcalls").setLevel(logging.ERROR)
 
 OWNER_ID = zedub.uid
 
-@rnryr_session = Config.rnryr_session
+@rnryr_session == Config.rnryr_session
 
 if rnryr_session:
     rnryr_client = TelegramClient(
