@@ -6,7 +6,6 @@ from pytgcalls import PyTgCalls, StreamType
 from pytgcalls.exceptions import (
     AlreadyJoinedError,
     NoActiveGroupCall,
-    NodeJSNotInstalled,
     NotInGroupCallError,
     TooOldNodeJSVersion,
 )
@@ -71,7 +70,7 @@ class thesource:
                 await self.join_vc(chat=chat, join_as=join_as)
             except ChatAdminRequiredError:
                 return "- عليك ان تكون مشرف في الدردشة اولا"
-        except (NodeJSNotInstalled, TooOldNodeJSVersion):
+        except (TooOldNodeJSVersion):
             return "- عليك تثبيت المتطلبات اولا شاهاد القناة الاساسية @TepThoN"
         except AlreadyJoinedError:
             await self.app.leave_group_call(chat.id)
