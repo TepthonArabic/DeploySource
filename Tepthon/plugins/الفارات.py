@@ -769,42 +769,6 @@ def prettyjson(obj, indent=4, maxlinelength=80):
         await zed.edit("**❈╎تم حـذف {} بنجـاح ☑️**\n**❈╎المتغيـر المحـذوف : ↶**\n `{}` \n**❈╎يتم الآن إعـادة تشغيـل بـوت تيبثـون يستغـرق الامر 2-1 دقيـقة ▬▭ ...**".format(input_str, heroku_var[variable]))
         del heroku_var[variable]
 
-@zedub.zed_cmd(pattern="قران(?:\s|$)([\s\S]*)")
-async def variable(event):
-    if Config.HEROKU_API_KEY is None:
-        return await edit_delete(
-            event,
-            "اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب الى حسابك في هيروكو ثم الى الاعدادات ستجده بالاسفل انسخه ودخله في الفار. ",
-        )
-    if Config.HEROKU_APP_NAME is not None:
-        app = Heroku.app(Config.HEROKU_APP_NAME)
-    else:
-        return await ed(
-            event,
-            "اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_APP_NAME` اسم التطبيق اذا كنت لاتعلم.",
-        )
-    input_str = event.pattern_match.group(1)
-    heroku_var = app.config()
-    thesource = await edit_or_reply(event, "**جارِ تغير وضع القران . . .**")
-    if input_str == "تفعيل":
-        variable = "VCMODE"
-        tepinfo = "True"
-        await asyncio.sleep(1.5)
-        if variable in heroku_var:
-            await thesource.edit("**❈︙ تم بنجاح تغيير وضع القرآن\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**".format(input_str))
-        else:
-            await thesource.edit("**❈︙ تم بنجاح تغيير وضع القرآن\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**".format(input_str))
-        heroku_var[variable] = tepinfo
-    elif input_str == "تعطيل":
-        variable = "VCMODE"
-        tepinfo = "False"
-        await asyncio.sleep(1.5)
-        if variable in heroku_var:
-            await thesource.edit("**❈︙ تم بنجاح تغيير وضع القرآن\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**".format(input_str))
-        else:
-            await thesource.edit("**❈︙ تم بنجاح تغيير وضع القرآن\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**".format(input_str))
-        heroku_var[variable] = tepinfo
-
     elif input_str == "اسمي التلقائي" or input_str == "الاسم التلقاائي":
         variable = "AUTONAME"
         await asyncio.sleep(1.5)
