@@ -8,7 +8,7 @@ from Tepthon.core.managers import edit_delete, edit_or_reply
 
 from .tgcalls.stream_helper import Stream
 from .tgcalls.tg_downloader import tg_dl
-from .tgcalls.vcp_helper import thesource
+from .tgcalls.vcp_helper import zedub
 
 plugin_category = "extra"
 
