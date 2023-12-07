@@ -21,6 +21,7 @@ from ..sql_helper.globals import gvarstatus
 # =================== CONSTANT ===================
 bot = zedub
 LOGS = logging.getLogger(__name__)
+USERID = zedub.uid if Config.OWNER_ID == 0 else Config.OWNER_ID
 
 thumb_image_path = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, "thumb_image.jpg")
 # Gdrive
