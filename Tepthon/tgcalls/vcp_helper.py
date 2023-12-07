@@ -7,7 +7,6 @@ from pytgcalls.exceptions import (
     AlreadyJoinedError,
     NoActiveGroupCall,
     NotInGroupCallError,
-    TooOldNodeJSVersion,
 )
 from pytgcalls.types import AudioPiped, AudioVideoPiped
 from pytgcalls.types.stream import StreamAudioEnded
@@ -70,8 +69,6 @@ class thesource:
                 await self.join_vc(chat=chat, join_as=join_as)
             except ChatAdminRequiredError:
                 return "- عليك ان تكون مشرف في الدردشة اولا"
-        except (TooOldNodeJSVersion):
-            return "- عليك تثبيت المتطلبات اولا شاهاد القناة الاساسية @TepThoN"
         except AlreadyJoinedError:
             await self.app.leave_group_call(chat.id)
             await asyncio.sleep(3)
