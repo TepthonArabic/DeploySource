@@ -1,3 +1,7 @@
+import os
+import asyncio
+import logging
+from telethon import TelegramClient
 from Tepthon import zedub
 from Tepthon.core.managers import edit_delete, edit_or_reply
 from Tepthon.helpers.utils import mentionuser
@@ -6,38 +10,14 @@ from telethon.errors import ChatAdminRequiredError, UserAlreadyInvitedError
 from telethon.tl.types import Channel, Chat, User
 from .tgcalls.stream_helper import Stream
 from .tgcalls.tg_downloader import tg_dl
-from .tgcalls.vcp_helper import zedub
+from .tgcalls.vcp_helper import thesource
 
 plugin_category = "extra"
 
 logging.getLogger("pytgcalls").setLevel(logging.ERROR)
 
-@zedub.zed_cmd(
-    pattern="انضمام ?(\S+)? ?(?:-as)? ?(\S+)?",
-    command=("انضمام", plugin_category),
-    info={
-        "header": "To join a Voice Chat.",
-        "description": "To join or create and join a Voice Chat",
-        "note": "You can use -as flag to join anonymously",
-        "flags": {
-            "-as": "To join as another chat.",
-        },
-        "usage": [
-            "{tr}joinvc",
-            "{tr}joinvc (chat_id)",
-            "{tr}joinvc -as (peer_id)",
-            "{tr}joinvc (chat_id) -as (peer_id)",
-        ],
-        "examples": [
-            "{tr}joinvc",
-            "{tr}joinvc -1005895485",
-            "{tr}joinvc -as -1005895485",
-            "{tr}joinvc -1005895485 -as -1005895485",
-        ],
-    },
-)
+@zedub.zed_cmd(pattern="انضمام")
 async def joinVoicechat(event):
-    "To join a Voice Chat."
     chat = event.pattern_match.group(1)
     joinas = event.pattern_match.group(2)
 
@@ -74,22 +54,8 @@ async def joinVoicechat(event):
     await edit_delete(event, out)
 
 
-@zedub.zed_cmd(
-    pattern="غادر",
-    command=("غادر", plugin_category),
-    info={
-        "header": "To leave a Voice Chat.",
-        "description": "To leave a Voice Chat",
-        "usage": [
-            "{tr}leavevc",
-        ],
-        "examples": [
-            "{tr}leavevc",
-        ],
-    },
-)
+@zedub.zed_cmd(pattern="مغادرة")
 async def leaveVoicechat(event):
-    "To leave a Voice Chat."
     if vc_player.CHAT_ID:
         await edit_or_reply(event, "** تم مغادرة من الاتصال 🥢 **")
         chat_name = vc_player.CHAT_NAME
@@ -99,22 +65,8 @@ async def leaveVoicechat(event):
         await edit_delete(event, "** انا لست منضم الى الاتصال 🥢**")
 
 
-@zedub.zed_cmd(
-    pattern="قائمة_التشغيل",
-    command=("قائمة_التشغيل", plugin_category),
-    info={
-        "header": "To Get all playlist.",
-        "description": "To Get all playlist for Voice Chat.",
-        "usage": [
-            "{tr}playlist",
-        ],
-        "examples": [
-            "{tr}playlist",
-        ],
-    },
-)
+@zedub.zed_cmd(pattern="قائمة_التشغيل")
 async def get_playlist(event):
-    "To Get all playlist for Voice Chat."
     await edit_or_reply(event, "**جارِ جلب قائمة التشغيل**")
     playl = vc_player.PLAYLIST
     if not playl:
@@ -134,29 +86,8 @@ def convert_youtube_link_to_name(link):
         title = info['title']
     return title
 
-@zedub.zed_cmd(
-    pattern="تشغيل ?(-f)? ?([\S ]*)?",
-    command=("تشغيل", plugin_category),
-    info={
-        "header": "لتشغيل الوسائط كصوت على القرآن.",
-        "description": "لتشغيل دفق صوتي على القرآن.",
-        "flags": {
-            "-f": "Force play the Audio",
-        },
-        "usage": [
-            "{tr}play (reply to message)",
-            "{tr}play (yt link)",
-            "{tr}play -f (yt link)",
-        ],
-        "examples": [
-            "{tr}play",
-            "{tr}play https://www.youtube.com/watch?v=c05GBLT_Ds0",
-            "{tr}play -f https://www.youtube.com/watch?v=c05GBLT_Ds0",
-        ],
-    },
-)
+@zedub.zed_cmd(pattern="تشغيل")
 async def play_audio(event):
-    " لتشغيل الوسائط كصوت"
     flag = event.pattern_match.group(1)
     input_str = event.pattern_match.group(2)
     if input_str == "" and event.reply_to_msg_id:
@@ -177,64 +108,22 @@ async def play_audio(event):
     if resp:
         await edit_delete(event, resp, time=30)
         
-@zedub.zed_cmd(
-    pattern="ايقاف_مؤقت",
-    command=("ايقاف_مؤقت", plugin_category),
-    info={
-        "header": "لإيقاف البث مؤقتًا في الدردشة الصوتية.",
-        "description": "لإيقاف البث مؤقتًا في الدردشة الصوتية",
-        "usage": [
-            "{tr}pause",
-        ],
-        "examples": [
-            "{tr}pause",
-        ],
-    },
-)
+@zedub.zed_cmd(pattern="ايقاف_مؤقت")
 async def pause_stream(event):
-    "To Pause a stream on Voice Chat."
     await edit_or_reply(event, "**تم ايقاف القرآن مؤقتاً ⏸**")
     res = await vc_player.pause()
     await edit_delete(event, res, time=30)
 
 
-@zedub.zed_cmd(
-    pattern="استمرار",
-    command=("استمرار", plugin_category),
-    info={
-        "header": "لإيقاف البث مؤقتًا في الدردشة الصوتية.",
-        "description": "لإيقاف البث مؤقتًا في الدردشة الصوتية",
-        "usage": [
-            "{tr}resume",
-        ],
-        "examples": [
-            "{tr}resume",
-        ],
-    },
-)
+@zedub.zed_cmd(pattern="استمرار")
 async def resume_stream(event):
-    "To Resume a stream on Voice Chat."
     await edit_or_reply(event, "**تم استمرار القرآن الكريم ▶️**")
     res = await vc_player.resume()
     await edit_delete(event, res, time=30)
 
 
-@zedub.zed_cmd(
-    pattern="تخطي",
-    command=("تخطي", plugin_category),
-    info={
-        "header": "لتخطي البث الجاري تشغيله حاليًا على الدردشة الصوتية.",
-        "description": "لتخطي البث الجاري تشغيله حاليًا على الدردشة الصوتية.",
-        "usage": [
-            "{tr}skip",
-        ],
-        "examples": [
-            "{tr}skip",
-        ],
-    },
-)
+@zedub.zed_cmd(pattern="تخطي")
 async def skip_stream(event):
-    "لتخطي البث الجاري تشغيله حاليًا على الدردشة الصوتية."
     await edit_or_reply(event, "**تم تخطي القرآن وتشغيل القرآن التالي**")
     res = await vc_player.skip()
     await edit_delete(event, res, time=30)
