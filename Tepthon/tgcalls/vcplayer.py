@@ -16,28 +16,6 @@ logging.getLogger("pytgcalls").setLevel(logging.ERROR)
 
 OWNER_ID = zedub.uid
 
-@rnryr_session == Config.rnryr_session
-
-if rnryr_session:
-    rnryr_client = TelegramClient(
-        StringSession(rnryr_session), Config.APP_ID, Config.API_HASH
-    )
-else:
-    rnryr_client = zedub
-
-rnryr_client.__class__.__module__ = "telethon.client.telegramclient"
-vc_player = thesource(rnryr_client)
-
-asyncio.create_task(vc_player.start())
-
-
-@vc_player.app.on_stream_end()
-async def handler(_, update):
-    await vc_player.handle_next(update)
-
-
-ALLOWED_USERS = set()
-
 
 @zedub.zed_cmd(
     pattern="انضمام ?(\S+)? ?(?:-as)? ?(\S+)?",
