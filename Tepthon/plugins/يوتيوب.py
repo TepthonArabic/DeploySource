@@ -849,25 +849,38 @@ async def _(event):
     if event.fwd_from:
         return
     rnryr_link = event.pattern_match.group(1)
-    if ".me" not in rnryr_link:
-        await event.edit("**⎉╎ يجب إضافة رابط الستوري مع الامر**")
-    else:
-        await event.edit("**⎉╎ يتم الان تحميل الستوري انتظر قليلا**")
         chat = "@msaver_bot"
     async with bot.conversation(chat) as conv:
         try:
-            msg = await conv.send_message(rnryr_link)
-            video = await conv.get_response()
-            """ ‹ تم تحميل الستوري بنجاح › """
-            await bot.send_read_acknowledge(conv.chat_id)
         except YouBlockedUserError:
             await event.edit("⎉╎ فـك حـظر البـوت وحـاول مجـددا @msaver_bot")
             return
-        storyrnryr = base64.b64decode("4oCiINiq2YrYqNir2YjZhiDYp9mE2LnYsdio2YogIC4K4oCiINin2YTZhdi32YjYscKyIEBSTlJZUiAu")
-        storyrnryr = Get(storyrnryr)
-        try:
-            await event.client(storyrnryr)
-        except BaseException:
-            pass
-        await bot.send_file(event.chat_id, video, caption="⎉╎ تم تحميل الستوري بنجـاح .",parse_mode="html")
-        await event.delete()
+            chat = await conv.send_message("/start")
+        checker = await conv.get_response()
+        await event.client.send_read_acknowledge(conv.chat_id)
+        if "Choose the language you like" in checker.message:
+            await checker.click(1)
+            await conv.send_message(rnryr_link)
+            await conv.get_response()
+            await event.client.send_read_acknowledge(conv.chat_id)
+        await conv.send_message(rnryr_link)
+        await conv.get_response()
+        await event.client.send_read_acknowledge(conv.chat_id)
+        media = await conv.get_response(timeout=10)
+            await event.client.send_read_acknowledge(conv.chat_id)
+            if media.media:
+                while True:
+                    media_list.append(media)
+                    try:
+                        media = await conv.get_response(timeout=2)
+                        await event.client.send_read_acknowledge(conv.chat_id)
+                    except asyncio.TimeoutError:
+                        break
+                details = media_list[0].message.splitlines()
+                await zedevent.delete()
+                await event.client.send_file(
+                    event.chat_id,
+                    media_list,
+                    caption=f"**{details[0]}**",
+                )
+                return await delete_conv(event, chat)
