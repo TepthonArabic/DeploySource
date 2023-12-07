@@ -850,12 +850,11 @@ async def _(event):
         return
     rnryr_link = event.pattern_match.group(1)
     chat = "@msaver_bot"
-    async with bot.conversation(chat) as conv:
-        try:
+  async with event.client.conversation(chat) as conv:
         except YouBlockedUserError:
             await event.edit("⎉╎ فـك حـظر البـوت وحـاول مجـددا @msaver_bot")
             return
-            chat = await conv.send_message("/start")
+        chat = await conv.send_message("/start")
         checker = await conv.get_response()
         await event.client.send_read_acknowledge(conv.chat_id)
         if "Choose the language you like" in checker.message:
