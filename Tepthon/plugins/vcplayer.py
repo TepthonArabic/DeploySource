@@ -13,7 +13,7 @@ from ..core.managers import edit_delete, edit_or_reply
 
 from ..vc_baqir.stream_helper import Stream
 from ..vc_baqir.tg_downloader import tg_dl
-from ..vc_baqir.vcp_helper import ZedVC
+from ..vc_baqir.vcp_helper import TepVC
 
 plugin_category = "المكالمات"
 
