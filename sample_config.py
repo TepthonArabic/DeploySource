@@ -12,6 +12,7 @@ from validators.url import url
 class Config(object):
     LOGGER = True
     # MUST NEEDED VARS
+    PORT = os.environ.get("PORT", None)
     # set this value with your name
     ALIVE_NAME = os.environ.get("ALIVE_NAME", None)
     # Get the values for following 2 from my.telegram.org
