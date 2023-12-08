@@ -1,6 +1,11 @@
 import os
 import asyncio
 import logging
+import asyncio
+import io
+import pathlib
+import time
+from datetime import datetime
 from Tepthon import zedub
 from Tepthon.core.managers import edit_delete, edit_or_reply
 from Tepthon.helpers.utils import mentionuser
@@ -21,18 +26,68 @@ from telethon import functions
 from telethon.errors import ChatAdminRequiredError
 from yt_dlp import YoutubeDL
 from .stream_helper import Stream, check_url, video_dl, yt_regex
-import asyncio
-import io
-import os
-import pathlib
-import time
-from datetime import datetime
-
 from Tepthon.Config import Config
 from Tepthon.core.managers import edit_or_reply
 from Tepthon.helpers import progress
 from telethon.tl import types
 from telethon.utils import get_extension
+import re
+from enum import Enum
+
+from requests.exceptions import MissingSchema
+from requests.models import PreparedRequest
+from Tepthon.utils import runcmd
+
+
+class Stream(Enum):
+    audio = 1
+    video = 2
+
+
+yt_regex_str = "^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube(-nocookie)?\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$"
+
+yt_regex = re.compile(yt_regex_str)
+
+
+def check_url(url):
+    prepared_request = PreparedRequest()
+    try:
+        prepared_request.prepare_url(url, None)
+        return prepared_request.url
+    except MissingSchema:
+        return False
+
+
+async def get_yt_stream_link(url, audio_only=False):
+    if audio_only:
+        return (
+            await runcmd(f"yt-dlp --no-warnings --geo-bypass -f bestaudio -g {url}")
+        )[0]
+    return (await runcmd(f"yt-dlp --no-warnings --geo-bypass -f best -g {url}"))[0]
+
+
+async def video_dl(url, title):
+    path = f"temp/{title.replace(' ', '_')}.mp4"
+    video_opts = {
+        "format": "best",
+        "addmetadata": True,
+        "key": "FFmpegMetadata",
+        "writethumbnail": False,
+        "prefer_ffmpeg": True,
+        "geo_bypass": True,
+        "nocheckcertificate": True,
+        "postprocessors": [
+            {"key": "FFmpegVideoConvertor", "preferedformat": "mp4"},
+            {"key": "FFmpegMetadata"},
+        ],
+        "outtmpl": path,
+        "logtostderr": False,
+        "quiet": True,
+    }
+
+    with YoutubeDL(video_opts) as ytdl:
+        ytdl.extract_info(url)
+    return path
 
 NAME = "untitled"
 
