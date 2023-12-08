@@ -37,6 +37,7 @@ from requests.exceptions import MissingSchema
 from requests.models import PreparedRequest
 from Tepthon.utils import runcmd
 
+logging.getLogger("pytgcalls").setLevel(logging.ERROR)
 
 class Stream(Enum):
     audio = 1
