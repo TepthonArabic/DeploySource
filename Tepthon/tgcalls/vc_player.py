@@ -25,7 +25,6 @@ from pytgcalls.types.stream import StreamAudioEnded
 from telethon import functions
 from telethon.errors import ChatAdminRequiredError
 from yt_dlp import YoutubeDL
-from .stream_helper import Stream, check_url, video_dl, yt_regex
 from Tepthon.Config import Config
 from Tepthon.core.managers import edit_or_reply
 from Tepthon.helpers import progress
