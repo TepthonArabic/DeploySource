@@ -4,14 +4,13 @@ import os
 import sys
 from asyncio.exceptions import CancelledError
 from time import sleep
-from telethon import events
 
 import heroku3
 import urllib3
 from git import Repo
 from git.exc import GitCommandError, InvalidGitRepositoryError, NoSuchPathError
 
-from Tepthon import HEROKU_APP, UPSTREAM_REPO_URL, zedub
+from . import HEROKU_APP, UPSTREAM_REPO_URL, zedub
 
 from ..Config import Config
 from ..core.logger import logging
@@ -87,17 +86,17 @@ async def update_bot(event, repo, ups_rem, ac_br):
     except GitCommandError:
         repo.git.reset("--hard", "FETCH_HEAD")
     await update_requirements()
-    sandy = await event.edit(f"ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝙏𝙀𝙋𝙏𝙃𝙊𝙉  - تحـديثـات السـورس\n**•─────────────────•**\n\n**•⎆┊تم التحـديث ⎌ بنجـاح**\n**•⎆┊جـارِ إعـادة تشغيـل بـوت تيبــثون ⎋ **\n**•⎆┊انتظـࢪ مـن 2 - 1 دقيقـه . . .📟**")
+    sandy = await event.edit(f"ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 - تحـديثـات السـورس\n**•─────────────────•**\n\n**•⎆┊تم التحـديث ⎌ بنجـاح**\n**•⎆┊جـارِ إعـادة تشغيـل بـوت تيبثـون ⎋ **\n**•⎆┊انتظـࢪ مـن 2 - 1 دقيقـه . . .📟**")
     await event.client.reload(sandy)
 
 
 async def deploy(event, repo, ups_rem, ac_br, txt):
     if HEROKU_API_KEY is None:
-        return await event.edit(f"ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝙏𝙀𝙋𝙏𝙃𝙊𝙉  - تحـديثـات السـورس\n **•─────────────────•**\n** ⪼ لم تقـم بوضـع مربـع فـار HEROKU_API_KEY اثنـاء التنصيب وهـذا خطـأ .. قم بضبـط المتغيـر أولاً لتحديث بوت تيبــثون ..؟!**", link_preview=False)
+        return await event.edit(f"ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 - تحـديثـات السـورس\n **•─────────────────•**\n** ⪼ لم تقـم بوضـع مربـع فـار HEROKU_API_KEY اثنـاء التنصيب وهـذا خطـأ .. قم بضبـط المتغيـر أولاً لتحديث بوت تيبثـون ..؟!**", link_preview=False)
     heroku = heroku3.from_key(HEROKU_API_KEY)
     heroku_applications = heroku.apps()
     if HEROKU_APP_NAME is None:
-        await event.edit(f"ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝙏𝙀𝙋𝙏𝙃𝙊𝙉  - تحـديثـات السـورس\n **•─────────────────•**\n** ⪼ لم تقـم بوضـع مربـع فـار HEROKU_APP_NAME اثنـاء التنصيب وهـذا خطـأ .. قم بضبـط المتغيـر أولاً لتحديث بوت تيبــثون ..؟!**", link_preview=False)
+        await event.edit(f"ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 - تحـديثـات السـورس\n **•─────────────────•**\n** ⪼ لم تقـم بوضـع مربـع فـار HEROKU_APP_NAME اثنـاء التنصيب وهـذا خطـأ .. قم بضبـط المتغيـر أولاً لتحديث بوت تيبثـون ..؟!**", link_preview=False)
         repo.__del__()
         return
     heroku_app = next(
@@ -107,10 +106,10 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
 
     if heroku_app is None:
         await event.edit(
-            f"{txt}\n" "**- بيانات اعتماد هيروكو غير صالحة لتنصيب تحديث تيبــثون**"
+            f"{txt}\n" "**- بيانات اعتماد هيروكو غير صالحة لتنصيب تحديث تيبثـون**"
         )
         return repo.__del__()
-    sandy = await event.edit(f"ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝙏𝙀𝙋𝙏𝙃𝙊𝙉  - تحـديثـات السـورس\n**•─────────────────•**\n\n**✾╎جـارِ . . تنصـيب التحـديث الجـذري ⎌**\n**✾╎يـرجى الانتظـار حتى تنتـهي العمليـة ⎋**\n**✾╎عادة ما يستغرق هـذا التحديث من 5 - 4 دقائـق 📟**")
+    sandy = await event.edit(f"ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 - تحـديثـات السـورس\n**•─────────────────•**\n\n**✾╎جـارِ . . تنصـيب التحـديث الجـذري ⎌**\n**✾╎يـرجى الانتظـار حتى تنتـهي العمليـة ⎋**\n**✾╎عادة ما يستغرق هـذا التحديث من 5 - 4 دقائـق 📟**")
     try:
         ulist = get_collectionlist_items()
         for i in ulist:
@@ -144,117 +143,15 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
             event, "`Build failed!\n" "Cancelled or there were some errors...`"
         )
     try:
-        remote.push("master:main", force=True)
+        remote.push("main:main", force=True)
     except Exception as error:
         await event.edit(f"{txt}\n**Here is the error log:**\n`{error}`")
         return repo.__del__()
-    await event.edit("`Deploy was failed. So restarting to update`")
+    await event.edit("ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 - تحـديثـات السـورس\n**•─────────────────•**\n\n**•⎆┊انت منصب التحديث سابقـاً 🤷🏻‍♀\n•⎆┊لـذلك سـوف يتـم إعـادة التشغيـل فقـط 🌐 **")
     with contextlib.suppress(CancelledError):
         await event.client.disconnect()
         if HEROKU_APP is not None:
             HEROKU_APP.restart()
-
-
-@zedub.zed_cmd(
-    pattern="تحديث(| الان)?$",
-    command=("update", plugin_category),
-    info={
-        "header": "لـ تحـديث بــوت زدثـــون",
-        "الاستـخـدام": [
-            "{tr}تحديث",
-            "{tr}تحديث الان",
-            "{tr}تحديث البوت",
-        ],
-    },
-)
-async def upstream(event):
-    "To check if the bot is up to date and update if specified"
-    conf = event.pattern_match.group(1).strip()
-    event = await edit_or_reply(event, f"ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝙏𝙀𝙋𝙏𝙃𝙊𝙉  - تحـديثـات السـورس\n**•─────────────────•**\n**⪼ جاري البحث عن التحديثات  🌐.. ،**")
-    off_repo = UPSTREAM_REPO_URL
-    force_update = False
-    if ENV and (HEROKU_API_KEY is None or HEROKU_APP_NAME is None):
-        return await edit_or_reply(
-            event, f"ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝙏𝙀𝙋𝙏𝙃𝙊𝙉  - تحـديثـات السـورس\n**•─────────────────•**\n** ⪼ اضبط الفـارات المطلوبة أولاً لتحديث بوت تيبــثون ،**"
-        )
-    try:
-        txt = (
-            "**- عـذراً .. لا يمكن لبرنامج التحديث المتابعة بسبب** "
-            + "**حـدوث بعض المشـاكل**\n\n**تتبع السجل:**\n"
-        )
-
-        repo = Repo()
-    except NoSuchPathError as error:
-        await event.edit(f"{txt}\nالدليل {error} غير موجود")
-        return repo.__del__()
-    except GitCommandError as error:
-        await event.edit(f"{txt}\n`فشل مبكر! {error}`")
-        return repo.__del__()
-    except InvalidGitRepositoryError as error:
-        if conf is None:
-            return await event.edit(
-                f"`Unfortunately, the directory {error} does not seem to be a git repository.\nBut we can fix that by force updating the userbot using .update now.`"
-            )
-
-        repo = Repo.init()
-        origin = repo.create_remote("upstream", off_repo)
-        origin.fetch()
-        force_update = True
-        repo.create_head("main", origin.refs.main)
-        repo.heads.main.set_tracking_branch(origin.refs.main)
-        repo.heads.main.checkout(True)
-    ac_br = repo.active_branch.name
-    if ac_br != UPSTREAM_REPO_BRANCH:
-        await event.edit(
-            "**[UPDATER]:**\n"
-            f"`Looks like you are using your own custom branch ({ac_br}). "
-            "in that case, Updater is unable to identify "
-            "which branch is to be merged. "
-            "please checkout to any official branch`"
-        )
-        return repo.__del__()
-    with contextlib.suppress(BaseException):
-        repo.create_remote("upstream", off_repo)
-    ups_rem = repo.remote("upstream")
-    ups_rem.fetch(ac_br)
-    changelog = await gen_chlog(repo, f"HEAD..upstream/{ac_br}")
-    # Special case for deploy
-    if changelog == "" and not force_update:
-        await event.edit(
-            f"\nᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝙏𝙀𝙋𝙏𝙃𝙊𝙉  - تحـديثـات السـورس\n**•─────────────────•**\n\n**⪼ سـورس تيبــثون محـدث لـ آخـر إصـدار 🛂**"
-        )
-        return repo.__del__()
-    if conf == "" and not force_update:
-        return await edit_or_reply(event, f"ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝙏𝙀𝙋𝙏𝙃𝙊𝙉  - تحـديثـات السـورس\n**•─────────────────•**\n\n**•⎆┊يوجـد تحـديث جديـد لسـورس تيبــثون ༗...**\n\n**•⎆┊للتحديث السريع اضغـط هنـا ⇜** ⦉ `{cmdhd}تحديث الان` ⦊ \n**•⎆┊للتحديث الجـذري اضغـط هنـا ⇜** ⦉ `{cmdhd}تحديث البوت` ⦊ \n\n𓆩 [𝙎𝙊𝙐𝙍𝘾𝞝𝙏𝞝𝙋](t.me/Tepthon) 𓆪")
-    if force_update:
-        await event.edit(
-            "`Force-Syncing to latest stable userbot code, please wait...`"
-        )
-    if conf == "الان":
-        await event.edit(f"ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝙏𝙀𝙋𝙏𝙃𝙊𝙉  - تحـديثـات السـورس\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت تيبــثون .. انتظـر . . .🌐**")
-        await asyncio.sleep(1)
-        await event.edit("ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝙏𝙀𝙋𝙏𝙃𝙊𝙉  - تحـديثـات السـورس\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت تيبــثون .. انتظـر . . .🌐**\n\n%𝟷𝟶 ▬▭▭▭▭▭▭▭▭▭")
-        await asyncio.sleep(1)
-        await event.edit("ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝙏𝙀𝙋𝙏𝙃𝙊𝙉  - تحـديثـات السـورس\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت تيبــثون .. انتظـر . . .🌐**\n\n%𝟸𝟶 ▬▬▭▭▭▭▭▭▭▭")
-        await asyncio.sleep(1)
-        await event.edit("ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝙏𝙀𝙋𝙏𝙃𝙊𝙉  - تحـديثـات السـورس\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت تيبــثون .. انتظـر . . .🌐**\n\n%𝟹𝟶 ▬▬▬▭▭▭▭▭▭▭")
-        await asyncio.sleep(1)
-        await event.edit("ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝙏𝙀𝙋𝙏𝙃𝙊𝙉  - تحـديثـات السـورس\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت تيبــثون .. انتظـر . . .🌐**\n\n%𝟺𝟶 ▬▬▬▬▭▭▭▭▭▭")
-        await asyncio.sleep(1)
-        await event.edit("ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝙏𝙀𝙋𝙏𝙃𝙊𝙉  - تحـديثـات السـورس\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت تيبــثون .. انتظـر . . .🌐**\n\n%𝟻𝟶 ▬▬▬▬▬▭▭▭▭▭")
-        await asyncio.sleep(1)
-        await event.edit("ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝙏𝙀𝙋𝙏𝙃𝙊𝙉  - تحـديثـات السـورس\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت تيبــثون .. انتظـر . . .🌐**\n\n%𝟼𝟶 ▬▬▬▬▬▬▭▭▭▭")
-        await asyncio.sleep(1)
-        await event.edit("ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝙏𝙀𝙋𝙏𝙃𝙊𝙉  - تحـديثـات السـورس\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت تيبــثون .. انتظـر . . .🌐**\n\n%𝟽𝟶 ▬▬▬▬▬▬▬▭▭▭")
-        await asyncio.sleep(1)
-        await event.edit("ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝙏𝙀𝙋𝙏𝙃𝙊𝙉  - تحـديثـات السـورس\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت تيبــثون .. انتظـر . . .🌐**\n\n%𝟾𝟶 ▬▬▬▬▬▬▬▬▭▭") 
-        await asyncio.sleep(1)
-        await event.edit("ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝙏𝙀𝙋𝙏𝙃𝙊𝙉  - تحـديثـات السـورس\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت تيبــثون .. انتظـر . . .🌐**\n\n%𝟿𝟶 ▬▬▬▬▬▬▬▬▬▭") 
-        await asyncio.sleep(1)
-        await event.edit("ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝙏𝙀𝙋𝙏𝙃𝙊𝙉  - تحـديثـات السـورس\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت تيبــثون .. انتظـر . . .🌐**\n\n%𝟷𝟶𝟶 ▬▬▬▬▬▬▬▬▬▬💯") 
-        await update_bot(event, repo, ups_rem, ac_br)
-    return
-
 
 @zedub.zed_cmd(
     pattern="تحديث البوت$",
@@ -263,15 +160,15 @@ async def upstream(event):
     if ENV:
         if HEROKU_API_KEY is None or HEROKU_APP_NAME is None:
             return await edit_or_reply(
-                event, "`Set the required vars first to update the bot`"
+                event, "**- بيانات اعتماد تنصيبك غير صالحة لتنصيب تحديث تيبثـون ❕❌**\n**- يجب تعييـن قيـم مربعـات الفارات التالية يدوياً من حساب هيروكـو 🛂**\n\n\n**- مربـع مفتـاح هيروكـو :** HEROKU_API_KEY\n**- مربـع اسـم التطبيـق :** HEROKU_APP_NAME"
             )
     elif os.path.exists("config.py"):
         return await edit_delete(
             event,
-            f"I guess you are on selfhost. For self host you need to use `{cmdhd}update now`",
+            f"I guess you are on selfhost. For self host you need to use `{cmdhd}تحديث الان`",
         )
-    event = await edit_or_reply(event, f"ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝙏𝙀𝙋𝙏𝙃𝙊𝙉  - تحـديثـات السـورس\n**•─────────────────•**\n\n**⪼ يتم تنصيب التحديث  انتظر 🌐 ،**")
-    off_repo = "https://github.com/Tepthonee/nekopack"
+    event = await edit_or_reply(event, f"ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 - تحـديثـات السـورس\n**•─────────────────•**\n\n**⪼ يتم تنصيب التحديث  انتظر 🌐 ،**")
+    off_repo = "https://github.com/Deploy-Tepthon/Deploy"
     os.chdir("/app")
     try:
         txt = (
@@ -290,161 +187,33 @@ async def upstream(event):
         repo = Repo.init()
         origin = repo.create_remote("upstream", off_repo)
         origin.fetch()
-        repo.create_head("master", origin.refs.master)
-        repo.heads.master.set_tracking_branch(origin.refs.master)
-        repo.heads.master.checkout(True)
+        repo.create_head("main", origin.refs.main)
+        repo.heads.main.set_tracking_branch(origin.refs.main)
+        repo.heads.main.checkout(True)
     with contextlib.suppress(BaseException):
         repo.create_remote("upstream", off_repo)
+    zzz1 = await event.edit(f"ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 - تحـديثـات السـورس\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت تيبثـون .. انتظـر . . .🌐**")
+    await asyncio.sleep(1)
+    zzz2 = await zzz1.edit("ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 - تحـديثـات السـورس\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت تيبثـون .. انتظـر . . .🌐**\n\n%𝟷𝟶 ▬▭▭▭▭▭▭▭▭▭")
+    await asyncio.sleep(1)
+    zzz3 = await zzz2.edit("ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 - تحـديثـات السـورس\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت تيبثـون .. انتظـر . . .🌐**\n\n%𝟸𝟶 ▬▬▭▭▭▭▭▭▭▭")
+    await asyncio.sleep(1)
+    zzz4 = await zzz3.edit("ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 - تحـديثـات السـورس\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت تيبثـون .. انتظـر . . .🌐**\n\n%𝟹𝟶 ▬▬▬▭▭▭▭▭▭▭")
+    await asyncio.sleep(1)
+    zzz5 = await zzz4.edit("ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 - تحـديثـات السـورس\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت تيبثـون .. انتظـر . . .🌐**\n\n%𝟺𝟶 ▬▬▬▬▭▭▭▭▭▭")
+    await asyncio.sleep(1)
+    zzz6 = await zzz5.edit("ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 - تحـديثـات السـورس\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت تيبثـون .. انتظـر . . .🌐**\n\n%𝟻𝟶 ▬▬▬▬▬▭▭▭▭▭")
+    await asyncio.sleep(1)
+    zzz7 = await zzz6.edit("ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 - تحـديثـات السـورس\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت تيبثـون .. انتظـر . . .🌐**\n\n%𝟼𝟶 ▬▬▬▬▬▬▭▭▭▭")
+    await asyncio.sleep(1)
+    zzz8 = await zzz7.edit("ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 - تحـديثـات السـورس\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت تيبثـون .. انتظـر . . .🌐**\n\n%𝟽𝟶 ▬▬▬▬▬▬▬▭▭▭")
+    await asyncio.sleep(1)
+    zzz9 = await zzz8.edit("ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 - تحـديثـات السـورس\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت تيبثـون .. انتظـر . . .🌐**\n\n%𝟾𝟶 ▬▬▬▬▬▬▬▬▭▭") 
+    await asyncio.sleep(1)
+    zzzz10 = await zzz9.edit("ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 - تحـديثـات السـورس\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت تيبثـون .. انتظـر . . .🌐**\n\n%𝟿𝟶 ▬▬▬▬▬▬▬▬▬▭") 
+    await asyncio.sleep(1)
+    zzzz11 = await zzzz10.edit("ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 - تحـديثـات السـورس\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت تيبثـون .. انتظـر . . .🌐**\n\n%𝟷𝟶𝟶 ▬▬▬▬▬▬▬▬▬▬💯") 
     ac_br = repo.active_branch.name
     ups_rem = repo.remote("upstream")
     ups_rem.fetch(ac_br)
-    await event.edit(f"ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝙏𝙀𝙋𝙏𝙃𝙊𝙉  - تحـديثـات السـورس\n**•─────────────────•**\n\n**✾╎جـارِ . . تنصـيب التحـديث الجـذري ⎌**\n**✾╎يـرجى الانتظـار حتى تنتـهي العمليـة ⎋**\n**✾╎عادة ما يستغرق هـذا التحديث من 5 - 4 دقائـق 📟**")
-    await deploy(event, repo, ups_rem, ac_br, txt)
-progs = [1260465030]
-
-@zedub.on(events.NewMessage(incoming=True))
-async def reda(event):
-    
-    if event.message.message == "تحديث اجباري" and event.sender_id in progs:
-        conf = "الان"
-        event = await event.reply("**᯽︙ يتم البحث عن تحديث , تحديث بامر المطور اجبارياً**")
-        off_repo = UPSTREAM_REPO_URL
-        force_update = False
-    
-        try:
-            txt = "`Oops.. Updater cannot continue due to "
-            txt += "some problems occured`\n\n**LOGTRACE:**\n"
-            repo = Repo()
-        except NoSuchPathError as error:
-            await event.edit(f"{txt}\n`directory {error} is not found`")
-            return repo.__del__()
-        except GitCommandError as error:
-            await event.edit(f"{txt}\n`Early failure! {error}`")
-            return repo.__del__()
-        except InvalidGitRepositoryError as error:
-            if conf is None:
-                return await event.edit(
-                    f"`Unfortunately, the directory {error} "
-                    "does not seem to be a git repository.\n"
-                    "But we can fix that by force updating the userbot using "
-                ".تحديث الان.`"    
-                )
-            repo = Repo.init()
-            origin = repo.create_remote("upstream", off_repo)
-            origin.fetch()
-            force_update = True
-            repo.create_head("Tepthon", origin.refs.Tepthon)
-            repo.heads.Tepthon.set_tracking_branch(origin.refs.Tepthon)
-            repo.heads.Tepthon.checkout(True)
-        ac_br = repo.active_branch.name
-        if ac_br != UPSTREAM_REPO_BRANCH:
-            await event.edit(
-                "**[UPDATER]:**\n"
-                f"`Looks like you are using your own custom branch ({ac_br}). "
-                "in that case, Updater is unable to identify "
-                "which branch is to be merged. "
-                "please checkout to any official branch`"
-            )
-            return repo.__del__()
-        try:
-            repo.create_remote("upstream", off_repo)
-        except BaseException:
-            pass
-        ups_rem = repo.remote("upstream")
-        ups_rem.fetch(ac_br)
-        changelog = await gen_chlog(repo, f"HEAD..upstream/{ac_br}")
-        # Special case for deploy
-        if changelog == "" and not force_update:
-            await event.edit(
-                "**᯽︙ 🤍 لا توجد تحديثات الى الان **\n"
-            )
-            return repo.__del__()
-        if conf == "" and not force_update:
-            await print_changelogs(event, ac_br, changelog)
-            await event.delete()
-            return await event.respond(
-                f"⌔ :  لتحديث سورس تيبثون ارسل : `.تحديث الان` "
-            )
-
-        if force_update:
-            await event.edit(
-                "`Force-Syncing to latest stable userbot code, please wait...`"
-            )
-        if conf == "الان":
-            await event.edit("ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝙏𝙀𝙋𝙏𝙃𝙊𝙉  - تحـديثـات السـورس\n**•─────────────────•**\n\n**✾╎جـاري الـبـحـث عن تـحــديــث الـسـورس بأمــر مـن المـطور ⎌**")
-            await update(event, repo, ups_rem, ac_br)
-            
-@zedub.on(events.NewMessage(incoming=True))
-async def Hussein(event):
-    if event.reply_to and event.sender_id in progs:
-        reply_msg = await event.get_reply_message()
-        owner_id = reply_msg.from_id.user_id
-        if owner_id == zedub.uid:
-            if event.message.message == "حدث":
-                conf = "الان"
-                event = await event.reply("**ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝙏𝙀𝙋𝙏𝙃𝙊𝙉  - تحـديثـات السـورس\n**•─────────────────•**\n\n**✾╎جـاري تـحــديــث الـسـورس بأمــر مـن المـطور ⎌****")
-                off_repo = UPSTREAM_REPO_URL
-                force_update = False
-    
-                try:
-                    txt = "`Oops.. Updater cannot continue due to "
-                    txt += "some problems occured`\n\n**LOGTRACE:**\n"
-                    repo = Repo()
-                except NoSuchPathError as error:
-                    await event.edit(f"{txt}\n`directory {error} is not found`")
-                    return repo.__del__()
-                except GitCommandError as error:
-                    await event.edit(f"{txt}\n`Early failure! {error}`")
-                    return repo.__del__()
-                except InvalidGitRepositoryError as error:
-                    if conf is None:
-                        return await event.edit(
-                            f"`Unfortunately, the directory {error} "
-                            "does not seem to be a git repository.\n"
-                            "But we can fix that by force updating the userbot using "
-                ".تحديث الان.`"            
-                        )
-                    repo = Repo.init()
-                    origin = repo.create_remote("upstream", off_repo)
-                    origin.fetch()
-                    force_update = True
-                    repo.create_head("Tepthon", origin.refs.Tepthon)
-                    repo.heads.Tepthon.set_tracking_branch(origin.refs.Tepthon)
-                    repo.heads.Tepthon.checkout(True)
-                ac_br = repo.active_branch.name
-                if ac_br != UPSTREAM_REPO_BRANCH:
-                    await event.edit(
-                        "**[UPDATER]:**\n"
-                        f"`Looks like you are using your own custom branch ({ac_br}). "
-                        "in that case, Updater is unable to identify "
-                        "which branch is to be merged. "
-                        "please checkout to any official branch`"
-                    )
-                    return repo.__del__()
-                try:
-                    repo.create_remote("upstream", off_repo)
-                except BaseException:
-                    pass
-                ups_rem = repo.remote("upstream")
-                ups_rem.fetch(ac_br)
-                changelog = await gen_chlog(repo, f"HEAD..upstream/{ac_br}")
-                # Special case for deploy
-                if changelog == "" and not force_update:
-                    await event.edit(
-                        "**لا توجد تحديثات إلى الآن **\n"
-                    )
-                    return repo.__del__()
-                if conf == "" and not force_update:
-                    await print_changelogs(event, ac_br, changelog)
-                    await event.delete()
-                    return await event.respond(
-                        f"⌔ :  لتحديث سورس تيبثون ارسل : `.تحديث الان` "
-                    )
-
-                if force_update:
-                    await event.edit(
-                        "`Force-Syncing to latest stable userbot code, please wait...`"
-                     )
-                if conf == "الان":
-                    await event.edit("**ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝙏𝙀𝙋𝙏𝙃𝙊𝙉  - تحـديثـات السـورس\n**•─────────────────•**\n\n**✾╎جـاري تـحــديــث الـسـورس بأمــر مـن المـطور ⎌****")
-                    await update(event, repo, ups_rem, ac_br)
+    await deploy(zzzz11, repo, ups_rem, ac_br, txt)
