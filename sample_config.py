@@ -35,7 +35,6 @@ class Config(object):
     )
     # External plugins repo
     EXTERNAL_REPO = os.environ.get("EXTERNAL_REPO", None)
-    EXTERNAL_REPO = "https://github.com/Zed-Thon/ZedPlugins"
     VCMODE = os.environ.get("VCMODE", False)
     VCMODE = bool(VCMODE and (VCMODE.lower() != "false"))
     VC_SESSION = os.environ.get("VC_SESSION", None)   
