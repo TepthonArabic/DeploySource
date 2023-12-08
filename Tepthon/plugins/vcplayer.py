@@ -17,7 +17,7 @@ from ..vc_baqir.vcp_helper import TepVC
 
 plugin_category = "المكالمات"
 
-logging.getLogger("pytgcalls").setLevel(logging.ERROR)
+logging.getLogger("vc_baqir").setLevel(logging.ERROR)
 
 OWNER_ID = zedub.uid
 
