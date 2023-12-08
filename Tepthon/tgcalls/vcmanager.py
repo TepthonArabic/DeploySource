@@ -7,9 +7,6 @@ from Tepthon.helpers.utils import mentionuser
 from telethon import functions
 from telethon.errors import ChatAdminRequiredError, UserAlreadyInvitedError
 from telethon.tl.types import Channel, Chat, User
-from .tgcalls.stream_helper import Stream
-from .tgcalls.tg_downloader import tg_dl
-from .tgcalls.vcp_helper import thesource
 
 @zedub.zed_cmd(pattern="انضمام")
 async def joinVoicechat(event):
