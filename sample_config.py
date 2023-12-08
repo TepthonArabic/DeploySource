@@ -35,7 +35,10 @@ class Config(object):
     # External plugins repo
     EXTERNAL_REPO = os.environ.get("EXTERNAL_REPO", None)
     if EXTERNAL_REPO and (EXTERNAL_REPO.lower() != "no") and not url(EXTERNAL_REPO):
-        EXTERNAL_REPO = "https://github.com/Zed-Thon/ZedPlugins"
+    EXTERNAL_REPO = "https://github.com/Zed-Thon/ZedPlugins"
+    VCMODE = os.environ.get("VCMODE", False)
+    VCMODE = bool(VCMODE and (VCMODE.lower() != "false"))
+    VC_SESSION = os.environ.get("VC_SESSION", None)   
     # if you need badcat plugins use the following vars
     OLDZED = os.environ.get("OLDZED", "no")
     OLDZED = bool(OLDZED and (OLDZED.lower() != "no"))
@@ -64,7 +67,7 @@ class Config(object):
         or 0
     )
 
-    #فارات زدثــون
+    #فارات تيـبثون
     CUSTOM_ALIVE_TEXT = os.environ.get("CUSTOM_ALIVE_TEXT", None)
     CUSTOM_ALIVE_EMOJI = os.environ.get("CUSTOM_ALIVE_EMOJI", None)
     CUSTOM_ALIVE_EMZED = os.environ.get("CUSTOM_ALIVE_EMZED", None)
@@ -187,6 +190,8 @@ class Config(object):
     if OLDZED_REPO and not url(OLDZED_REPO):
         OLDZED_REPO = "https://github.com/Zed-Thon/ZED_USERBOT"
     OLDZED_REPOBRANCH = os.environ.get("OLDZED_REPOBRANCH", "oldzed")
+    VC_REPO = os.environ.get("VC_REPO", "https://github.com/RepthonArabic/ZVCPlayer")
+    VC_REPOBRANCH = os.environ.get("VC_REPOBRANCH", "zvcplayer")
 
 
 class Production(Config):
