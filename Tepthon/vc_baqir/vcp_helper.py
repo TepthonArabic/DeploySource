@@ -19,7 +19,7 @@ from yt_dlp import YoutubeDL
 from .stream_helper import Stream, check_url, video_dl, yt_regex
 
 
-class TedVC:
+class TepVC:
     def __init__(self, client) -> None:
         self.app = PyTgCalls(client, overload_quiet_mode=True)
         self.client = client
