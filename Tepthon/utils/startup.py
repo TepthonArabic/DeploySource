@@ -125,7 +125,7 @@ async def mybot(): #Code by T.me/E_7_V
     BAQIR = bot.me.first_name
     TAIBA = bot.uid
     ba_tep = f"[{BAQIR}](tg://user?id={TAIBA})"
-    f"ـ {zel_zal}"
+    f"ـ {ba_tep}"
     f"•⎆┊هــذا البــوت خــاص بـ {ba_tep} يمكـنك التواصــل معـه هـنا 🧸♥️"
     babot = await zedub.tgbot.get_me()
     bot_name = babot.first_name
