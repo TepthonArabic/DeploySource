@@ -126,7 +126,7 @@ async def mybot(): # By T.me/E_7_V
     ba_roger = f"[{ROGER}](tg://user?id={Narcissus})"
     f"ـ {ba_roger}"
     f"•⎆┊هــذا البــوت خــاص بـ {ba_roger} يمكـنك التواصــل معـه هـنا 🧸♥️"
-    babot = await zq_lo.tgbot.get_me()
+    babot = await zedub.tgbot.get_me()
     bot_name = babot.first_name
     botname = f"@{babot.username}"
     if bot_name.endswith("Assistant"):
