@@ -120,17 +120,16 @@ async def setup_bot():
         LOGS.error(f"كـود تيرمكس - {str(e)}")
         sys.exit()
 
-
-async def mybot(): #Code by T.me/E_7_V
-    BAQIR = bot.me.first_name
-    TAIBA = bot.uid
-    ba_tep = f"[{BAQIR}](tg://user?id={TAIBA})"
-    f"ـ {ba_tep}"
-    f"•⎆┊هــذا البــوت خــاص بـ {ba_tep} يمكـنك التواصــل معـه هـنا 🧸♥️"
-    babot = await zedub.tgbot.get_me()
+async def mybot(): # By T.me/E_7_V
+    ROGER = bot.me.first_name
+    Narcissus = bot.uid
+    ba_roger = f"[{ROGER}](tg://user?id={Narcissus})"
+    f"ـ {ba_roger}"
+    f"•⎆┊هــذا البــوت خــاص بـ {ba_roger} يمكـنك التواصــل معـه هـنا 🧸♥️"
+    babot = await zq_lo.tgbot.get_me()
     bot_name = babot.first_name
     botname = f"@{babot.username}"
-    if bot_name.startswith("مسـاعـد"):
+    if bot_name.endswith("Assistant"):
         print("تم تشغيل البوت بنجــاح")
     else:
         try:
@@ -162,7 +161,7 @@ async def mybot(): #Code by T.me/E_7_V
             await asyncio.sleep(1)
             await bot.send_message("@BotFather", botname)
             await asyncio.sleep(1)
-            await bot.send_message("@BotFather", f"•⎆┊انـا البــوت المسـاعـد الخــاص بـ {ba_tep} \n•⎆┊بـواسطـتـي يمكـنك التواصــل مـع مـالكـي 🧸♥️\n•⎆┊قنـاة السـورس 🌐 @Tepthon 🌐")
+            await bot.send_message("@BotFather", f"•⎆┊انـا البــوت المسـاعـد الخــاص بـ {ba_roger} \n•⎆┊بـواسطـتـي يمكـنك التواصــل مـع مـالكـي 🧸♥️\n•⎆┊قنـاة السـورس 🌐 @Tepthon 🌐")
         except Exception as e:
             print(e)
 
