@@ -1,11 +1,6 @@
 import base64
 import os
-
-try:
-    import ipaddress
-except ModuleNotFoundError:
-    os.system("pip3 install ipaddress")
-    import ipaddress
+import ipaddress
 
 import struct
 import sys
