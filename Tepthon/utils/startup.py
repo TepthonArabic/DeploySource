@@ -121,7 +121,7 @@ async def setup_bot():
         sys.exit()
 
 
-async def mybot(): #Code by T.me/zzzzl1l
+async def mybot(): #Code by T.me/E_7_V
     BAQIR = bot.me.first_name
     TAIBA = bot.uid
     ba_tep = f"[{BAQIR}](tg://user?id={TAIBA})"
