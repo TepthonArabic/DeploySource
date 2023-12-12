@@ -1,7 +1,6 @@
 import random
 import re
 import time
-import psutil
 from datetime import datetime
 from platform import python_version
 
@@ -14,7 +13,7 @@ from telethon.errors.rpcerrorlist import (
 )
 from telethon.events import CallbackQuery
 
-from . import StartTime, zedub, zedversion
+from Tepthon import StartTime, zedub, zedversion
 
 from ..Config import Config
 from ..core.managers import edit_or_reply
@@ -31,21 +30,19 @@ STATS = gvarstatus("Z_STATS") or "فحص"
 async def amireallyalive(event):
     reply_to_id = await reply_id(event)
     uptime = await get_readable_time((time.time() - StartTime))
-    boot_time_timestamp = psutil.boot_time()
-    bt = datetime.fromtimestamp(boot_time_timestamp)
     start = datetime.now()
-    zedevent = await edit_or_reply(event, "**✦ | جـارِ فحـص سـورس ᴛᴇᴘᴛʜᴏɴ العربي ...**")
+    zedevent = await edit_or_reply(event, "**✦ جـاري فحـص تنصيبـك لـ 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 ⌬ . .**")
     end = datetime.now()
     ms = (end - start).microseconds / 1000
     _, check_sgnirts = check_data_base_heal_th()
-    if gvarstatus("z_date") is not None:
+        if gvarstatus("z_date") is not None:
         zzd = gvarstatus("z_date")
         zzt = gvarstatus("z_time")
         zedda = f"{zzd}┊{zzt}"
     else:
         zedda = f"{bt.year}/{bt.month}/{bt.day}"
-    Z_EMOJI = gvarstatus("ALIVE_EMOJI") or "✦┊"
-    ALIVE_TEXT = gvarstatus("ALIVE_TEXT") or "** ᴀʀᴀʙ ᴛᴇᴘᴛʜᴏɴ ѕᴏᴜʀᴄᴇ ɪѕ ᴡᴏʀᴋɪɴɢ ѕᴜᴄᴄᴇѕѕғᴜʟʟʏ - سـورس تيبثـون العربـي يعمـلُ بنجـاح **"
+    Z_EMOJI = gvarstatus("ALIVE_EMOJI") or " "
+    ALIVE_TEXT = gvarstatus("ALIVE_TEXT") or "** سـورس 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 يعمـل بنجـاح ☑️  . **"
     ZED_IMG = gvarstatus("ALIVE_PIC")
     zed_caption = gvarstatus("ALIVE_TEMPLATE") or zed_temp
     caption = zed_caption.format(
@@ -53,9 +50,8 @@ async def amireallyalive(event):
         Z_EMOJI=Z_EMOJI,
         mention=mention,
         uptime=uptime,
-        zedda=zedda,
         telever=version.__version__,
-        zdver=zedversion,
+        tepver=zedversion,
         pyver=python_version(),
         dbhealth=check_sgnirts,
         ping=ms,
@@ -81,22 +77,20 @@ async def amireallyalive(event):
 
 
 zed_temp = """{ALIVE_TEXT}
-
-**{Z_EMOJI} قاعدة البيانات :** تعمـل بـ نجـاح ♾
-**{Z_EMOJI} إصـدار المكتبـة :** `{telever}`
-**{Z_EMOJI} إصـدار السـورس :** `{zdver}`
-**{Z_EMOJI} إصـدار بايثـون :** `{pyver}`
-**{Z_EMOJI} وقت التشغيل :** `{uptime}`
-**{Z_EMOJI} تاريـخ التنصيب :** `{zedda}`
-**{Z_EMOJI} المسـتخـدم:** {mention}
-**{Z_EMOJI} قنـاة السـورس :** [اضغـط هنـا](https://t.me/zedthon)"""
+———————⛥ ———————
+**{Z_EMOJI} إصـدار التليثـون ⎉ :** `{telever}`
+**{Z_EMOJI} إصـدار تيبثـون ⎉ : ** `{tepver}`
+**{Z_EMOJI} إصـدار البايثـون ⎉ : ** `{pyver}`
+**{Z_EMOJI} وقـت التشغيـل ⎉ : ** `{uptime}`
+**{Z_EMOJI} تـاريـخ التنصيـب ⎉ : ** `{zedda}`
+**{Z_EMOJI} المـالـك ⎉ :** {mention}"""
 
 
 @zedub.zed_cmd(
     pattern="الفحص$",
     command=("الفحص", plugin_category),
     info={
-        "header": "- لـ التحـقق من ان البـوت يعمـل بنجـاح .. بخـاصيـة الانـلايـن ✓",
+        "header": "- لـ التحـقق مـن أن البـوت يعمـل بنجـاح .. بخـاصيـة الانـلايـن ✓",
         "الاسـتخـدام": [
             "{tr}الفحص",
         ],
@@ -105,12 +99,12 @@ zed_temp = """{ALIVE_TEXT}
 async def amireallyialive(event):
     "A kind of showing bot details by your inline bot"
     reply_to_id = await reply_id(event)
-    Z_EMOJI = gvarstatus("ALIVE_EMOJI") or "✦┊"
-    zed_caption = "** ᴀʀᴀʙ ᴛᴇᴘᴛʜᴏɴ ѕᴏᴜʀᴄᴇ ɪѕ ᴡᴏʀᴋɪɴɢ ѕᴜᴄᴄᴇѕѕғᴜʟʟʏ - سـورس تيبثـون العربـي يعمـلُ بنجـاح **\n"
-    zed_caption += f"**{Z_EMOJI} إصـدار التـيليثون :** `{version.__version__}\n`"
-    zed_caption += f"**{Z_EMOJI} إصـدار تيبثـون :** `{zedversion}`\n"
-    zed_caption += f"**{Z_EMOJI} إصـدار البـايثون :** `{python_version()}\n`"
-    zed_caption += f"**{Z_EMOJI} المسـتخدم :** {mention}\n"
+    Z_EMOJI = gvarstatus("ALIVE_EMOJI") or " "
+    zed_caption = "** سـورس 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 يعمـل بنجـاح ☑️  . . **\n"
+    zed_caption += f"**{Z_EMOJI} إصـدار تليثـون ⎉ : ** `{version.__version__}\n`"
+    zed_caption += f"**{Z_EMOJI} إصـدار تيبثـون ⎉ : ** `{zedversion}`\n"
+    zed_caption += f"**{Z_EMOJI} إصـدار البايثـون ⎉ : ** `{python_version()}\n`"
+    zed_caption += f"**{Z_EMOJI} المـالك ⎉ : ** {mention}\n"
     results = await event.client.inline_query(Config.TG_BOT_USERNAME, zed_caption)
     await results[0].click(event.chat_id, reply_to=reply_to_id, hide_via=True)
     await event.delete()
@@ -119,5 +113,4 @@ async def amireallyialive(event):
 @zedub.tgbot.on(CallbackQuery(data=re.compile(b"stats")))
 async def on_plug_in_callback_query_handler(event):
     statstext = await zedalive(StartTime)
-  #كتابـة_زلـزال_الهيبـة
     await event.answer(statstext, cache_time=0, alert=True)
