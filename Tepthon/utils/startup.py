@@ -55,27 +55,27 @@ bot = zedub
 DEV = 1260465030
 
 
-async def autovars(): #Code by T.me/E_7_V
+async def autovars(): #Code by T.me/zzzzl1l
     if "ENV" in heroku_var:
         return
-    LOGS.info("جـارِ اضافـة بقيـة الفـارات .. تلقائيـاً")
+    LOGS.info("جـاري إضـافـة باقي الفـارات تلقائيًــا ..")
     ttenv = "ANYTHING"
     ttcom = "."
     ttttz = "Asia/Baghdad"
     heroku_var["ENV"] = ttenv
     heroku_var["COMMAND_HAND_LER"] = ttcom
     heroku_var["TZ"] = ttttz
-    LOGS.info("تم اضافـة بقيـة الفـارات .. بنجـاح")
+    LOGS.info("تـم إضافـة باقي الفـارات .. بنجـاح")
 
 
-async def autoname(): #Code by T.me/E_7_V
+async def autoname(): #Code by T.me/zzzzl1l
     if Config.ALIVE_NAME:
         return
     await bot.start()
     await asyncio.sleep(15)
-    LOGS.info("جـارِ اضافة فـار الاسـم التلقـائـي .. انتظـر قليـلاً")
-    baqir = await bot.get_me()
-    ttname = f"{baqir.first_name}"
+    LOGS.info("جـارِ اضافة فـار الاسـم التلقـائـي .. انتظـر قليـلًا")
+    tep = await bot.get_me()
+    ttname = f"{tep.first_name}"
     tz = Config.TZ
     tzDateTime = dt.now(timezone(tz))
     tdate = tzDateTime.strftime('%Y/%m/%d')
@@ -121,11 +121,11 @@ async def setup_bot():
         sys.exit()
 
 async def mybot(): # By T.me/E_7_V
-    ROGER = bot.me.first_name
+    mohammad = bot.me.first_name
     Narcissus = bot.uid
-    ba_roger = f"[{ROGER}](tg://user?id={Narcissus})"
-    f"ـ {ba_roger}"
-    f"•⎆┊هــذا البــوت خــاص بـ {ba_roger} يمكـنك التواصــل معـه هـنا 🧸♥️"
+    mohammad_tep = f"[{mohammad}](tg://user?id={Narcissus})"
+    f"ـ {mohammad_tep}"
+    f"•⎆┊هــذا البــوت خــاص بـ {mohammad_tep} يُمكنـك التواصـل معـه هـنا 🧸♥️"
     babot = await zedub.tgbot.get_me()
     bot_name = babot.first_name
     botname = f"@{babot.username}"
@@ -137,13 +137,13 @@ async def mybot(): # By T.me/E_7_V
             await asyncio.sleep(1)
             await bot.send_message("@BotFather", botname)
             await asyncio.sleep(1)
-            await bot.send_message("@BotFather", "تيـبثون")
+            await bot.send_message("@BotFather", "Tepthon")
             await asyncio.sleep(3)
             await bot.send_message("@BotFather", "/setname")
             await asyncio.sleep(1)
             await bot.send_message("@BotFather", botname)
             await asyncio.sleep(1)
-            await bot.send_message("@BotFather", f"مسـاعـد - {bot.me.first_name} ")
+            await bot.send_message("@BotFather", f"مساعـد • {bot.me.first_name} ")
             await asyncio.sleep(3)
             await bot.send_message("@BotFather", "/setuserpic")
             await asyncio.sleep(1)
@@ -155,13 +155,13 @@ async def mybot(): # By T.me/E_7_V
             await asyncio.sleep(1)
             await bot.send_message("@BotFather", botname)
             await asyncio.sleep(1)
-            await bot.send_message("@BotFather", f"- بـوت تيـبثون المسـاعـد ♥️🦾 الخـاص بـ  {bot.me.first_name} ")
+            await bot.send_message("@BotFather", f"- بوت تيبثـون المساعـد 🇵🇸🤍الخـاص بـ  {bot.me.first_name} ")
             await asyncio.sleep(3)
             await bot.send_message("@BotFather", "/setdescription")
             await asyncio.sleep(1)
             await bot.send_message("@BotFather", botname)
             await asyncio.sleep(1)
-            await bot.send_message("@BotFather", f"•⎆┊انـا البــوت المسـاعـد الخــاص بـ {ba_roger} \n•⎆┊بـواسطـتـي يمكـنك التواصــل مـع مـالكـي 🧸♥️\n•⎆┊قنـاة السـورس 🌐 @Tepthon 🌐")
+            await bot.send_message("@BotFather", f"•⎆┊أنــا الـبـوت المسـاعـد الخـاص بِـ {mohammad_tep} \n•⎆┊بـواسطـتـي يُمكنـك التواصـل مع مالكـي 🧸♥️\n•⎆┊قنـاة السـورس 🌐 @Tepthon 🌐")
         except Exception as e:
             print(e)
 
