@@ -55,7 +55,7 @@ async def amireallyalive(event):
         uptime=uptime,
         zedda=zedda,
         telever=version.__version__,
-        tepver=zedversion,
+        zdver=zedversion,
         pyver=python_version(),
         dbhealth=check_sgnirts,
         ping=ms,
@@ -84,12 +84,12 @@ zed_temp = """{ALIVE_TEXT}
 
 **{Z_EMOJI} قاعـدة البيانـات : ** تعمـلُ بنجـاح ♾
 **{Z_EMOJI} إصــدار المكتبــة :** `{telever}`
-**{Z_EMOJI} إصــدار الـسـورس : ** `{tepver}`
+**{Z_EMOJI} إصــدار الـسـورس : ** `{zdver}`
 **{Z_EMOJI} إصــدار بايـثـون : ** `{pyver}`
 **{Z_EMOJI} وقـت التشغيـل : ** `{uptime}`
 **{Z_EMOJI} تاريــخ التنصيـب : ** `{zedda}`
 **{Z_EMOJI} المالـك : ** {mention}
-**{Z_EMOJI} قنـاة الـسـورس :** [اضغـط هنـا](https://t.me/ZThon)"""
+**{Z_EMOJI} قنـاة الـسـورس :** [اضغـط هنـا](https://t.me/Tepthon)"""
 
 
 @zedub.zed_cmd(
