@@ -101,7 +101,33 @@ async def song2(event):
         if response.text.startswith("ANTI_SPAM:"):
         	return await zed.edit("**- حاول مجـدداً ولا تستخـدم سبـام ...**")
         if response.text.startswith("RISK:"):
-        	return await zed.edit("**- خطـأ :**\n**أعد محاولة فحص هذه البطاقه ...لاحقًا**")
+        	return await zed.edit("**- خطـأ :**\n**أعد المحـــــاولـة...لاحقًا**")
+        await event.client.send_read_acknowledge(conv.chat_id)
+        await event.client.send_message(event.chat_id, response.message)
+        await zed.delete()
+
+
+# code by t.me/zzzzl1l
+@zedub.zed_cmd(pattern="عدسة الصورة(?:\s|$)([\s\S]*)")
+async def song2(event):
+    song = event.pattern_match.group(1)
+    chat = "@linksalibot" # code by t.me/zzzzl1l
+    reply_id_ = await reply_id(event)
+    zed = await edit_or_reply(event, "**⎉ جـــارِِ استخـراج النـص من الصـورة...**")
+    async with event.client.conversation(chat) as conv:
+        try:
+            gool = "{}".format(song)
+            await conv.send_message(gool)
+        except YouBlockedUserError:
+            await zedub(unblock("linksalibot"))
+            gool = "{}".format(song)
+            await conv.send_message(gool)
+        await asyncio.sleep(22)
+        response = await conv.get_response()
+        if response.text.startswith("ANTI_SPAM:"):
+        	return await zed.edit("**- حاول مجـــددًا ولا تستخـدم سبـام ...**")
+        if response.text.startswith("RISK:"):
+        	return await zed.edit("**- خطـأ :**\n**أعد المحاولـة...لاحقًا**")
         await event.client.send_read_acknowledge(conv.chat_id)
         await event.client.send_message(event.chat_id, response.message)
         await zed.delete()
