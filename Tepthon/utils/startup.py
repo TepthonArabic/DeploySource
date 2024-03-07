@@ -120,7 +120,7 @@ async def setup_bot():
         LOGS.error(f"كـود تيرمكس - {str(e)}")
         sys.exit()
 
-async def mybot(): # By T.me/E_7_V
+async def mybot(): # By zizlal
     mohammad = bot.me.first_name
     Narcissus = bot.uid
     mohammad_tep = f"[{mohammad}](tg://user?id={Narcissus})"
@@ -285,7 +285,7 @@ async def load_plugins(folder, extfolder=None):
                     failure.append(shortname)
                 os.remove(Path(f"{plugin_path}/{shortname}.py"))
                 LOGS.info(
-                    f"لا يمكنني تحميل {shortname} بسبب الخطأ {e}\nمجلد القاعده {plugin_path}"
+                    f"لا يمكنني تحميل {shortname} بسبب الخطأ {e}\nمجلد القاعدة {plugin_path}"
                 )
     if extfolder:
         if not failure:
@@ -308,19 +308,19 @@ async def verifyLoggerGroup():
             if not isinstance(entity, types.User) and not entity.creator:
                 if entity.default_banned_rights.send_messages:
                     LOGS.info(
-                        "- الصلاحيات غير كافيه لأرسال الرسالئل في مجموعه فار ااـ PRIVATE_GROUP_BOT_API_ID."
+                        "- الصلاحيات غير كافية لإرسال الرسائل في مجموعة فار ااـ PRIVATE_GROUP_BOT_API_ID."
                     )
                 if entity.default_banned_rights.invite_users:
                     LOGS.info(
-                        "لا تمتلك صلاحيات اضافه اعضاء في مجموعة فار الـ PRIVATE_GROUP_BOT_API_ID."
+                        "لا تمتلك صلاحيات إضافة أعضاء في مجموعة فار الـ PRIVATE_GROUP_BOT_API_ID."
                     )
         except ValueError:
             LOGS.error(
-                "PRIVATE_GROUP_BOT_API_ID لم يتم العثور عليه . يجب التاكد من ان الفار صحيح."
+                "PRIVATE_GROUP_BOT_API_ID لم يتم العثور عليه، يجب التاكد من أن الفار صحيح."
             )
         except TypeError:
             LOGS.error(
-                "PRIVATE_GROUP_BOT_API_ID قيمه هذا الفار غير مدعومه. تأكد من انه صحيح."
+                "PRIVATE_GROUP_BOT_API_ID قيمه هذا الفار غير مدعومة، تأكد من أنه صحيح."
             )
         except Exception as e:
             LOGS.error(
@@ -328,7 +328,7 @@ async def verifyLoggerGroup():
                 + str(e)
             )
     else:
-        descript = "لا تقم بحذف هذه المجموعة أو التغيير إلى مجموعة عامه (وظيفتهـا تخزيـن كـل سجـلات وعمليـات البـوت.)"
+        descript = "لا تقم بحذف هذه المجموعة أو التغيير إلى مجموعة عامة (وظيفتهـا تخزيـن كـل سجـلات وعمليـات البـوت.)"
         photozed = await zedub.upload_file(file="zedthon/malath/Tepthon.jpg")
         _, groupid = await create_supergroup(
             "كـروب السجـل تيـبثون", zedub, Config.TG_BOT_USERNAME, descript, photozed
@@ -344,18 +344,18 @@ async def verifyLoggerGroup():
             if not isinstance(entity, types.User) and not entity.creator:
                 if entity.default_banned_rights.send_messages:
                     LOGS.info(
-                        " الصلاحيات غير كافيه لأرسال الرسالئل في مجموعه فار ااـ PM_LOGGER_GROUP_ID."
+                        " الصلاحيات غير كافية لإرسال الرسائل في مجموعه فار ااـ PM_LOGGER_GROUP_ID."
                     )
                 if entity.default_banned_rights.invite_users:
                     LOGS.info(
-                        "لا تمتلك صلاحيات اضافه اعضاء في مجموعة فار الـ  PM_LOGGER_GROUP_ID."
+                        "لا تمتلك صلاحيات إضافة أعضاء في مجموعة فار الـ  PM_LOGGER_GROUP_ID."
                     )
         except ValueError:
-            LOGS.error("PM_LOGGER_GROUP_ID لم يتم العثور على قيمه هذا الفار . تاكد من أنه صحيح .")
+            LOGS.error("PM_LOGGER_GROUP_ID لم يتم العثور على قيمه هذا الفار خطأ، تاكد من أنه صحيح .")
         except TypeError:
-            LOGS.error("PM_LOGGER_GROUP_ID قيمه هذا الفار خطا. تاكد من أنه صحيح.")
+            LOGS.error("PM_LOGGER_GROUP_ID قيمه هذا الفار خطأ، تاكد من أنه صحيح.")
         except Exception as e:
-            LOGS.error("حدث خطأ اثناء التعرف على فار PM_LOGGER_GROUP_ID.\n" + str(e))
+            LOGS.error("حدث خطأ أثناء التعرف على فار PM_LOGGER_GROUP_ID.\n" + str(e))
     else:
         descript = "لا تقم بحذف هذه المجموعة أو التغيير إلى مجموعة عامه (وظيفتهـا تخزيـن رسـائل الخـاص.)"
         photozed = await zedub.upload_file(file="zedthon/malath/Tep.jpg")
@@ -363,7 +363,7 @@ async def verifyLoggerGroup():
             "كـروب التخـزين", zedub, Config.TG_BOT_USERNAME, descript, photozed
         )
         addgvar("PM_LOGGER_GROUP_ID", groupid)
-        print("تم عمل الكروب التخزين بنجاح واضافة الفارات اليه.")
+        print("تم عمل مجموعة التخزين بنجاح وإضافة الفارات إليها.")
         flag = True
     if flag:
         executable = sys.executable.replace(" ", "\\ ")
@@ -390,11 +390,11 @@ async def install_externalrepo(repo, branch, cfolder):
     await runcmd(gcmd)
     if not os.path.exists(cfolder):
         LOGS.error(
-            "- حدث خطأ اثناء استدعاء رابط الملفات الاضافية .. قم بالتأكد من الرابط اولاً..."
+            "- حدث خطأ أثناء استدعاء رابط الملفات الإضافية .. قم بالتأكد من الرابط أولًا..."
         )
         return await zedub.tgbot.send_message(
             BOTLOG_CHATID,
-            "**- حدث خطأ اثناء استدعاء رابط الملفات الاضافية .. قم بالتأكد من الرابط اولاً...**",
+            "**- حدث خطأ أثناء استدعاء رابط الملفات الإضافية .. قم بالتأكد من الرابط أولًا...**",
         )
     if os.path.exists(rpath):
         await runcmd(f"pip3 install --no-cache-dir -r {rpath}")
