@@ -185,33 +185,33 @@ async def variable(event):
         variable = "CUSTOM_ALIVE_EMOJI"
         await asyncio.sleep(1.5)
         if gvarstatus("CUSTOM_ALIVE_EMOJI") is None:
-            await zed.edit("**⎉╎تم تغييـر {} بنجـاح ☑️**\n\n**⎉╎المتغيـر : ↶**\n `{}`\n**⎉╎ارسـل الآن** `.ايدي`".format(input_str, vinfo))
+            await zed.edit("**⎉╎تم تغييـر {} بنجـاح ☑️**\n\n**⎉╎المتغيـر : ↶**\n `{}`\n**⎉╎أرسـل الآن** `.ايدي`".format(input_str, vinfo))
         else:
-            await zed.edit("**⎉╎تم تغييـر {} بنجـاح ☑️**\n\n**⎉╎المتغيـر : ↶**\n `{}`\n**⎉╎ارسـل الآن** `.ايدي`".format(input_str, vinfo))
+            await zed.edit("**⎉╎تم تغييـر {} بنجـاح ☑️**\n\n**⎉╎المتغيـر : ↶**\n `{}`\n**⎉╎أرسـل الآن** `.ايدي`".format(input_str, vinfo))
         addgvar("CUSTOM_ALIVE_EMOJI", vinfo)
     elif input_str == "عنوان الايدي" or input_str == "عنوان ايدي":
         variable = "CUSTOM_ALIVE_TEXT"
         await asyncio.sleep(1.5)
         if gvarstatus("CUSTOM_ALIVE_TEXT") is None:
-            await zed.edit("**⎉╎تم تغييـر {} بنجـاح ☑️**\n\n**⎉╎المتغيـر : ↶**\n `{}`\n**⎉╎ارسـل الآن** `.ايدي`".format(input_str, vinfo))
+            await zed.edit("**⎉╎تم تغييـر {} بنجـاح ☑️**\n\n**⎉╎المتغيـر : ↶**\n `{}`\n**⎉╎أرسـل الآن** `.ايدي`".format(input_str, vinfo))
         else:
-            await zed.edit("**⎉╎تم تغييـر {} بنجـاح ☑️**\n\n**⎉╎المتغيـر : ↶**\n `{}`\n**⎉╎ارسـل الآن** `.ايدي`".format(input_str, vinfo))
+            await zed.edit("**⎉╎تم تغييـر {} بنجـاح ☑️**\n\n**⎉╎المتغيـر : ↶**\n `{}`\n**⎉╎أرسـل الآن** `.ايدي`".format(input_str, vinfo))
         addgvar("CUSTOM_ALIVE_TEXT", vinfo)
     elif input_str == "خط الايدي" or input_str == "خط ايدي" or input_str == "خطوط الايدي" or input_str == "خط ايدي":
         variable = "CUSTOM_ALIVE_FONT"
         await asyncio.sleep(1.5)
         if gvarstatus("CUSTOM_ALIVE_FONT") is None:
-            await zed.edit("**⎉╎تم تغييـر {} بنجـاح ☑️**\n\n**⎉╎المتغيـر : ↶**\n `{}`\n**⎉╎ارسـل الآن** `.ايدي`".format(input_str, vinfo))
+            await zed.edit("**⎉╎تم تغييـر {} بنجـاح ☑️**\n\n**⎉╎المتغيـر : ↶**\n `{}`\n**⎉╎أرسـل الآن** `.ايدي`".format(input_str, vinfo))
         else:
-            await zed.edit("**⎉╎تم تغييـر {} بنجـاح ☑️**\n\n**⎉╎المتغيـر : ↶**\n `{}`\n**⎉╎ارسـل الآن** `.ايدي`".format(input_str, vinfo))
+            await zed.edit("**⎉╎تم تغييـر {} بنجـاح ☑️**\n\n**⎉╎المتغيـر : ↶**\n `{}`\n**⎉╎أرسـل الآن** `.ايدي`".format(input_str, vinfo))
         addgvar("CUSTOM_ALIVE_FONT", vinfo)
     elif input_str == "اشتراك الخاص" or input_str == "اشتراك خاص":
         variable = "Custom_Pm_Channel"
         await asyncio.sleep(1.5)
         if gvarstatus("Custom_Pm_Channel") is None:
-            await zed.edit("**⎉╎تم تغييـر {} بنجـاح ☑️**\n\n**⎉╎المتغيـر : ↶**\n `{}`\n**⎉╎ارسـل الآن** `.اشتراك خاص`".format(input_str, vinfo))
+            await zed.edit("**⎉╎تم تغييـر {} بنجـاح ☑️**\n\n**⎉╎المتغيـر : ↶**\n `{}`\n**⎉╎أرسـل الآن** `.اشتراك خاص`".format(input_str, vinfo))
         else:
-            await zed.edit("**⎉╎تم تغييـر {} بنجـاح ☑️**\n\n**⎉╎المتغيـر : ↶**\n `{}`\n**⎉╎ارسـل الآن** `.اشتراك خاص`".format(input_str, vinfo))
+            await zed.edit("**⎉╎تم تغييـر {} بنجـاح ☑️**\n\n**⎉╎المتغيـر : ↶**\n `{}`\n**⎉╎أرسـل الآن** `.اشتراك خاص`".format(input_str, vinfo))
         delgvar("Custom_Pm_Channel")
         addgvar("Custom_Pm_Channel", vinfo)
         if BOTLOG_CHATID:
@@ -224,9 +224,9 @@ async def variable(event):
         variable = "Custom_G_Channel"
         await asyncio.sleep(1.5)
         if gvarstatus("Custom_G_Channel") is None:
-            await zed.edit("**⎉╎تم تغييـر {} بنجـاح ☑️**\n\n**⎉╎المتغيـر : ↶**\n `{}`\n**⎉╎ارسـل الآن** `.اشتراك كروب`".format(input_str, vinfo))
+            await zed.edit("**⎉╎تم تغييـر {} بنجـاح ☑️**\n\n**⎉╎المتغيـر : ↶**\n `{}`\n**⎉╎أرسـل الآن** `.اشتراك كروب`".format(input_str, vinfo))
         else:
-            await zed.edit("**⎉╎تم تغييـر {} بنجـاح ☑️**\n\n**⎉╎المتغيـر : ↶**\n `{}`\n**⎉╎ارسـل الآن** `.اشتراك كروب`".format(input_str, vinfo))
+            await zed.edit("**⎉╎تم تغييـر {} بنجـاح ☑️**\n\n**⎉╎المتغيـر : ↶**\n `{}`\n**⎉╎أرسـل الآن** `.اشتراك كروب`".format(input_str, vinfo))
         delgvar("Custom_G_Channel")
         addgvar("Custom_G_Channel", vinfo)
         if BOTLOG_CHATID:
@@ -255,7 +255,7 @@ async def variable(event):
             await zed.edit("**⎉╎تم اضـافه {} بنجـاح ☑️**\n**⎉╎البـوت المضـاف** \n {} \n\n**⎉╎الآن قـم بـ ارسـال الامـر ↶** `.تجميع` **لـ البـدء بتجميـع النقـاط من البـوت الجـديـد . .**".format(input_str, vinfo))
     elif input_str == "اسم المستخدم" or input_str == "الاسم":
         if Config.HEROKU_API_KEY is None:
-            return await ed(event, "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب الى حسابك في هيروكو ثم الى الاعدادات ستجده بالاسفل انسخه ودخله في الفار. ")
+            return await ed(event, "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب إلى حسابك في هيروكو ثم إلى الاعدادات ستجده بالأسفل انسخه ودخله في الفار. ")
 
         if Config.HEROKU_APP_NAME is not None:
             app = Heroku.app(Config.HEROKU_APP_NAME)
@@ -272,7 +272,7 @@ async def variable(event):
 
     elif input_str == "رسائل الحماية" or input_str == "رسائل الحمايه" or input_str == "رسائل الخاص" or input_str == "رسائل حماية الخاص" or input_str == "عدد التحذيرات":
         if Config.HEROKU_API_KEY is None:
-            return await ed(event, "✾╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب الى حسابك في هيروكو ثم الى الاعدادات ستجده بالاسفل انسخه ودخله في الفار. ")
+            return await ed(event, "✾╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب إلى حسابك في هيروكو ثم إلى الاعدادات ستجده بالأسفل انسخه ودخله في الفار. ")
 
         if Config.HEROKU_APP_NAME is not None:
             app = Heroku.app(Config.HEROKU_APP_NAME)
@@ -289,7 +289,7 @@ async def variable(event):
 
     elif input_str == "كود تيرمكس" or input_str == "كود السيشن" or input_str == "كود سيشن":
         if Config.HEROKU_API_KEY is None:
-            return await ed(event, "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب الى حسابك في هيروكو ثم الى الاعدادات ستجده بالاسفل انسخه ودخله في الفار. ")
+            return await ed(event, "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب إلى حسابك في هيروكو ثم إلى الاعدادات ستجده بالأسفل انسخه ودخله في الفار. ")
 
         if Config.HEROKU_APP_NAME is not None:
             app = Heroku.app(Config.HEROKU_APP_NAME)
@@ -306,7 +306,7 @@ async def variable(event):
 
     elif input_str == "كروب الرسائل" or input_str == "كروب التخزين" or input_str == "كروب الخاص":
         if Config.HEROKU_API_KEY is None:
-            return await ed(event, "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب الى حسابك في هيروكو ثم الى الاعدادات ستجده بالاسفل انسخه ودخله في الفار. ")
+            return await ed(event, "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب إلى حسابك في هيروكو ثم إلى الاعدادات ستجده بالأسفل انسخه ودخله في الفار. ")
 
         if Config.HEROKU_APP_NAME is not None:
             app = Heroku.app(Config.HEROKU_APP_NAME)
@@ -322,7 +322,7 @@ async def variable(event):
         heroku_var[variable] = vinfo
     elif input_str == "السجل" or input_str == "كروب السجل":
         if Config.HEROKU_API_KEY is None:
-            return await ed(event, "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب الى حسابك في هيروكو ثم الى الاعدادات ستجده بالاسفل انسخه ودخله في الفار. ")
+            return await ed(event, "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب إلى حسابك في هيروكو ثم إلى الاعدادات ستجده بالأسفل انسخه ودخله في الفار. ")
 
         if Config.HEROKU_APP_NAME is not None:
             app = Heroku.app(Config.HEROKU_APP_NAME)
@@ -338,7 +338,7 @@ async def variable(event):
         heroku_var[variable] = vinfo
     elif input_str == "السجل 2" or input_str == "كروب السجل 2":
         if Config.HEROKU_API_KEY is None:
-            return await ed(event, "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب الى حسابك في هيروكو ثم الى الاعدادات ستجده بالاسفل انسخه ودخله في الفار. ")
+            return await ed(event, "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب إلى حسابك في هيروكو ثم إلى الاعدادات ستجده بالأسفل انسخه ودخله في الفار. ")
 
         if Config.HEROKU_APP_NAME is not None:
             app = Heroku.app(Config.HEROKU_APP_NAME)
@@ -354,7 +354,7 @@ async def variable(event):
         heroku_var[variable] = vinfo
     elif input_str == "قناة السجل" or input_str == "قناة السجلات":
         if Config.HEROKU_API_KEY is None:
-            return await ed(event, "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب الى حسابك في هيروكو ثم الى الاعدادات ستجده بالاسفل انسخه ودخله في الفار. ")
+            return await ed(event, "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب إلى حسابك في هيروكو ثم إلى الاعدادات ستجده بالأسفل انسخه ودخله في الفار. ")
 
         if Config.HEROKU_APP_NAME is not None:
             app = Heroku.app(Config.HEROKU_APP_NAME)
@@ -370,7 +370,7 @@ async def variable(event):
         heroku_var[variable] = vinfo
     elif input_str == "قناة الملفات" or input_str == "قناة الاضافات":
         if Config.HEROKU_API_KEY is None:
-            return await ed(event, "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب الى حسابك في هيروكو ثم الى الاعدادات ستجده بالاسفل انسخه ودخله في الفار. ")
+            return await ed(event, "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب إلى حسابك في هيروكو ثم إلى الاعدادات ستجده بالأسفل انسخه ودخله في الفار. ")
 
         if Config.HEROKU_APP_NAME is not None:
             app = Heroku.app(Config.HEROKU_APP_NAME)
@@ -386,7 +386,7 @@ async def variable(event):
         heroku_var[variable] = vinfo
     elif input_str == "ايديي" or input_str == "ايدي الحساب":
         if Config.HEROKU_API_KEY is None:
-            return await ed(event, "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب الى حسابك في هيروكو ثم الى الاعدادات ستجده بالاسفل انسخه ودخله في الفار. ")
+            return await ed(event, "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب إلى حسابك في هيروكو ثم إلى الاعدادات ستجده بالأسفل انسخه ودخله في الفار. ")
 
         if Config.HEROKU_APP_NAME is not None:
             app = Heroku.app(Config.HEROKU_APP_NAME)
@@ -402,7 +402,7 @@ async def variable(event):
         heroku_var[variable] = vinfo
     elif input_str == "نقطة الاوامر" or input_str == "نقطه الاوامر":
         if Config.HEROKU_API_KEY is None:
-            return await ed(event, "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب الى حسابك في هيروكو ثم الى الاعدادات ستجده بالاسفل انسخه ودخله في الفار. ")
+            return await ed(event, "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب إلى حسابك في هيروكو ثم إلى الاعدادات ستجده بالأسفل انسخه ودخله في الفار. ")
 
         if Config.HEROKU_APP_NAME is not None:
             app = Heroku.app(Config.HEROKU_APP_NAME)
@@ -426,7 +426,7 @@ async def variable(event):
         heroku_var[variable] = vinfo
     elif input_str == "معرف البوت" or input_str == "معرف بوت":
         if Config.HEROKU_API_KEY is None:
-            return await ed(event, "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب الى حسابك في هيروكو ثم الى الاعدادات ستجده بالاسفل انسخه ودخله في الفار. ")
+            return await ed(event, "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب إلى حسابك في هيروكو ثم إلى الاعدادات ستجده بالأسفل انسخه ودخله في الفار. ")
 
         if Config.HEROKU_APP_NAME is not None:
             app = Heroku.app(Config.HEROKU_APP_NAME)
@@ -442,7 +442,7 @@ async def variable(event):
         heroku_var[variable] = vinfo
     elif input_str == "الريبو" or input_str == "السورس":
         if Config.HEROKU_API_KEY is None:
-            return await ed(event, "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب الى حسابك في هيروكو ثم الى الاعدادات ستجده بالاسفل انسخه ودخله في الفار. ")
+            return await ed(event, "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب إلى حسابك في هيروكو ثم إلى الاعدادات ستجده بالأسفل انسخه ودخله في الفار. ")
 
         if Config.HEROKU_APP_NAME is not None:
             app = Heroku.app(Config.HEROKU_APP_NAME)
@@ -458,7 +458,7 @@ async def variable(event):
         heroku_var[variable] = vinfo
     elif input_str == "توكن المكافح" or input_str == "كود المكافح" or input_str == "مكافح التخريب" or input_str == "مكافح التفليش":
         if Config.HEROKU_API_KEY is None:
-            return await ed(event, "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب الى حسابك في هيروكو ثم الى الاعدادات ستجده بالاسفل انسخه ودخله في الفار. ")
+            return await ed(event, "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب إلى حسابك في هيروكو ثم إلى الاعدادات ستجده بالأسفل انسخه ودخله في الفار. ")
 
         if Config.HEROKU_APP_NAME is not None:
             app = Heroku.app(Config.HEROKU_APP_NAME)
@@ -474,7 +474,7 @@ async def variable(event):
         heroku_var[variable] = vinfo
     elif input_str == "توكن الذكاء" or input_str == "مفتاح الذكاء" or input_str == "الذكاء":
         if Config.HEROKU_API_KEY is None:
-            return await ed(event, "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب الى حسابك في هيروكو ثم الى الاعدادات ستجده بالاسفل انسخه ودخله في الفار. ")
+            return await ed(event, "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب إلى حسابك في هيروكو ثم إلى الاعدادات ستجده بالأسفل انسخه ودخله في الفار. ")
         if Config.HEROKU_APP_NAME is not None:
             app = Heroku.app(Config.HEROKU_APP_NAME)
         else:
@@ -499,24 +499,24 @@ async def variable(event):
                 await event.client.send_message(
                 BOTLOG_CHATID,
                 f"#فتـرة_الايقـاف_المـؤقت_للترحيب\
-                        \n**- تم اضافة الفتـرة من الساعة {vinfo} الى الساعة 6 صباحـاً .. بنجـاح ✓**",
+                        \n**- تم اضافة الفتـرة من الساعة {vinfo} إلى الساعة 6 صباحـاً .. بنجـاح ✓**",
             )
     else:
         if input_str:
-            return await zed.edit("**⎉╎عـذࢪاً .. لايوجـد هنالك فـار بإسـم {} ؟!.. ارسـل (.اوامر الفارات) لـعرض قائمـة الفـارات**".format(input_str))
-        return await edit_or_reply(event, "**⎉╎عـذࢪاً .. لايوجـد هنالك فـار بإسـم {} ؟!.. ارسـل (.اوامر الفارات) لـعرض قائمـة الفـارات**".format(input_str))
+            return await zed.edit("**⎉╎عـذࢪًا .. لايوجـد هنالك فـار باسم {} ؟!.. أرسـل (.اوامر الفارات) لـعرض قائمـة الفـارات**".format(input_str))
+        return await edit_or_reply(event, "**⎉╎عـذࢪًا .. لايوجـد هنالك فـار باسم {} ؟!.. أرسـل (.اوامر الفارات) لـعرض قائمـة الفـارات**".format(input_str))
 
 
 # Copyright (C) 2022 Zed-Thon . All Rights Reserved
 @zedub.zed_cmd(pattern="حذف فار(?:\s|$)([\s\S]*)")
 async def variable(event):
     input_str = event.text[9:]
-    if (input_str == "من" or input_str == "الى" or input_str == "الترحيب") or "رسائلي" in input_str or "رسائله" in input_str:
+    if (input_str == "من" or input_str == "إلى" or input_str == "الترحيب") or "رسائلي" in input_str or "رسائله" in input_str:
         return
     if Config.HEROKU_API_KEY is None:
         return await ed(
             event,
-            "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب الى حسابك في هيروكو ثم الى الاعدادات ستجده بالاسفل انسخه ودخله في الفار. ",
+            "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب إلى حسابك في هيروكو ثم إلى الاعدادات ستجده بالأسفل انسخه ودخله في الفار. ",
         )
     if Config.HEROKU_APP_NAME is not None:
         app = Heroku.app(Config.HEROKU_APP_NAME)
@@ -532,7 +532,7 @@ async def variable(event):
         variable = gvarstatus("ALIVE_TEMPLATE")
         await asyncio.sleep(1.5)
         if gvarstatus("ALIVE_TEMPLATE") is None:
-        	return await zed.edit("**⎉╎عـذࢪاً عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
+        	return await zed.edit("**⎉╎عـذࢪًا عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
         await zed.edit("**⎉╎تم حـذف {} بنجـاح ☑️**\n**⎉╎المتغيـر المحـذوف : ↶**\n `{}` \n**⎉╎يتم الآن إعـادة تشغيـل بـوت تيبثــون يستغـرق الأمـر 2-1 دقيقـة ▬▭ ...**".format(input_str, variable))
         delgvar("ALIVE_TEMPLATE")
         
@@ -540,7 +540,7 @@ async def variable(event):
         variable = gvarstatus("pmpermit_txt")
         await asyncio.sleep(1.5)
         if gvarstatus("pmpermit_txt") is None:
-        	return await zed.edit("**⎉╎عـذࢪاً عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
+        	return await zed.edit("**⎉╎عـذࢪًا عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
         await zed.edit("**⎉╎تم حـذف {} بنجـاح ☑️**\n**⎉╎المتغيـر المحـذوف : ↶**\n `{}` \n**⎉╎يتم الآن إعـادة تشغيـل بـوت تيبثــون يستغـرق الأمـر 2-1 دقيقـة ▬▭ ...**".format(input_str, variable))
         delgvar("pmpermit_txt")
 
@@ -548,7 +548,7 @@ async def variable(event):
         variable = gvarstatus("START_TEXT")
         await asyncio.sleep(1.5)
         if gvarstatus("START_TEXT") is None:
-        	return await zed.edit("**⎉╎عـذࢪاً عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
+        	return await zed.edit("**⎉╎عـذࢪًا عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
         await zed.edit("**⎉╎تم حـذف {} بنجـاح ☑️**\n**⎉╎المتغيـر المحـذوف : ↶**\n `{}` \n**⎉╎يتم الآن إعـادة تشغيـل بـوت تيبثــون يستغـرق الأمـر 2-1 دقيقـة ▬▭ ...**".format(input_str, variable))
         delgvar("START_TEXT")
 
@@ -556,7 +556,7 @@ async def variable(event):
         variable = gvarstatus("pmblock")
         await asyncio.sleep(1.5)
         if gvarstatus("pmblock") is None:
-        	return await zed.edit("**⎉╎عـذࢪاً عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
+        	return await zed.edit("**⎉╎عـذࢪًا عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
         await zed.edit("**⎉╎تم حـذف {} بنجـاح ☑️**\n**⎉╎المتغيـر المحـذوف : ↶**\n `{}` \n**⎉╎يتم الآن إعـادة تشغيـل بـوت تيبثــون يستغـرق الأمـر 2-1 دقيقـة ▬▭ ...**".format(input_str, variable))
         delgvar("pmblock")
 
@@ -564,7 +564,7 @@ async def variable(event):
         variable = "ALIVE_PIC"
         await asyncio.sleep(1.5)
         if gvarstatus("ALIVE_PIC") is None:
-        	return await zed.edit("**⎉╎عـذࢪاً عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
+        	return await zed.edit("**⎉╎عـذࢪًا عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
         await zed.edit("**⎉╎تم حـذف فـار {} . . بنجـاح ☑️**".format(input_str))
         delgvar("ALIVE_PIC")
 
@@ -572,7 +572,7 @@ async def variable(event):
         variable = "CMD_PIC"
         await asyncio.sleep(1.5)
         if gvarstatus("CMD_PIC") is None:
-        	return await zed.edit("**⎉╎عـذࢪاً عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
+        	return await zed.edit("**⎉╎عـذࢪًا عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
         await zed.edit("**⎉╎تم حـذف فـار {} . . بنجـاح ☑️**".format(input_str))
         delgvar("CMD_PIC")
 
@@ -580,7 +580,7 @@ async def variable(event):
         variable = "ALIVE_PIC"
         await asyncio.sleep(1.5)
         if gvarstatus("ALIVE_PIC") is None:
-        	return await zed.edit("**⎉╎عـذࢪاً عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
+        	return await zed.edit("**⎉╎عـذࢪًا عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
         await zed.edit("**⎉╎تم حـذف فـار {} . . بنجـاح ☑️**".format(input_str))
         delgvar("ALIVE_PIC")
 
@@ -588,7 +588,7 @@ async def variable(event):
         variable = "KTM_PIC"
         await asyncio.sleep(1.5)
         if gvarstatus("KTM_PIC") is None:
-        	return await zed.edit("**⎉╎عـذࢪاً عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
+        	return await zed.edit("**⎉╎عـذࢪًا عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
         await zed.edit("**⎉╎تم حـذف فـار {} . . بنجـاح ☑️**".format(input_str))
         delgvar("KTM_PIC")
 
@@ -596,7 +596,7 @@ async def variable(event):
         variable = "BOT_START_PIC"
         await asyncio.sleep(1.5)
         if gvarstatus("BOT_START_PIC") is None:
-        	return await zed.edit("**⎉╎عـذࢪاً عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
+        	return await zed.edit("**⎉╎عـذࢪًا عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
         await zed.edit("**⎉╎تم حـذف فـار {} . . بنجـاح ☑️**".format(input_str))
         delgvar("BOT_START_PIC")
 
@@ -604,7 +604,7 @@ async def variable(event):
         variable = "pmpermit_pic"
         await asyncio.sleep(1.5)
         if gvarstatus("pmpermit_pic") is None:
-        	return await zed.edit("**⎉╎عـذࢪاً عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
+        	return await zed.edit("**⎉╎عـذࢪًا عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
         delgvar("pmpermit_pic")
         await zed.edit("**⎉╎تم حـذف فـار {} . . بنجـاح ☑️**".format(input_str))
 
@@ -612,7 +612,7 @@ async def variable(event):
         variable = gvarstatus("DIGITAL_PIC")
         await asyncio.sleep(1.5)
         if gvarstatus("DIGITAL_PIC") is None:
-        	return await zed.edit("**⎉╎عـذࢪاً عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
+        	return await zed.edit("**⎉╎عـذࢪًا عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
         await zed.edit("**⎉╎تم حـذف {} بنجـاح ☑️**\n**⎉╎المتغيـر المحـذوف : ↶**\n `{}` \n**⎉╎يتم الآن إعـادة تشغيـل بـوت تيبثــون يستغـرق الأمـر 2-1 دقيقـة ▬▭ ...**".format(input_str, variable))
         delgvar("DIGITAL_PIC")
 
@@ -620,42 +620,42 @@ async def variable(event):
         variable = "CUSTOM_ALIVE_EMZED"
         await asyncio.sleep(1.5)
         if gvarstatus("CUSTOM_ALIVE_EMZED") is None:
-        	return await zed.edit("**⎉╎عـذࢪاً عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
+        	return await zed.edit("**⎉╎عـذࢪًا عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
         delgvar("CUSTOM_ALIVE_EMZED")
         await zed.edit("**⎉╎تم حـذف فـار {} . . بنجـاح ☑️**".format(input_str))
     elif input_str == "زخرفه الوقتي" or input_str == "زخرفة الوقتي":
         variable = "ZI_FN"
         await asyncio.sleep(1.5)
         if variable not in heroku_var:
-        	return await zed.edit("**⎉╎عـذࢪاً عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
+        	return await zed.edit("**⎉╎عـذࢪًا عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
         await zed.edit("**⎉╎تم حـذف {} بنجـاح ☑️**\n**⎉╎المتغيـر المحـذوف : ↶**\n `{}` \n**⎉╎يتم الآن إعـادة تشغيـل بـوت تيبثــون يستغـرق الأمـر 2-1 دقيقـة ▬▭ ...**".format(input_str, heroku_var[variable]))
         del heroku_var[variable]
     elif input_str == "رسائل الحماية" or input_str == "رسائل الحمايه" or input_str == "رسائل الخاص" or input_str == "رسائل حماية الخاص" or input_str == "عدد التحذيرات":
         variable = "MAX_FLOOD_IN_PMS"
         await asyncio.sleep(1.5)
         if variable not in heroku_var:
-        	return await zed.edit("**⎉╎عـذࢪاً عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
+        	return await zed.edit("**⎉╎عـذࢪًا عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
         await zed.edit("**⎉╎تم حـذف {} بنجـاح ☑️**\n**⎉╎المتغيـر المحـذوف : ↶**\n `{}` \n**⎉╎يتم الآن إعـادة تشغيـل بـوت تيبثــون يستغـرق الأمـر 2-1 دقيقـة ▬▭ ...**".format(input_str, heroku_var[variable]))
         del heroku_var[variable]
     elif input_str == "البايو" or input_str == "البايو الوقتي" or input_str == "النبذه الوقتيه":
         variable = "DEFAULT_BIO"
         await asyncio.sleep(1.5)
         if gvarstatus("DEFAULT_BIO") is None:
-        	return await zed.edit("**⎉╎عـذࢪاً عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
+        	return await zed.edit("**⎉╎عـذࢪًا عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
         delgvar("DEFAULT_BIO")
         await zed.edit("**⎉╎تم حـذف فـار {} . . بنجـاح ☑️**".format(input_str))
     elif input_str == "اسم المستخدم" or input_str == "الاسم":
         variable = "ALIVE_NAME"
         await asyncio.sleep(1.5)
         if variable not in heroku_var:
-        	return await zed.edit("**⎉╎عـذࢪاً عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
+        	return await zed.edit("**⎉╎عـذࢪًا عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
         await zed.edit("**⎉╎تم حـذف {} بنجـاح ☑️**\n**⎉╎المتغيـر المحـذوف : ↶**\n `{}` \n**⎉╎يتم الآن إعـادة تشغيـل بـوت تيبثــون يستغـرق الأمـر 2-1 دقيقـة ▬▭ ...**".format(input_str, heroku_var[variable]))
         del heroku_var[variable]
     elif input_str == "كروب الرسائل" or input_str == "كروب التخزين" or input_str == "كروب الخاص":
         variable = "PM_LOGGER_GROUP_ID"
         await asyncio.sleep(1.5)
         if variable not in heroku_var:
-        	return await zed.edit("**⎉╎عـذࢪاً عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
+        	return await zed.edit("**⎉╎عـذࢪًا عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
         await zed.edit("**⎉╎تم حـذف {} بنجـاح ☑️**\n**⎉╎المتغيـر المحـذوف : ↶**\n `{}` \n**⎉╎يتم الآن إعـادة تشغيـل بـوت تيبثــون يستغـرق الأمـر 2-1 دقيقـة ▬▭ ...**".format(input_str, heroku_var[variable]))
         del heroku_var[variable]
 
@@ -663,7 +663,7 @@ async def variable(event):
         variable = "PRIVATE_GROUP_BOT_API_ID"
         await asyncio.sleep(1.5)
         if variable not in heroku_var:
-        	return await zed.edit("**⎉╎عـذࢪاً عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
+        	return await zed.edit("**⎉╎عـذࢪًا عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
         await zed.edit("**⎉╎تم حـذف {} بنجـاح ☑️**\n**⎉╎المتغيـر المحـذوف : ↶**\n `{}` \n**⎉╎يتم الآن إعـادة تشغيـل بـوت تيبثــون يستغـرق الأمـر 2-1 دقيقـة ▬▭ ...**".format(input_str, heroku_var[variable]))
         del heroku_var[variable]
 
@@ -671,7 +671,7 @@ async def variable(event):
         variable = "PRIVATE_GROUP_ID"
         await asyncio.sleep(1.5)
         if variable not in heroku_var:
-        	return await zed.edit("**⎉╎عـذࢪاً عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
+        	return await zed.edit("**⎉╎عـذࢪًا عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
         await zed.edit("**⎉╎تم حـذف {} بنجـاح ☑️**\n**⎉╎المتغيـر المحـذوف : ↶**\n `{}` \n**⎉╎يتم الآن إعـادة تشغيـل بـوت تيبثــون يستغـرق الأمـر 2-1 دقيقـة ▬▭ ...**".format(input_str, heroku_var[variable]))
         del heroku_var[variable]
 
@@ -679,7 +679,7 @@ async def variable(event):
         variable = "PRIVATE_CHANNEL_BOT_API_ID"
         await asyncio.sleep(1.5)
         if variable not in heroku_var:
-        	return await zed.edit("**⎉╎عـذࢪاً عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
+        	return await zed.edit("**⎉╎عـذࢪًا عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
         await zed.edit("**⎉╎تم حـذف {} بنجـاح ☑️**\n**⎉╎المتغيـر المحـذوف : ↶**\n `{}` \n**⎉╎يتم الآن إعـادة تشغيـل بـوت تيبثــون يستغـرق الأمـر 2-1 دقيقـة ▬▭ ...**".format(input_str, heroku_var[variable]))
         del heroku_var[variable]
 
@@ -687,7 +687,7 @@ async def variable(event):
         variable = "PLUGIN_CHANNEL"
         await asyncio.sleep(1.5)
         if variable not in heroku_var:
-        	return await zed.edit("**⎉╎عـذࢪاً عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
+        	return await zed.edit("**⎉╎عـذࢪًا عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
         await zed.edit("**⎉╎تم حـذف {} بنجـاح ☑️**\n**⎉╎المتغيـر المحـذوف : ↶**\n `{}` \n**⎉╎يتم الآن إعـادة تشغيـل بـوت تيبثــون يستغـرق الأمـر 2-1 دقيقـة ▬▭ ...**".format(input_str, heroku_var[variable]))
         del heroku_var[variable]
 
@@ -695,7 +695,7 @@ async def variable(event):
         variable = "TG_2STEP_VERIFICATION_CODE"
         await asyncio.sleep(1.5)
         if gvarstatus("TG_2STEP_VERIFICATION_CODE") is None:
-        	return await zed.edit("**⎉╎عـذࢪاً عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
+        	return await zed.edit("**⎉╎عـذࢪًا عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
         delgvar("TG_2STEP_VERIFICATION_CODE")
         await zed.edit("**⎉╎تم حـذف فـار {} . . بنجـاح ☑️**".format(input_str))
 
@@ -703,7 +703,7 @@ async def variable(event):
         variable = "OWNER_ID"
         await asyncio.sleep(1.5)
         if variable not in heroku_var:
-        	return await zed.edit("**⎉╎عـذࢪاً عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
+        	return await zed.edit("**⎉╎عـذࢪًا عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
         await zed.edit("**⎉╎تم حـذف {} بنجـاح ☑️**\n**⎉╎المتغيـر المحـذوف : ↶**\n `{}` \n**⎉╎يتم الآن إعـادة تشغيـل بـوت تيبثــون يستغـرق الأمـر 2-1 دقيقـة ▬▭ ...**".format(input_str, heroku_var[variable]))
         del heroku_var[variable]
 
@@ -711,7 +711,7 @@ async def variable(event):
         variable = "COMMAND_HAND_LER"
         await asyncio.sleep(1.5)
         if variable not in heroku_var:
-        	return await zed.edit("**⎉╎عـذࢪاً عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
+        	return await zed.edit("**⎉╎عـذࢪًا عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
         await zed.edit("**⎉╎تم حـذف {} بنجـاح ☑️**\n**⎉╎المتغيـر المحـذوف : ↶**\n `{}` \n**⎉╎يتم الآن إعـادة تشغيـل بـوت تيبثــون يستغـرق الأمـر 2-1 دقيقـة ▬▭ ...**".format(input_str, heroku_var[variable]))
         del heroku_var[variable]
 
@@ -719,7 +719,7 @@ async def variable(event):
         variable = "TG_BOT_TOKEN"
         await asyncio.sleep(1.5)
         if variable not in heroku_var:
-        	return await zed.edit("**⎉╎عـذࢪاً عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
+        	return await zed.edit("**⎉╎عـذࢪًا عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
         await zed.edit("**⎉╎تم حـذف {} بنجـاح ☑️**\n**⎉╎المتغيـر المحـذوف : ↶**\n `{}` \n**⎉╎يتم الآن إعـادة تشغيـل بـوت تيبثــون يستغـرق الأمـر 2-1 دقيقـة ▬▭ ...**".format(input_str, heroku_var[variable]))
         del heroku_var[variable]
 
@@ -727,7 +727,7 @@ async def variable(event):
         variable = "TG_BOT_USERNAME"
         await asyncio.sleep(1.5)
         if variable not in heroku_var:
-        	return await zed.edit("**⎉╎عـذࢪاً عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
+        	return await zed.edit("**⎉╎عـذࢪًا عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
         await zed.edit("**⎉╎تم حـذف {} بنجـاح ☑️**\n**⎉╎المتغيـر المحـذوف : ↶**\n `{}` \n**⎉╎يتم الآن إعـادة تشغيـل بـوت تيبثــون يستغـرق الأمـر 2-1 دقيقـة ▬▭ ...**".format(input_str, heroku_var[variable]))
         del heroku_var[variable]
 
@@ -735,7 +735,7 @@ async def variable(event):
         variable = "UPSTREAM_REPO"
         await asyncio.sleep(1.5)
         if variable not in heroku_var:
-        	return await zed.edit("**⎉╎عـذࢪاً عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
+        	return await zed.edit("**⎉╎عـذࢪًا عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
         await zed.edit("**⎉╎تم حـذف {} بنجـاح ☑️**\n**⎉╎المتغيـر المحـذوف : ↶**\n `{}` \n**⎉╎يتم الآن إعـادة تشغيـل بـوت تيبثــون يستغـرق الأمـر 2-1 دقيقـة ▬▭ ...**".format(input_str, heroku_var[variable]))
         del heroku_var[variable]
 
@@ -743,48 +743,48 @@ async def variable(event):
         variable = "AUTONAME"
         await asyncio.sleep(1.5)
         if variable not in heroku_var:
-        	return await zed.edit("**⎉╎عـذࢪاً عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
+        	return await zed.edit("**⎉╎عـذࢪًا عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
         await zed.edit("**⎉╎تم حـذف {} بنجـاح ☑️**\n**⎉╎المتغيـر المحـذوف : ↶**\n `{}` \n**⎉╎يتم الآن إعـادة تشغيـل بـوت تيبثــون يستغـرق الأمـر 2-1 دقيقـة ▬▭ ...**".format(input_str, heroku_var[variable]))
         del heroku_var[variable]
     elif input_str == "ايموجي الايدي" or input_str == "ايموجي ايدي" or input_str == "رمز الايدي" or input_str == "رمز ايدي" or input_str == "الرمز ايدي":
         variable = gvarstatus("CUSTOM_ALIVE_EMOJI")
         await asyncio.sleep(1.5)
         if variable is None:
-        	return await zed.edit("**⎉╎عـذࢪاً عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
+        	return await zed.edit("**⎉╎عـذࢪًا عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
         await zed.edit("**⎉╎تم حـذف {} بنجـاح ☑️**\n**⎉╎المتغيـر المحـذوف : ↶**\n `{}`".format(input_str, variable))
         delgvar("CUSTOM_ALIVE_EMOJI")
     elif input_str == "عنوان الايدي" or input_str == "عنوان ايدي":
         variable = gvarstatus("CUSTOM_ALIVE_TEXT")
         await asyncio.sleep(1.5)
         if variable is None:
-        	return await zed.edit("**⎉╎عـذࢪاً عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
+        	return await zed.edit("**⎉╎عـذࢪًا عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
         await zed.edit("**⎉╎تم حـذف {} بنجـاح ☑️**\n**⎉╎المتغيـر المحـذوف : ↶**\n `{}`".format(input_str, variable))
         delgvar("CUSTOM_ALIVE_TEXT")
     elif input_str == "خط الايدي" or input_str == "خط ايدي" or input_str == "خطوط الايدي" or input_str == "خط ايدي":
         variable = gvarstatus("CUSTOM_ALIVE_FONT")
         await asyncio.sleep(1.5)
         if variable is None:
-        	return await zed.edit("**⎉╎عـذࢪاً عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
+        	return await zed.edit("**⎉╎عـذࢪًا عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
         await zed.edit("**⎉╎تم حـذف {} بنجـاح ☑️**\n**⎉╎المتغيـر المحـذوف : ↶**\n `{}`".format(input_str, variable))
         delgvar("CUSTOM_ALIVE_FONT")
     elif input_str == "كاشف الاباحي" or input_str == "كشف الاباحي":
         variable = gvarstatus("DEEP_API")
         await asyncio.sleep(1.5)
         if variable is None:
-        	return await zed.edit("**⎉╎عـذࢪاً عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
+        	return await zed.edit("**⎉╎عـذࢪًا عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
         await zed.edit("**⎉╎تم حـذف {} بنجـاح ☑️**\n**⎉╎المتغيـر المحـذوف : ↶**\n `{}`".format(input_str, variable))
         delgvar("DEEP_API")
     elif input_str == "ايقاف الترحيب" or input_str == "نوم الترحيب":
         variable = "TIME_STOP"
         await asyncio.sleep(1.5)
         if variable is None:
-        	return await zed.edit("**⎉╎عـذࢪاً عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
+        	return await zed.edit("**⎉╎عـذࢪًا عـزيـزي .. انت لـم تقـم بإضـافــة فـار {} اصـلاً...**".format(input_str))
         await zed.edit("**⎉╎تم حـذف {} بنجـاح ☑️**\n**⎉╎المتغيـر المحـذوف : ↶**\n `{}`".format(input_str, variable))
         delgvar("TIME_STOP")
     else:
         if input_str:
-            return await zed.edit("**⎉╎عـذࢪاً .. لايوجـد هنالك فـار بإسـم {} ؟!.. ارسـل (.اوامر الفارات) لـعرض قائمـة الفـارات**".format(input_str))
-        return await edit_or_reply(event, "**⎉╎عـذࢪاً .. لايوجـد هنالك فـار بإسـم {} ؟!.. ارسـل (.اوامر الفارات) لـعرض قائمـة الفـارات**".format(input_str))
+            return await zed.edit("**⎉╎عـذࢪًا .. لايوجـد هنالك فـار باسم {} ؟!.. أرسـل (.اوامر الفارات) لـعرض قائمـة الفـارات**".format(input_str))
+        return await edit_or_reply(event, "**⎉╎عـذࢪًا .. لايوجـد هنالك فـار باسم {} ؟!.. أرسـل (.اوامر الفارات) لـعرض قائمـة الفـارات**".format(input_str))
 
 
 # Copyright (C) 2022 Zed-Thon . All Rights Reserved
@@ -850,7 +850,7 @@ async def custom_zed(event):
 
     elif input_str == "اسم المستخدم" or input_str == "الاسم":
         if Config.HEROKU_API_KEY is None:
-            return await ed(event, "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب الى حسابك في هيروكو ثم الى الاعدادات ستجده بالاسفل انسخه ودخله في الفار. ")
+            return await ed(event, "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب إلى حسابك في هيروكو ثم إلى الاعدادات ستجده بالأسفل انسخه ودخله في الفار. ")
         if Config.HEROKU_APP_NAME is not None:
             app = Heroku.app(Config.HEROKU_APP_NAME)
         else:
@@ -864,7 +864,7 @@ async def custom_zed(event):
 
     elif input_str == "كود تيرمكس" or input_str == "كود السيشن" or input_str == "كود سيشن":
         if Config.HEROKU_API_KEY is None:
-            return await ed(event, "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب الى حسابك في هيروكو ثم الى الاعدادات ستجده بالاسفل انسخه ودخله في الفار. ")
+            return await ed(event, "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب إلى حسابك في هيروكو ثم إلى الاعدادات ستجده بالأسفل انسخه ودخله في الفار. ")
         if Config.HEROKU_APP_NAME is not None:
             app = Heroku.app(Config.HEROKU_APP_NAME)
         else:
@@ -878,7 +878,7 @@ async def custom_zed(event):
 
     elif input_str == "ايديي" or input_str == "ايدي الحساب":
         if Config.HEROKU_API_KEY is None:
-            return await ed(event, "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب الى حسابك في هيروكو ثم الى الاعدادات ستجده بالاسفل انسخه ودخله في الفار. ")
+            return await ed(event, "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب إلى حسابك في هيروكو ثم إلى الاعدادات ستجده بالأسفل انسخه ودخله في الفار. ")
         if Config.HEROKU_APP_NAME is not None:
             app = Heroku.app(Config.HEROKU_APP_NAME)
         else:
@@ -892,7 +892,7 @@ async def custom_zed(event):
 
     elif input_str == "نقطة الاوامر" or input_str == "نقطه الاوامر":
         if Config.HEROKU_API_KEY is None:
-            return await ed(event, "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب الى حسابك في هيروكو ثم الى الاعدادات ستجده بالاسفل انسخه ودخله في الفار. ")
+            return await ed(event, "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب إلى حسابك في هيروكو ثم إلى الاعدادات ستجده بالأسفل انسخه ودخله في الفار. ")
         if Config.HEROKU_APP_NAME is not None:
             app = Heroku.app(Config.HEROKU_APP_NAME)
         else:
@@ -906,7 +906,7 @@ async def custom_zed(event):
 
     elif input_str == "التوكن" or input_str == "توكن البوت":
         if Config.HEROKU_API_KEY is None:
-            return await ed(event, "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب الى حسابك في هيروكو ثم الى الاعدادات ستجده بالاسفل انسخه ودخله في الفار. ")
+            return await ed(event, "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب إلى حسابك في هيروكو ثم إلى الاعدادات ستجده بالأسفل انسخه ودخله في الفار. ")
         if Config.HEROKU_APP_NAME is not None:
             app = Heroku.app(Config.HEROKU_APP_NAME)
         else:
@@ -920,7 +920,7 @@ async def custom_zed(event):
 
     elif input_str == "معرف البوت" or input_str == "معرف بوت":
         if Config.HEROKU_API_KEY is None:
-            return await ed(event, "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب الى حسابك في هيروكو ثم الى الاعدادات ستجده بالاسفل انسخه ودخله في الفار. ")
+            return await ed(event, "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب إلى حسابك في هيروكو ثم إلى الاعدادات ستجده بالأسفل انسخه ودخله في الفار. ")
         if Config.HEROKU_APP_NAME is not None:
             app = Heroku.app(Config.HEROKU_APP_NAME)
         else:
@@ -934,7 +934,7 @@ async def custom_zed(event):
 
     elif input_str == "الريبو" or input_str == "السورس":
         if Config.HEROKU_API_KEY is None:
-            return await ed(event, "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب الى حسابك في هيروكو ثم الى الاعدادات ستجده بالاسفل انسخه ودخله في الفار. ")
+            return await ed(event, "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب إلى حسابك في هيروكو ثم إلى الاعدادات ستجده بالأسفل انسخه ودخله في الفار. ")
         if Config.HEROKU_APP_NAME is not None:
             app = Heroku.app(Config.HEROKU_APP_NAME)
         else:
@@ -948,7 +948,7 @@ async def custom_zed(event):
 
     elif input_str == "اسمي التلقائي" or input_str == "الاسم التلقاائي":
         if Config.HEROKU_API_KEY is None:
-            return await ed(event, "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب الى حسابك في هيروكو ثم الى الاعدادات ستجده بالاسفل انسخه ودخله في الفار. ")
+            return await ed(event, "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب إلى حسابك في هيروكو ثم إلى الاعدادات ستجده بالأسفل انسخه ودخله في الفار. ")
         if Config.HEROKU_APP_NAME is not None:
             app = Heroku.app(Config.HEROKU_APP_NAME)
         else:
@@ -1003,7 +1003,7 @@ async def custom_zed(event):
             await zed.edit("**⎉╎الفـار {} موجـود ☑️**\n**⎉╎قيمـة الفـار : ↶**\n `{}` \n\n**⎉╎قنـاة السـورس : @Tepthon**".format(input_str, variable))
     elif input_str == "زخرفة الوقتي" or input_str == "زخرفه الوقتي":
         if Config.HEROKU_API_KEY is None:
-            return await ed(event, "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب الى حسابك في هيروكو ثم الى الاعدادات ستجده بالاسفل انسخه ودخله في الفار. ")
+            return await ed(event, "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب إلى حسابك في هيروكو ثم إلى الاعدادات ستجده بالأسفل انسخه ودخله في الفار. ")
         if Config.HEROKU_APP_NAME is not None:
             app = Heroku.app(Config.HEROKU_APP_NAME)
         else:
@@ -1017,7 +1017,7 @@ async def custom_zed(event):
 
     elif input_str == "رسائل الحماية" or input_str == "رسائل الحمايه" or input_str == "رسائل الخاص" or input_str == "رسائل حماية الخاص" or input_str == "عدد التحذيرات":
         if Config.HEROKU_API_KEY is None:
-            return await ed(event, "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب الى حسابك في هيروكو ثم الى الاعدادات ستجده بالاسفل انسخه ودخله في الفار. ")
+            return await ed(event, "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب إلى حسابك في هيروكو ثم إلى الاعدادات ستجده بالأسفل انسخه ودخله في الفار. ")
         if Config.HEROKU_APP_NAME is not None:
             app = Heroku.app(Config.HEROKU_APP_NAME)
         else:
@@ -1038,7 +1038,7 @@ async def custom_zed(event):
 
     elif input_str == "الوقت" or input_str == "الساعه" or input_str == "المنطقه الزمنيه":
         if Config.HEROKU_API_KEY is None:
-            return await ed(event, "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب الى حسابك في هيروكو ثم الى الاعدادات ستجده بالاسفل انسخه ودخله في الفار. ")
+            return await ed(event, "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب إلى حسابك في هيروكو ثم إلى الاعدادات ستجده بالأسفل انسخه ودخله في الفار. ")
         if Config.HEROKU_APP_NAME is not None:
             app = Heroku.app(Config.HEROKU_APP_NAME)
         else:
@@ -1108,7 +1108,7 @@ async def custom_zed(event):
 
     elif input_str == "توكن المكافح" or input_str == "كود المكافح" or input_str == "مكافح التخريب" or input_str == "مكافح التفليش":
         if Config.HEROKU_API_KEY is None:
-            return await ed(event, "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب الى حسابك في هيروكو ثم الى الاعدادات ستجده بالاسفل انسخه ودخله في الفار. ")
+            return await ed(event, "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب إلى حسابك في هيروكو ثم إلى الاعدادات ستجده بالأسفل انسخه ودخله في الفار. ")
         if Config.HEROKU_APP_NAME is not None:
             app = Heroku.app(Config.HEROKU_APP_NAME)
         else:
@@ -1143,8 +1143,8 @@ async def custom_zed(event):
 
     else:
         if input_str:
-            return await zed.edit("**⎉╎عـذࢪاً .. لايوجـد هنالك فـار بإسـم {} ؟!.. ارسـل (.اوامر الفارات) لـعرض قائمـة الفـارات**".format(input_str))
-        return await edit_or_reply(event, "**⎉╎عـذࢪاً .. لايوجـد هنالك فـار بإسـم {} ؟!.. ارسـل (.اوامر الفارات) لـعرض قائمـة الفـارات**".format(input_str))
+            return await zed.edit("**⎉╎عـذࢪًا .. لايوجـد هنالك فـار باسم {} ؟!.. أرسـل (.اوامر الفارات) لـعرض قائمـة الفـارات**".format(input_str))
+        return await edit_or_reply(event, "**⎉╎عـذࢪًا .. لايوجـد هنالك فـار باسم {} ؟!.. أرسـل (.اوامر الفارات) لـعرض قائمـة الفـارات**".format(input_str))
 
 
 # Copyright (C) 2022 Zed-Thon . All Rights Reserved
@@ -1153,7 +1153,7 @@ async def variable(event):
     if Config.HEROKU_API_KEY is None:
         return await ed(
             event,
-            "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب الى حسابك في هيروكو ثم الى الاعدادات ستجده بالاسفل انسخه ودخله في الفار. ",
+            "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب إلى حسابك في هيروكو ثم إلى الاعدادات ستجده بالأسفل انسخه ودخله في الفار. ",
         )
     if Config.HEROKU_APP_NAME is not None:
         app = Heroku.app(Config.HEROKU_APP_NAME)
