@@ -61,7 +61,7 @@ async def autovars(): #Code by T.me/zzzzl1l
     LOGS.info("جـاري إضـافـة باقي الفـارات تلقائيًــا ..")
     ttenv = "ANYTHING"
     ttcom = "."
-    ttttz = "Asia/Baghdad"
+    ttttz = "Asia/Amman"
     heroku_var["ENV"] = ttenv
     heroku_var["COMMAND_HAND_LER"] = ttcom
     heroku_var["TZ"] = ttttz
@@ -88,7 +88,7 @@ async def autoname(): #Code by T.me/zzzzl1l
         tt = "t_time"
         addgvar(td, ttd)
         addgvar(tt, ttt)
-    LOGS.info(f"تم اضافـة اسـم المستخـدم {ttname} .. بنجـاح")
+    LOGS.info(f"تم إضافـة اسـم المستخـدم {ttname} .. بنجـاح")
     heroku_var["ALIVE_NAME"] = ttname
 
 
@@ -104,7 +104,7 @@ async def setup_bot():
                 if zedub.session.dc_id != option.id:
                     LOGS.warning(
                         f"ايـدي DC ثـابت فـي الجلسـة مـن {zedub.session.dc_id}"
-                        f" الـى {option.id}"
+                        f" إلـى {option.id}"
                     )
                 zedub.session.set_dc(option.id, option.ip_address, option.port)
                 zedub.session.save()
@@ -121,14 +121,14 @@ async def setup_bot():
         sys.exit()
 
 async def mybot(): # By zizlal
-    mohammad = bot.me.first_name
-    Narcissus = bot.uid
-    mohammad_tep = f"[{mohammad}](tg://user?id={Narcissus})"
-    f"ـ {mohammad_tep}"
-    f"•⎆┊هــذا البــوت خــاص بـ {mohammad_tep} يُمكنـك التواصـل معـه هـنا 🧸♥️"
-    babot = await zedub.tgbot.get_me()
-    bot_name = babot.first_name
-    botname = f"@{babot.username}"
+    ZELZAL = bot.me.first_name
+    Malath = bot.uid
+    zel_zal = f"[{ZELZAL}](tg://user?id={Malath})"
+    f"ـ {zel_zal}"
+    f"•⎆┊هــذا البــوت خــاص بـ {zel_zal} يُمكنـك التواصـل معـه هـنا 🧸♥️"
+    zilbot = await zedub.tgbot.get_me()
+    bot_name = zilbot.first_name
+    botname = f"@{zilbot.username}"
     if bot_name.endswith("Assistant"):
         print("تم تشغيل البوت بنجــاح")
     else:
@@ -161,7 +161,7 @@ async def mybot(): # By zizlal
             await asyncio.sleep(1)
             await bot.send_message("@BotFather", botname)
             await asyncio.sleep(1)
-            await bot.send_message("@BotFather", f"•⎆┊أنــا الـبـوت المسـاعـد الخـاص بِـ {mohammad_tep} \n•⎆┊بـواسطـتـي يُمكنـك التواصـل مع مالكـي 🧸♥️\n•⎆┊قنـاة السـورس 🌐 @Tepthon 🌐")
+            await bot.send_message("@BotFather", f"•⎆┊أنــا الـبـوت المسـاعـد الخـاص بِـ {zel_zal} \n•⎆┊بـواسطـتـي يُمكنـك التواصـل مع مالكـي 🧸♥️\n•⎆┊قنـاة السـورس 🌐 @Tepthon 🌐")
         except Exception as e:
             print(e)
 
