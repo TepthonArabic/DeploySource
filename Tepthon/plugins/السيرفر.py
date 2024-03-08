@@ -132,7 +132,7 @@ async def variable(event):  # sourcery no-metrics
     command=("لود", plugin_category),
     info={
         "header": "To reload your bot in vps/ similar to restart",
-        "الاوامر المضافه لـ لـود": {
+        "الأوامر المضافة لـ لـود": {
             "ري": "restart your bot without deleting junk files",
             "كلين": "delete all junk files & restart",
         },
@@ -143,12 +143,12 @@ async def variable(event):  # sourcery no-metrics
     },
 )
 async def _(event):
-    "لـ اعـادة تشغيل البـوت في السيـرفـر"
+    "لـ إعــادة تشغيل البـوت في السيـرفـر"
     cmd = event.pattern_match.group(1)
     zed = await edit_or_reply(
         event,
-        f"**⌔∮ اهـلا عـزيـزي** - {mention}\n\n"
-        f"**⌔∮ يتـم الآن اعـادة تشغيـل بـوت تيبــثون فـي السيـرفـر قـد يستغـرق الامـر 2-3 دقيقـه ▬▭ ...**",
+        f"**⌔∮ أهلًا عـزيـزي** - {mention}\n\n"
+        f"**⌔∮ يتـم الآن إعادة تشغيـل بـوت تيبــثون فـي السيـرفـر قـد يستغـرق الامـر 2-3 دقيقـة ▬▭ ...**",
     )
     if cmd == "كلين":
         for file in exts:
