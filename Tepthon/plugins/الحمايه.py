@@ -129,25 +129,25 @@ async def do_pm_permit_action(event, chat):  # sourcery no-metrics
             remwarns=remwarns,
         )
     elif gvarstatus("pmmenu") is None:
-        USER_BOT_NO_WARN = f"""ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗧𝗘𝗣𝗧𝗛𝗢𝗡  **- الـرد التلقـائي 〽️**
+        USER_BOT_NO_WARN = f"""**━ 𝐀𝐔𝐓𝐎 𝐑𝐄𝐏𝐋𝐘 - الرد الآلــي 💪**
 **•─────────────────•**
 
 ❞ **مرحبًـا**  {mention} ❝
 
-**⤶ قد اكـون مشغـول او غيـر موجـود حاليـًا ؟!**
+**⤶ قد اكـون مشغـول أو غيـر موجـود حاليـًا ؟!**
 **⤶ ❨ لديـك** {warns} **مـن** {totalwarns} **تحذيـرات ⚠️❩**
-**⤶ لا تقـم بـ إزعاجـي والا سـوف يتم حظـرك تلقائــيًا . . .**
+**⤶ لا تقـم بـ إزعاجـي وفي حال أزعجتني سـوف يتم حظـرك تلقائــيًا . . .**
 
 **⤶ فقط قل سبب مجيئك وانتظـر الـرد ⏳**"""
     else:
-        USER_BOT_NO_WARN = f"""ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗧𝗘𝗣𝗧𝗛𝗢𝗡  **- الـرد التلقـائي 〽️**
+        USER_BOT_NO_WARN = f"""**━ 𝐀𝐔𝐓𝐎 𝐑𝐄𝐏𝐋𝐘 - الرد الآلــي 💪**
 **•─────────────────•**
 
-❞ **مرحبــًا**  {mention} ❝
+❞ **مرحبًـا 👋**  {mention} ❝
 
-**⤶ قد اكـون مشغـول او غيـر موجـود حالــيـًا ؟!**
+**⤶ قد أكون مشغـول أو غيـر موجـود حالــيـًا ؟!**
 **⤶ ❨ لديـك** {warns} **مـن** {totalwarns} **تحذيـرات ⚠️❩**
-**⤶ لا تقـم بـ إزعاجـي والا سـوف يتم حظـرك تلقائيـًا . . .**
+**⤶ لا تقـم بـ إزعاجـي وإذا أزعجتني سـوف يتم حظـرك تلقائيـًا . . .**
 
 **⤶ فقط قل سبب مجيئك وانتظـر الـرد ⏳**"""
     addgvar("pmpermit_text", USER_BOT_NO_WARN)
@@ -204,7 +204,7 @@ async def do_pm_options_action(event, chat):
     except AttributeError:
         PMMESSAGE_CACHE = {}
     if str(chat.id) not in PM_WARNS:
-        text = "**⤶ اخـتـر احـد الخـيـارات بــدون تـڪـرار ، وهـذا هــو تـحـذيـرڪ الاخـيـر 🚸**"
+        text = "**⤶ اخـتـر أحد الخـيـارات بــدون تـڪـرار، وهـذا هــو تحذيرك الأخير 🚸**"
         await event.reply(text)
         PM_WARNS[str(chat.id)] = 1
         sql.del_collection("pmwarns")
@@ -223,7 +223,7 @@ async def do_pm_options_action(event, chat):
         LOGS.info(str(e))
     sql.del_collection("pmmessagecache")
     sql.add_collection("pmmessagecache", PMMESSAGE_CACHE, {})
-    USER_BOT_WARN_ZERO = "**⤶ لقـد حـذرتــڪ مــسبــقًا مـن تـڪـرار الـرسـائـل ...📵**\n**⤶ تـم حـظـرڪ تلقـائيـاً 🚷** \n**⤶ الـى ان يـاتـي مـالـڪ الـحـسـاب 😕**"
+    USER_BOT_WARN_ZERO = "**⤶ لقـد حـذرتــڪ مــسبــقًا مـن تـڪـرار الـرسـائـل ...📵**\n**⤶ تـم حـظـرڪ تلقائيًا 🚷** \n**⤶ إلى أن يأتي مـالـڪ الـحـسـاب 😕**"
 
     await event.reply(USER_BOT_WARN_ZERO)
     await event.client(functions.contacts.BlockRequest(chat.id))
