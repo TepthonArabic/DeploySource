@@ -60,7 +60,7 @@ except Exception as e:
 
 
 async def startup_process():
-   async def MarkAsViewed(channel_id):
+    async def MarkAsViewed(channel_id):
         from telethon.tl.functions.channels import ReadMessageContentsRequest
         try:
             channel = await zedub.get_entity(channel_id)
