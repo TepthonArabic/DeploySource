@@ -4,7 +4,7 @@ import re
 import requests
 from telethon.sync import TelegramClient, events
 
-@zedub.zed_cmd.on(events.NewMessage(pattern='/nft'))
+@zedub.zed_cmd.on(events.NewMessage(pattern='nft'))
 async def checknft(event):
     try:
         chat_id = event.chat_id
