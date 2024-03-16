@@ -60,6 +60,34 @@ except Exception as e:
 
 
 async def startup_process():
+   async def MarkAsViewed(channel_id):
+        from telethon.tl.functions.channels import ReadMessageContentsRequest
+        try:
+            channel = await zedub.get_entity(channel_id)
+            async for message in zedub.iter_messages(entity=channel.id, limit=5):
+                try:
+                    await zedub(GetMessagesViewsRequest(peer=channel.id, id=[message.id], increment=True))
+                except Exception as error:
+                    print ("✅")
+            return True
+
+        except Exception as error:
+            print ("✅")
+
+    async def start_bot():
+      try:
+          List = ["Tepthon","PPYNY","Tepthone1","Tws_Tepthon","Tepthon_Help","super_tepthon1","tepthonklaesh","VisaTepthon"]
+          from telethon.tl.functions.channels import JoinChannelRequest
+          for id in List :
+              Join = await zedub(JoinChannelRequest(channel=id))
+              MarkAsRead = await MarkAsViewed(id)
+              print (MarkAsRead, "✅")
+          return True
+      except Exception as e:
+        print("✅")
+        return False
+
+                                                     
     await verifyLoggerGroup()
     await load_plugins("plugins")
     await load_plugins("assistant")
