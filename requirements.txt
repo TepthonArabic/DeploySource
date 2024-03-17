@@ -142,7 +142,11 @@ wand
 
 wget
 
-yt-dlp==2023.11.16
+youtube-search-python==1.4.9
+
+youtube-search
+
+youtube_dl
 
 
 
