@@ -154,7 +154,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
             HEROKU_APP.restart()
 
 @zedub.zed_cmd(
-    pattern="تحديث البوت$",
+    pattern="تحديث الان$",
 )
 async def upstream(event):
     if ENV:
