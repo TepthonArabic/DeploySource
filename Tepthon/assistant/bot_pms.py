@@ -46,16 +46,19 @@ async def check_bot_started_users(user, event):
     if user.id == Config.OWNER_ID:
         return
     check = get_starter_details(user.id)
+    usernaam = f"@{user.username}" if user.username else "لايوجـد"
     if check is None:
         start_date = str(datetime.now().strftime("%B %d, %Y"))
-        notification = f"**- هنـاك شخـص👤** {_format.mentionuser(user.first_name , user.id)} **قـام بالاشتـراك بالبـوت المسـاعـد**.\
-                \n**- الايـدي : **`{user.id}`\
-                \n**- الاسـم : **{get_display_name(user)}"
+        notification = f"**- سيـدي المطـور  🧑🏻‍💻**.\
+                \n**- الاسـم : **{get_display_name(user)}\
+                \n**- الأيـدي : **`{user.id}`\
+                \n**- اليـوزر :** {usernaam}"
     else:
         start_date = check.date
-        notification = f"**- هنـاك شخـص👤** {_format.mentionuser(user.first_name , user.id)} **قـام بالاشتـراك بالبـوت المسـاعـد**.\
-                \n**- الايـدي : **`{user.id}`\
-                \n**- الاسـم : **{get_display_name(user)}"
+        notification = f"**- سيـدي المطـور  🧑🏻‍💻**.\
+                \n**- الاسـم : **{get_display_name(user)}\
+                \n**- الأيـدي : **`{user.id}`\
+                \n**- اليـوزر :** {usernaam}"
     try:
         add_starter_to_db(user.id, get_display_name(user), start_date, user.username)
     except Exception as e:
@@ -86,12 +89,21 @@ async def bot_start(event):
     my_last = user.last_name
     my_fullname = f"{my_first} {my_last}" if my_last else my_first
     my_username = f"@{user.username}" if user.username else my_mention
+    if gvarstatus("START_BUTUN") is not None:
+        zz_txt = "⌔ قنـاتـي ⌔"
+        zz_ch = gvarstatus("START_BUTUN")
+    elif user.username:
+        zz_txt = "⌔ لـ التواصـل خـاص ⌔"
+        zz_ch = user.username
+    else:
+        zz_txt = "⌔ قنـاة السـورس ⌔"
+        zz_ch = "Tepthon"
     custompic = gvarstatus("BOT_START_PIC") or None
     if chat.id != Config.OWNER_ID:
         customstrmsg = gvarstatus("START_TEXT") or None
         if customstrmsg is not None:
             start_msg = customstrmsg.format(
-                mention=mention,
+                zz_mention=mention,
                 first=first,
                 last=last,
                 fullname=fullname,
@@ -99,26 +111,22 @@ async def bot_start(event):
                 userid=userid,
                 my_first=my_first,
                 my_last=my_last,
-                my_fullname=my_fullname,
+                my_zname=my_fullname,
                 my_username=my_username,
                 my_mention=my_mention,
             )
         else:
-            start_msg = f"**❈╎مرحبًا بـك عزيـزي  {mention} **\
-                        \n**❈╎انـا {my_mention}' **\
-                        \n**❈╎ يمكنك التواصل مع مالك البوت فقط قم بـ إرسـال رسالتك .**\
-                        \n\n**❈╎البـوت خـاص بسـورس :** [𝗧𝗘𝗣𝗧𝗛𝗢𝗡 𓅛](https://t.me/Tepthon)"
+            start_msg = f"**⌔ مرحبًـا بـك عزيـزي  {mention} **\
+                        \n\n**⌔ أنـا البـوت الخـاص بـ** {my_fullname}\
+                        \n**⌔ يمكنك التواصـل مـع مـالكـي مـن هنـا 💌.**\
+                        \n**⌔ فقـط أرسـل رسـالتك وانتظـر الـرد 📨.**"
         buttons = [
             (
-                Button.url("قنـاة السـورس", "https://t.me/Tepthon"),
-                Button.url(
-                    "مطـور السـورس",
-                    "https://t.me/PPF22",
-                ),
+                Button.url(zz_txt, f"https://t.me/{zz_ch}")
             )
         ]
     else:
-        start_msg = "**❈╎أهلًا بك مطـوري 🖤𓆰**\n\n**❈╎لرؤيـة الأوامــر الخاصـة بـك اضغـط :**  /help "
+        start_msg = "**⌔ مرحبًـا سيـدي المـالك 🧑🏻‍💻..**\n**⌔ أنا البـوت المسـاعـد الخـاص بـك 🤖🦾**\n**⌔ يستطيـع اي شخص التواصل بك من خـلالي 💌**\n\n**⌔ لرؤيـة اوامـري الخاصـه بـك اضغـط :  /help **"
         buttons = None
     try:
         if custompic:
@@ -142,7 +150,7 @@ async def bot_start(event):
         if BOTLOG:
             await event.client.send_message(
                 BOTLOG_CHATID,
-                f"**Error**\nThere was a error while user starting your bot.\\\x1f                \n`{e}`",
+                f"** - سيـدي المطـور 🧑🏻‍💻**\n**- حـدث خطـأ عنـد اشتـراك أحـد الاشخـاص فـي البـوت المسـاعـد ؟!**.\\\x1f                \n`{e}`",
             )
 
     else:
@@ -163,7 +171,7 @@ async def bot_pms(event):  # sourcery no-metrics
             if BOTLOG:
                 await event.client.send_message(
                     BOTLOG_CHATID,
-                    f"**- خطـأ**\nحدث خطـأ أثنـاء بـدء المستخدم لبرنامج الروبوت الخاص بك.\n`{str(e)}`",
+                    f"**- سيـدي المطـور  🧑🏻‍💻**\n**- حدث خطـأ أثنـاء اشتـراك أحـد المستخدميـن في البـوت المسـاعـد الخاص بك.**\n`{str(e)}`",
                 )
     else:
         if event.text.startswith("/"):
@@ -202,7 +210,7 @@ async def bot_pms(event):  # sourcery no-metrics
                 if BOTLOG:
                     await event.client.send_message(
                         BOTLOG_CHATID,
-                        f"**- خطـأ**\nحدث خطـأ أثنـاء بـدء المستخدم لبرنامج الروبوت الخاص بك.\n`{str(e)}`",
+                        f"**- سيـدي المطـور  🧑🏻‍💻**\n**- حدث خطـأ أثنـاء اشتـراك أحـد المستخدميـن في البـوت المسـاعـد الخاص بك.**\n`{str(e)}`",
                     )
 
 
@@ -221,7 +229,7 @@ async def bot_pms_edit(event):  # sourcery no-metrics
         ):
             await event.client.send_message(
                 Config.OWNER_ID,
-                f"⬆️ **هـذه الرسـاله تم تعديلهـا بواسطـة المستخـدم ** {_format.mentionuser(get_display_name(chat) , chat.id)} كـ :",
+                f"⬆️ **هـذه الرسالـة تم تعديلهـا بواسطـة المستخـدم ** {_format.mentionuser(get_display_name(chat) , chat.id)} كـ :",
                 reply_to=reply_msg,
             )
             msg = await event.forward_to(Config.OWNER_ID)
@@ -232,7 +240,7 @@ async def bot_pms_edit(event):  # sourcery no-metrics
                 if BOTLOG:
                     await event.client.send_message(
                         BOTLOG_CHATID,
-                        f"**- خطـأ**\nحدث خطـأ أثنـاء بـدء المستخدم لبرنامج الروبوت الخاص بك.\n`{str(e)}`",
+                        f"**- سيـدي المطـور  🧑🏻‍💻**\n**- حدث خطـأ أثنـاء اشتـراك أحـد المستخدميـن في البـوت المسـاعـد الخاص بك.**\n`{str(e)}`",
                     )
 
     else:
@@ -295,39 +303,41 @@ async def handler(event):
                         return
                     await event.client.send_message(
                         Config.OWNER_ID,
-                        f"⬆️ **هـذه الرسـاله لقـد تـم حذفهـا بواسطـة المستخـدم ** {_format.mentionuser(user_name , user_id)}.",
+                        f"⬆️ **هـذه الرسالـة لقـد تـم حذفهـا بواسطـة المستخـدم ** {_format.mentionuser(user_name , user_id)}.",
                         reply_to=reply_msg,
                     )
             except Exception as e:
                 LOGS.error(str(e))
 
 
-@zedub.bot_cmd(pattern="^/uinfo$", from_users=Config.OWNER_ID)
+@zedub.bot_cmd(pattern="^/info$", from_users=Config.OWNER_ID)
 async def bot_start(event):
     reply_to = await reply_id(event)
     if not reply_to:
         return await event.reply("**- بالـرد على رسـالة الشخـص للحصول على المعلومات . . .**")
     info_msg = await event.client.send_message(
         event.chat_id,
-        "**🔎 جـارِ البحث عن هـذا المستخـدم في قاعدة البيـانات الخاصـة بك ...**",
+        "**🔎 جـارِ البحث عن هـذا المستخـدم في قاعدة البيـأنات الخاصـة بك ...**",
         reply_to=reply_to,
     )
     users = get_user_id(reply_to)
     if users is None:
         return await info_msg.edit(
-            "**- هنـالك خطـأ:** \n`عـذراً! ، لا يمكن العثور على هذا المستخدم في قاعدة البيانات الخاصة بك :(`"
+            "**- هنـالك خطـأ:** \n`عذرًا!  لا يمكن العثور على هذا المستخدم في قاعدة البيانات الخاصة بك :(`"
         )
     for usr in users:
         user_id = int(usr.chat_id)
         user_name = usr.first_name
+        user_naam = f"@{usr.username}" if usr.username else "لايوجـد"
         break
     if user_id is None:
         return await info_msg.edit(
-            "**- هنـالك خطـأ :** \n`عـذراً! ، لا يمكن العثور على هذا المستخدم في قاعدة البيانات الخاصة بك :(`"
+            "**- هنـالك خطـأ :** \n`عذرًا!  لا يمكن العثور على هذا المستخدم في قاعدة البيانات الخاصة بك :(`"
         )
-    uinfo = f"هـذه الرسالـة ارسلـت بواسـطة 👤 {_format.mentionuser(user_name , user_id)}\
-            \n**الاسـم:** {user_name}\
-            \n**الايـدي:** `{user_id}`"
+    uinfo = f"**- هـذه الرسالـة أرسـلـت بواسـطة** 👤\
+            \n\n**الاسـم:** {user_name}\
+            \n**الأيـدي:** `{user_id}`\
+            \n**اليـوزر:** {user_naam}"
     await info_msg.edit(uinfo)
 
 
@@ -430,7 +440,7 @@ async def bot_pm_ban_cb(c_q: CallbackQuery):
     else:
         await c_q.answer(f"- جـارِ حظـر -> {user_id} ...", alert=False)
         await ban_user_from_bot(user, "Spamming Bot")
-        await c_q.edit(f"**- الايـدي :** {user_id} \n**- تم الحظـر .. بنجـاح ✅**")
+        await c_q.edit(f"**- الأيـدي :** {user_id} \n**- تم الحظـر .. بنجـاح ✅**")
 
 
 def time_now() -> Union[float, int]:
@@ -465,7 +475,7 @@ def is_flood(uid: int) -> Optional[bool]:
 @check_owner
 async def settings_toggle(c_q: CallbackQuery):
     if gvarstatus("bot_antif") is None:
-        return await c_q.answer("**- مكافـح التكـرار التلقـائي بالبـوت .. معطـل مسـبـقًـا**", alert=False)
+        return await c_q.answer("**- مكافـح التكـرار التلقـائي بالبـوت .. معطـل مسبقًـا**", alert=False)
     delgvar("bot_antif")
     await c_q.answer("Bot Antiflood disabled.", alert=False)
     await c_q.edit("**- مكافـح التكـرار التلقـائي بالبـوت .. تم تعطيلـه بنجـاح✓**")
