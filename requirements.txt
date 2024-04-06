@@ -77,9 +77,9 @@ wikipedia
 wget
 youtube_dl
 youtube-search
-youtube-search-python==1.6.1
-yt-dlp==2023.02.17
+youtube-search-python==1.4.9
 
+git+https://github.com/yt-dlp/yt-dlp@master
 git+https://github.com/Jisan09/search-engine-parser
 git+https://github.com/buddhhu/img2html.git
 git+https://github.com/sandy1709/py-googletrans
