@@ -124,7 +124,7 @@ async def _(event):
                 await borg.send_file(
                     event.chat_id,
                     zelzal,
-                    caption=f"**{zelzal.text}\nBy: @ZedThon**",
+                    caption=f"**{zelzal.text}\nBy: @Tepthon**",
 
                 )
 
@@ -150,7 +150,7 @@ async def _(event):
                 await borg.send_file(
                     event.chat_id,
                     zelzal,
-                    caption=f"**{zelzal.text}\nBy: @ZedThon**",
+                    caption=f"**{zelzal.text}\nBy: @Tepthon**",
 
                 )
             
