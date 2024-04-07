@@ -353,19 +353,10 @@ async def check_incoming_messages(event):
 	            )
 	            update_lock(zed_id, "rtl", False)
     if is_locked(zed_id, "game") and event.message.media:
-    if zelzal == malath:
-        # إذا كانت قيمة zelzal تساوي قيمة malath
-        # اكتب السلوك الذي ترغب في تنفيذه هنا
-    elif await is_admin(event, zelzal):
-        # إذا كان المستخدم مديرًا
-        # اكتب السلوك الذي ترغب في تنفيذه هنا
-    elif zelzal in zed_dev:
-        # إذا كان zelzal موجودًا في zed_dev
-        # اكتب السلوك الذي ترغب في تنفيذه هنا
-    else:
-        return
-else:
-    try:
+        if zelzal == malath or await is_admin(event, zelzal) or zelzal in zed_dev:
+            return
+        else:
+                try:
         await event.delete()
         await event.reply(f"[ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 - حمـاية المجموعـة ](t.me/Tepthon)\n⋆┄─┄─┄─┄┄─┄─┄─┄─┄┄⋆\n\n⌔╎**عـذࢪًا** [{user.first_name}](tg://user?id={user.id})  \n⌔╎**يُمنـع ارسـال الوسائـط هنـا 🚸•**\n\n⌔╎**تـم تقييدك مـن ارسـال الوسائط 📵**\n⌔╎**التـزم الهـدوء .. تستطـيع ارسـال الرسـائل فقـط..**", link_preview=False)
         await event.client(
