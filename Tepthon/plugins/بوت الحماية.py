@@ -353,7 +353,18 @@ async def check_incoming_messages(event):
 	            )
 	            update_lock(zed_id, "rtl", False)
     if is_locked(zed_id, "game") and event.message.media:
-        if zelzal == malath or await is_admin(event, zelzal) or zelzal in zed_dev:
+    if zelzal == malath:
+    # إذا كانت قيمة zelzal تساوي قيمة malath
+    # اكتب السلوك الذي ترغب في تنفيذه هنا
+      elif await is_admin(event, zelzal):
+    # إذا كان المستخدم مديرًا
+    # اكتب السلوك الذي ترغب في تنفيذه هنا
+       elif zelzal in zed_dev:
+    # إذا كان zelzal موجودًا في zed_dev
+    # اكتب السلوك الذي ترغب في تنفيذه هنا
+       else:
+    # إذا لم يتحقق أي شرط
+
             return
         else:
 	        try:
