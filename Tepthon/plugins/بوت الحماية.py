@@ -60,7 +60,7 @@ from telethon.errors import (
     ChatAdminRequiredError,
     UserAdminInvalidError,
 )
-from Tepthon import zedub
+from zthon import zedub
 from ..utils import is_admin
 from ..sql_helper.locks_sql import get_locks, is_locked, update_lock
 from ..core.managers import edit_delete, edit_or_reply
@@ -158,9 +158,6 @@ async def _(event):
     if input_str == "الروابط":
         update_lock(zed_id, "url", True)
         return await edit_or_reply(event, "**⎆ تـم قفـل {} بنجـاح ✅ •**\n\n**⎆ خاصيـة المسـح والتحذيـر •**".format(input_str))
-     if input_str == "الصور":
-        update_lock(zed_id, "picture", True)
-        return await edit_or_reply(event, "**⎆ تـم قفـل {} بنجـاح ✅ •**\n\n**⎆ خاصيـة المسـح والتحذيـر •**".format(input_str))
     if input_str == "الكل":
         update_lock(zed_id, "bots", True)
         update_lock(zed_id, "game", True)
@@ -175,7 +172,6 @@ async def _(event):
         update_lock(zed_id, "video", True)
         update_lock(zed_id, "sticker", True)
         update_lock(zed_id, "voice", True)
-        update_lock(zed_id, "picture", True)
         return await edit_or_reply(event, "**⎆ تـم قفـل {} بنجـاح ✅ •**\n\n**⎆ خاصيـة المسـح - الطـرد - التقييـد - التحذيـر •**".format(input_str))
     else:
         if input_str:
@@ -252,8 +248,6 @@ async def _(event):
         return await edit_or_reply(event, "**⎆ تـم فتـح** {} **بنجـاح ✅ 𓆰•**".format(input_str))
     if input_str == "الانلاين":
         update_lock(zed_id, "inline", False)
-    if input_str == "الصور":
-        update_lock(zed_id, "picture", False)
         return await edit_or_reply(event, "**⎆ تـم فتـح** {} **بنجـاح ✅ 𓆰•**".format(input_str))
     if input_str == "الكل":
         update_lock(zed_id, "bots", False)
@@ -269,7 +263,6 @@ async def _(event):
         update_lock(zed_id, "video", False)
         update_lock(zed_id, "sticker", False)
         update_lock(zed_id, "voice", False)
-        update_lock(zed_id, "picture", False)
         return await edit_or_reply(event, "**⎆ تـم فتـح** {} **بنجـاح ✅ 𓆰•**".format(input_str))
     if input_str == "الفارسيه":
         update_lock(zed_id, "egame", False)
@@ -385,7 +378,7 @@ async def check_incoming_messages(event):
 	            await event.reply(f"[ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 - حمـاية المجموعـة ](t.me/Tepthon)\n⋆┄─┄─┄─┄┄─┄─┄─┄─┄┄⋆\n\n⌔╎**عـذࢪًا** [{user.first_name}](tg://user?id={user.id})  \n⌔╎**يُمنـع التوجيـه هنـا ⚠️•**", link_preview=False)
 	        except Exception as e:
 	            await event.reply(
-	                "**⎆ عـذࢪًا  عـزيـزي .. لا املك صـلاحيات المشـرف هنـا 𓆰** \n`{}`".format(str(e))
+	                "**⎆ عـذࢪًا  عـزيـزي .. لا أملك صـلاحيات المشـرف هنـا 𓆰** \n`{}`".format(str(e))
 	            )
 	            update_lock(zed_id, "forward", False)
     if is_locked(zed_id, "button") and "@" in hhh:
@@ -406,323 +399,4 @@ async def check_incoming_messages(event):
         else:
 	        try:
 	            await event.delete()
-	            await event.reply(f"[ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 - حمـاية المجموعـة ](t.me/Tepthon)\n⋆┄─┄─┄─┄┄─┄─┄─┄─┄┄⋆\n\n⌔╎**عـذࢪًا** [{user.first_name}](tg://user?id={user.id})  \n⌔╎**يُمنـع التحـدث بالفارسيـه هنـا ⚠️•**", link_preview=False)
-	        except Exception as e:
-	            await event.reply(
-	                "**⎆ عـذࢪًا  عـزيـزي .. لا املك صـلاحيات المشـرف هنـا 𓆰** \n`{}`".format(str(e))
-	            )
-	            update_lock(zed_id, "egame", False)
-    if is_locked(zed_id, "url") and "http" in hhh:
-        if zelzal == malath or await is_admin(event, zelzal) or zelzal in zed_dev:
-            return
-        else:
-	        try:
-	            await event.delete()
-	            await event.reply(f"[ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 - حمـاية المجموعـة ](t.me/Tepthon)\n⋆┄─┄─┄─┄┄─┄─┄─┄─┄┄⋆\n\n⌔╎**عـذࢪًا** [{user.first_name}](tg://user?id={user.id})  \n⌔╎**يُمنـع ارسـال الروابـط هنـا ⚠️•**", link_preview=False)
-	        except Exception as e:
-	            await event.reply(
-	                "**⎆ عـذࢪًا  عـزيـزي .. لا املك صـلاحيات المشـرف هنـا 𓆰** \n`{}`".format(str(e))
-	            )
-	            update_lock(zed_id, "url", False)
-    if is_locked(zed_id, "inline") and event.message.via_bot:
-        if zelzal == malath or await is_admin(event, zelzal) or zelzal in zed_dev:
-            return
-        else:
-	        try:
-	            await event.delete()
-	            await event.reply(f"[ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 - حمـاية المجموعـة ](t.me/Tepthon)\n⋆┄─┄─┄─┄┄─┄─┄─┄─┄┄⋆\n\n⌔╎**عـذࢪًا** [{user.first_name}](tg://user?id={user.id})  \n⌔╎**يُمنـع استخـدام الانلايـن في هذه المجموعـة ⚠️•**", link_preview=False)
-	        except Exception as e:
-	            await event.reply(
-	                "**⎆ عـذࢪًا  عـزيـزي .. لا املك صـلاحيات المشـرف هنـا 𓆰** \n`{}`".format(str(e))
-	            )
-	            update_lock(zed_id, "inline", False)
-
-
-
-# Copyright (C) 2022 Zed-Thon
-@zedub.on(events.MessageEdited)
-async def check_edit_media(event):
-    if not event.is_group:
-        return
-    if event.is_group: #Write Code By T.me/zzzzl1l
-        chat = await event.get_chat()
-        admin = chat.admin_rights
-        creator = chat.creator
-        if not admin and not creator:
-            return
-    zed_dev = (925972505, 1895219306, 5280339206)  #Write Code By T.me/zzzzl1l
-    zelzal = event.sender_id
-    malath = zedub.uid
-    hhh = event.message.text
-    zed_id = event.chat_id
-    user = await event.get_sender()
-    if is_locked(zed_id, "document") and event.message.media: #Write Code By T.me/zzzzl1l
-        if zelzal == malath or zelzal in zed_dev:
-            return
-        else:
-	        try:
-	            await event.delete() #Write Code By T.me/zzzzl1l
-	            await event.reply(f"[ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 - حمـاية المجموعـة ](t.me/Tepthon)\n⋆┄─┄─┄─┄┄─┄─┄─┄─┄┄⋆\n\n⌔╎**عـذࢪًا** [{user.first_name}](tg://user?id={user.id})  \n⌔╎**يُمنـع تعديـل الميديـا هنـا 🚫**\n⌔╎**تم حـذف التعديـل .. بنجـاح ☑️**", link_preview=False)
-	            await event.client(
-	                EditBannedRequest(
-	                    event.chat_id, event.sender_id, ANTI_DDDD_ZEDTHON_MODE
-	                )
-	            )
-	        except Exception:  #Write Code By T.me/zzzzl1l
-	            update_lock(zed_id, "document", False)
-
-
-
-# Copyright (C) 2022 Zed-Thon
-@zedub.on(events.ChatAction())
-async def _(event):
-    if not event.is_private:
-        chat = await event.get_chat()
-        admin = chat.admin_rights
-        creator = chat.creator
-        if not admin and not creator:
-            return
-    # All Rights Reserved for "Zed-Thon - ZelZal" "زلـزال الهيبـه"
-    zed_dev = (925972505, 1895219306, 5280339206)
-    malath = zedub.uid
-    if not is_locked(event.chat_id, "contact"):
-        return
-    if event.user_added:
-        zedy = await event.client.get_entity(event.user_id)
-        zelzal_by = event.action_message.sender_id
-        zed = await event.client.get_permissions(event.chat_id, zelzal_by)
-        is_ban_able = False
-        rights = types.ChatBannedRights(until_date=None, view_messages=True)
-        added_users = event.action_message.action.users
-        for user_id in added_users:
-            user_obj = await event.client.get_entity(user_id)
-            if event.user_added:
-                is_ban_able = True
-                if zelzal_by == malath or zed.is_admin or zelzal_by in zed_dev:
-                    return
-                else:
-	                try:
-	                    await event.client(
-	                        functions.channels.EditBannedRequest(
-	                            event.chat_id, user_obj, rights
-	                        )
-	                    )
-	                    await event.reply(f"[ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 - حمـاية المجموعـة ](t.me/Tepthon)\n⋆┄─┄─┄─┄┄─┄─┄─┄─┄┄⋆\n\n⌔╎**عـذࢪًا** [{zedy.first_name}](tg://user?id={zedy.id})  \n⌔╎**يُمنـع اضـافة الاعضـاء لـ هـذه المجموعـة ⚠️•**\n\n⌔╎**تـم حظـࢪ العضـو المضـاف .. بنجـاح ☑️**", link_preview=False)
-	                except Exception as e:
-	                    await event.reply(
-	                        "**⎆ عـذࢪًا  عـزيـزي .. لا املك صـلاحيات المشـرف هنـا 𓆰** \n`{}`".format(
-	                            str(e)
-	                        )
-	                    )
-	                    update_lock(event.chat_id, "contact", False)
-	                    break
-        if BOTLOG and is_ban_able:
-            ban_reason_msg = await event.client.send_message(BOTLOG_CHATID,
-                "**⎆ سيـدي المـالك**\n\n**⎆ قـام هـذا** [الشخـص](tg://user?id={})  \n**⎆ باضافـة اشخـاص للمجمـوعـة**\n**⎆ تم تحذيـر الشخـص وطـرد الاعضـاء المضافيـن .. بنجـاح ✓𓆰**".format(
-                    zelzal_by
-                )
-            )
-
-
-
-# Copyright (C) 2022 Zed-Thon - كــود قفــل دخــول الايــران
-@zedub.on(events.ChatAction())
-async def _(event):
-    if not event.is_private:
-        chat = await event.get_chat()
-        admin = chat.admin_rights
-        creator = chat.creator
-        if not admin and not creator:
-            return
-    # All Rights Reserved for "Zed-Thon - Tepthon" "زلـزال الهيبـه"
-    zed_dev = (1895219306, 925972505)
-    if not is_locked(event.chat_id, "egame"):
-        return
-    if event.user_joined: 
-        a_user = await event.get_user()
-        first = a_user.first_name
-        last = a_user.last_name
-        fullname = f"{first} {last}" if last else first
-        zedy = await event.client.get_entity(event.user_id)
-        is_ban_able = False
-        rights = types.ChatBannedRights(until_date=None, view_messages=True)
-        if event.user_joined and ("ژ" in first or "چ" in first or "۴" in first or "مهسا" in first or "sara" in first or "گ" in first or "نازنین" in first or "آسمان" in first or "ڄ" in first or "پ" in first or "Sanaz" in first or "𝓈𝒶𝓇𝒶" in first or "سارة" in first or "GIRL" in first or " Lady " in first or "فتاة" in first or "👅" in first or "سمانه" in first or "بهار" in first or "maryam" in first or "👙" in first or "هانیه" in first or "هستی" in first or "💋" in first or "ندا" in first or "Mina" in first or "خانم" in first or "ایناز" in first or "مبینا" in first or "امینی" in first or "سرنا" in first or "اندیشه" in first or "لنتكلم" in first or "دریا" in first or "زاده" in first or "نااز" in first or "ناز" in first or "بیتا" in first or "سكس" in first or "💄" in first or "اعرب" in first or "أعرب" in first or "قحب" in first or "قحاب" in first or "عراب" in first or "مكود" in first or "عربك" in first or "مخنث" in first or "مخنوث" in first or "فتال" in first or "زاني" in first or "زنا" in first or "لقيط" in first or "بنات شوارع" in first or "بنت شوارع" in first or "نيك" in first or "منيوك" in first or "منيوج" in first or "نايك" in first or "قواد" in first or "زبي" in first or "ايري" in first or "ممحو" in first or "بنت شارع" in first or " است " in first or "اسات" in first or "زوب" in first or "عيير" in first or "املس" in first or "مربرب" in first or " خول " in first or "عرص" in first or "قواد" in first or "اهلاتك" in first or "جلخ" in first or "شرمو" in first or "فرك" in first or "رهط" in first):
-            is_ban_able = True
-            if zedy.id in zed_dev:
-                return
-            else:
-	            try:
-	                await event.client(
-	                        functions.channels.EditBannedRequest(
-	                            event.chat_id, zedy.id, rights
-	                        )
-	                    )
-	                await event.reply(f"[ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 - حمـاية المجموعـة ](t.me/Tepthon)\n⋆┄─┄─┄─┄┄─┄─┄─┄─┄┄⋆\n\n⌔╎**عـذࢪًا**  [{zedy.first_name}](tg://user?id={zedy.id})  \n⌔╎**يُمنـع انضمـام الايـࢪان هنـا 🚷•**\n\n⌔╎**تـم حظـࢪه .. بنجـاح ☑️**", link_preview=False)
-	            except Exception as e:
-	                await event.reply(
-	                    "**⎆ عـذࢪًا  عـزيـزي .. لا املك صـلاحيات المشـرف هنـا 𓆰** \n`{}`".format(
-	                        str(e)
-	                    )
-	                )
-	                update_lock(event.chat_id, "egame", False)
-	                return
-        if BOTLOG and is_ban_able:
-            ban_reason_msg = await event.client.send_message(BOTLOG_CHATID,
-                "**⎆ ** [عـزيـزي](tg://user?id={}) **يمنـع دخـول الايـران لهـذه المجمـوعـة 𓆰•**".format(
-                    zedy.id
-                )
-            )
-
-
-# Copyright (C) 2022 Zed-Thon
-@zedub.on(events.ChatAction())
-async def _(event):
-    if not event.is_private:
-        chat = await event.get_chat()
-        admin = chat.admin_rights
-        creator = chat.creator
-        if not admin and not creator:
-            return
-    # All Rights Reserved for "Zed-Thon - Tepthon" "زلـزال الهيبـه"
-    zed_dev = (925972505, 1895219306, 5280339206)
-    if not is_locked(event.chat_id, "location"):
-        return
-    if event.user_joined: 
-        zedy = await event.client.get_entity(event.user_id)
-        is_ban_able = False
-        rights = types.ChatBannedRights(until_date=None, view_messages=True)
-        if event.user_joined:
-            is_ban_able = True
-            if zedy.id in zed_dev:
-                return
-            else:
-	            try:
-	                await event.client(
-	                        functions.channels.EditBannedRequest(
-	                            event.chat_id, zedy.id, rights
-	                        )
-	                    )
-	                await event.reply(f"[ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 - حمـاية المجموعـة ](t.me/Tepthon)\n⋆┄─┄─┄─┄┄─┄─┄─┄─┄┄⋆\n\n⌔╎**عـذࢪًا** [{zedy.first_name}](tg://user?id={zedy.id})  \n⌔╎**يُمنـع الانضمـام لـ هـذه المجموعـة 🚷•**\n⌔╎**تـم حظـࢪه .. بنجـاح ☑️**", link_preview=False)
-	            except Exception as e:
-	                await event.reply(
-	                    "**⎆ عـذࢪًا  عـزيـزي .. لا املك صـلاحيات المشـرف هنـا 𓆰** \n`{}`".format(
-	                        str(e)
-	                    )
-	                )
-	                update_lock(event.chat_id, "location", False)
-	                return
-        if BOTLOG and is_ban_able:
-            ban_reason_msg = await event.client.send_message(BOTLOG_CHATID,
-                "**⎆ سيـدي المـالك**\n\n**⎆ قـام هـذا** [الشخـص](tg://user?id={})  \n**⎆ بالانضمـام للمجمـوعـة**\n**⎆ تم تحذيـر الشخـص وطـرده .. بنجـاح ✓𓆰**".format(
-                    zedy.id
-                )
-            )
-
-
-# Copyright (C) 2022 Zed-Thon
-@zedub.on(events.ChatAction())
-async def _(event):
-    if not event.is_private:
-        chat = await event.get_chat()
-        admin = chat.admin_rights
-        creator = chat.creator
-        if not admin and not creator:
-            return
-    # All Rights Reserved for "Zed-Thon - ZelZal" "زلـزال الهيبـه"
-    zed_dev = (1260465030)
-    malath = zedub.uid
-    if not is_locked(event.chat_id, "bots"):
-        return
-    # bots are limited Telegram accounts,
-    # and cannot join by themselves
-    if event.user_added:
-        zedy = await event.client.get_entity(event.user_id)
-        zelzal_by = event.action_message.sender_id
-        zed = await event.client.get_permissions(event.chat_id, zelzal_by)
-        is_ban_able = False
-        rights = types.ChatBannedRights(until_date=None, view_messages=True)
-        added_users = event.action_message.action.users
-        for user_id in added_users:
-            user_obj = await event.client.get_entity(user_id)
-            if user_obj.bot:
-                is_ban_able = True
-                if zelzal_by == malath or zelzal_by in zed_dev:
-                    return
-                else:
-	                try:
-	                    await event.client(
-	                        functions.channels.EditBannedRequest(
-	                            event.chat_id, user_obj, rights
-	                        )
-	                    )
-	                    await event.reply(f"[ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 - حمـاية المجموعـة ](t.me/Tepthon)\n⋆┄─┄─┄─┄┄─┄─┄─┄─┄┄⋆\n\n⌔╎**عـذࢪًا** [{zedy.first_name}](tg://user?id={zedy.id})  \n⌔╎**يُمنـع اضـافة البـوتـات لـ هـذه المجمـوعـة 🚫•**", link_preview=False)
-	                except Exception as e:
-	                    await event.reply(
-	                        "**⎆ عـذࢪًا  عـزيـزي .. لا املك صـلاحيات المشـرف هنـا 𓆰** \n`{}`".format(
-	                            str(e)
-	                        )
-	                    )
-	                    update_lock(event.chat_id, "bots", False)
-	                    break
-        if BOTLOG and is_ban_able:
-            ban_reason_msg = await event.client.send_message(BOTLOG_CHATID,
-                "**⎆ سيـدي المـالك**\n\n**⎆ قـام هـذا** [الشخـص](tg://user?id={})  \n**⎆ باضـافة بـوت للمجمـوعـة**\n**⎆ تم تحذيـر الشخـص وطـرد البـوت .. بنجـاح ✓𓆰**".format(
-                    zelzal_by
-                )
-            )
-
-
-# Copyright (C) 2022 Zed-Thon
-@zedub.zed_cmd(pattern=f"البوتات ?(.*)")
-async def zelzal(zed):
-    con = zed.pattern_match.group(1).lower()
-    del_u = 0
-    del_status = "**⎆ مجمـوعتك/قناتـك في أمـان ✅.. لاتوجـد بوتـات في هذه المجمـوعـة ༗**"
-    if con != "طرد":
-        event = await edit_or_reply(zed, "**⎆ جـاري البحـث عن بوتات في هـذه المجمـوعـة ...🝰**")
-        async for user in zed.client.iter_participants(zed.chat_id):
-            if user.bot:
-                del_u += 1
-                await sleep(0.5)
-        if del_u > 0:
-            del_status = f"🛂**┊كشـف البـوتات -** 𝙎𝙊𝙐𝙍𝘾𝞝 𝗧𝗘𝗣𝗧𝗛𝗢𝗡\
-                           \n\n**⎆ تم العثور على** **{del_u}**  **بـوت**\
-                           \n**⎆ لطـرد البوتات استخدم الامـر التالي ⩥** `.البوتات طرد`"
-        await event.edit(del_status)
-        return
-    # All Rights Reserved for "Zed-Thon - ZelZal" "زلـزال الهيبـه"
-    chat = await zed.get_chat()
-    admin = chat.admin_rights
-    creator = chat.creator
-    if not admin and not creator:
-        await edit_delete(zed, "**⎆ عـذࢪًا .. احتـاج الى صلاحيـات المشـرف هنـا**", 5)
-        return
-    event = await edit_or_reply(zed, "**⎆ جـارِ طـرد البوتـات من هنـا ...⅏**")
-    del_u = 0
-    del_a = 0
-    async for user in zed.client.iter_participants(zed.chat_id):
-        if user.bot:
-            try:
-                await zed.client.kick_participant(zed.chat_id, user.id)
-                await sleep(0.5)
-                del_u += 1
-            except ChatAdminRequiredError:
-                await edit_delete(event, "**⎆ اووبس .. ليس لدي صلاحيـات حظـر هنـا**", 5)
-                return
-            except UserAdminInvalidError:
-                del_a += 1
-    if del_u > 0:
-        del_status = f"**⎆ تم طـرد  {del_u}  بـوت .. بنجـاح🚮**"
-    if del_a > 0:
-        del_status = f"❇️**┊طـرد البـوتات -** 𝙎𝙊𝙐𝙍𝘾𝞝 𝗧𝗘𝗣𝗧𝗛𝗢𝗡\
-                           \n\n**⎆ تم طـرد  {del_u}  بـوت بنجـاح ✓** 🚮 \
-                           \n**⎆ لـم يتـم طـرد  {del_a}  بـوت لانـها اشـراف ..⅏** \
-                           \n\n**⎆ الان لـ الحفـاظ علـى كروبك/قناتك من التصفيـر أرســل ⩥** `.قفل البوتات`"
-    await edit_delete(event, del_status, 50)
-    if BOTLOG:
-        await zed.client.send_message(
-            BOTLOG_CHATID,
-            f"#طـرد_البوتـات\
-            \n ⎆ {del_status}\
-            \n ⎆ الـدردشـة: {zed.chat.title}(`{zed.chat_id}`)",
-        )
+	            await event.reply(f"[ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 - حمـاية المجمو
