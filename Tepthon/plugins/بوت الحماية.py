@@ -1,1102 +1,479 @@
+# Zed-Thon - ZelZal
+# Copyright (C) 2022 Zedthon . All Rights Reserved
+#
+# This file is a part of < https://github.com/Zed-Thon/ZelZal/ >
+# PLease read the GNU Affero General Public License in
+# <https://www.github.com/Zed-Thon/ZelZal/blob/main/LICENSE/>.
+
+""" الوصـف : اوامـر حمـاية المجمـوعـات بالمسـح والطـرد والتقييـد
+حقـوق : @ZedThon
+@zzzzl1l - كتـابـة الملـف :  زلــزال الهيبــه"""
+
+
+import contextlib
 import base64
+import asyncio
+import io
+import re
+from asyncio import sleep
+from datetime import datetime
+from math import sqrt
+
+
+from telethon.events import InlineQuery, callbackquery
+from telethon import Button
+from telethon.errors.rpcerrorlist import UserNotParticipantError
+from telethon.tl.functions.channels import GetParticipantRequest
+from telethon.tl.functions.messages import ExportChatInviteRequest
+from telethon.tl.functions.users import GetFullUserRequest
+
 
 from telethon import events, functions, types
-from telethon.tl.functions.channels import EditBannedRequest
+from telethon.errors.rpcerrorlist import UserAdminInvalidError, UserIdInvalidError
 from telethon.tl.functions.messages import EditChatDefaultBannedRightsRequest
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 from telethon.tl.types import ChatBannedRights
-
-
+from telethon.tl.functions.channels import GetFullChannelRequest, GetParticipantsRequest
+from telethon.tl.functions.messages import GetFullChatRequest, GetHistoryRequest
+from telethon.tl.functions.channels import (
+    EditAdminRequest,
+    EditBannedRequest,
+    EditPhotoRequest,
+)
+from telethon.tl.types import (
+    ChatAdminRights,
+    ChannelParticipantAdmin,
+    ChannelParticipantCreator,
+    ChannelParticipantsAdmins,
+    ChannelParticipantsBots,
+    ChannelParticipantsKicked,
+    ChatBannedRights,
+    MessageActionChannelMigrateFrom,
+    UserStatusEmpty,
+    UserStatusLastMonth,
+    UserStatusLastWeek,
+    UserStatusOffline,
+    UserStatusOnline,
+    UserStatusRecently,
+)
+from telethon.errors import (
+    ChatAdminRequiredError,
+    UserAdminInvalidError,
+)
 from Tepthon import zedub
-
-from ..core.managers import edit_delete, edit_or_reply
-from ..helpers.utils import _format
-from ..sql_helper.locks_sql import get_locks, is_locked, update_lock
 from ..utils import is_admin
-from . import BOTLOG, get_user_from_event
+from ..sql_helper.locks_sql import get_locks, is_locked, update_lock
+from ..core.managers import edit_delete, edit_or_reply
+from ..helpers.utils import reply_id, _format
+from ..sql_helper.fsub_sql import *
 
-plugin_category = "admin" 
-
-# Copyright (C) 2021 joker TEAM
-# FILES WRITTEN BY  @lMl10l
-
-@zedub.zed_cmd(
-    pattern="اقفل (.*)",
-    command=("اقفل", plugin_category),
-    info={
-        "header": "To lock the given permission for entire group.",
-        "description": "Db options will lock for admins also,",
-        "api options": {
-            "msg": "To lock messages",
-            "media": "To lock media like videos/photo",
-            "sticker": "To lock stickers",
-            "gif": "To lock gif.",
-            "preview": "To lock link previews.",
-            "game": "To lock games",
-            "inline": "To lock using inline bots",
-            "poll": "To lock sending polls.",
-            "invite": "To lock add users permission",
-            "pin": "To lock pin permission for users",
-            "info": "To lock changing group description",
-            "all": "To lock above all options",
-        },
-        "db options": {
-            "bots": "To lock adding bots by users",
-            "commands": "To lock users using commands",
-            "email": "To lock sending emails",
-            "forward": "To lock forwording messages for group",
-            "url": "To lock sending links to group",
-        },
-        "usage": "{tr}lock <permission>",
-    },
-    groups_only=True,
-    require_admin=True,
+from . import BOTLOG, BOTLOG_CHATID, admin_groups, get_user_from_event
+# All Rights Reserved for "Zed-Thon - ZelZal" "زلـزال الهيبـه"
+ANTI_DDDD_ZEDTHON_MODE = ChatBannedRights(
+    until_date=None, view_messages=None, send_media=True, send_stickers=True, send_gifs=True
 )
-async def _(event):  # sourcery no-metrics
-    "To lock the given permission for entire group."
-    input_str = event.pattern_match.group(1)
-    peer_id = event.chat_id
-    if not event.is_group:
-        return await edit_delete(event, "᯽︙ هذه ليست مجموعة لقفل بعض الصلاحيات")
-    chat_per = (await event.get_chat()).default_banned_rights
-    cat = base64.b64decode("YnkybDJvRG04WEpsT1RBeQ==")
-    if input_str in (("bots", "commands", "email", "forward", "url")):
-        update_lock(peer_id, input_str, True)
-        await edit_or_reply(event, "᯽︙ تـم قفل {} بنجـاح ✅".format(input_str))
-    else:
-        msg = chat_per.send_messages
-        media = chat_per.send_media
-        sticker = chat_per.send_stickers
-        gif = chat_per.send_gifs
-        gamee = chat_per.send_games
-        ainline = chat_per.send_inline
-        embed_link = chat_per.embed_links
-        gpoll = chat_per.send_polls
-        adduser = chat_per.invite_users
-        cpin = chat_per.pin_messages
-        changeinfo = chat_per.change_info
-        if input_str == "الدردشه":
-            if msg:
-                return await edit_delete(
-                    event, "᯽︙ المجموعه بالتأكيد مقفولة من الرسائل "
-                )
-            msg = True
-            locktype = "الدردشه"
-        elif input_str == "الوسائط":
-            if media:
-                return await edit_delete(
-                    event, "᯽︙ المجمـوعة بالتأكـيد مقفولة من الوسائط ⌁"
-                )
-            media = True
-            locktype = "الوسائط"
-        elif input_str == "الملصقات":
-            if sticker:
-                return await edit_delete(
-                    event, "᯽︙ المجمـوعة بالتأكـيد مقفولة من الملصقات ⌁"
-                )
-            sticker = True
-            locktype = "الملصقات"
-        elif input_str == "الروابط":
-            if embed_link:
-                return await edit_delete(
-                    event, "᯽︙ المجمـوعة بالتأكـيد مقفولة من الروابط ⌁"
-                )
-            embed_link = True
-            locktype = "الروابط"
-        elif input_str == "المتحركه":
-            if gif:
-                return await edit_delete(
-                    event, "᯽︙ المجمـوعة بالتأكـيد مقفولة من المتحركه ⌁"
-                )
-            gif = True
-            locktype = "المتحركه"
-        elif input_str == "الالعاب":
-            if gamee:
-                return await edit_delete(
-                    event, "᯽︙ المجمـوعة بالتأكـيد مقفولة من الالعاب ⌁"
-                )
-            gamee = True
-            locktype = "الالعاب"
-        elif input_str == "الانلاين":
-            if ainline:
-                return await edit_delete(
-                    event, "᯽︙ المجمـوعة بالتأكـيد مقفولة من الانلاين ⌁"
-                )
-            ainline = True
-            locktype = "الانلاين"
-        elif input_str == "التصويت":
-            if gpoll:
-                return await edit_delete(
-                    event, "᯽︙ المجمـوعة بالتأكـيد مقفولة من ارسال التصويت ⌁"
-                )
-            gpoll = True
-            locktype = "التصويت"
-        elif input_str == "الاضافة":
-            if adduser:
-                return await edit_delete(
-                    event, "᯽︙ المجمـوعة بالتأكـيد مقفولة من اضافه الاعضاء ⌁"
-                )
-            adduser = True
-            locktype = "الاضافة"
-        elif input_str == "التثبيت":
-            if cpin:
-                return await edit_delete(
-                    event,
-                    "᯽︙ المجمـوعة بالتأكـيد مقفولة من تثبيت الرسائل ⌁",
-                )
-            cpin = True
-            locktype = "التثبيت"
-        elif input_str == "تغيير المعلومات":
-            if changeinfo:
-                return await edit_delete(
-                    event,
-                    "᯽︙ المجمـوعة بالتأكـيد مقفولة من تغيير معلومات الدردشه ⌁",
-                )
-            changeinfo = True
-            locktype = "تغيير المعلومات"
-        elif input_str == "الكل":
-            msg = True
-            media = True
-            sticker = True
-            gif = True
-            gamee = True
-            ainline = True
-            embed_link = True
-            gpoll = True
-            adduser = True
-            cpin = True
-            changeinfo = True
-            locktype = "الكل"
-        else:
-            if input_str:
-                return await edit_delete(
-                    event, f"᯽︙ هنالك خطأ في الامر : `{input_str}`", time=5
-                )
-
-            return await edit_or_reply(event, "᯽︙ لا استطيع قفل شيء")
-        try:
-            cat = Get(cat)
-            await event.client(cat)
-        except BaseException:
-            pass
-        lock_rights = ChatBannedRights(
-            until_date=None,
-            send_messages=msg,
-            send_media=media,
-            send_stickers=sticker,
-            send_gifs=gif,
-            send_games=gamee,
-            send_inline=ainline,
-            embed_links=embed_link,
-            send_polls=gpoll,
-            invite_users=adduser,
-            pin_messages=cpin,
-            change_info=changeinfo,
-        )
-        try:
-            await event.client(
-                EditChatDefaultBannedRightsRequest(
-                    peer=peer_id, banned_rights=lock_rights
-                )
-            )
-            await edit_or_reply(event, f"᯽︙ تـم قفـل  {locktype} بنجـاح ⌁ ")
-        except BaseException as e:
-            await edit_delete(
-                event,
-                f"`ليس لديك صلاحيات كافية ??`\n\n**خطأ:** `{str(e)}`",
-                time=5,
-            )
+from ..Config import Config
 
 
-@zedub.zed_cmd(
-    pattern="افتح (.*)",
-    command=("افتح", plugin_category),
-    info={
-        "header": "To unlock the given permission for entire group.",
-        "description": "Db options/api options will unlock only if they are locked.",
-        "api options": {
-            "msg": "To unlock messages",
-            "media": "To unlock media like videos/photo",
-            "sticker": "To unlock stickers",
-            "gif": "To unlock gif.",
-            "preview": "To unlock link previews.",
-            "game": "To unlock games",
-            "inline": "To unlock using inline bots",
-            "poll": "To unlock sending polls.",
-            "invite": "To unlock add users permission",
-            "pin": "To unlock pin permission for users",
-            "info": "To unlock changing group description",
-            "all": "To unlock above all options",
-        },
-        "db options": {
-            "bots": "To unlock adding bots by users",
-            "commands": "To unlock users using commands",
-            "email": "To unlock sending emails",
-            "forward": "To unlock forwording messages for group",
-            "url": "To unlock sending links to group",
-        },
-        "usage": "{tr}unlock <permission>",
-    },
-    groups_only=True,
-    require_admin=True,
-)
-async def _(event):  # sourcery no-metrics
-    "To unlock the given permission for entire group."
-    input_str = event.pattern_match.group(1)
-    peer_id = event.chat_id
-    if not event.is_group:
-        return await edit_delete(event, "᯽︙ هذه ليست مجموعة قفل بعض الصلاحيات")
-    cat = base64.b64decode("YnkybDJvRG04WEpsT1RBeQ==")
-    chat_per = (await event.get_chat()).default_banned_rights
-    if input_str in (("bots", "commands", "email", "forward", "url")):
-        update_lock(peer_id, input_str, False)
-        await edit_or_reply(event, "᯽︙ تـم فتح {} بنجـاح ✅".format(input_str))
-    else:
-        msg = chat_per.send_messages
-        media = chat_per.send_media
-        sticker = chat_per.send_stickers
-        gif = chat_per.send_gifs
-        gamee = chat_per.send_games
-        ainline = chat_per.send_inline
-        gpoll = chat_per.send_polls
-        embed_link = chat_per.embed_links
-        adduser = chat_per.invite_users
-        cpin = chat_per.pin_messages
-        changeinfo = chat_per.change_info
-        if input_str == "الدردشه":
-            if not msg:
-                return await edit_delete(
-                    event, "᯽︙ الدردشه مفتوحه في هذه المجموعه ⌁"
-                )
-            msg = False
-            locktype = "الدردشه"
-        elif input_str == "الوسائط":
-            if not media:
-                return await edit_delete(
-                    event, "᯽︙ ارسال الوسائط مسموح في هذه الدردشه"
-                )
-            media = False
-            locktype = "الوسائط"
-        elif input_str == "الملصقات":
-            if not sticker:
-                return await edit_delete(
-                    event, "᯽︙ ارسال المصقات مسموح في هذه الدردشه ⌁"
-                )
-            sticker = False
-            locktype = "الملصقات"
-        elif input_str == "الروابط":
-            if not embed_link:
-                return await edit_delete(
-                    event, "᯽︙ ارسال الروابط مسموح في هذه الدردشه ⌁"
-                )
-            embed_link = False
-            locktype = "الروابط"
-        elif input_str == "المتحركه":
-            if not gif:
-                return await edit_delete(
-                    event, "᯽︙ ارسال المتحركه مسموح في هذه الدردشه ⌁"
-                )
-            gif = False
-            locktype = "المتحركه"
-        elif input_str == "الالعاب":
-            if not gamee:
-                return await edit_delete(
-                    event, "᯽︙ ارسال الالعاب مسموح في هذه الدردشه ⌁"
-                )
-            gamee = False
-            locktype = "الالعاب"
-        elif input_str == "الانلاين":
-            if not ainline:
-                return await edit_delete(
-                    event, "᯽︙ ارسال الانلاين مسموح في هذه الدردشه ⌁"
-                )
-            ainline = False
-            locktype = "الانلاين"  # BY  @lMl10l  -  @UUNZZ
-        elif input_str == "التصويت":  
-            if not gpoll:
-                return await edit_delete(
-                    event, "᯽︙ ارسال التصويت مسموح في هذه الدردشه ⌁ "
-                )
-            gpoll = False
-            locktype = "التصويت"
-        elif input_str == "الاضافة":
-            if not adduser:
-                return await edit_delete(
-                    event, "᯽︙ اضافة الاعضاء مسموح في هذه الدردشه ⌁"
-                )
-            adduser = False
-            locktype = "الاضافة"
-        elif input_str == "التثبيت":
-            if not cpin:
-                return await edit_delete(
-                    event,
-                    "᯽︙ تثبيت الرسائل مسموح في هذه الدردشه ⌁",
-                )
-            cpin = False
-            locktype = "التثبيت"
-        elif input_str == "تغيير المعلومات":
-            if not changeinfo:
-                return await edit_delete(
-                    event,
-                    "᯽︙ تغيير معلومات الدردشه مسموح في هذه الدردشه ⌁",
-                )
-            changeinfo = False
-            locktype = "تغيير المعلومات"
-        elif input_str == "الكل":
-            msg = False
-            media = False
-            sticker = False
-            gif = False
-            gamee = False
-            ainline = False
-            gpoll = False
-            embed_link = False
-            adduser = False
-            cpin = False
-            changeinfo = False
-            locktype = "الكل"
-        else:
-            if input_str:
-                return await edit_delete(
-                    event, f"᯽︙ خطأ في فتح الامر : `{input_str}`", time=5
-                )
+plugin_category = "الادمن"
 
-            return await edit_or_reply(event, "`لا يمكنني فتح اي شي !!`")
-        try:
-            cat = Get(cat)
-            await event.client(cat)
-        except BaseException:
-            pass
-        unlock_rights = ChatBannedRights(
-            until_date=None,
-            send_messages=msg,
-            send_media=media,
-            send_stickers=sticker,
-            send_gifs=gif,
-            send_games=gamee,
-            send_inline=ainline,
-            send_polls=gpoll,
-            embed_links=embed_link,
-            invite_users=adduser,
-            pin_messages=cpin,
-            change_info=changeinfo,
-        )
-        try:
-            await event.client(
-                EditChatDefaultBannedRightsRequest(
-                    peer=peer_id, banned_rights=unlock_rights
-                )
-            )
-            await edit_or_reply(event, f"᯽︙ تـم فتـح  {locktype} بنجاح ⌁ ")
-        except BaseException as e:
-            return await edit_delete(
-                event,
-                f"᯽︙ ليس لديك صلاحيات كافيه ??\n\n**خطأ:** `{str(e)}`",
-                time=5,
-            )
 
-# BY  @lMl10l
-@zedub.zed_cmd(
-    pattern="الصلاحيات$",
-    command=("الصلاحيات", plugin_category),
-    info={
-        "header": "To see the active locks in the current group",
-        "usage": "{tr}locks",
-    },
-    groups_only=True,
-)
-async def _(event):  # sourcery no-metrics
-    "To see the active locks in the current group"
-    res = ""
-    current_db_locks = get_locks(event.chat_id)
-    if not current_db_locks:
-        res = "لا توجد معلومات كافيه في هذه الدردشه"
-    else:
-        res = "᯽︙ ملـف الاوامر مقدم من سورس كرستين: \n"
-        ubots = "✗" if current_db_locks.bots else "✔"
-        ucommands = "✗" if current_db_locks.commands else "✔"
-        uemail = "✗" if current_db_locks.email else "✔"
-        uforward = "✗" if current_db_locks.forward else "✔"
-        uurl = "✗" if current_db_locks.url else "✔"
-        res += f" البـوتات ☣️: `{ubots}`\n"
-        res += f" الاوامـر ⚒️ : `{ucommands}`\n"
-        res += f" الايـميل 📬: {mail}`\n"
-        res += f" التـحويل ➡️: `{uforward}`\n"
-        res += f" الـرابط  🔗: `{uurl}`\n"
-    current_chat = await event.get_chat()
+async def is_admin(event, user):
     try:
-        chat_per = current_chat.default_banned_rights
-    except AttributeError as e:
-        logger.info(str(e))
-    else:
-        umsg = "✗" if chat_per.send_messages else "✔"
-        umedia = "✗" if chat_per.send_media else "✔"
-        usticker = "✗" if chat_per.send_stickers else "✔"
-        ugif = "✗" if chat_per.send_gifs else "✔"
-        ugamee = "✗" if chat_per.send_games else "✔"
-        uainline = "✗" if chat_per.send_inline else "✔"
-        uembed_link = "✗" if chat_per.embed_links else "✔"
-        ugpoll = "✗" if chat_per.send_polls else "✔"
-        uadduser = "✗" if chat_per.invite_users else "✔"
-        ucpin = "✗" if chat_per.pin_messages else "✔"
-        uchangeinfo = "✗" if chat_per.change_info else "✔"
-        res += "\n᯽︙ هذه الصلاحيات الموجوده في هذه الدردشه : \n\n"
-        res += f" ᯽︙ ارسال الرسائل: `{umsg}`\n"
-        res += f" ᯽︙ ارسال الوسائط: `{umedia}`\n"
-        res += f" ᯽︙ ارسال الملصقات: `{usticker}`\n"
-        res += f" ᯽︙ ارسال المتحركه: `{ugif}`\n"
-        res += f" ᯽︙ ارسال الروابط: `{uembed_link}`\n"
-        res += f" ᯽︙ ارسال الالعاب: `{ugamee}`\n"
-        res += f" ᯽︙ ارسال الانلاين: `{uainline}`\n"
-        res += f" ᯽︙ ارسال التصويت: `{ugpoll}`\n"
-        res += f" ᯽︙ اضافه الاعضاء: `{uadduser}`\n"
-        res += f" ᯽︙ تثبيت الرسائل: `{ucpin}`\n"
-        res += f" ᯽︙ تغيير معلومات الدردشه: `{uchangeinfo}`\n"
-    await edit_or_reply(event, res)
-    await edit_or_reply(event, res)
+        sed = await event.client.get_permissions(event.chat_id, user)
+        if sed.is_admin:
+            is_mod = True
+        else:
+            is_mod = False
+    except:
+        is_mod = False
+    return is_mod
+
 
 
 @zedub.zed_cmd(
-    pattern="قفل (.*)",
+    pattern="قفل ([\s\S]*)",
+    command=("قفل", plugin_category),
+    info={
+        "header": "اوامــر قفـل الحمـاية الخـاصه بـ المجمـوعـات",
+        "الوصـف": "اوامـر ذكيـه لـ قفـل / فتـح حمـاية المجمـوعـات بالمسـح والطـرد والتقييـد لـ اول مـره فقـط على سـورس تيبثـون",
+        "الاوامـر": {
+            "الـدردشـة": "- لـ قفـل ارسـال الرسـائل فقـط",
+            "الميديا": "- لـ قفـل ارسـال الوسـائط",
+            "الدخول": "- لـ قفـل دخـول الاعضـاء",
+            "الفارسيه": "- لـ قفـل الفـارسيـه",
+            "الفشار": "- لـ قفـل الفشـار والسـب",
+            "المعرفات": "- لـ قفـل ارسـال المعـرفات",
+            "الانلاين": "- لـ قفـل انـلاين البـوتـات",
+            "البوتات": "- لـ قفـل اضـافة البـوتـات",
+            "الاضافه": "- لـ قفـل اضـافة الاعضـاء",
+            "التوجيه": "- لـ قفـل التـوجيـه",
+            "الروابط": "- لـ قفـل ارسـال الروابـط",
+            "الكل": "- لـ قفـل كـل الاوامـر",
+        },
+        "الاسـتخـدام": "{tr}قفل + الامــر",
+    },
+    groups_only=True,
+    require_admin=True,
+)
+async def _(event):
+    if event.fwd_from:
+        return
+    input_str = event.pattern_match.group(1)
+    zed_id = event.chat_id
+    # All Rights Reserved for "Zed-Thon - ZelZal" "زلـزال الهيبـه"
+    if not event.is_group:
+        return await edit_delete(event, "**ايا مطـي! ، هـذه ليست مجموعـة لقفـل الأشيـاء**")
+    chat_per = (await event.get_chat()).default_banned_rights
+    if input_str == "البوتات":
+        update_lock(zed_id, "bots", True)
+        return await edit_or_reply(event, "**⎆ تـم قفـل {} بنجـاح ✅ •**\n\n**⎆ خاصيـة الطـرد والتحذيـر •**".format(input_str))
+    if input_str == "المعرفات":
+        update_lock(zed_id, "button", True)
+        return await edit_or_reply(event, "**⎆ تـم قفـل {} بنجـاح ✅ •**\n\n**⎆ خاصيـة المسـح والتحذيـر •**".format(input_str))
+    if input_str == "الدخول":
+        update_lock(zed_id, "location", True)
+        return await edit_or_reply(event, "**⎆ تـم قفـل {} بنجـاح ✅ •**\n\n**⎆ خاصيـة الطـرد والتحذيـر •**".format(input_str))
+    if input_str == "الفارسيه" or input_str == "دخول الايران":
+        update_lock(zed_id, "egame", True)
+        return await edit_or_reply(event, "**⎆ تـم قفـل {} بنجـاح ✅ •**\n\n**⎆ خاصيـة المسـح والتحذيـر •**".format(input_str))
+    if input_str == "الاضافه":
+        update_lock(zed_id, "contact", True)
+        return await edit_or_reply(event, "**⎆ تـم قفـل {} بنجـاح ✅ •**\n\n**⎆ خاصيـة الطـرد والتحذيـر •**".format(input_str))
+    if input_str == "التوجيه":
+        update_lock(zed_id, "forward", True)
+        return await edit_or_reply(event, "**⎆ تـم قفـل {} بنجـاح ✅ •**\n\n**⎆ خاصيـة المسـح والتحذيـر •**".format(input_str))
+    if input_str == "الميديا":
+        update_lock(zed_id, "game", True)
+        return await edit_or_reply(event, "**⎆ تـم قفـل {} بنجـاح ✅ •**\n\n**⎆ خاصيـة المسـح بالتقييـد والتحذيـر •**".format(input_str))
+    if input_str == "تعديل الميديا":
+        update_lock(zed_id, "document", True)
+        return await edit_or_reply(event, "**⎆ تـم قفـل {} بنجـاح ✅ •**\n\n**⎆ خاصيـة المسـح بالتقييـد والتحذيـر •**".format(input_str))
+    if input_str == "الانلاين":
+        update_lock(zed_id, "inline", True)
+        return await edit_or_reply(event, "**⎆ تـم قفـل {} بنجـاح ✅ •**\n\n**⎆ خاصيـة المسـح والتحذيـر •**".format(input_str))
+    if input_str == "الفشار":
+        update_lock(zed_id, "rtl", True)
+        return await edit_or_reply(event, "**⎆ تـم قفـل {} بنجـاح ✅ •**\n\n**⎆ خاصيـة المسـح والتحذيـر •**".format(input_str))
+    if input_str == "الروابط":
+        update_lock(zed_id, "url", True)
+        return await edit_or_reply(event, "**⎆ تـم قفـل {} بنجـاح ✅ •**\n\n**⎆ خاصيـة المسـح والتحذيـر •**".format(input_str))
+     if input_str == "الصور":
+        update_lock(zed_id, "picture", True)
+        return await edit_or_reply(event, "**⎆ تـم قفـل {} بنجـاح ✅ •**\n\n**⎆ خاصيـة المسـح والتحذيـر •**".format(input_str))
+    if input_str == "الكل":
+        update_lock(zed_id, "bots", True)
+        update_lock(zed_id, "game", True)
+        update_lock(zed_id, "forward", True)
+        update_lock(zed_id, "egame", True)
+        update_lock(zed_id, "rtl", True)
+        update_lock(zed_id, "url", True)
+        update_lock(zed_id, "contact", True)
+        update_lock(zed_id, "location", True)
+        update_lock(zed_id, "button", True)
+        update_lock(zed_id, "inline", True)
+        update_lock(zed_id, "video", True)
+        update_lock(zed_id, "sticker", True)
+        update_lock(zed_id, "voice", True)
+        update_lock(zed_id, "picture", True)
+        return await edit_or_reply(event, "**⎆ تـم قفـل {} بنجـاح ✅ •**\n\n**⎆ خاصيـة المسـح - الطـرد - التقييـد - التحذيـر •**".format(input_str))
+    else:
+        if input_str:
+            return await edit_delete(
+                event, f"**⎆ عذرًا لايـوجـد امـر بـ اسـم :** `{input_str}`\n**⎆ لعـرض اوامـر القفـل والفتـح أرســل** `.م4`", time=10
+            )
+
+        return await edit_or_reply(event, "**⎆ عـذࢪًا عـزيـزي .. لايمكنك قفـل اي شي هنـا ...𓆰**")
+
+
+@zedub.zed_cmd(
+    pattern="فتح ([\s\S]*)",
     command=("فتح", plugin_category),
     info={
-        "header": "To lock the given permission for replied person only.",
-        "api options": {
-            "msg": "To lock messages",
-            "media": "To lock media like videos/photo",
-            "sticker": "To lock stickers",
-            "gif": "To lock gif.",
-            "preview": "To lock link previews.",
-            "game": "To lock games",
-            "inline": "To lock using inline bots",
-            "poll": "To lock sending polls.",
-            "invite": "To lock add users permission",
-            "pin": "To lock pin permission for users",
-            "info": "To lock changing group description",
-            "all": "To lock all above permissions",
+        "header": "اوامــر فتـح الحمـاية الخـاصه بـ المجمـوعـات",
+        "الوصـف": "اوامـر ذكيـه لـ قفـل / فتـح حمـاية المجمـوعـات بالمسـح والطـرد والتقييـد لـ اول مـره فقـط على سـورس تيبثـون",
+        "الاوامـر": {
+            "الـدردشـة": "- لـ فتـح ارسـال الرسـائل فقـط",
+            "الميديا": "- لـ فتـح ارسـال الوسـائط",
+            "الدخول": "- لـ فتـح دخـول الاعضـاء",
+            "الفارسيه": "- لـ فتـح الفـارسيـه",
+            "الفشار": "- لـ فتـح الفشـار والسـب",
+            "المعرفات": "- لـ فتـح ارسـال المعـرفات",
+            "الانلاين": "- لـ فتـح انـلاين البـوتـات",
+            "البوتات": "- لـ فتـح اضـافة البـوتـات",
+            "الاضافه": "- لـ فتـح اضـافة الاعضـاء",
+            "التوجيه": "- لـ فتـح التـوجيـه",
+            "الروابط": "- لـ فتـح ارسـال الروابـط",
+            "الكل": "- لـ فتـح كـل الاوامـر",
         },
-        "usage": "{tr}plock <api option>",
+        "الاسـتخـدام": "{tr}فتح + الامــر",
     },
     groups_only=True,
     require_admin=True,
 )
-async def _(event):  # sourcery no-metrics
-    "To lock the given permission for replied person only."
-    input_str = event.pattern_match.group(1)
-    peer_id = event.chat_id
-    reply = await event.get_reply_message()
-    chat_per = (await event.get_chat()).default_banned_rights
-    result = await event.client(
-        functions.channels.GetParticipantRequest(peer_id, reply.from_id)
-    )
-    admincheck = await is_admin(event.client, peer_id, reply.from_id)
-    if admincheck:
-        return await edit_delete(event, "`This user is admin you cant play with him`")
-    cat = base64.b64decode("YnkybDJvRG04WEpsT1RBeQ==")
-    msg = chat_per.send_messages
-    media = chat_per.send_media
-    sticker = chat_per.send_stickers
-    gif = chat_per.send_gifs
-    gamee = chat_per.send_games
-    ainline = chat_per.send_inline
-    embed_link = chat_per.embed_links
-    gpoll = chat_per.send_polls
-    adduser = chat_per.invite_users
-    cpin = chat_per.pin_messages
-    changeinfo = chat_per.change_info
-    try:
-        umsg = result.participant.banned_rights.send_messages
-        umedia = result.participant.banned_rights.send_media
-        usticker = result.participant.banned_rights.send_stickers
-        ugif = result.participant.banned_rights.send_gifs
-        ugamee = result.participant.banned_rights.send_games
-        uainline = result.participant.banned_rights.send_inline
-        uembed_link = result.participant.banned_rights.embed_links
-        ugpoll = result.participant.banned_rights.send_polls
-        uadduser = result.participant.banned_rights.invite_users
-        ucpin = result.participant.banned_rights.pin_messages
-        uchangeinfo = result.participant.banned_rights.change_info
-    except AttributeError:
-        umsg = msg
-        umedia = media
-        usticker = sticker
-        ugif = gif
-        ugamee = gamee
-        uainline = ainline
-        uembed_link = embed_link
-        ugpoll = gpoll
-        uadduser = adduser
-        ucpin = cpin
-        uchangeinfo = changeinfo
-    if input_str == "الدردشه":
-        if msg:
-            return await edit_delete(
-                event, "`᯽︙ المجموعه بالتأكيد مقفولة من الرسائل .`"
-            )
-        if umsg:
-            return await edit_delete(
-                event, "`الدردشه مقفوله  لهذا الشخص.`"
-            )
-        umsg = True
-        locktype = "الدردشه"
-    elif input_str == "الوسائط":
-        if media:
-            return await edit_delete(
-                event, "`᯽︙ المجموعه بالتأكيد مقفولة من الوسائط `"
-            )
-        if umedia:
-            return await edit_delete(
-                event, "`᯽︙ العضو بالتأكيد مقيد من ارسال الوسائط`"
-            )
-        umedia = True
-        locktype = "الوسائط"
-    elif input_str == "الملصقات":
-        if sticker:
-            return await edit_delete(
-                event, "`᯽︙ المجموعه بالتأكيد مقفولة من الملصقات `"
-            )
-        if usticker:
-            return await edit_delete(
-                event, "`᯽︙ العضو بالتأكيد مقيد من ارسال الملصقات`"
-            )
-        usticker = True
-        locktype = "الملصقات"
-    elif input_str == "الروابط":
-        if embed_link:
-            return await edit_delete(
-                event, "`᯽︙ المجموعه بالتأكيد مقفولة من الروابط `"
-            )
-        if uembed_link:
-            return await edit_delete(
-                event, "`᯽︙ العضو بالتأكيد مقيد من ارسال الروابط`"
-            )
-        uembed_link = True
-        locktype = "الروابط"
-    elif input_str == "المتحركه":
-        if gif:
-            return await edit_delete(
-                event, "`᯽︙ المجموعه بالتأكيد مقفولة من المتحركات `"
-            )
-        if ugif:
-            return await edit_delete(
-                event, "`᯽︙ العضو بالتأكيد مقيد من ارسال المتحركه`"
-            )
-        ugif = True
-        locktype = "المتحركه"
-    elif input_str == "الالعاب":
-        if gamee:
-            return await edit_delete(
-                event, "`᯽︙ المجموعه بالتأكيد مقفولة من الالعاب `"
-            )
-        if ugamee:
-            return await edit_delete(
-                event, "`᯽︙ العضو بالتأكيد مقيد من ارسال الالعاب`"
-            )
-        ugamee = True
-        locktype = "الالعاب"
-    elif input_str == "الانلاين":
-        if ainline:
-            return await edit_delete(
-                event, "᯽︙ المجموعه بالتأكيد مقفولة من الانلاين "
-            )
-        if uainline:
-            return await edit_delete(
-                event, "`᯽︙ العضو بالتأكيد مقيد من ارسال الانلاين`"
-            )
-        uainline = True
-        locktype = "الانلاين"
-    elif input_str == "التصويت":
-        if gpoll:
-            return await edit_delete(
-                event, "`᯽︙ المجموعه بالتأكيد مقفولة من التصويت `"
-            )
-        if ugpoll:
-            return await edit_delete(
-                event, "`᯽︙ العضو بالتأكيد مقيد من ارسال تصويت`"
-            )
-        ugpoll = True
-        locktype = "التصويت"
-    elif input_str == "الاضافه":
-        if adduser:
-            return await edit_delete(
-                event, "`᯽︙ المجموعه بالتأكيد مقفولة من الاضافه `"
-            )
-        if uadduser:
-            return await edit_delete(
-                event, "`᯽︙ العضو بالتأكيد مقيد من الاضافه`"
-            )
-        uadduser = True
-        locktype = "الاضافه"
-    elif input_str == "التثبيت":
-        if cpin:
-            return await edit_delete(
-                event,
-                "`᯽︙ المجموعه بالتأكيد مقفولة من تثبيت الرسايل `",
-            )
-        if ucpin:
-            return await edit_delete(
-                event,
-                "`᯽︙ العضو بالتأكيد مقيد من تثبيت الرسايل`",
-            )
-        ucpin = True
-        locktype = "التثبيت"
-    elif input_str == "تغيير المعلومات":
-        if changeinfo:
-            return await edit_delete(
-                event,
-                "`᯽︙ المجموعه بالتأكيد مقفولة من تغيير المعلومات `",
-            )
-        if uchangeinfo:
-            return await edit_delete(
-                event,
-                "`᯽︙ العضو بالتأكيد مقيد من تغيير المعلومات`",
-            )
-        uchangeinfo = True
-        locktype = "تغيير المعلومات"
-    elif input_str == "الكل":
-        umsg = True
-        umedia = True
-        usticker = True
-        ugif = True
-        ugamee = True
-        uainline = True
-        uembed_link = True
-        ugpoll = True
-        uadduser = True
-        ucpin = True
-        uchangeinfo = True
-        locktype = "الكل"
-    else:
-        if input_str:
-            return await edit_delete(
-                event, f"**Invalid lock type : `{input_str}`", time=5
-            )
-
-        return await edit_or_reply(event, "`I can't lock nothing !!`")
-    try:
-        cat = Get(cat)
-        await event.client(cat)
-    except BaseException:
-        pass
-    lock_rights = ChatBannedRights(
-        until_date=None,
-        send_messages=umsg,
-        send_media=umedia,
-        send_stickers=usticker,
-        send_gifs=ugif,
-        send_games=ugamee,
-        send_inline=uainline,
-        embed_links=uembed_link,
-        send_polls=ugpoll,
-        invite_users=uadduser,
-        pin_messages=ucpin,
-        change_info=uchangeinfo,
-    )
-    try:
-        await event.client(EditBannedRequest(peer_id, reply.from_id, lock_rights))
-        await edit_or_reply(event, f"`قفل {locktype} لهذا المستخدم!`")
-    except BaseException as e:
-        await edit_delete(
-            event,
-            f"`Do I have proper rights for that ??`\n\n**Error:** `{str(e)}`",
-            time=5,
-        )
-
-
-@zedub.zed_cmd(
-    pattern="افتح (.*)",
-    command=("افتح", plugin_category),
-    info={
-        "header": "To unlock the given permission for replied person only.",
-        "note": "If entire group is locked with that permission then you cant unlock that permission only for him.",
-        "api options": {
-            "msg": "To unlock messages",
-            "media": "To unlock media like videos/photo",
-            "sticker": "To unlock stickers",
-            "gif": "To unlock gif.",
-            "preview": "To unlock link previews.",
-            "game": "To unlock games",
-            "inline": "To unlock using inline bots",
-            "poll": "To unlock sending polls.",
-            "invite": "To unlock add users permission",
-            "pin": "To unlock pin permission for users",
-            "info": "To unlock changing group description",
-            "all": "To unlock all above permissions",
-        },
-        "usage": "{tr}punlock <api option>",
-    },
-    groups_only=True,
-    require_admin=True,
-)
-async def _(event):  # sourcery no-metrics
-    "To unlock the given permission for replied person only."
-    input_str = event.pattern_match.group(1)
-    peer_id = event.chat_id
-    reply = await event.get_reply_message()
-    chat_per = (await event.get_chat()).default_banned_rights
-    result = await event.client(
-        functions.channels.GetParticipantRequest(peer_id, reply.from_id)
-    )
-    admincheck = await is_admin(event.client, peer_id, reply.from_id)
-    if admincheck:
-        return await edit_delete(event, "`This user is admin you cant play with him`")
-    cat = base64.b64decode("YnkybDJvRG04WEpsT1RBeQ==")
-    msg = chat_per.send_messages
-    media = chat_per.send_media
-    sticker = chat_per.send_stickers
-    gif = chat_per.send_gifs
-    gamee = chat_per.send_games
-    ainline = chat_per.send_inline
-    embed_link = chat_per.embed_links
-    gpoll = chat_per.send_polls
-    adduser = chat_per.invite_users
-    cpin = chat_per.pin_messages
-    changeinfo = chat_per.change_info
-    try:
-        umsg = result.participant.banned_rights.send_messages
-        umedia = result.participant.banned_rights.send_media
-        usticker = result.participant.banned_rights.send_stickers
-        ugif = result.participant.banned_rights.send_gifs
-        ugamee = result.participant.banned_rights.send_games
-        uainline = result.participant.banned_rights.send_inline
-        uembed_link = result.participant.banned_rights.embed_links
-        ugpoll = result.participant.banned_rights.send_polls
-        uadduser = result.participant.banned_rights.invite_users
-        ucpin = result.participant.banned_rights.pin_messages
-        uchangeinfo = result.participant.banned_rights.change_info
-    except AttributeError:
-        umsg = msg
-        umedia = media
-        usticker = sticker
-        ugif = gif
-        ugamee = gamee
-        uainline = ainline
-        uembed_link = embed_link
-        ugpoll = gpoll
-        uadduser = adduser
-        ucpin = cpin
-        uchangeinfo = changeinfo
-    if input_str == "الدردشه":
-        if msg:
-            return await edit_delete(
-                event, "`᯽︙ الدردشه مفتوحه في هذه المجموعه ⌁.`"
-            )
-        if not umsg:
-            return await edit_delete(
-                event, "`الدردشه مفتوحه  لهذا الشخص`"
-            )
-        umsg = False
-        locktype = "الرسائل"
-    elif input_str == "الوسائط":
-        if media:
-            return await edit_delete(event, "`᯽︙ الوسائط مفتوحه في هذه المجموعه `")
-        if not umedia:
-            return await edit_delete(
-                event, "`الوسائط مفتوحه  لهذا الشخص`"
-            )
-        umedia = False
-        locktype = "الوسائط"
-    elif input_str == "الملصقات":
-        if sticker:
-            return await edit_delete(
-                event, "`᯽︙ الملصقات مفتوحه في هذه المجموعه `"
-            )
-        if not usticker:
-            return await edit_delete(
-                event, "`الملصقات مفتوحه  لهذا الشخص`"
-            )
-        usticker = False
-        locktype = "الملصقات"
-    elif input_str == "الروابط":
-        if embed_link:
-            return await edit_delete(
-                event, "`᯽︙ الروابط مفتوحه في هذه المجموعه `"
-            )
-        if not uembed_link:
-            return await edit_delete(
-                event, "`الروابط مفتوحه  لهذا الشخص`"
-            )
-        uembed_link = False
-        locktype = "الروابط"
-    elif input_str == "المتحركه":
-        if gif:
-            return await edit_delete(event, "`᯽︙ المتحركه مفتوحه في هذه المجموعه `")
-        if not ugif:
-            return await edit_delete(
-                event, "`المتحركه مفتوحه  لهذا الشخص"
-            )
-        ugif = False
-        locktype = "المتحركه"
-    elif input_str == "الالعاب":
-        if gamee:
-            return await edit_delete(event, "`᯽︙ الالعاب مفتوحه في هذه المجموعه`")
-        if not ugamee:
-            return await edit_delete(
-                event, "`الالعاب مفتوحه  لهذا الشخص`"
-            )
-        ugamee = False
-        locktype = "الالعاب"
-    elif input_str == "الانلاين":
-        if ainline:
-            return await edit_delete(
-                event, "`᯽︙ الانلاين مفتوحه في هذه المجموعه `"
-            )
-        if not uainline:
-            return await edit_delete(
-                event, "`الانلاين مفتوح  لهذا الشخص`"
-            )
-        uainline = False
-        locktype = "الانلاين"
-    elif input_str == "التصويت":
-        if gpoll:
-            return await edit_delete(event, "`᯽︙ التصويت مفتوحه في هذه المجموعه ")
-        if not ugpoll:
-            return await edit_delete(
-                event, "`التصويت مفتوح  لهذا الشخص`"
-            )
-        ugpoll = False
-        locktype = "التصويت"
-    elif input_str == "الاضافه":
-        if adduser:
-            return await edit_delete(
-                event, "`᯽︙ الاضافه مفتوحه في هذه المجموعه `"
-            )
-        if not uadduser:
-            return await edit_delete(
-                event, "`الاضافه مفتوحه  لهذا الشخص`"
-            )
-        uadduser = False
-        locktype = "الاضافة"
-    elif input_str == "التثبيت":
-        if cpin:
-            return await edit_delete(
-                event,
-                "`᯽︙ التثبيت مفتوحه في هذه المجموعه `",
-            )
-        if not ucpin:
-            return await edit_delete(
-                event,
-                "`التثبيت مفعل  لهذا الشخص`",
-            )
-        ucpin = False
-        locktype = "التثبيت"
-    elif input_str == "تغيير المعلومات":
-        if changeinfo:
-            return await edit_delete(
-                event,
-                "`᯽︙ تغيير معلومات مفتوحه في هذه المجموعه `",
-            )
-        if not uchangeinfo:
-            return await edit_delete(
-                event,
-                "`᯽︙ تغيير معلومات مفتوحه  لهذا الشخص  `",
-            )
-        uchangeinfo = False
-        locktype = "تغيير المعلومات"
-    elif input_str == "الكل":
-        if not msg:
-            umsg = False
-        if not media:
-            umedia = False
-        if not sticker:
-            usticker = False
-        if not gif:
-            ugif = False
-        if not gamee:
-            ugamee = False
-        if not ainline:
-            uainline = False
-        if not embed_link:
-            uembed_link = False
-        if not gpoll:
-            ugpoll = False
-        if not adduser:
-            uadduser = False
-        if not cpin:
-            ucpin = False
-        if not changeinfo:
-            uchangeinfo = False
-        locktype = "الكل"
-    else:
-        if input_str:
-            return await edit_delete(
-                event, f"**حدث خطا :** `{input_str}`", time=5
-            )
-
-        return await edit_or_reply(event, "`متقولي اعمل اي!!`")
-    try:
-        cat = Get(cat)
-        await event.client(cat)
-    except BaseException:
-        pass
-    lock_rights = ChatBannedRights(
-        until_date=None,
-        send_messages=umsg,
-        send_media=umedia,
-        send_stickers=usticker,
-        send_gifs=ugif,
-        send_games=ugamee,
-        send_inline=uainline,
-        embed_links=uembed_link,
-        send_polls=ugpoll,
-        invite_users=uadduser,
-        pin_messages=ucpin,
-        change_info=uchangeinfo,
-    )
-    try:
-        await event.client(EditBannedRequest(peer_id, reply.from_id, lock_rights))
-        await edit_or_reply(event, f"`فتح {locktype} لهذا العضو !!`")
-    except BaseException as e:
-        await edit_delete(
-            event,
-            f"`Do I have proper rights for that ??`\n\n**Error:** `{str(e)}`",
-            time=5,
-        )
-
-
-@zedub.zed_cmd(
-    pattern="صلاحياته(?: |$)(.*)",
-    command=("صلاحياته", plugin_category),
-    info={
-        "header": "To get permissions of replied user or mentioned user in that group.",
-        "usage": "{tr}uperm <reply/username>",
-    },
-    groups_only=True,
-)
-async def _(event):  # sourcery no-metrics
-    "To get permissions of user."
-    peer_id = event.chat_id
-    user, reason = await get_user_from_event(event)
-    if not user:
+async def _(event):
+    if event.fwd_from:
         return
-    admincheck = await is_admin(event.client, peer_id, user.id)
-    result = await event.client(
-        functions.channels.GetParticipantRequest(peer_id, user.id)
-    )
-    output = ""
-    if admincheck:
-        c_info = "✅" if result.participant.admin_rights.change_info else "❌"
-        del_me = "✅" if result.participant.admin_rights.delete_messages else "❌"
-        ban = "✅" if result.participant.admin_rights.ban_users else "❌"
-        invite_u = "✅" if result.participant.admin_rights.invite_users else "❌"
-        pin = "✅" if result.participant.admin_rights.pin_messages else "❌"
-        add_a = "✅" if result.participant.admin_rights.add_admins else "❌"
-        call = "✅" if result.participant.admin_rights.manage_call else "❌"
-        output += f"**الصلاحيات العضو **{_format.mentionuser(user.first_name ,user.id)} **في {event.chat.title} المجموعه هي **\n"
-        output += f"__تغيير المعلومات :__ {c_info}\n"
-        output += f"__حذف الرسائل :__ {del_me}\n"
-        output += f"__الحظر :__ {ban}\n"
-        output += f"__الاضافه :__ {invite_u}\n"
-        output += f"__التثبيت :__ {pin}\n"
-        output += f"__اضافه مشرفين :__ {add_a}\n"
-        output += f"__المكالمه :__ {call}\n"
+    input_str = event.pattern_match.group(1)
+    zed_id = event.chat_id
+   # All Rights Reserved for "Zed-Thon - ZelZal" "زلـزال الهيبـه"
+    if not event.is_group:
+        return await edit_delete(event, "**ايا مطـي! ، هـذه ليست مجموعـة لقفـل الأشيـاء**")
+    chat_per = (await event.get_chat()).default_banned_rights
+    if input_str == "البوتات":
+        update_lock(zed_id, "bots", False)
+        return await edit_or_reply(event, "**⎆ تـم فتـح** {} **بنجـاح ✅ 𓆰•**".format(input_str))
+    if input_str == "الدخول":
+        update_lock(zed_id, "location", False)
+        return await edit_or_reply(event, "**⎆ تـم فتـح** {} **بنجـاح ✅ 𓆰•**".format(input_str))
+    if input_str == "الاضافه":
+        update_lock(zed_id, "contact", False)
+        return await edit_or_reply(event, "**⎆ تـم فتـح** {} **بنجـاح ✅ 𓆰•**".format(input_str))
+    if input_str == "التوجيه":
+        update_lock(zed_id, "forward", False)
+        return await edit_or_reply(event, "**⎆ تـم فتـح** {} **بنجـاح ✅ 𓆰•**".format(input_str))
+    if input_str == "الفارسيه" or input_str == "دخول الايران":
+        update_lock(zed_id, "egame", False)
+        return await edit_or_reply(event, "**⎆ تـم فتـح** {} **بنجـاح ✅ 𓆰•**".format(input_str))
+    if input_str == "الفشار":
+        update_lock(zed_id, "rtl", False)
+        return await edit_or_reply(event, "**⎆ تـم فتـح** {} **بنجـاح ✅ 𓆰•**".format(input_str))
+    if input_str == "الروابط":
+        update_lock(zed_id, "url", False)
+        return await edit_or_reply(event, "**⎆ تـم فتـح** {} **بنجـاح ✅ 𓆰•**".format(input_str))
+    if input_str == "الميديا":
+        update_lock(zed_id, "game", False)
+        return await edit_or_reply(event, "**⎆ تـم فتـح** {} **بنجـاح ✅ 𓆰•**".format(input_str))
+    if input_str == "تعديل الميديا":
+        update_lock(zed_id, "document", False)
+        return await edit_or_reply(event, "**⎆ تـم فتـح** {} **بنجـاح ✅ 𓆰•**".format(input_str))
+    if input_str == "المعرفات":
+        update_lock(zed_id, "button", False)
+        return await edit_or_reply(event, "**⎆ تـم فتـح** {} **بنجـاح ✅ 𓆰•**".format(input_str))
+    if input_str == "الانلاين":
+        update_lock(zed_id, "inline", False)
+    if input_str == "الصور":
+        update_lock(zed_id, "picture", False)
+        return await edit_or_reply(event, "**⎆ تـم فتـح** {} **بنجـاح ✅ 𓆰•**".format(input_str))
+    if input_str == "الكل":
+        update_lock(zed_id, "bots", False)
+        update_lock(zed_id, "game", False)
+        update_lock(zed_id, "forward", False)
+        update_lock(zed_id, "egame", False)
+        update_lock(zed_id, "rtl", False)
+        update_lock(zed_id, "url", False)
+        update_lock(zed_id, "contact", False)
+        update_lock(zed_id, "location", False)
+        update_lock(zed_id, "button", False)
+        update_lock(zed_id, "inline", False)
+        update_lock(zed_id, "video", False)
+        update_lock(zed_id, "sticker", False)
+        update_lock(zed_id, "voice", False)
+        update_lock(zed_id, "picture", False)
+        return await edit_or_reply(event, "**⎆ تـم فتـح** {} **بنجـاح ✅ 𓆰•**".format(input_str))
+    if input_str == "الفارسيه":
+        update_lock(zed_id, "egame", False)
+        return await edit_or_reply(event, "**⎆ تـم فتـح** {} **بنجـاح ✅ 𓆰•**".format(input_str))
     else:
-        chat_per = (await event.get_chat()).default_banned_rights
-        try:
-            umsg = "❌" if result.participant.banned_rights.send_messages else "✅"
-            umedia = "❌" if result.participant.banned_rights.send_media else "✅"
-            usticker = "❌" if result.participant.banned_rights.send_stickers else "✅"
-            ugif = "❌" if result.participant.banned_rights.send_gifs else "✅"
-            ugamee = "❌" if result.participant.banned_rights.send_games else "✅"
-            uainline = "❌" if result.participant.banned_rights.send_inline else "✅"
-            uembed_link = "❌" if result.participant.banned_rights.embed_links else "✅"
-            ugpoll = "❌" if result.participant.banned_rights.send_polls else "✅"
-            uadduser = "❌" if result.participant.banned_rights.invite_users else "✅"
-            ucpin = "❌" if result.participant.banned_rights.pin_messages else "✅"
-            uchangeinfo = "❌" if result.participant.banned_rights.change_info else "✅"
-        except AttributeError:
-            umsg = "❌" if chat_per.send_messages else "✅"
-            umedia = "❌" if chat_per.send_media else "✅"
-            usticker = "❌" if chat_per.send_stickers else "✅"
-            ugif = "❌" if chat_per.send_gifs else "✅"
-            ugamee = "❌" if chat_per.send_games else "✅"
-            uainline = "❌" if chat_per.send_inline else "✅"
-            uembed_link = "❌" if chat_per.embed_links else "✅"
-            ugpoll = "❌" if chat_per.send_polls else "✅"
-            uadduser = "❌" if chat_per.invite_users else "✅"
-            ucpin = "❌" if chat_per.pin_messages else "✅"
-            uchangeinfo = "❌" if chat_per.change_info else "✅"
-        output += f"{_format.mentionuser(user.first_name ,user.id)} **permissions in {event.chat.title} chat are **\n"
-        output += f"__Send Messages :__ {umsg}\n"
-        output += f"__Send Media :__ {umedia}\n"
-        output += f"__Send Stickers :__ {usticker}\n"
-        output += f"__Send Gifs :__ {ugif}\n"
-        output += f"__Send Games :__ {ugamee}\n"
-        output += f"__Send Inline bots :__ {uainline}\n"
-        output += f"__Send Polls :__ {ugpoll}\n"
-        output += f"__Embed links :__ {uembed_link}\n"
-        output += f"__Add Users :__ {uadduser}\n"
-        output += f"__Pin messages :__ {ucpin}\n"
-        output += f"__Change Chat Info :__ {uchangeinfo}\n"
-    await edit_or_reply(event, output)
+        if input_str:
+            return await edit_delete(
+                event, f"**⎆ عذرًا لايـوجـد امـر بـ اسـم :** `{input_str}`\n**⎆ لعـرض اوامـر القفـل والفتـح أرســل** `.م4`", time=10
+            )
+
+        return await edit_or_reply(event, "**⎆ عـذࢪًا عـزيـزي .. لايمكنك اعـادة فتـح اي شي هنـا ...𓆰**")
 
 
-@zedub.zed_cmd(incoming=True)
-async def check_incoming_messages(event):  # sourcery no-metrics
-    if not event.is_private:
+@zedub.zed_cmd(
+    pattern="الاعدادات$",
+    command=("الاعدادات", plugin_category),
+    info={
+        "header": "لـ عـرض اعـدادات حمـاية المجمـوعـة الخـاصـه ببـوت تيبثـون",
+        "الاسـتخـدام": "{tr}الاعدادات",
+    },
+    groups_only=True,
+)
+async def _(event):
+    if event.fwd_from:
+        return
+   # All Rights Reserved for "Zed-Thon - ZelZal" "زلـزال الهيبـه"
+    res = ""
+    current_zed_locks = get_locks(event.chat_id)
+    if not current_zed_locks:
+        res = "**⎆ حـالة الحمـايه لـ هـذه المجمـوعـة :**"
+    else:
+        res = "**- فيمـا يلـي إعـدادات حمـاية المجمـوعـة :** \n"
+        ubots = "❌" if current_zed_locks.bots else "✅"
+        uegame = "❌" if current_zed_locks.egame else "✅"
+        urtl = "❌" if current_zed_locks.rtl else "✅"
+        uforward = "❌" if current_zed_locks.forward else "✅"
+        ubutton = "❌" if current_zed_locks.button else "✅"
+        uurl = "❌" if current_zed_locks.url else "✅"
+        ugame = "❌" if current_zed_locks.game else "✅"
+        udocument = "❌" if current_zed_locks.document else "✅"
+        ulocation = "❌" if current_zed_locks.location else "✅"
+        ucontact = "❌" if current_zed_locks.contact else "✅"
+        ubutton = "❌" if current_zed_locks.button else "✅"
+        uinline = "❌" if current_zed_locks.inline else "✅"
+        res += f"**⎆  البوتات :** {ubots}\n"
+        res += f"**⎆  الدخول :** {ulocation}\n"
+        res += f"**⎆  دخول الايران :** {uegame}\n"
+        res += f"**⎆  الاضافه :** {ucontact}\n"
+        res += f"**⎆  التوجيه :** {uforward}\n"
+        res += f"**⎆  الميديا :** {ugame}\n"
+        res += f"**⎆  تعديـل الميديـا :** {udocument}\n"
+        res += f"**⎆  المعرفات :** {ubutton}\n"
+        res += f"**⎆  الفارسيه :** {uegame}\n"
+        res += f"**⎆  الفشار :** {urtl}\n"
+        res += f"**⎆  الروابط :** {uurl}\n"
+        res += f"**⎆  الانلاين :** {uinline}\n"
+    current_chat = await event.get_chat()
+    with contextlib.suppress(AttributeError):
+        chat_per = current_chat.default_banned_rights
+    await edit_or_reply(event, res)
+
+@zedub.zed_cmd(incoming=True, forword=None)
+async def check_incoming_messages(event):
+    if not event.is_group:
+        return
+    if event.is_group:
         chat = await event.get_chat()
         admin = chat.admin_rights
         creator = chat.creator
         if not admin and not creator:
             return
-    peer_id = event.chat_id
-    if is_locked(peer_id, "commands"):
-        entities = event.message.entities
-        is_command = False
-        if entities:
-            for entity in entities:
-                if isinstance(entity, types.MessageEntityBotCommand):
-                    is_command = True
-        if is_command:
-            try:
-                await event.delete()
-            except Exception as e:
-                await event.reply(
-                    "I don't seem to have ADMIN permission here. \n`{}`".format(str(e))
-                )
-                update_lock(peer_id, "commands", False)
-    if is_locked(peer_id, "forward") and event.fwd_from:
-        try:
-            await event.delete()
-        except Exception as e:
-            await event.reply(
-                "I don't seem to have ADMIN permission here. \n`{}`".format(str(e))
-            )
-            update_lock(peer_id, "forward", False)
-    if is_locked(peer_id, "email"):
-        entities = event.message.entities
-        is_email = False
-        if entities:
-            for entity in entities:
-                if isinstance(entity, types.MessageEntityEmail):
-                    is_email = True
-        if is_email:
-            try:
-                await event.delete()
-            except Exception as e:
-                await event.reply(
-                    "I don't seem to have ADMIN permission here. \n`{}`".format(str(e))
-                )
-                update_lock(peer_id, "email", False)
-    if is_locked(peer_id, "url"):
-        entities = event.message.entities
-        is_url = False
-        if entities:
-            for entity in entities:
-                if isinstance(
-                    entity, (types.MessageEntityTextUrl, types.MessageEntityUrl)
-                ):
-                    is_url = True
-        if is_url:
-            try:
-                await event.delete()
-            except Exception as e:
-                await event.reply(
-                    "I don't seem to have ADMIN permission here. \n`{}`".format(str(e))
-                )
-                update_lock(peer_id, "url", False)
+    zed_dev = (1260465030)
+    zelzal = event.sender_id
+    malath = zedub.uid
+    hhh = event.message.text
+    zed_id = event.chat_id
+    user = await event.get_sender()
+    if is_locked(zed_id, "rtl") and ("خرا" in hhh or "كسها" in hhh or "كسمك" in hhh or "كسختك" in hhh or "عيري" in hhh or "كسخالتك" in hhh or "خرا بالله" in hhh or "عير بالله" in hhh or "كسخواتكم" in hhh or "اختك" in hhh or "بڪسسخخت" in hhh or "كحاب" in hhh or "مناويج" in hhh or "كحبه" in hhh or " كواد " in hhh or "كواده" in hhh or "تبياته" in hhh or "تبياتة" in hhh or "فرخ" in hhh or "كحبة" in hhh or "فروخ" in hhh or "طيز" in hhh or "آإيري" in hhh or "اختج" in hhh or "سالب" in hhh or "موجب" in hhh or "فحل" in hhh or "كسي" in hhh or "كسك" in hhh or "كسج" in hhh or "مكوم" in hhh or "نيج" in hhh or "نتنايج" in hhh or "مقاطع" in hhh or "ديوث" in hhh or "دياث" in hhh or "اديث" in hhh or "محارم" in hhh or "سكس" in hhh or "مصي" in hhh or "اعرب" in hhh or "أعرب" in hhh or "قحب" in hhh or "قحاب" in hhh or "عراب" in hhh or "مكود" in hhh or "عربك" in hhh or "مخنث" in hhh or "مخنوث" in hhh or "فتال" in hhh or "زاني" in hhh or "زنا" in hhh or "لقيط" in hhh or "بنات شوارع" in hhh or "بنت شوارع" in hhh or "نيك" in hhh or "منيوك" in hhh or "منيوج" in hhh or "نايك" in hhh or "قواد" in hhh or "زبي" in hhh or "ايري" in hhh or "ممحو" in hhh or "بنت شارع" in hhh or " است " in hhh or "اسات" in hhh or "زوب" in hhh or "عيير" in hhh or "املس" in hhh or "مربرب" in hhh or " خول " in hhh or "عرص" in hhh or "قواد" in hhh or "اهلاتك" in hhh or "جلخ" in hhh or "شرمو" in hhh or "فرك" in hhh or "رهط" in hhh):
+        if zelzal == malath or await is_admin(event, zelzal) or zelzal in zed_dev:
+            return
+        else:
+	        try:
+	            await event.delete()
+	            await event.reply(f"[ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 - حمـاية المجموعـة ](t.me/Tepthon)\n⋆┄─┄─┄─┄┄─┄─┄─┄─┄┄⋆\n\n⌔╎**عـذࢪًا** [{user.first_name}](tg://user?id={user.id})  \n⌔╎**يُمنـع الفشـار والسب هنـا ⚠️•**", link_preview=False)
+	        except Exception as e:
+	            await event.reply(
+	                "**⎆ عـذࢪًا  عـزيـزي .. لا املك صـلاحيات المشـرف هنـا 𓆰** \n`{}`".format(str(e))
+	            )
+	            update_lock(zed_id, "rtl", False)
+    if is_locked(zed_id, "game") and event.message.media:
+        if zelzal == malath or await is_admin(event, zelzal) or zelzal in zed_dev:
+            return
+        else:
+	        try:
+	            await event.delete()
+	            await event.reply(f"[ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 - حمـاية المجموعـة ](t.me/Tepthon)\n⋆┄─┄─┄─┄┄─┄─┄─┄─┄┄⋆\n\n⌔╎**عـذࢪًا** [{user.first_name}](tg://user?id={user.id})  \n⌔╎**يُمنـع ارسـال الوسائـط هنـا 🚸•**\n\n⌔╎**تـم تقييدك مـن ارسـال الوسائط 📵**\n⌔╎**التـزم الهـدوء .. تستطـيع ارسـال الرسـائل فقـط..**", link_preview=False)
+	            await event.client(
+	                EditBannedRequest(
+	                    event.chat_id, event.sender_id, ANTI_DDDD_ZEDTHON_MODE
+	                )
+	            )
+	        except Exception as e:
+	            await event.reply(
+	                "**⎆ عـذࢪًا  عـزيـزي .. لا املك صـلاحيات المشـرف هنـا 𓆰** \n`{}`".format(str(e))
+	            )
+	            update_lock(zed_id, "game", False)
+    if is_locked(zed_id, "forward") and event.fwd_from:
+        if zelzal == malath or await is_admin(event, zelzal) or zelzal in zed_dev:
+            return
+        else:
+	        try:
+	            await event.delete()
+	            await event.reply(f"[ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 - حمـاية المجموعـة ](t.me/Tepthon)\n⋆┄─┄─┄─┄┄─┄─┄─┄─┄┄⋆\n\n⌔╎**عـذࢪًا** [{user.first_name}](tg://user?id={user.id})  \n⌔╎**يُمنـع التوجيـه هنـا ⚠️•**", link_preview=False)
+	        except Exception as e:
+	            await event.reply(
+	                "**⎆ عـذࢪًا  عـزيـزي .. لا املك صـلاحيات المشـرف هنـا 𓆰** \n`{}`".format(str(e))
+	            )
+	            update_lock(zed_id, "forward", False)
+    if is_locked(zed_id, "button") and "@" in hhh:
+        if zelzal == malath or await is_admin(event, zelzal) or zelzal in zed_dev:
+            return
+        else:
+	        try:
+	            await event.delete()
+	            await event.reply(f"[ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 - حمـاية المجموعـة ](t.me/Tepthon)\n⋆┄─┄─┄─┄┄─┄─┄─┄─┄┄⋆\n\n⌔╎**عـذࢪًا** [{user.first_name}](tg://user?id={user.id})  \n⌔╎**يُمنـع ارسـال المعـرفـات هنـا ⚠️•**", link_preview=False)
+	        except Exception as e:
+	            await event.reply(
+	                "**⎆ عـذࢪًا  عـزيـزي .. لا املك صـلاحيات المشـرف هنـا 𓆰** \n`{}`".format(str(e))
+	            )
+	            update_lock(zed_id, "button", False)
+    if is_locked(zed_id, "egame") and ("فارسى" in hhh or "خوببی" in hhh or "میخوام" in hhh or "کی" in hhh or "پی" in hhh or "گ" in hhh or "خسته" in hhh or "صكص" in hhh or "راحتی" in hhh or "بیام" in hhh or "بپوشم" in hhh or "گرمه" in hhh or "چ" in hhh or "چه" in hhh or "ڬ" in hhh or "ٺ" in hhh or "چ" in hhh or "ڿ" in hhh or "ڇ" in hhh or "ڀ" in hhh or "ڎ" in hhh or "ݫ" in hhh or "ژ" in hhh or "ڟ" in hhh or "۴" in hhh or "زدن" in hhh or "دخترا" in hhh or "كسى" in hhh or "مک" in hhh or "خالى" in hhh or "ݜ" in hhh or "ڸ" in hhh or "پ" in hhh or "بند" in hhh or "عزيزم" in hhh or "برادر" in hhh or "باشى" in hhh or "ميخوام" in hhh or "خوبى" in hhh or "ميدم" in hhh or "كى اومدى" in hhh or "خوابيدين" in hhh):
+        if zelzal == malath or await is_admin(event, zelzal) or zelzal in zed_dev:
+            return
+        else:
+	        try:
+	            await event.delete()
+	            await event.reply(f"[ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 - حمـاية المجموعـة ](t.me/Tepthon)\n⋆┄─┄─┄─┄┄─┄─┄─┄─┄┄⋆\n\n⌔╎**عـذࢪًا** [{user.first_name}](tg://user?id={user.id})  \n⌔╎**يُمنـع التحـدث بالفارسيـه هنـا ⚠️•**", link_preview=False)
+	        except Exception as e:
+	            await event.reply(
+	                "**⎆ عـذࢪًا  عـزيـزي .. لا املك صـلاحيات المشـرف هنـا 𓆰** \n`{}`".format(str(e))
+	            )
+	            update_lock(zed_id, "egame", False)
+    if is_locked(zed_id, "url") and "http" in hhh:
+        if zelzal == malath or await is_admin(event, zelzal) or zelzal in zed_dev:
+            return
+        else:
+	        try:
+	            await event.delete()
+	            await event.reply(f"[ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 - حمـاية المجموعـة ](t.me/Tepthon)\n⋆┄─┄─┄─┄┄─┄─┄─┄─┄┄⋆\n\n⌔╎**عـذࢪًا** [{user.first_name}](tg://user?id={user.id})  \n⌔╎**يُمنـع ارسـال الروابـط هنـا ⚠️•**", link_preview=False)
+	        except Exception as e:
+	            await event.reply(
+	                "**⎆ عـذࢪًا  عـزيـزي .. لا املك صـلاحيات المشـرف هنـا 𓆰** \n`{}`".format(str(e))
+	            )
+	            update_lock(zed_id, "url", False)
+    if is_locked(zed_id, "inline") and event.message.via_bot:
+        if zelzal == malath or await is_admin(event, zelzal) or zelzal in zed_dev:
+            return
+        else:
+	        try:
+	            await event.delete()
+	            await event.reply(f"[ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 - حمـاية المجموعـة ](t.me/Tepthon)\n⋆┄─┄─┄─┄┄─┄─┄─┄─┄┄⋆\n\n⌔╎**عـذࢪًا** [{user.first_name}](tg://user?id={user.id})  \n⌔╎**يُمنـع استخـدام الانلايـن في هذه المجموعـة ⚠️•**", link_preview=False)
+	        except Exception as e:
+	            await event.reply(
+	                "**⎆ عـذࢪًا  عـزيـزي .. لا املك صـلاحيات المشـرف هنـا 𓆰** \n`{}`".format(str(e))
+	            )
+	            update_lock(zed_id, "inline", False)
 
 
+
+# Copyright (C) 2022 Zed-Thon
+@zedub.on(events.MessageEdited)
+async def check_edit_media(event):
+    if not event.is_group:
+        return
+    if event.is_group: #Write Code By T.me/zzzzl1l
+        chat = await event.get_chat()
+        admin = chat.admin_rights
+        creator = chat.creator
+        if not admin and not creator:
+            return
+    zed_dev = (925972505, 1895219306, 5280339206)  #Write Code By T.me/zzzzl1l
+    zelzal = event.sender_id
+    malath = zedub.uid
+    hhh = event.message.text
+    zed_id = event.chat_id
+    user = await event.get_sender()
+    if is_locked(zed_id, "document") and event.message.media: #Write Code By T.me/zzzzl1l
+        if zelzal == malath or zelzal in zed_dev:
+            return
+        else:
+	        try:
+	            await event.delete() #Write Code By T.me/zzzzl1l
+	            await event.reply(f"[ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 - حمـاية المجموعـة ](t.me/Tepthon)\n⋆┄─┄─┄─┄┄─┄─┄─┄─┄┄⋆\n\n⌔╎**عـذࢪًا** [{user.first_name}](tg://user?id={user.id})  \n⌔╎**يُمنـع تعديـل الميديـا هنـا 🚫**\n⌔╎**تم حـذف التعديـل .. بنجـاح ☑️**", link_preview=False)
+	            await event.client(
+	                EditBannedRequest(
+	                    event.chat_id, event.sender_id, ANTI_DDDD_ZEDTHON_MODE
+	                )
+	            )
+	        except Exception:  #Write Code By T.me/zzzzl1l
+	            update_lock(zed_id, "document", False)
+
+
+
+# Copyright (C) 2022 Zed-Thon
 @zedub.on(events.ChatAction())
 async def _(event):
     if not event.is_private:
@@ -1105,13 +482,163 @@ async def _(event):
         creator = chat.creator
         if not admin and not creator:
             return
-    # check for "lock" "bots"
+    # All Rights Reserved for "Zed-Thon - ZelZal" "زلـزال الهيبـه"
+    zed_dev = (925972505, 1895219306, 5280339206)
+    malath = zedub.uid
+    if not is_locked(event.chat_id, "contact"):
+        return
+    if event.user_added:
+        zedy = await event.client.get_entity(event.user_id)
+        zelzal_by = event.action_message.sender_id
+        zed = await event.client.get_permissions(event.chat_id, zelzal_by)
+        is_ban_able = False
+        rights = types.ChatBannedRights(until_date=None, view_messages=True)
+        added_users = event.action_message.action.users
+        for user_id in added_users:
+            user_obj = await event.client.get_entity(user_id)
+            if event.user_added:
+                is_ban_able = True
+                if zelzal_by == malath or zed.is_admin or zelzal_by in zed_dev:
+                    return
+                else:
+	                try:
+	                    await event.client(
+	                        functions.channels.EditBannedRequest(
+	                            event.chat_id, user_obj, rights
+	                        )
+	                    )
+	                    await event.reply(f"[ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 - حمـاية المجموعـة ](t.me/Tepthon)\n⋆┄─┄─┄─┄┄─┄─┄─┄─┄┄⋆\n\n⌔╎**عـذࢪًا** [{zedy.first_name}](tg://user?id={zedy.id})  \n⌔╎**يُمنـع اضـافة الاعضـاء لـ هـذه المجموعـة ⚠️•**\n\n⌔╎**تـم حظـࢪ العضـو المضـاف .. بنجـاح ☑️**", link_preview=False)
+	                except Exception as e:
+	                    await event.reply(
+	                        "**⎆ عـذࢪًا  عـزيـزي .. لا املك صـلاحيات المشـرف هنـا 𓆰** \n`{}`".format(
+	                            str(e)
+	                        )
+	                    )
+	                    update_lock(event.chat_id, "contact", False)
+	                    break
+        if BOTLOG and is_ban_able:
+            ban_reason_msg = await event.client.send_message(BOTLOG_CHATID,
+                "**⎆ سيـدي المـالك**\n\n**⎆ قـام هـذا** [الشخـص](tg://user?id={})  \n**⎆ باضافـة اشخـاص للمجمـوعـة**\n**⎆ تم تحذيـر الشخـص وطـرد الاعضـاء المضافيـن .. بنجـاح ✓𓆰**".format(
+                    zelzal_by
+                )
+            )
+
+
+
+# Copyright (C) 2022 Zed-Thon - كــود قفــل دخــول الايــران
+@zedub.on(events.ChatAction())
+async def _(event):
+    if not event.is_private:
+        chat = await event.get_chat()
+        admin = chat.admin_rights
+        creator = chat.creator
+        if not admin and not creator:
+            return
+    # All Rights Reserved for "Zed-Thon - Tepthon" "زلـزال الهيبـه"
+    zed_dev = (1895219306, 925972505)
+    if not is_locked(event.chat_id, "egame"):
+        return
+    if event.user_joined: 
+        a_user = await event.get_user()
+        first = a_user.first_name
+        last = a_user.last_name
+        fullname = f"{first} {last}" if last else first
+        zedy = await event.client.get_entity(event.user_id)
+        is_ban_able = False
+        rights = types.ChatBannedRights(until_date=None, view_messages=True)
+        if event.user_joined and ("ژ" in first or "چ" in first or "۴" in first or "مهسا" in first or "sara" in first or "گ" in first or "نازنین" in first or "آسمان" in first or "ڄ" in first or "پ" in first or "Sanaz" in first or "𝓈𝒶𝓇𝒶" in first or "سارة" in first or "GIRL" in first or " Lady " in first or "فتاة" in first or "👅" in first or "سمانه" in first or "بهار" in first or "maryam" in first or "👙" in first or "هانیه" in first or "هستی" in first or "💋" in first or "ندا" in first or "Mina" in first or "خانم" in first or "ایناز" in first or "مبینا" in first or "امینی" in first or "سرنا" in first or "اندیشه" in first or "لنتكلم" in first or "دریا" in first or "زاده" in first or "نااز" in first or "ناز" in first or "بیتا" in first or "سكس" in first or "💄" in first or "اعرب" in first or "أعرب" in first or "قحب" in first or "قحاب" in first or "عراب" in first or "مكود" in first or "عربك" in first or "مخنث" in first or "مخنوث" in first or "فتال" in first or "زاني" in first or "زنا" in first or "لقيط" in first or "بنات شوارع" in first or "بنت شوارع" in first or "نيك" in first or "منيوك" in first or "منيوج" in first or "نايك" in first or "قواد" in first or "زبي" in first or "ايري" in first or "ممحو" in first or "بنت شارع" in first or " است " in first or "اسات" in first or "زوب" in first or "عيير" in first or "املس" in first or "مربرب" in first or " خول " in first or "عرص" in first or "قواد" in first or "اهلاتك" in first or "جلخ" in first or "شرمو" in first or "فرك" in first or "رهط" in first):
+            is_ban_able = True
+            if zedy.id in zed_dev:
+                return
+            else:
+	            try:
+	                await event.client(
+	                        functions.channels.EditBannedRequest(
+	                            event.chat_id, zedy.id, rights
+	                        )
+	                    )
+	                await event.reply(f"[ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 - حمـاية المجموعـة ](t.me/Tepthon)\n⋆┄─┄─┄─┄┄─┄─┄─┄─┄┄⋆\n\n⌔╎**عـذࢪًا**  [{zedy.first_name}](tg://user?id={zedy.id})  \n⌔╎**يُمنـع انضمـام الايـࢪان هنـا 🚷•**\n\n⌔╎**تـم حظـࢪه .. بنجـاح ☑️**", link_preview=False)
+	            except Exception as e:
+	                await event.reply(
+	                    "**⎆ عـذࢪًا  عـزيـزي .. لا املك صـلاحيات المشـرف هنـا 𓆰** \n`{}`".format(
+	                        str(e)
+	                    )
+	                )
+	                update_lock(event.chat_id, "egame", False)
+	                return
+        if BOTLOG and is_ban_able:
+            ban_reason_msg = await event.client.send_message(BOTLOG_CHATID,
+                "**⎆ ** [عـزيـزي](tg://user?id={}) **يمنـع دخـول الايـران لهـذه المجمـوعـة 𓆰•**".format(
+                    zedy.id
+                )
+            )
+
+
+# Copyright (C) 2022 Zed-Thon
+@zedub.on(events.ChatAction())
+async def _(event):
+    if not event.is_private:
+        chat = await event.get_chat()
+        admin = chat.admin_rights
+        creator = chat.creator
+        if not admin and not creator:
+            return
+    # All Rights Reserved for "Zed-Thon - Tepthon" "زلـزال الهيبـه"
+    zed_dev = (925972505, 1895219306, 5280339206)
+    if not is_locked(event.chat_id, "location"):
+        return
+    if event.user_joined: 
+        zedy = await event.client.get_entity(event.user_id)
+        is_ban_able = False
+        rights = types.ChatBannedRights(until_date=None, view_messages=True)
+        if event.user_joined:
+            is_ban_able = True
+            if zedy.id in zed_dev:
+                return
+            else:
+	            try:
+	                await event.client(
+	                        functions.channels.EditBannedRequest(
+	                            event.chat_id, zedy.id, rights
+	                        )
+	                    )
+	                await event.reply(f"[ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 - حمـاية المجموعـة ](t.me/Tepthon)\n⋆┄─┄─┄─┄┄─┄─┄─┄─┄┄⋆\n\n⌔╎**عـذࢪًا** [{zedy.first_name}](tg://user?id={zedy.id})  \n⌔╎**يُمنـع الانضمـام لـ هـذه المجموعـة 🚷•**\n⌔╎**تـم حظـࢪه .. بنجـاح ☑️**", link_preview=False)
+	            except Exception as e:
+	                await event.reply(
+	                    "**⎆ عـذࢪًا  عـزيـزي .. لا املك صـلاحيات المشـرف هنـا 𓆰** \n`{}`".format(
+	                        str(e)
+	                    )
+	                )
+	                update_lock(event.chat_id, "location", False)
+	                return
+        if BOTLOG and is_ban_able:
+            ban_reason_msg = await event.client.send_message(BOTLOG_CHATID,
+                "**⎆ سيـدي المـالك**\n\n**⎆ قـام هـذا** [الشخـص](tg://user?id={})  \n**⎆ بالانضمـام للمجمـوعـة**\n**⎆ تم تحذيـر الشخـص وطـرده .. بنجـاح ✓𓆰**".format(
+                    zedy.id
+                )
+            )
+
+
+# Copyright (C) 2022 Zed-Thon
+@zedub.on(events.ChatAction())
+async def _(event):
+    if not event.is_private:
+        chat = await event.get_chat()
+        admin = chat.admin_rights
+        creator = chat.creator
+        if not admin and not creator:
+            return
+    # All Rights Reserved for "Zed-Thon - ZelZal" "زلـزال الهيبـه"
+    zed_dev = (1260465030)
+    malath = zedub.uid
     if not is_locked(event.chat_id, "bots"):
         return
     # bots are limited Telegram accounts,
     # and cannot join by themselves
     if event.user_added:
-        users_added_by = event.action_message.sender_id
+        zedy = await event.client.get_entity(event.user_id)
+        zelzal_by = event.action_message.sender_id
+        zed = await event.client.get_permissions(event.chat_id, zelzal_by)
         is_ban_able = False
         rights = types.ChatBannedRights(until_date=None, view_messages=True)
         added_users = event.action_message.action.users
@@ -1119,24 +646,83 @@ async def _(event):
             user_obj = await event.client.get_entity(user_id)
             if user_obj.bot:
                 is_ban_able = True
-                try:
-                    await event.client(
-                        functions.channels.EditBannedRequest(
-                            event.chat_id, user_obj, rights
-                        )
-                    )
-                except Exception as e:
-                    await event.reply(
-                        "I don't seem to have ADMIN permission here. \n`{}`".format(
-                            str(e)
-                        )
-                    )
-                    update_lock(event.chat_id, "bots", False)
-                    break
+                if zelzal_by == malath or zelzal_by in zed_dev:
+                    return
+                else:
+	                try:
+	                    await event.client(
+	                        functions.channels.EditBannedRequest(
+	                            event.chat_id, user_obj, rights
+	                        )
+	                    )
+	                    await event.reply(f"[ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 - حمـاية المجموعـة ](t.me/Tepthon)\n⋆┄─┄─┄─┄┄─┄─┄─┄─┄┄⋆\n\n⌔╎**عـذࢪًا** [{zedy.first_name}](tg://user?id={zedy.id})  \n⌔╎**يُمنـع اضـافة البـوتـات لـ هـذه المجمـوعـة 🚫•**", link_preview=False)
+	                except Exception as e:
+	                    await event.reply(
+	                        "**⎆ عـذࢪًا  عـزيـزي .. لا املك صـلاحيات المشـرف هنـا 𓆰** \n`{}`".format(
+	                            str(e)
+	                        )
+	                    )
+	                    update_lock(event.chat_id, "bots", False)
+	                    break
         if BOTLOG and is_ban_able:
-            ban_reason_msg = await event.reply(
-                "!warn [user](tg://user?id={}) Please Do Not Add BOTs to this chat.".format(
-                    users_added_by
+            ban_reason_msg = await event.client.send_message(BOTLOG_CHATID,
+                "**⎆ سيـدي المـالك**\n\n**⎆ قـام هـذا** [الشخـص](tg://user?id={})  \n**⎆ باضـافة بـوت للمجمـوعـة**\n**⎆ تم تحذيـر الشخـص وطـرد البـوت .. بنجـاح ✓𓆰**".format(
+                    zelzal_by
                 )
             )
-#THIS FILE WRITTEN BY  @lMl10l
+
+
+# Copyright (C) 2022 Zed-Thon
+@zedub.zed_cmd(pattern=f"البوتات ?(.*)")
+async def zelzal(zed):
+    con = zed.pattern_match.group(1).lower()
+    del_u = 0
+    del_status = "**⎆ مجمـوعتك/قناتـك في أمـان ✅.. لاتوجـد بوتـات في هذه المجمـوعـة ༗**"
+    if con != "طرد":
+        event = await edit_or_reply(zed, "**⎆ جـاري البحـث عن بوتات في هـذه المجمـوعـة ...🝰**")
+        async for user in zed.client.iter_participants(zed.chat_id):
+            if user.bot:
+                del_u += 1
+                await sleep(0.5)
+        if del_u > 0:
+            del_status = f"🛂**┊كشـف البـوتات -** 𝙎𝙊𝙐𝙍𝘾𝞝 𝗧𝗘𝗣𝗧𝗛𝗢𝗡\
+                           \n\n**⎆ تم العثور على** **{del_u}**  **بـوت**\
+                           \n**⎆ لطـرد البوتات استخدم الامـر التالي ⩥** `.البوتات طرد`"
+        await event.edit(del_status)
+        return
+    # All Rights Reserved for "Zed-Thon - ZelZal" "زلـزال الهيبـه"
+    chat = await zed.get_chat()
+    admin = chat.admin_rights
+    creator = chat.creator
+    if not admin and not creator:
+        await edit_delete(zed, "**⎆ عـذࢪًا .. احتـاج الى صلاحيـات المشـرف هنـا**", 5)
+        return
+    event = await edit_or_reply(zed, "**⎆ جـارِ طـرد البوتـات من هنـا ...⅏**")
+    del_u = 0
+    del_a = 0
+    async for user in zed.client.iter_participants(zed.chat_id):
+        if user.bot:
+            try:
+                await zed.client.kick_participant(zed.chat_id, user.id)
+                await sleep(0.5)
+                del_u += 1
+            except ChatAdminRequiredError:
+                await edit_delete(event, "**⎆ اووبس .. ليس لدي صلاحيـات حظـر هنـا**", 5)
+                return
+            except UserAdminInvalidError:
+                del_a += 1
+    if del_u > 0:
+        del_status = f"**⎆ تم طـرد  {del_u}  بـوت .. بنجـاح🚮**"
+    if del_a > 0:
+        del_status = f"❇️**┊طـرد البـوتات -** 𝙎𝙊𝙐𝙍𝘾𝞝 𝗧𝗘𝗣𝗧𝗛𝗢𝗡\
+                           \n\n**⎆ تم طـرد  {del_u}  بـوت بنجـاح ✓** 🚮 \
+                           \n**⎆ لـم يتـم طـرد  {del_a}  بـوت لانـها اشـراف ..⅏** \
+                           \n\n**⎆ الان لـ الحفـاظ علـى كروبك/قناتك من التصفيـر أرســل ⩥** `.قفل البوتات`"
+    await edit_delete(event, del_status, 50)
+    if BOTLOG:
+        await zed.client.send_message(
+            BOTLOG_CHATID,
+            f"#طـرد_البوتـات\
+            \n ⎆ {del_status}\
+            \n ⎆ الـدردشـة: {zed.chat.title}(`{zed.chat_id}`)",
+        )
