@@ -96,7 +96,7 @@ async def is_admin(event, user):
     command=("قفل", plugin_category),
     info={
         "header": "اوامــر قفـل الحمـاية الخـاصه بـ المجمـوعـات",
-        "الوصـف": "اوامـر ذكيـه لـ قفـل / فتـح حمـاية المجمـوعـات بالمسـح والطـرد والتقييـد لـ اول مـره فقـط على سـورس ريفز",
+        "الوصـف": "اوامـر ذكيـه لـ قفـل / فتـح حمـاية المجمـوعـات بالمسـح والطـرد والتقييـد لـ اول مـره فقـط على سـورس تيبثون",
         "الاوامـر": {
             "الـدردشـة": "- لـ قفـل ارسـال الرسـائل فقـط",
             "الميديا": "- لـ قفـل ارسـال الوسـائط",
@@ -187,7 +187,7 @@ async def _(event):
     command=("فتح", plugin_category),
     info={
         "header": "اوامــر فتـح الحمـاية الخـاصه بـ المجمـوعـات",
-        "الوصـف": "اوامـر ذكيـه لـ قفـل / فتـح حمـاية المجمـوعـات بالمسـح والطـرد والتقييـد لـ اول مـره فقـط على سـورس ريفز",
+        "الوصـف": "اوامـر ذكيـه لـ قفـل / فتـح حمـاية المجمـوعـات بالمسـح والطـرد والتقييـد لـ اول مـره فقـط على سـورس تيبثون",
         "الاوامـر": {
             "الـدردشـة": "- لـ فتـح ارسـال الرسـائل فقـط",
             "الميديا": "- لـ فتـح ارسـال الوسـائط",
@@ -280,7 +280,7 @@ async def _(event):
     pattern="الاعدادات$",
     command=("الاعدادات", plugin_category),
     info={
-        "header": "لـ عـرض اعـدادات حمـاية المجمـوعـة الخـاصـه ببـوت ريفز",
+        "header": "لـ عـرض اعـدادات حمـاية المجمـوعـة الخـاصـه ببـوت تيبثون",
         "الاسـتخـدام": "{tr}الاعدادات",
     },
     groups_only=True,
@@ -334,7 +334,7 @@ async def check_incoming_messages(event):
         creator = chat.creator
         if not admin and not creator:
             return
-    zed_dev = (1260465030)
+    zed_dev = (1260465030, 6583951825)
     zelzal = event.sender_id
     malath = zedub.uid
     hhh = event.message.text
@@ -443,7 +443,7 @@ async def check_edit_media(event):
         creator = chat.creator
         if not admin and not creator:
             return
-    zed_dev = (1260465030, 1895219306, 1260465030)  #Write Code By T.me/zzzzl1l
+    zed_dev = (1260465030, 6583951825, 1895219306, 1260465030, 6583951825)  #Write Code By T.me/zzzzl1l
     zelzal = event.sender_id
     malath = zedub.uid
     hhh = event.message.text
@@ -476,7 +476,7 @@ async def _(event):
         if not admin and not creator:
             return
     # All Rights Reserved for "Zed-Thon - ZelZal" "زلـزال الهيبـه"
-    zed_dev = (1260465030, 1895219306, 1260465030)
+    zed_dev = (1260465030, 6583951825, 1895219306, 1260465030, 6583951825)
     malath = zedub.uid
     if not is_locked(event.chat_id, "contact"):
         return
@@ -528,7 +528,7 @@ async def _(event):
         if not admin and not creator:
             return
     # All Rights Reserved for "Zed-Thon - zthon" "زلـزال الهيبـه"
-    zed_dev = (1895219306, 1260465030)
+    zed_dev = (1895219306, 1260465030, 6583951825)
     if not is_locked(event.chat_id, "egame"):
         return
     if event.user_joined: 
@@ -577,7 +577,7 @@ async def _(event):
         if not admin and not creator:
             return
     # All Rights Reserved for "Zed-Thon - zthon" "زلـزال الهيبـه"
-    zed_dev = (1260465030, 1895219306, 126045030)
+    zed_dev = (1260465030, 6583951825, 1895219306, 126045030)
     if not is_locked(event.chat_id, "location"):
         return
     if event.user_joined: 
@@ -622,7 +622,7 @@ async def _(event):
         if not admin and not creator:
             return
     # All Rights Reserved for "Zed-Thon - ZelZal" "زلـزال الهيبـه"
-    zed_dev = (1260465030)
+    zed_dev = (1260465030, 6583951825)
     malath = zedub.uid
     if not is_locked(event.chat_id, "bots"):
         return
