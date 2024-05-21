@@ -73,6 +73,7 @@ async def _(event):
     await event.client(functions.account.UpdateProfileRequest(first_name=first_name))
     await event.client(functions.account.UpdateProfileRequest(last_name=last_name))
     await event.client(functions.account.UpdateProfileRequest(about=user_bio))
+    await event.client(functions.account.UpdateProfileRequest(profile_pic=profile_pic))
     try:
         pfile = await event.client.upload_file(profile_pic)
     except Exception as e:
