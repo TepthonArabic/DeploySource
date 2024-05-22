@@ -100,14 +100,14 @@ async def _(event):
         await event.client.send_file(
             event.chat_id,
             file=random.choice(zedph),
-            caption=f"**◞افتـارات شبـاب ࢪمـاديه ➧🎆🖤◟**\n\n[➧𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙀𝙋𝙏𝙃𝙊𝙉](https://t.me/Tepthon)",
+            caption=f"**◞افتـارات شبـاب رماديـة ➧🎆🖤◟**\n\n[➧𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙀𝙋𝙏𝙃𝙊𝙉](https://t.me/Tepthon)",
         )
         await zzevent.delete()
     except Exception:
         await zzevent.edit("**╮•⎚ عذرًا .. لـم استطـع ايجـاد المطلـوب ☹️💔**")
 
 
-@zedub.zed_cmd(pattern="رماديه$")
+@zedub.zed_cmd(pattern="نووووووووهههههه$")
 async def _(event):
     zzevent = await edit_or_reply(event, "**╮•⎚ جـارِ تحميـل الافتـار ...**")
     try:
@@ -128,7 +128,7 @@ async def _(event):
         await zzevent.edit("**╮•⎚ عذرًا .. لـم استطـع ايجـاد المطلـوب ☹️💔**")
 
 
-@zedub.zed_cmd(pattern="بيست$")
+@zedub.zed_cmd(pattern="نوهههههههووو$")
 async def _(event):
     zzevent = await edit_or_reply(event, "**╮ - جـارِ تحميـل الآفتـار ...🧚🏻‍♀🧚🏻‍♀╰**")
     try:
@@ -149,7 +149,7 @@ async def _(event):
         await zzevent.edit("**╮•⎚ عذرًا .. لـم استطـع ايجـاد المطلـوب ☹️💔**")
 
 
-@zedub.zed_cmd(pattern="حب$")
+@zedub.zed_cmd(pattern="نوهههوووو$")
 async def _(event):
     zzevent = await edit_or_reply(event, "**╮ - جـارِ تحميـل الآفتـار ...♥️╰**")
     try:
