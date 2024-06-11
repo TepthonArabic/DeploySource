@@ -31,12 +31,12 @@ from ..sql_helper.globals import gvarstatus
 from . import BOTLOG, BOTLOG_CHATID
 
 # =================== STRINGS ============
-PP_TOO_SMOL = "**⪼ الصورة صغيرة جدا**"
+PP_TOO_SMOL = "**⪼ الصورة صغيرة جدًّا**"
 PP_ERROR = "**⪼ فشل اثناء معالجة الصورة**"
 NO_ADMIN = "**⪼ أحتـاج الى صلاحيـات المشـرف هنـا!! 𓆰**"
 NO_PERM = "**⪼ ليست لدي صلاحيـات كافيـه في هـذه المجمـوعـة**"
 CHAT_PP_CHANGED = "**⪼ تم تغييـر صـورة المجمـوعـة .. بنجـاح ✓**"
-INVALID_MEDIA = "**⪼ ابعاد الصورة غير صالحة**"
+INVALID_MEDIA = "**⪼ أبعـاد الصورة غير صالحة**"
 
 BANNED_RIGHTS = ChatBannedRights(
     until_date=None,
@@ -64,7 +64,7 @@ UNBAN_RIGHTS = ChatBannedRights(
 LOGS = logging.getLogger(__name__)
 MUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=True)
 UNMUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=False)
-zel_dev = (1260465030, 2348181015, 95801588376, 1239602580)
+zel_dev = (1260465030, 6981066109, 95801588376, 1239602580)
 
 plugin_category = "الادمن"
 
