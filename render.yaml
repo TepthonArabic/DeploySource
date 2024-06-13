@@ -12,16 +12,20 @@ services:
     startCommand: python3 server.py & python3 -m Tepthon
     region: frankfurt
     envVars:
+      - key: ALIVE_NAME
+        sync: false
       - key: API_HASH 
         sync: false
       - key: APP_ID 
         sync: false
-      - key: ENV 
+      - key: ENV
         value: ANYTHING
       - key: STRING_SESSION
         sync: false
       - key: TG_BOT_TOKEN
         sync: false
+      - key: TZ
+        sync: Asia/Amman
       - key: PYTHON_VERSION
         value: 3.10.9
       - key: DATABASE_URL
