@@ -11,7 +11,7 @@ services:
     startCommand: python3 server.py & python3 -m Tepthon
     repo: https://github.com/Tepthonee/thesource      
     branch: main
-    envVars:
+  - envVars:
       - key:  
         sync: false
       - key: API_HASH 
