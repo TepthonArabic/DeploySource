@@ -1,7 +1,7 @@
 - databases:
   - name: Tepthon-db
     databaseName: Tepthon
-    user: Tepthon
+    user: Tepthonee
 - services:
   - type: web
     plan: free
