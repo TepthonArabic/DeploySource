@@ -49,7 +49,7 @@ heroku_api = "https://api.heroku.com"
 if Config.HEROKU_APP_NAME is not None and Config.HEROKU_API_KEY is not None:
     Heroku = heroku3.from_key(Config.HEROKU_API_KEY)
     app = Heroku.app(Config.HEROKU_APP_NAME)
-    heroku_var = app.config()
+    render_var = app.config()
 else:
     app = None
 
@@ -64,15 +64,15 @@ DEV = 1260465030
 
 
 async def autovars(): #Code by T.me/zzzzl1l
-    if "ENV" in heroku_var:
+    if "ENV" in render_var:
         return
     LOGS.info("جـارِ إضافـة بقيـة الفـارات .. تلقائيًــا")
     zzenv = "ANYTHING"
     zzcom = "."
     zzztz = "Asia/Amman"
-    heroku_var["ENV"] = zzenv
-    heroku_var["COMMAND_HAND_LER"] = zzcom
-    heroku_var["TZ"] = zzztz
+    render_var["ENV"] = zzenv
+    render_var["COMMAND_HAND_LER"] = zzcom
+    render_var["TZ"] = zzztz
     LOGS.info("تم إضافـة بقيـة الفـارات .. بنجـاح")
 
 
@@ -97,7 +97,7 @@ async def autoname(): #Code by T.me/zzzzl1l
         addgvar(zd, zzd)
         addgvar(zt, zzt)
     LOGS.info(f"تم إضافـة اسـم المستخـدم {zzname} .. بنجـاح")
-    heroku_var["ALIVE_NAME"] = zzname
+    render_var["ALIVE_NAME"] = zzname
 
 
 async def setup_bot():
