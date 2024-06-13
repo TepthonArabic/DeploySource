@@ -1,8 +1,9 @@
-- databases:
-  - name: Tepthon-db
-    databaseName: Tepthon
-    user: Tepthonee
-- services:
+databases:
+  - name: Tepthon
+    ipAllowList: []
+    region: frankfurt
+    plan: free
+services:
   - type: web
     plan: free
     name: Tepthon
@@ -11,7 +12,7 @@
     startCommand: python3 server.py & python3 -m Tepthon
     repo: https://github.com/Tepthonee/thesource      
     branch: main
-   - envVars:
+   envVars:
       - key:  
         sync: false
       - key: API_HASH 
@@ -19,11 +20,13 @@
       - key: APP_ID 
         sync: false
       - key: STRING_SESSION
+        sync: false                                                          
+      - key: TG_BOT_TOKEN
         sync: false
-      - key: BOT_TOKEN
-        sync: false    
-       - key: DATABASE_URL
+      - key: PYTHON_VERSION
+        sync: 3.10.6
+      - key: DATABASE_URL
         fromDatabase:
-          name: Tepthon-db
+          name: Tepthon
           property: connectionString
     autoDeploy: false
