@@ -1,8 +1,8 @@
-databases:
+- databases:
   - name: Tepthon-db
     databaseName: Tepthon
     user: Tepthon
-services:
+- services:
   - type: web
     plan: free
     name: Tepthon
