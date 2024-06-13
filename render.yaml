@@ -23,7 +23,7 @@ services:
       - key: TG_BOT_TOKEN
         sync: false
       - key: PYTHON_VERSION
-        value: 3.6.9
+        value: 3.10.9
       - key: DATABASE_URL
         fromDatabase:
           name: Tepthon
