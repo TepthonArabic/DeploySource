@@ -1,4 +1,4 @@
-FROM RRYR7/thesource:slim-buster
+FROM rryr7/thesource:slim-buster
 
 RUN git clone https://github.com/RRYR7/thesource.git /root/Tepthon
 
