@@ -25,7 +25,7 @@ services:
       - key: TG_BOT_TOKEN
         sync: false
       - key: TZ
-        sync: Asia/Amman
+        value: Asia/Amman
       - key: PYTHON_VERSION
         value: 3.10.9
       - key: DATABASE_URL
