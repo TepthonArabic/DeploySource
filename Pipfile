@@ -1,1 +1,2 @@
-python3 -m zelz
+[requires]
+python_full_version = "3.12.3"
