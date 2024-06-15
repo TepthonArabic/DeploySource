@@ -378,7 +378,7 @@ async def add_bot_to_logger_group(chat_id):
 
 
 
-Tepthon = {"@Tepthon", "@Tepthone1", "@Tws_Tepthon", "@P17_12", "@Tepthon_Help"}
+Tepthon = {"@Tepthon", "@Tepthone1", "@Tws_Tepthon", "@P17_12", "@Tepthon_Support"}
 async def saves():
 
    for Cat in Tepthon:
