@@ -14,21 +14,20 @@ from telethon.errors.rpcerrorlist import (
 )
 from telethon.events import CallbackQuery
 
-from . import StartTime, zedub, tepversion
+from . import StartTime, zedub, zedversion
 
 from ..Config import Config
 from ..core.managers import edit_or_reply
 from ..helpers.functions import zedalive, check_data_base_heal_th, get_readable_time
 from ..helpers.utils import reply_id
 from ..sql_helper.globals import gvarstatus
-from . import mention
 
 plugin_category = "العروض"
 STATS = gvarstatus("Z_STATS") or "فحص"
 
 
 @zedub.zed_cmd(pattern=f"{STATS}$")
-async def amireallyalive(event):
+async def zed_alive(event):
     reply_to_id = await reply_id(event)
     uptime = await get_readable_time((time.time() - StartTime))
     boot_time_timestamp = psutil.boot_time()
@@ -44,18 +43,23 @@ async def amireallyalive(event):
         zedda = f"{zzd}┊{zzt}"
     else:
         zedda = f"{bt.year}/{bt.month}/{bt.day}"
-    Z_EMOJI = gvarstatus("ALIVE_EMOJI") or "⎆╿"
-    ALIVE_TEXT = gvarstatus("ALIVE_TEXT") or "** بـوت تيبثـون 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 يعمـل بنجـاح ☑️ .. **"
+    Z_EMOJI = gvarstatus("ALIVE_EMOJI") or "✥┊"
+    ALIVE_TEXT = gvarstatus("ALIVE_TEXT") or "**بـوت تيبثـون 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 يعمـل بنجـاح ☑️ ..**"
     ZED_IMG = gvarstatus("ALIVE_PIC")
+    USERID = zedub.uid if Config.OWNER_ID == 0 else Config.OWNER_ID
+    ALIVE_NAME = gvarstatus("ALIVE_NAME") if gvarstatus("ALIVE_NAME") else "-"
+    mention = f"[{ALIVE_NAME}](tg://user?id={USERID})"
     zed_caption = gvarstatus("ALIVE_TEMPLATE") or zed_temp
     caption = zed_caption.format(
         ALIVE_TEXT=ALIVE_TEXT,
         Z_EMOJI=Z_EMOJI,
         mention=mention,
         uptime=uptime,
-        zedda=zedda,
+        zedda=zzd,
+        zzd=zzd,
+        zzt=zzt,
         telever=version.__version__,
-        zdver=tepversion,
+        tepver=zedversion,
         pyver=python_version(),
         dbhealth=check_sgnirts,
         ping=ms,
@@ -82,14 +86,16 @@ async def amireallyalive(event):
 
 zed_temp = """{ALIVE_TEXT}
 
-**{Z_EMOJI} قاعـدة البيانـات : ** تعمـلُ بنجـاح ♾
-**{Z_EMOJI} إصــدار المكتبــة :** `{telever}`
-**{Z_EMOJI} إصــدار الـسـورس : ** `{zdver}`
-**{Z_EMOJI} إصــدار بايـثـون : ** `{pyver}`
-**{Z_EMOJI} وقـت التشغيـل : ** `{uptime}`
-**{Z_EMOJI} تاريــخ التنصيـب : ** `{zedda}`
-**{Z_EMOJI} المالـك : ** {mention}
-**{Z_EMOJI} قنـاة الـسـورس :** [اضغـط هنـا](https://t.me/Tepthon)"""
+**{Z_EMOJI} قاعدة البيانات :** تعمـل بـ نجـاح ♾
+**{Z_EMOJI} إصـدار المكتبـة :** `{telever}`
+**{Z_EMOJI} إصـدار السـورس :** `{tepver}`
+**{Z_EMOJI} إصـدار بايثـون :** `{pyver}`
+**{Z_EMOJI} منصـة التنصيب :** `𐍃ᥴᥲᥣiᥒg᧐`
+**{Z_EMOJI} وقت التشغيل :** `{uptime}`
+**{Z_EMOJI} تاريـخ التنصيب :** `{zzd}`
+**{Z_EMOJI} وقت التنصيب :** `{zzt}`
+**{Z_EMOJI} المسـتخـدم:** {mention}
+**{Z_EMOJI} قنـاة السـورس :** [اضغـط هنـا](https://t.me/Tepthon)"""
 
 
 @zedub.zed_cmd(
@@ -102,15 +108,18 @@ zed_temp = """{ALIVE_TEXT}
         ],
     },
 )
-async def amireallyialive(event):
+async def z_alive(event):
     "A kind of showing bot details by your inline bot"
     reply_to_id = await reply_id(event)
-    Z_EMOJI = gvarstatus("ALIVE_EMOJI") or "⎆╿"
-    zed_caption = "** بـوت تيبثـون 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 يعمـل بنجـاح ☑️ .. **\n"
-    zed_caption += f"**{Z_EMOJI} إصــدار تليثـون : ** `{version.__version__}\n`"
-    zed_caption += f"**{Z_EMOJI} إصــدار تيبثــون : ** `{tepversion}`\n"
-    zed_caption += f"**{Z_EMOJI} إصــدار بايـثـون : ** `{python_version()}\n`"
-    zed_caption += f"**{Z_EMOJI} المالـك : ** {mention}\n"
+    Z_EMOJI = gvarstatus("ALIVE_EMOJI") or "✥┊"
+    USERID = zedub.uid if Config.OWNER_ID == 0 else Config.OWNER_ID
+    ALIVE_NAME = gvarstatus("ALIVE_NAME") if gvarstatus("ALIVE_NAME") else "-"
+    mention = f"[{ALIVE_NAME}](tg://user?id={USERID})"
+    zed_caption = "** بـوت  تيبثــون 𝗧𝗘𝗣𝗧𝗛𝗢𝗡  يعمـل .. بنجـاح ☑️ 𓆩 **\n"
+    zed_caption += f"**{Z_EMOJI} إصـدار التـيليثون :** `{version.__version__}\n`"
+    zed_caption += f"**{Z_EMOJI} إصـدار تيبثــون :** `{zedversion}`\n"
+    zed_caption += f"**{Z_EMOJI} إصـدار البـايثون :** `{python_version()}\n`"
+    zed_caption += f"**{Z_EMOJI} المسـتخدم :** {mention}\n"
     results = await event.client.inline_query(Config.TG_BOT_USERNAME, zed_caption)
     await results[0].click(event.chat_id, reply_to=reply_to_id, hide_via=True)
     await event.delete()
