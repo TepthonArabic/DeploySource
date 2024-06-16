@@ -12,30 +12,22 @@ from .helpers.functions.musictool import *
 from .helpers.utils.utils import runasync
 from .sql_helper.globals import addgvar, delgvar, gvarstatus
 
-__version__ = "3.1.1"
-__license__ = "GNU Affero General Public License v3.0"
-__author__ = "Tepthon <https://github.com/Tepthonee/thesource>"
-__copyright__ = "Tepthon Copyright (C) 2021 - 2022  {__author__}"
+__version__ = "3.3.3"
+__license__ = "حقـوق سـورس تيبثــون"
+__author__ = "تيبثــون <https://T.me/ZThon>"
+__copyright__ = "ZThon Source (C) 2020 - 2024  " + __author__
 
 zedub.version = __version__
-zedub.tgbot.version = __version__
-LOGS = logging.getLogger("تيبثـون")
+LOGS = logging.getLogger("تيبثــون")
 bot = zedub
 
-
 StartTime = time.time()
-tepversion = "3.1.1"
+zedversion = "3.3.3"
 
-
-def close_connection(*_):
-    print("تم إغلاق الاتصال بالسورس")
-    runasync(zedub.disconnect())
-    sys.exit(143)
-
-
-signal.signal(signal.SIGTERM, close_connection)
-
-UPSTREAM_REPO_URL = Config.UPSTREAM_REPO
+if Config.UPSTREAM_REPO == "zel":
+    UPSTREAM_REPO_URL = "https://github.com/RRYR7/thesource"
+else:
+    UPSTREAM_REPO_URL = Config.UPSTREAM_REPO
 
 if Config.PRIVATE_GROUP_BOT_API_ID == 0:
     if gvarstatus("PRIVATE_GROUP_BOT_API_ID") is None:
@@ -47,7 +39,7 @@ if Config.PRIVATE_GROUP_BOT_API_ID == 0:
         Config.BOTLOG = True
 else:
     if str(Config.PRIVATE_GROUP_BOT_API_ID)[0] != "-":
-        Config.BOTLOG_CHATID = int(f"-{str(Config.PRIVATE_GROUP_BOT_API_ID)}")
+        Config.BOTLOG_CHATID = int(f"-" + str(Config.PRIVATE_GROUP_BOT_API_ID))
     else:
         Config.BOTLOG_CHATID = Config.PRIVATE_GROUP_BOT_API_ID
     Config.BOTLOG = True
@@ -58,7 +50,7 @@ if Config.PM_LOGGER_GROUP_ID == 0:
     else:
         Config.PM_LOGGER_GROUP_ID = int(gvarstatus("PM_LOGGER_GROUP_ID"))
 elif str(Config.PM_LOGGER_GROUP_ID)[0] != "-":
-    Config.PM_LOGGER_GROUP_ID = int(f"-{str(Config.PM_LOGGER_GROUP_ID)}")
+    Config.PM_LOGGER_GROUP_ID = int(f"-" + str(Config.PM_LOGGER_GROUP_ID))
 
 try:
     if Config.HEROKU_API_KEY is not None or Config.HEROKU_APP_NAME is not None:
