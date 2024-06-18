@@ -71,9 +71,5 @@ validators
 vcsi
 wand
 wget==3.2
-youtube-search-python==1.4.9
-youtube-search
-youtube_dl
-yt-dlp==2024.4.9
 img2html
 googletrans-py
