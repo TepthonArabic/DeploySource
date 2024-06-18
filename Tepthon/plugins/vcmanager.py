@@ -1,6 +1,6 @@
-# تعريب وتحديث فريق تيـبثون
-# Tepthon UsetBot T.me/Tepthon
-# Devolper Baqir T.me/E_7_V
+# تعريب وتحديث سورس زدثــون
+# ZThon UsetBot T.me/ZedThon
+# Devolper ZelZal T.me/zzzzl1l
 from telethon import functions
 from telethon.errors import ChatAdminRequiredError, UserAlreadyInvitedError
 from telethon.tl.types import Channel, Chat, User
@@ -9,7 +9,6 @@ from ..core.managers import edit_delete, edit_or_reply
 from ..helpers.utils import mentionuser
 
 plugin_category = "البوت"
-
 
 async def get_group_call(chat):
     if isinstance(chat, Channel):
@@ -177,7 +176,7 @@ async def title_vc(event):
 
 
 @zedub.zed_cmd(
-    pattern="(|الغاء )اسكت ([\s\S]*)",
+    pattern="(|الغاء )اسكت(?: |$)(.*)",
     command=("اسكت", plugin_category),
     info={
         "header": "لـ كتم شخص في المكالمـه",
