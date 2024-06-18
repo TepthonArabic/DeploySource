@@ -1,6 +1,6 @@
 """ Download Youtube Video / Audio in a User friendly interface """
 # --------------------------- #
-#   Modded ytdl by code-rgb   #
+#   Modded ytdl by ZThon   #
 # --------------------------- #
 
 import asyncio
@@ -40,12 +40,12 @@ BASE_YT_URL = "https://www.youtube.com/watch?v="
 YOUTUBE_REGEX = re.compile(
     r"(?:youtube\.com|youtu\.be)/(?:[\w-]+\?v=|embed/|v/|shorts/)?([\w-]{11})"
 )
-PATH = "./Tepthon/cache/ytsearch.json"
+PATH = "./zelz/cache/ytsearch.json"
 plugin_category = "البوت"
 
 
 @zedub.zed_cmd(
-    pattern="يوت(?:\s|$)([\s\S]*)",
+    pattern="يوت(?:\\s|$)([\\s\\S]*)",
     command=("يوت", plugin_category),
     info={
         "header": "ytdl with inline buttons.",
@@ -84,12 +84,12 @@ async def iytdl_inline(event):
         await zedevent.delete()
         await results[0].click(event.chat_id, reply_to=reply_to_id, hide_via=True)
     else:
-        await zedevent.edit("**⌔╎عـذراً .. لم اجد اي نتائـج**")
+        await zedevent.edit("**⌔╎عـذرًا، لم أجد أي نتائج**")
 
 
 @zedub.tgbot.on(
     CallbackQuery(
-        data=re.compile(b"^ytdl_download_(.*)_([\d]+|mkv|mp4|mp3)(?:_(a|v))?")
+        data=re.compile(b"^ytdl_download_(.*)_([\\d]+|mkv|mp4|mp3)(?:_(a|v))?")
     )
 )
 @check_owner
@@ -206,7 +206,7 @@ async def ytdl_callback(c_q: CallbackQuery):
     )
     if not os.path.exists(PATH):
         return await c_q.answer(
-            "عملية البحث غير دقيقة يرجى اختيار عنوان صحيح وحاول مجددا",
+            "عملية البحث غير دقيقة يرجى اختيار عنوان صحيح وحاول مجددًا",
             alert=True,
         )
     with open(PATH) as f:
@@ -293,4 +293,4 @@ async def ytdl_callback(c_q: CallbackQuery):
                 total=total,
             ),
             parse_mode="html",
-        )
+    )
