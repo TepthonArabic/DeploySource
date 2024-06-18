@@ -1,13 +1,9 @@
-import os
-from flask import Flask
-from flask_restful import Resource, Api
+from aiohttp import web
 
-app = Flask(__name__)
-api = Api(app)
+from .route import routes
 
-class Greeting (Resource):
-    def get(self):
-        return "Tepthon is Up & Running!"
 
-api.add_resource(Greeting, '/')
-app.run(host="0.0.0.0", port=os.environ.get("PORT", 8080))
+async def web_server():
+    web_app = web.Application(client_max_size=30000000)
+    web_app.add_routes(routes)
+    return web_app
