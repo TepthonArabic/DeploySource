@@ -40,7 +40,7 @@ BASE_YT_URL = "https://www.youtube.com/watch?v="
 YOUTUBE_REGEX = re.compile(
     r"(?:youtube\.com|youtu\.be)/(?:[\w-]+\?v=|embed/|v/|shorts/)?([\w-]{11})"
 )
-PATH = "./zelz/cache/ytsearch.json"
+PATH = "./Tepthon/cache/ytsearch.json"
 plugin_category = "البوت"
 
 
