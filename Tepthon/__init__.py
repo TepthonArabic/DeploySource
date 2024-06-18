@@ -2,7 +2,7 @@ import signal
 import sys
 import time
 
-import heroku3
+import scalingo
 
 from .Config import Config
 from .core.logger import logging
