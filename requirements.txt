@@ -70,7 +70,6 @@ ujson
 urlextract
 user_agent
 yt-dlp==2024.4.9
-youtube_dl==2021.5.16
 validators
 vcsi
 wand
