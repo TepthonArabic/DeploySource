@@ -69,9 +69,16 @@ tgcrypto
 ujson
 urlextract
 user_agent
+yt-dlp==2024.4.9
+youtube_dl==2021.5.16
 validators
 vcsi
 wand
 wget==3.2
 img2html
 googletrans-py
+
+git+https://github.com/yt-dlp/yt-dlp@master
+git+https://github.com/pytgcalls/pytgcalls
+git+https://github.com/buddhhu/img2html.git
+git+https://github.com/sandy1709/py-googletrans
