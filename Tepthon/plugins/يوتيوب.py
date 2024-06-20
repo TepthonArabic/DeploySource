@@ -49,7 +49,7 @@ plugin_category = "البحث"
 #                                                             𝙕𝙏𝙝𝙤𝙣
 # =========================================================== #
 SONG_SEARCH_STRING = "<b>╮ جـارِ البحث ؏ـن المقطـٓع الصٓوتـي... 🎧♥️╰</b>"
-SONG_NOT_FOUND = "<b>⎉╎لـم أستطع إيجــاد المطلـوب .. جرب البحث باستخـدام الامـر (.يوت)</b>"
+SONG_NOT_FOUND = "<b>⎉╎لـم استطـع ايجـاد المطلـوب .. جرب البحث باستخـدام الامـر (.اغنيه)</b>"
 SONG_SENDING_STRING = "<b>╮ جـارِ تحميـل المقطـٓع الصٓوتـي... 🎧♥️╰</b>"
 # =========================================================== #
 #                                                             𝙕𝙏𝙝𝙤𝙣
@@ -74,7 +74,7 @@ video_opts = {
 
 
 @zedub.zed_cmd(
-    pattern="ابحث(?: |$)(.*)",
+    pattern="ابحث(?:\ع|$)([\s\S]*)",
     command=("ابحث", plugin_category),
     info={
         "header": "To reverse search song.",
@@ -153,7 +153,7 @@ async def shazamcmd(event):
 
 
 # Code by T.me/zzzzl1l
-@zedub.zed_cmd(pattern="ff(?: |$)(.*)")
+@zedub.zed_cmd(pattern=".ff(?:\s|$)([\s\S]*)")
 async def zelzal_song(event):
     song = event.pattern_match.group(1)
     chat = "@ROOTMusic_bot"
@@ -185,7 +185,7 @@ async def zelzal_song(event):
 
 
 @zedub.zed_cmd(
-    pattern="يوتيوب(?: |$)(\\d*)? ?([\\s\\S]*)",
+    pattern="يوتيوب(?: |$)(\d*)? ?([\s\S]*)",
     command=("يوتيوب", plugin_category),
     info={
         "header": "لـ البحـث عـن روابــط بالكلمــه المحــدده علـى يـوتيــوب",
@@ -224,13 +224,13 @@ async def you_search(event):
 async def ytdl_down(event, opts, url):
     ytdl_data = None
     try:
-        await event.edit("**╮ ❐ يتـم جلـب البيانـات انتظـر قليلًا...𓅫╰▬▭ **")
+        await event.edit("**╮ ❐ يتـم جلـب البيانـات انتظـر قليلاً ...𓅫╰▬▭ **")
         with YoutubeDL(opts) as ytdl:
             ytdl_data = ytdl.extract_info(url)
     except DownloadError as DE:
         await event.edit(f"`{DE}`")
     except ContentTooShortError:
-        await event.edit("**- عـذرًا هذا المحتوى قصير جـدًّا لتنزيله ⚠️**")
+        await event.edit("**- عذرا هذا المحتوى قصير جدا لتنزيله ⚠️**")
     except GeoRestrictedError:
         await event.edit(
             "**- الفيديو غير متاح من موقعك الجغرافي بسبب القيود الجغرافية التي يفرضها موقع الويب ❕**"
@@ -240,7 +240,7 @@ async def ytdl_down(event, opts, url):
     except PostProcessingError:
         await event.edit("**كان هناك خطأ أثناء المعالجة**")
     except UnavailableVideoError:
-        await event.edit("**⌔∮عذرًا،الوسائط غير متوفرة بالتنسيق المطلـوب**")
+        await event.edit("**⌔∮عـذراً .. الوسائط غير متوفـره بالتنسيق المطلـوب**")
     except XAttrMetadataError as XAME:
         await event.edit(f"`{XAME.code}: {XAME.msg}\n{XAME.reason}`")
     except ExtractorError:
@@ -308,7 +308,7 @@ async def fix_attributes(
 
 """
 @zedub.zed_cmd(
-    pattern="تحميل صوت(?:\\s|$)([\\s\\S]*)",
+    pattern="تحميل صوت(?:\s|$)([\s\S]*)",
     command=("تحميل صوت", plugin_category),
     info={
         "header": "تحميـل الاغـاني مـن يوتيوب .. فيسبوك .. انستا .. الـخ عـبر الرابـط",
@@ -391,7 +391,7 @@ async def download_audio(event):
     await zedevent.delete()
 
 @zedub.zed_cmd(
-    pattern="تحميل فيديو(?:\\s|$)([\\s\\S]*)",
+    pattern="تحميل فيديو(?:\s|$)([\s\S]*)",
     command=("تحميل فيديو", plugin_category),
     info={
         "header": "تحميـل مقـاطـع الفيـديــو مـن يوتيوب .. فيسبوك .. انستا .. الـخ عـبر الرابـط",
