@@ -1,12 +1,12 @@
 databases:
-  - name: Tepthon
+  - name: zxaax
     ipAllowList: []
     region: frankfurt
     plan: free
 services:
   - type: web
     plan: free
-    name: Tepthon
+    name: zxaax
     env: python
     buildCommand: pip install -U -r requirements.txt
     startCommand: python3 server.py & python3 -m Tepthon
@@ -30,6 +30,6 @@ services:
         value: 3.10.9
       - key: DATABASE_URL
         fromDatabase:
-          name: Tepthon
+          name: zxaax
           property: connectionString   
     autoDeploy: false
