@@ -69,9 +69,12 @@ tgcrypto
 ujson
 urlextract
 user_agent
-yt-dlp==2024.4.9
 validators
 vcsi
+youtube-search-python==1.4.9
+youtube-search
+youtube_dl
+yt-dlp==2024.4.9
 wand
 wget==3.2
 img2html
