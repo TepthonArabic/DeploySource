@@ -1131,8 +1131,10 @@ async def custom_zed(event):
 # Copyright (C) 2022 Zed-Thon . All Rights Reserved
 @zedub.zed_cmd(pattern="وقت(?:\\s|$)([\\s\\S]*)")
 async def variable(event):
-    if Config.HEROKU_API_KEY is None:
-        return await ed(event, "**⎉╎عـذراً .. عـزيـزي ⚠️**\n**⎉╎هـذا الفـار لا يعمـل الان ✖️**\n**⎉╎سـوف يتم تحديثه لاحقاً ع منصه سكالينجو 🔄**")
+if Config.HEROKU_API_KEY is None:
+        return await(
+            event,
+            "⎉╎اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_APP_NAME` اسم التطبيق اذا كنت لاتعلم.",
     input_str = event.text[5:]
     viraq = "Asia/Baghdad"
     vmsr = "Africa/Cairo"
