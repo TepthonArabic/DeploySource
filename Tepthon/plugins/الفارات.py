@@ -38,10 +38,10 @@ from ..core.managers import edit_delete, edit_or_reply
 from ..helpers.functions import delete_conv
 from ..sql_helper.globals import addgvar, delgvar, gvarstatus
 
-Heroku = heroku3.from_key(Config.HEROKU_API_KEY)
-heroku_api = "https://api.heroku.com"
-HEROKU_APP_NAME = Config.HEROKU_APP_NAME
-HEROKU_API_KEY = Config.HEROKU_API_KEY
+Heroku = heroku3.from_key(Config.AlIVE_NAME)
+heroku_api = "https://api.render.com"
+HEROKU_APP_NAME = Config.AlIVE_NAME
+HEROKU_API_KEY = Config.TG_BOT_TOKEN
 from . import BOTLOG_CHATID, mention
 
 
@@ -1191,7 +1191,7 @@ async def variable(event):
             await zed.edit("**⎉╎تم تغييـر المنطقـة الزمنيـة .. بنجـاح ☑️**\n**⎉╎المتغير : ↶**\n دولـة `{}`  \n**⎉╎يتم الان اعـادة تشغيـل بـوت تيبثــون يستغـرق الامر 2-1 دقيقـة ▬▭ ...**".format(input_str))
         else:
             await zed.edit("**⎉╎تم اضـافـة المنطقـة الزمنيـة .. بنجـاح ☑️**\n**⎉╎المضـاف اليـه : ↶**\n دولـة `{}`  \n**⎉╎يتم الان اعـادة تشغيـل بـوت تيبثــون يستغـرق الامر 2-1 دقيقـة ▬▭ ...**".format(input_str))
-        heroku_var[variable] = vmoroco        
+        render_var[variable] = vmoroco        
     elif input_str == "ايران" or input_str == "طهران":
         variable = "TZ"
         await asyncio.sleep(1.5)
