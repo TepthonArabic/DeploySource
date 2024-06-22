@@ -39,7 +39,7 @@ from ..helpers.functions import delete_conv
 from ..sql_helper.globals import addgvar, delgvar, gvarstatus
 
 Heroku = heroku3.from_key(Config.AlIVE_NAME)
-heroku_api = "https://api.render.com"
+heroku_api = "https://render.com"
 HEROKU_APP_NAME = Config.AlIVE_NAME
 HEROKU_API_KEY = Config.TG_BOT_TOKEN
 from . import BOTLOG_CHATID, mention
