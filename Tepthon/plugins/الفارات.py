@@ -38,10 +38,10 @@ from ..core.managers import edit_delete, edit_or_reply
 from ..helpers.functions import delete_conv
 from ..sql_helper.globals import addgvar, delgvar, gvarstatus
 
-Heroku = heroku3.from_key(Config.AlIVE_NAME)
-heroku_api = "https://render.com"
-HEROKU_APP_NAME = Config.AlIVE_NAME
-HEROKU_API_KEY = Config.TG_BOT_TOKEN
+Heroku = heroku3.from_key(Config.HEROKU_API_KEY)
+heroku_api = "https://api.heroku.com"
+HEROKU_APP_NAME = Config.HEROKU_APP_NAME
+HEROKU_API_KEY = Config.HEROKU_API_KEY
 from . import BOTLOG_CHATID, mention
 
 
@@ -1202,6 +1202,25 @@ if Config.HEROKU_API_KEY is None:
         else:
             await zed.edit("**⎉╎تم اضـافـة المنطقـة الزمنيـة .. بنجـاح ☑️**\n**⎉╎المضـاف اليـه : ↶**\n دولـة `{}`  \n**⎉╎يتم الان اعـادة تشغيـل بـوت تيبثــون يستغـرق الامر 2-1 دقيقـة ▬▭ ...**".format(input_str))
         heroku_var[variable] = viran
+
+def prettyjson(obj, indent=4, maxlinelength=80):
+    items, _ = getsubitems(
+        obj,
+        itemkey="",
+        islast=True,
+        maxlinelength=maxlinelength - indent,
+        indent=indent,
+    )
+    return indentitems(items, indent, level=0)
+
+api_key = 'rnd_o0YvWfk3LYIe9HJeawhJiwXRSLwR'
+
+api_url = 'https://api.render.com'
+
+headers = {
+    'Accept': 'application/json',
+    'Authorization': 'Bearer api_key'
+}
 
 
 # Copyright (C) 2022 Zed-Thon . All Rights Reserved
