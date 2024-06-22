@@ -1204,7 +1204,7 @@ headers = {
     'Authorization': 'Bearer api_key'
 }
 
-@zedub.zed_cmd(pattern="اسم المستخدم(.*)")
+@zedub.zed_cmd(pattern="خلي الاسم(.*)")
 async def set_alive_name(var):
     rep = await var.get_reply_message()
     if rep is None or not rep.text:
