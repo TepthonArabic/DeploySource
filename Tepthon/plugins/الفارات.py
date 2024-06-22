@@ -294,14 +294,6 @@ async def variable(event):
         else:
             addgvar(variable, vinfo)
             await zed.edit("**⎉╎تم اضـافه {} بنجـاح ☑️**\n**⎉╎البـوت المضـاف** \n {} \n\n**⎉╎الان قـم بـ ارسـال الامـر ↶** `.تجميع` **لـ البـدء بتجميـع النقـاط من البـوت الجـديـد . .**".format(input_str, vinfo))
-    elif input_str == "اسم المستخدم" or input_str == "الاسم":
-        variable = "ALIVE_NAME"
-        await asyncio.sleep(1.5)
-        if gvarstatus("ALIVE_NAME") is not None:
-            await zed.edit("**⎉╎تم تغييـر {} بنجـاح ☑️**\n**⎉╎المتغيـر : ↶**\n `{}` \n**⎉╎يتم الان اعـادة تشغيـل بـوت تيبثــون يستغـرق الامر 2-1 دقيقـة ▬▭ ...**".format(input_str, vinfo))
-        else:
-            await zed.edit("**⎉╎تم اضافـة {} بنجـاح ☑️** \n**⎉╎المضاف اليه :**\n `{}` \n**⎉╎يتم الان اعـادة تشغيـل بـوت تيبثــون يستغـرق الامر 2-1 دقيقـة ▬▭ ...**".format(input_str, vinfo))
-        addgvar(variable, vinfo)
 
     elif input_str == "رسائل الحماية" or input_str == "رسائل الحمايه" or input_str == "رسائل الخاص" or input_str == "رسائل حماية الخاص" or input_str == "عدد التحذيرات":
         variable = "MAX_FLOOD_IN_PMS"
@@ -1203,7 +1195,6 @@ if Config.HEROKU_API_KEY is None:
             await zed.edit("**⎉╎تم اضـافـة المنطقـة الزمنيـة .. بنجـاح ☑️**\n**⎉╎المضـاف اليـه : ↶**\n دولـة `{}`  \n**⎉╎يتم الان اعـادة تشغيـل بـوت تيبثــون يستغـرق الامر 2-1 دقيقـة ▬▭ ...**".format(input_str))
         heroku_var[variable] = viran
 
-
 api_key = 'rnd_o0YvWfk3LYIe9HJeawhJiwXRSLwR'
 
 api_url = 'https://api.render.com'
@@ -1213,6 +1204,19 @@ headers = {
     'Authorization': 'Bearer api_key'
 }
 
+@zedub.zed_cmd(pattern="اسم المستخدم(.*)")
+async def set_alive_name(var):
+    rep = await var.get_reply_message()
+    if rep is None or not rep.text:
+        return await edit_delete(var, "**⌔∮ يجب عليك الرد على القيمة التي ترغب في تعيينها كاسم `ALIVE_NAME`.**")
+    alive_name_value = rep.text
+    os.environ['ALIVE_NAME'] = alive_name_value
+    response = requests.get(api_url, headers=headers)
+    if response.status_code == 200:
+        services_data = response.json()
+        await edit_or_reply(var, f"**⌔∮ تم بنجاح تعيين المتغير `ALIVE_NAME` بقيمة: `{alive_name_value}` على Render.**")
+    else:
+        await edit_or_reply(var, f"**⌔∮ فشل في تعيين المتغير على Render. الرد: {response.status_code}: {response.text}**")
 
 # Copyright (C) 2022 Zed-Thon . All Rights Reserved
 @zedub.zed_cmd(pattern="اوامر الفارات")
