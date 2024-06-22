@@ -1203,15 +1203,6 @@ if Config.HEROKU_API_KEY is None:
             await zed.edit("**⎉╎تم اضـافـة المنطقـة الزمنيـة .. بنجـاح ☑️**\n**⎉╎المضـاف اليـه : ↶**\n دولـة `{}`  \n**⎉╎يتم الان اعـادة تشغيـل بـوت تيبثــون يستغـرق الامر 2-1 دقيقـة ▬▭ ...**".format(input_str))
         heroku_var[variable] = viran
 
-def prettyjson(obj, indent=4, maxlinelength=80):
-    items, _ = getsubitems(
-        obj,
-        itemkey="",
-        islast=True,
-        maxlinelength=maxlinelength - indent,
-        indent=indent,
-    )
-    return indentitems(items, indent, level=0)
 
 api_key = 'rnd_o0YvWfk3LYIe9HJeawhJiwXRSLwR'
 
