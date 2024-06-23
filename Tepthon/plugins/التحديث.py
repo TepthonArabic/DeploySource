@@ -32,12 +32,12 @@ HEROKU_APP_NAME = Config.HEROKU_APP_NAME or None
 HEROKU_API_KEY = Config.HEROKU_API_KEY or None
 Heroku = heroku3.from_key(Config.HEROKU_API_KEY)
 OLDZED = Config.OLDZED
-heroku_api = "https://api.heroku.com"
+heroku_api = "https://api.render.com"
 
-UPSTREAM_REPO_BRANCH = "main"
+UPSTREAM_REPO_BRANCH = "master"
 
 REPO_REMOTE_NAME = "temponame"
-IFFUCI_ACTIVE_BRANCH_NAME = "main"
+IFFUCI_ACTIVE_BRANCH_NAME = "master"
 NO_HEROKU_APP_CFGD = "no heroku application found, but a key given? 😕 "
 HEROKU_GIT_REF_SPEC = "HEAD:refs/heads/main"
 RESTARTING_APP = "re-starting heroku application"
