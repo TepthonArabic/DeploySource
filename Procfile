@@ -1,1 +1,1 @@
-worker: python3 -m Tepthon
+web: bash cloud.sh
