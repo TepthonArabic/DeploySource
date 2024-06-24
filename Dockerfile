@@ -1,11 +1,8 @@
-FROM rryr7/thesource:slim-buster
-
-RUN git clone https://github.com/RRYR7/thesource.git /root/Tepthon
-
-WORKDIR /root/Tepthon
-
-RUN pip3 install --no-cache-dir -r requirements.txt
-
-ENV PATH="/home/Tepthon/bin:$PATH"
-
-CMD ["python3","-m","Tepthon"]
+FROM python:3.11
+WORKDIR /app
+COPY . /app
+RUN apt-get -qq update && apt-get -qq install -y git wget ffmpeg mediainfo \
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists/*
+RUN pip install --no-cache-dir -r requirements.txt
+CMD ["python","-m","Tepthon"]
