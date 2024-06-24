@@ -90,7 +90,7 @@ zed_temp = """{ALIVE_TEXT}
 **{Z_EMOJI} إصـدار المكتبـة :** `{telever}`
 **{Z_EMOJI} إصـدار السـورس :** `{tepver}`
 **{Z_EMOJI} إصـدار بايثـون :** `{pyver}`
-**{Z_EMOJI} منصـة التنصيب :** `ᖇᗴᑎᗪᗴᖇ`
+**{Z_EMOJI} منصـة التنصيب :** `KOYᗴᗷ`
 **{Z_EMOJI} وقت التشغيل :** `{uptime}`
 **{Z_EMOJI} تاريـخ التنصيب :** `{zzd}`
 **{Z_EMOJI} وقت التنصيب :** `{zzt}`
