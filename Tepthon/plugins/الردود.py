@@ -1,3 +1,4 @@
+#zelzal
 import re
 import datetime
 from asyncio import sleep
@@ -34,31 +35,46 @@ LOGS = logging.getLogger(__name__)
 
 
 ZelzalWF_cmd = (
-    "𓆩 [𝗦𝗼𝘂𝗿𝗰𝗲 𝗧𝗲𝗽𝘁𝗵𝗼𝗻 - اوامـر الـردود / والتـرحيب](t.me/Tepthon) 𓆪\n\n"
-    "**✾╎قائـمه اوامـر الـردود 🦾 :** \n\n"
+    "𓆩 𝗦𝗼𝘂𝗿𝗰𝗲 𝗧𝗲𝗽𝘁𝗵𝗼𝗻 - **أوامـر الـردود/الترحيب 🎡** 𓆪\n"
+    "**⋆┄─┄─┄─┄┄─┄─┄─┄─┄┄⋆**\n\n"
+    "**✾╎أوامـر ردود المجمـوعـات 🔊 :** \n"
     "**⎞𝟏⎝** `.رد`\n"
-    "**•• ⦇الامـر + اسـم الـرد بالـرد ع كلمـة الـرد او بالـرد ع ميديـا⦈ لـ اضـافة رد بالكـروب**\n\n"
+    "**•• ⦇ الامـر + كلمـة الـرد ⦈ بالـرد ع جملـة الـرد او بالـرد ع ميديـا**\n"
+    "**•• لـ اضـافة رد فـي مجمـوعـة محـدده**\n"
     "**⎞𝟐⎝** `.حذف رد`\n"
-    "**•• ⦇الامـر + كلمـة الـرد⦈ لـ حـذف رد محـدد**\n\n"
-    "**⎞𝟑⎝** `.ردودي`\n"
-    "**•• لـ عـرض قائمـة بالـردود الخـاصـه بك**\n\n"
+    "**•• ⦇ الامـر + كلمـة الـرد ⦈ لـ حـذف رد محـدد**\n"
+    "**⎞𝟑⎝** `.ردود الكروب`\n"
+    "**•• لـ عـرض قائمـة بالـردود الخـاصـه بالجـروب المحـدد**\n"
     "**⎞𝟒⎝** `.حذف الردود`\n"
-    "**•• لـ حـذف جميـع الـردود الخـاصـه بـك**\n\n"
-    "**✾╎قائـمه اوامر تـرحيب المجمـوعـات 🌐:** \n\n"
+    "**•• لـ حـذف جميـع الـردود الخـاصـه بـك فـي المجمـوعـة**\n\n\n"
+    "**✾╎أوامـر تـرحيب المجمـوعـات 🛎:** \n"
     "**⎞𝟓⎝** `.ترحيب`\n"
-    "**•• ⦇الامـر + نـص التـرحـيـب⦈**\n\n"
+    "**•• ⦇ الامـر + نـص التـرحـيـب⦈**\n"
     "**⎞𝟔⎝** `.حذف الترحيب`\n"
-    "**•• لـ حـذف التـرحـيـب**\n\n"
+    "**•• لـ حـذف التـرحـيـب**\n"
     "**⎞𝟕⎝** `.الترحيبات`\n"
-    "**•• لـ جـلـب تـرحـيـبـك**\n\n"
-    "**✾╎قائـمه اوامر ترحـيـب الخـاص 🌐:**\n\n"
-    "**⎞𝟖⎝** `.رحب`\n"
-    "**•• ⦇الامـر + نـص التـرحيـب⦈**\n\n"
-    "**⎞𝟗⎝** `.حذف رحب`\n"
-    "**•• لـ حـذف تـرحيـب الخـاص**\n\n"
-    "**⎞𝟏𝟎⎝** `.جلب رحب`\n"
-    "**•• لـ جـلب تـرحيـب الخـاص **\n\n"
-    "\n 𓆩 [𝙎𝙊𝙐𝙍𝘾𝞝](t.me/Tepthon) 𓆪"
+    "**•• لـ جـلـب تـرحـيـبـك**\n\n\n"
+    "**✾╎أوامـر الـردود التلقـائـيـه خـاص 🗣 :** \n"
+    "**⎞𝟏⎝** `.اضف تلقائي`\n"
+    "**•• ⦇ الامـر + كلمـة الـرد ⦈ بالـرد ع جملـة الـرد او بالـرد ع ميديـا**\n"
+    "**•• لـ اضـافة رد تلقائـي لـ الخـاص**\n"
+    "**⎞𝟐⎝** `.حذف تلقائي`\n"
+    "**•• ⦇ الامـر + كلمـة الـرد ⦈ لـ حـذف رد محـدد**\n"
+    "**⎞𝟑⎝** `.ردود الخاص`\n"
+    "**•• لـ عـرض قائمـة بالـردود التلقائيـه الخـاصـه بك**\n"
+    "**⎞𝟒⎝** `.حذف ردود الخاص`\n"
+    "**•• لـ حـذف جميـع ردود الخـاص التلقائيـه**\n\n\n"
+    "**✾╎أوامـر ردود البصمـات والميديـا 🎙:**\n"
+    "**⎞𝟏⎝** `.بصمة`\n"
+    "**•• ⦇ الامـر + كلمـة الـرد ⦈ بالـرد ع بصمـة او ميديـا**\n"
+    "**•• لـ اضـافة رد بصمـة عـام**\n"
+    "**⎞𝟐⎝** `.حذف بصمة`\n"
+    "**•• ⦇ الامـر + كلمـة البصمـة ⦈ لـ حـذف رد بصمـة محـدد**\n"
+    "**⎞𝟑⎝** `.بصماتي`\n"
+    "**•• لـ عـرض قائمـة بـ جميـع بصمـاتك المضـافـه**\n"
+    "**⎞𝟒⎝** `.حذف بصماتي`\n"
+    "**•• لـ حـذف جميـع بصمـاتك المضافـه**\n\n"
+    "\n 𓆩 [𝗦𝗼𝘂𝗿𝗰𝗲 𝗧𝗲𝗽𝘁𝗵𝗼𝗻](t.me/Tepthon) 𓆪"
 )
 
 
@@ -82,8 +98,8 @@ async def filter_incoming_handler(event):
     chat = await event.get_chat()
     me = await event.client.get_me()
     title = get_display_name(await event.get_chat()) or "هـذه الدردشــه"
-    participants = await event.client.get_participants(chat)
-    count = len(participants)
+    #participants = await event.client.get_participants(chat)
+    count = None
     mention = f"[{a_user.first_name}](tg://user?id={a_user.id})"
     my_mention = f"[{me.first_name}](tg://user?id={me.id})"
     first = a_user.first_name
@@ -114,7 +130,6 @@ async def filter_incoming_handler(event):
                 filter_msg.format(
                     mention=mention,
                     title=title,
-                    count=count,
                     first=first,
                     last=last,
                     fullname=fullname,
@@ -138,7 +153,7 @@ async def filter_incoming_handler(event):
         "header": "To save filter for the given keyword.",
         "اضـافـات الــرد": {
             "{mention}": "اضافه منشن",
-            "{title}": "اضافة اسم كـروب الـرد",
+            "{title}": "اضافة اسم جـروب الـرد",
             "{count}": "اضافة عدد اعضاء الكروب",
             "{first}": "اضافة الاسم الاول",
             "{last}": "اضافة الاسم الاخر",
@@ -165,7 +180,7 @@ async def add_new_filter(event):
             await event.client.send_message(
                 BOTLOG_CHATID,
                 f"#الــردود\
-            \n**⪼ ايـدي الدردشـه :**  {event.chat_id}\
+            \n**⪼ ايـدي الدردشـة :**  {event.chat_id}\
             \n**⪼ الــرد :**  {keyword}\
             \n**⪼ تم حفظ الرسـالة كـرد على المستخدمين في المجموعـة المحـددة ...**",
             )
@@ -179,7 +194,7 @@ async def add_new_filter(event):
         else:
             await edit_or_reply(
                 event,
-                "**❈╎يتطلب رد ميديـا تعيين كـروب السجـل اولاً ..**\n**❈╎لاضافـة كـروب السجـل**\n**❈╎اتبـع الشـرح ⇚** https://t.me/zzzvrr/13",
+                "**❈╎يتطلب رد ميديـا تعيين جـروب السجـل أولًا ..**\n**❈╎لإضافـة جـروب السجـل**\n**❈╎أعـد التنصيب على منصـة كويـب** ",
             )
             return
     elif msg and msg.text and not string:
@@ -196,31 +211,31 @@ async def add_new_filter(event):
 
 
 @zedub.zed_cmd(
-    pattern="ردودي$",
-    command=("ردودي", plugin_category),
+    pattern="ردود الكروب$",
+    command=("ردود الكروب", plugin_category),
     info={
         "header": "To list all filters in that chat.",
-        "الاسـتخـدام": "{tr}ردودي",
+        "الاسـتخـدام": "{tr}ردود الكروب",
     },
 )
 async def on_snip_list(event):
     "To list all filters in that chat."
-    OUT_STR = "** ❈╎لاتوجـد ردود محفوظـه في هـذه الدردشـه ༗**"
+    OUT_STR = "** ❈╎لاتوجـد ردود محفوظـة في هـذه الدردشـة ༗**"
     filters = get_filters(event.chat_id)
     for filt in filters:
-        if OUT_STR == "** ❈╎لاتوجـد ردود محفوظـه في هـذه الدردشـه ༗**":
+        if OUT_STR == "** ❈╎لاتوجـد ردود محفوظـة في هـذه الدردشـة ༗**":
             OUT_STR = "𓆩 𝗦𝗼𝘂𝗿𝗰𝗲 𝗧𝗲𝗽𝘁𝗵𝗼𝗻 - قائمـة الـردود 𓆪\n⋆┄─┄─┄─┄┄─┄─┄─┄─┄┄⋆\n"
         OUT_STR += "👉 `{}`\n".format(filt.keyword)
     await edit_or_reply(
         event,
         OUT_STR,
-        caption="**⧗╎الـردود المضـافـه في هـذه الدردشـه هـي :**",
+        caption="**⧗╎الـردود المضـافـه في هـذه الدردشـة هـي :**",
         file_name="filters.text",
     )
 
 
 @zedub.zed_cmd(
-    pattern="حذف رد ([\s\S]*)",
+    pattern="حذف رد ([\\s\\S]*)",
     command=("حذف رد", plugin_category),
     info={
         "header": "To delete that filter . so if user send that keyword bot will not reply",
@@ -279,8 +294,8 @@ async def _(event):
         chat = await event.get_chat()
         me = await event.client.get_me()
         title = get_display_name(await event.get_chat()) or "لـ هـذه الدردشـة"
-        participants = await event.client.get_participants(chat)
-        count = len(participants)
+        #participants = await event.client.get_participants(chat)
+        count = None
         mention = "<a href='tg://user?id={}'>{}</a>".format(
             a_user.id, a_user.first_name
         )
@@ -311,7 +326,6 @@ async def _(event):
             current_saved_welcome_message.format(
                 mention=mention,
                 title=title,
-                count=count,
                 first=first,
                 last=last,
                 fullname=fullname,
@@ -331,7 +345,7 @@ async def _(event):
 
 
 @zedub.zed_cmd(
-    pattern="ترحيب(?:\s|$)([\s\S]*)",
+    pattern="ترحيب(?:\\s|$)([\\s\\S]*)",
     command=("ترحيب", plugin_category),
     info={
         "header": "To welcome new users in chat.",
@@ -377,12 +391,12 @@ async def save_welcome(event):
         else:
             return await edit_or_reply(
                 event,
-                "**يتطلب حفظ تـرحيب الميـديـا .. تعيين فـار كـروب السجـل ؟!...**",
+                "**يتطلب حفظ تـرحيب الميـديـا .. تعيين فـار جـروب السجـل ؟!...**",
             )
     elif event.reply_to_msg_id and not string:
         rep_msg = await event.get_reply_message()
         string = rep_msg.text
-    success = "**⪼ {} التـرحيب .. بنجـاح فـي هـذه الدردشـه 𓆰.**"
+    success = "**⪼ {} التـرحيب .. بنجـاح فـي هـذه الدردشـة 𓆰.**"
     if add_welcome_setting(event.chat_id, 0, string, msg_id) is True:
         return await edit_or_reply(event, success.format("تـم حفـظ"))
     rm_welcome_setting(event.chat_id)
@@ -402,7 +416,7 @@ async def save_welcome(event):
 async def del_welcome(event):
     "To turn off welcome message"
     if rm_welcome_setting(event.chat_id) is True:
-        await edit_or_reply(event, "**⪼ تـم حـذف التـرحيب .. بنجـاح فـي هـذه الدردشـه 𓆰.**")
+        await edit_or_reply(event, "**⪼ تـم حـذف التـرحيب .. بنجـاح فـي هـذه الدردشـة 𓆰.**")
     else:
         await edit_or_reply(event, "**⪼ ليـس لـدي اي ترحيبـات هنـا ؟!.**")
 
@@ -419,18 +433,18 @@ async def show_welcome(event):
     "To show current welcome message in group"
     cws = get_current_welcome_settings(event.chat_id)
     if not cws:
-        return await edit_or_reply(event, "** ⪼ لاتوجد اي رسـاله ترحيب محفوظـه هنـا ؟!...**")
+        return await edit_or_reply(event, "** ⪼ لاتوجد اي رسـالة ترحيب محفوظـة هنـا ؟!...**")
     if cws.f_mesg_id:
         msg_o = await event.client.get_messages(
             entity=BOTLOG_CHATID, ids=int(cws.f_mesg_id)
         )
         await edit_or_reply(
-            event, "** ⪼ أرحب حاليًا بالمستخدمين الجدد بهذه الرساله الترحيبية 𓆰.🜝**"
+            event, "** ⪼ أرحب حاليًّـا بالمستخدمين الجدد بهذه الرسالة الترحيبية 𓆰.🜝**"
         )
         await event.reply(msg_o.message, file=msg_o.media)
     elif cws.reply:
         await edit_or_reply(
-            event, "** ⪼ أرحب حاليًا بالمستخدمين الجدد بهذه الرساله الترحيبية 𓆰.🜝**"
+            event, "** ⪼ أرحب حاليًّـا بالمستخدمين الجدد بهذه الرسالة الترحيبية 𓆰.🜝**"
         )
         await event.reply(cws.reply, link_preview=False)
 
@@ -477,9 +491,9 @@ async def _(event):  # sourcery no-metrics
         a_user = await event.get_user()
         chat = await event.get_chat()
         me = await event.client.get_me()
-        title = get_display_name(await event.get_chat()) or "لهـذه الدردشـه"
-        participants = await event.client.get_participants(chat)
-        count = len(participants)
+        title = get_display_name(await event.get_chat()) or "لهـذه الدردشـة"
+        #participants = await event.client.get_participants(chat)
+        count = None
         mention = "<a href='tg://user?id={}'>{}</a>".format(
             a_user.id, a_user.first_name
         )
@@ -514,7 +528,6 @@ async def _(event):  # sourcery no-metrics
             current_saved_welcome_message.format(
                 mention=mention,
                 title=title,
-                count=count,
                 first=first,
                 last=last,
                 fullname=fullname,
@@ -533,7 +546,7 @@ async def _(event):  # sourcery no-metrics
 
 
 @zedub.zed_cmd(
-    pattern="رحب(?:\s|$)([\s\S]*)",
+    pattern="رحب(?:\\s|$)([\\s\\S]*)",
     command=("رحب", plugin_category),
     info={
         "header": "To welcome user(sends welcome message to here private messages).",
@@ -586,13 +599,13 @@ async def save_welcome(event):
     elif event.reply_to_msg_id and not string:
         rep_msg = await event.get_reply_message()
         string = rep_msg.text
-    success = "**⪼ تـرحيب الخـاص {}  بنجـاح .. في هذه الدردشـه 𓆰**"
+    success = "**⪼ تـرحيب الخـاص {}  بنجـاح .. في هذه الدردشـة 𓆰**"
     if addwelcome_setting(event.chat_id, 0, string, msg_id) is True:
         return await edit_or_reply(event, success.format("تم حفظـه"))
     rmwelcome_setting(event.chat_id)
     if addwelcome_setting(event.chat_id, 0, string, msg_id) is True:
         return await edit_or_reply(event, success.format("تم تحديثـه"))
-    await edit_or_reply("**- خطأ .. لا يسمح بوضع ترحيب خـاص بهذه الدردشـه**")
+    await edit_or_reply("**- خطأ .. لا يسمح بوضع ترحيب خـاص بهذه الدردشـة**")
 
 
 @zedub.zed_cmd(
@@ -607,9 +620,9 @@ async def save_welcome(event):
 async def del_welcome(event):
     "To turn off private welcome message"
     if rmwelcome_setting(event.chat_id) is True:
-        await edit_or_reply(event, "**⪼ تم حذف تـرحيب الخـاص في هذه الدردشـه 𓆰**")
+        await edit_or_reply(event, "**⪼ تم حذف تـرحيب الخـاص في هذه الدردشـة 𓆰**")
     else:
-        await edit_or_reply(event, "**⪼ انت لا تمتلك تـرحيب الخـاص لــ هذه الدردشـه 𓆰**")
+        await edit_or_reply(event, "**⪼ انت لا تمتلك تـرحيب الخـاص لــ هذه الدردشـة 𓆰**")
 
 
 @zedub.zed_cmd(
@@ -624,7 +637,7 @@ async def show_welcome(event):
     "To show current private welcome message in group"
     cws = getcurrent_welcome_settings(event.chat_id)
     if not cws:
-        await edit_or_reply(event, "**⪼ لا يوجد ترحـيب خاص بهـذه الدردشـه 𓆰**")
+        await edit_or_reply(event, "**⪼ لا يوجد ترحـيب خاص بهـذه الدردشـة 𓆰**")
         return
     if cws.f_mesg_id:
         msg_o = await event.client.get_messages(
