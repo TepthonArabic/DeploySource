@@ -1,4 +1,4 @@
-#ZThon Userbot
+#Userbot
 import os
 import io
 import sys
