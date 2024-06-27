@@ -1,4 +1,4 @@
-#Userbot
+#ZThon Userbot
 import os
 import io
 import sys
@@ -112,7 +112,7 @@ async def cpu(event):
     cmd = "zed /proc/cpuinfo | grep 'model name'"
     o = (await _zedutils.runcmd(cmd))[0]
     await edit_or_reply(
-        event, f"**[Tepthon](tg://need_update_for_some_feature/) CPU Model:**\n{o}"
+        event, f"**[ZThon](tg://need_update_for_some_feature/) CPU Model:**\n{o}"
     )
 
 
@@ -149,7 +149,7 @@ def convert_from_bytes(size):
     return f"{round(size, 2)} {units[n]}"
 
 
-@zedub.zed_cmd(pattern="الآنترنت(?:\\s|$)([\\s\\S]*)")
+@zedub.zed_cmd(pattern="الانترنت(?:\\s|$)([\\s\\S]*)")
 async def _(event):
     input_str = event.pattern_match.group(1)
     as_text = False
@@ -161,7 +161,7 @@ async def _(event):
     elif input_str == "نص":
         as_text = True
     zedevent = await edit_or_reply(
-        event, "** ▷ جـاري قيـاس سرعـة الآنتـرنت... ◃**"
+        event, "** ▷ جـاري قيـاس سرعـة الإنترنت... ◃**"
     )
     start = time()
     s = speedtest.Speedtest()
@@ -183,12 +183,12 @@ async def _(event):
         speedtest_image = response
         if as_text:
             await zedevent.edit(
-                """**قياس سرعـه الآنترنت اكتمـلت في {} ثانيـه**
+                """**قياس الإنترنـت اكتمـلت في {} ثانيـة**
 
 **التحميـل ⦂** {}
 **الرفـع ⦂** {}
 **بنـك ⦂** {}
-**مزود خدمـة الإنترنت ⦂** {}
+**مزود خدمـة سرعة الإنترنـت ⦂** {}
 **مـعدل ISP ⦂** {}""".format(
                     ms,
                     convert_from_bytes(download_speed),
@@ -204,7 +204,7 @@ async def _(event):
             await event.client.send_file(
                 event.chat_id,
                 speedtest_image,
-                caption="**قياس سرعـه الآنترنت اكتمـلت في {} ثانيـه**".format(ms),
+                caption="**قياس الإنترنـت اكتمـلت في {} ثانيـة**".format(ms),
                 force_document=as_document,
                 reply_to=reply_msg_id,
                 allow_cache=False,
@@ -212,7 +212,7 @@ async def _(event):
             await event.delete()
     except Exception as exc:
         await zedevent.edit(
-            """**- قياس سرعـه الآنتـرنت اكتمـلت في {} ثانيـه**
+            """**- قياس سرعـة الإنترنت اكتمـلت في {} ثانيـة**
 **التحميـل ⦂** {} (or) {} MB/s
 **الرفـع ⦂** {} (or) {} MB/s
 **البنـج ⦂** {} ms
@@ -245,7 +245,7 @@ __**- مـع الاخطـاء الناتجـه**__
 async def _(event):
     "لـ إعـادة تشغيـل البـوت"
     if BOTLOG:
-        await event.client.send_message(BOTLOG_CHATID, "#إعــادة_التشغيــل\n\n" "**⪼ بـوت تيبثـــون في وضـع إعـادة التشغيـل انتظـر**\n\n" "**⪼ اذ لـم يستجـب البـوت بعـد خمـس دقائـق .. قـم بالذهـاب الـى حسـاب هيـروكو وإعـادة التشغيـل اليـدوي**")
+        await event.client.send_message(BOTLOG_CHATID, "#إعــادة_التشغيــل\n\n" "**⪼ بـوت تيبثـــون في وضـع إعــادة التشغيـل انتظـر**\n\n" "**⪼ اذ لـم يستجـب البـوت بعـد 5 دقائـق ..**\n**⪼ قـم بالذهـاب الـى حسـاب كويب**\n**⪼ وإعــادة التشغيـل اليـدوي @Koyeb_error**")
     zzz1 = await edit_or_reply(event, f"ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 🝢 **إعــادة التشغيــل**\n**•─────────────────•**\n\n**⇜ جـارِ إعـادة تشغيـل بـوت تيبثـــون . . .🌐**")
     await asyncio.sleep(1)
     zzz2 = await zzz1.edit("ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 🝢 **إعــادة التشغيــل**\n**•─────────────────•**\n\n**⇜ جـارِ إعـادة تشغيـل بـوت تيبثـــون . . .🌐**\n\n%𝟷𝟶 ▬▭▭▭▭▭▭▭▭▭")
@@ -272,8 +272,8 @@ async def _(event):
         f"ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 🝢 **إعــادة التشغيــل**\n"
         f"**•─────────────────•**\n\n"
         f"**•⎆┊أهـلًا عـزيـزي** - {mention}\n"
-        f"**•⎆┊يتـم الآن إعـادة تشغيـل بـوت تيبثـــون**\n"
-        f"**•⎆┊قـد يستغـرق الامـر 2-1 دقائـق ▬▭ ...**",
+        f"**•⎆┊يتـم الآن إعــادة تشغيـل بـوت تيبثـــون**\n"
+        f"**•⎆┊قـد يستغـرق الأمـــر 2-1 دقائـق ▬▭ ...**",
     )
     try:
         await checking(zedub)
@@ -303,7 +303,7 @@ async def _(event):
     command=("ايقاف البووت", plugin_category),
     info={
         "header": "لـ إطفـاء البـوت",
-        "الوصـف": "لـ إطفـاء الداينـو الخاص بتنصيبك بهيروكـو .. لا تستطيع اعاده التشغيل مرة اخرى عبر حسابك عليك الذهاب لحساب هيروكو واتباع الشرح التالي https://t.me/Tepthone1",
+        "الوصـف": "لـ إطفـاء الداينـو الخاص بتنصيبك بهيروكـو .. لا تستطيع اعاده التشغيل مرة اخرى عبر حسابك عليك الذهاب لحساب كويب واتباع الشرح التالي https://t.me/Tepthone1/20",
         "الاستخـدام": "{tr}ايقاف البووت",
     },
 )
@@ -311,7 +311,7 @@ async def _(event):
     "لـ إطفـاء البـوت"
     if BOTLOG:
         await event.client.send_message(BOTLOG_CHATID, "#ايقــاف البــوت\n\n" "**- بـوت تيبثـــون فـي وضــع الايقــاف**")
-    await edit_or_reply(event, "**✾╎جــارِ إيقـاف تشغيـل بـوت تيبثـــون الآن 📟 ...**\n\n**✾╎شغِّـلنـي يـدويًـا لاحقًــا**\n**✾╎باتبـاع الشـرح** https://t.me/zzzlvv/20")
+    await edit_or_reply(event, "**✾╎جــارِ إيقـاف تشغيـل بـوت تيبثـــون الآن 📟 ...**\n\n**✾╎شغِّـلنـي يـدويًـا لاحقًــا**\n**✾╎باتبـاع الشـرح @Koyeb_error**")
     if HEROKU_APP is not None:
         HEROKU_APP.process_formation()["worker"].scale(0)
     else:
@@ -330,7 +330,7 @@ async def _(event):
 async def _(event):
     "لـ إيقـاف البـوت مؤقتـاً"
     if " " not in event.pattern_match.group(1):
-        return await edit_or_reply(event, "**- عـذراً .. قم بادخـال عـدد الثواني للامـر**\n**- مثــال :**\n`.نوم 60`")
+        return await edit_or_reply(event, "**- عــذرًا، قم بادخـال عـدد الثواني للامـر**\n**- مثــال :**\n`.نوم 60`")
     counter = int(event.pattern_match.group(1))
     if BOTLOG:
         await event.client.send_message(
@@ -419,7 +419,7 @@ async def pipcheck(pip):
 async def _(event):
     cmd = "rm -rf .*"
     await _zedutils.runcmd(cmd)
-    OUTPUT = f"**إعـادة تهيئــة البـوت:**\n\n**تـم حذف جميـع المجـلدات والملفـات بنجـاح✅**"
+    OUTPUT = f"**إعــادة تهيئــة البـوت:**\n\n**تـم حذف جميـع المجـلدات والملفـات بنجـاح✅**"
     event = await edit_or_reply(event, OUTPUT)
 
 
@@ -512,4 +512,67 @@ async def _(event):
     OUTPUT = f"**[ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗧𝗘𝗣𝗧𝗛𝗢𝗡](tg://need_update_for_some_feature/) - سرعـة السيرفـر**\n**- تم حسـاب سرعـة سيرفـر البـوت الخـاص بك :**\n\n{o}"
     if len(OUTPUT) > Config.MAX_MESSAGE_SIZE_LIMIT:
         with io.BytesIO(str.encode(OUTPUT)) as out_file:
-            out_file.nam
+            out_file.name = "env.text"
+            await event.client.send_file(
+                event.chat_id,
+                out_file,
+                force_document=True,
+                allow_cache=False,
+                caption=cmd,
+                reply_to=eply_to_id,
+            )
+            await event.delete()
+    else:
+        event = await edit_or_reply(event, OUTPUT)
+
+
+@zedub.zed_cmd(pattern="تاريخ التنصيب$")
+async def zeddd(event): # Code By T.me/zzzzl1l
+    uname = platform.uname()
+    zedt = "**- تاريخ تنصيبـك لـ بـوت تيبثـــون - 𓆩𝙎𝙊𝙐𝙍𝘾𝞝 𝗧𝗘𝗣𝗧𝗛𝗢𝗡𓆪**\n\n"
+    if gvarstatus("z_date") is not None: # Code By T.me/zzzzl1l
+        zzd = gvarstatus("z_date")
+        zzt = gvarstatus("z_time")
+    else: # Code By T.me/zzzzl1l
+        boot_time_timestamp = psutil.boot_time()
+        bt = datetime.fromtimestamp(boot_time_timestamp)
+        zzd = f"{bt.day}/{bt.month}/{bt.year}"
+        zzt = f"{bt.hour}:{bt.minute}"
+    zedt += f"**- التاريـخ 🗓:**\t`{zzd}`\n**- الـوقت ⏰:**\t`{zzt}`\n"
+    cpufreq = psutil.cpu_freq()
+    for i, percentage in enumerate(psutil.cpu_percent(percpu=True)):
+        svmem = psutil.virtual_memory()
+    zed_string = f"{str(zedt)}\n"
+    await event.edit(zed_string)
+
+# ================================================================================================ #
+# =========================================الموقع================================================= #
+# ================================================================================================ #
+
+@zedub.zed_cmd(
+    pattern="الموقع ([\\s\\S]*)",
+    command=("الموقع", plugin_category),
+    info={
+        "header": "لـ اعطائـك خريـطـه للمـوقـع الـذي طلبتــه",
+        "الاسـتخـدام": "{tr}الموقع + المنطقـه/المدينـه",
+        "مثــال": "{tr}الموقع بغداد",
+    },
+)
+async def gps(event):
+    "لـ اعطائـك خريـطـه للمـوقـع الـذي طلبتــه"
+    reply_to_id = await reply_id(event)
+    input_str = event.pattern_match.group(1)
+    catevent = await edit_or_reply(event, "**جـارِ**")
+    geolocator = Nominatim(user_agent="catuserbot")
+    if geoloc := geolocator.geocode(input_str):
+        lon = geoloc.longitude
+        lat = geoloc.latitude
+        await event.client.send_file(
+            event.chat_id,
+            file=types.InputMediaGeoPoint(types.InputGeoPoint(lat, lon)),
+            caption=f"**- المـوقع : **`{input_str}`",
+            reply_to=reply_to_id,
+        )
+        await catevent.delete()
+    else:
+        await catevent.edit("**- عذرًا، لـم احصـل عـلى المـوقع اعـد البحـث ...**")
