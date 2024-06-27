@@ -168,7 +168,7 @@ async def upstream(event):
             f"I guess you are on selfhost. For self host you need to use `{cmdhd}تحديث الان`",
         )
     event = await edit_or_reply(event, f"ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 - تحـديثـات السـورس\n**•─────────────────•**\n\n**⪼ يتم تنصيب التحديث  انتظر 🌐 ،**")
-    off_repo = "https://github.com/Deploy-Tepthon/Deploy"
+    off_repo = "https://github.com/RRYR7/Koyeb"
     os.chdir("/app")
     try:
         txt = (
