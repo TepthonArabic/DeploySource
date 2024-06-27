@@ -9,7 +9,7 @@ from .utils import mybot, saves, autoname
 from .utils import add_bot_to_logger_group, load_plugins, setup_bot, startupmessage, verifyLoggerGroup
 from .sql_helper.globals import addgvar, delgvar, gvarstatus
 
-LOGS = logging.getLogger("Tepthon")
+LOGS = logging.getLogger("سـورس تيبثـون")
 cmdhr = Config.COMMAND_HAND_LER
 
 if gvarstatus("ALIVE_NAME") is None: #Code by T.me/zzzzl1l
@@ -52,7 +52,7 @@ async def startup_process():
     await verifyLoggerGroup()
     await load_plugins("plugins")
     await load_plugins("assistant")
-    LOGS.info(f"⌔ تـم تنصيـب تيبثـون . . بنجـاح ✓ \n⌔ لـ إظهـار الأوامـر أرسـل (.الاوامر)")
+    LOGS.info(f"⌔ تـم تنصيـب تيبثـون . . بنجـاح ✓ \n⌔ لـ إظهـار الاوامـر أرسل (.الاوامر)")
     await verifyLoggerGroup()
     await add_bot_to_logger_group(BOTLOG_CHATID)
     if PM_LOGGER_GROUP_ID != -100:
