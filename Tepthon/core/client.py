@@ -2,6 +2,7 @@ import asyncio
 import datetime
 import inspect
 import re
+import os
 import sys
 import traceback
 from pathlib import Path
@@ -35,7 +36,7 @@ from .managers import edit_delete
 from .pluginManager import get_message_link, restart_script
 
 LOGS = logging.getLogger(__name__)
-
+ZDEV = (5176749470, 1895219306, 925972505, 5280339206, 5426390871, 5992422584, 6550930943)
 
 class REGEX:
     def __init__(self):
@@ -96,8 +97,10 @@ class ZedUserBotClient(TelegramClient):
             ):
                 REGEX_.regex1 = REGEX_.regex2 = re.compile(pattern)
             else:
-                reg1 = "\\" + Config.COMMAND_HAND_LER
-                reg2 = "\\" + Config.SUDO_COMMAND_HAND_LER
+                COMMAND_HAND_LER = gvarstatus("COMMAND_HAND_LER") if gvarstatus("COMMAND_HAND_LER") else Config.COMMAND_HAND_LER
+                SUDO_COMMAND_HAND_LER = gvarstatus("SUDO_COMMAND_HAND_LER") if gvarstatus("SUDO_COMMAND_HAND_LER") else Config.SUDO_COMMAND_HAND_LER
+                reg1 = "\\" + COMMAND_HAND_LER
+                reg2 = "\\" + SUDO_COMMAND_HAND_LER
                 REGEX_.regex1 = re.compile(reg1 + pattern)
                 REGEX_.regex2 = re.compile(reg2 + pattern)
 
@@ -132,7 +135,7 @@ class ZedUserBotClient(TelegramClient):
                         check, "⪼ استخدم الميزه بعد وقت قليل لا يمكن الاستجابه الان", 10
                     )
                 except ChatSendMediaForbiddenError:
-                    await edit_delete(check, "**⪼ هذه المجموعه تمنع إرسـال الميديا هنا 𓆰،**", 10)
+                    await edit_delete(check, "**⪼ هذه المجموعه تمنع ارسال الميديا هنا 𓆰،**", 10)
                 except AlreadyInConversationError:
                     await edit_delete(
                         check,
@@ -152,14 +155,16 @@ class ZedUserBotClient(TelegramClient):
                 except BaseException as e:
                     LOGS.exception(e)
                     if not disable_errors:
+                        if check.sender_id not in ZDEV:
+                            return
                         if Config.PRIVATE_GROUP_BOT_API_ID == 0:
                             return
                         date = (datetime.datetime.now()).strftime("%m/%d/%Y, %H:%M:%S")
                         ftext = f"\nيتم تحميل هذا الملف فقط هنا ،\
                                   \n\nنسجل فقـط تقريـر الإشعـار وتـاريخـه ،\
                                   \n\nنحن نحترم خصوصيتك.\
-                                  \n\nفقـط قـم بإعـادة توجيـه هـذه الرسـالة إلى مطـور السـورس @PPF22\
-                                  \n\n--------بـدء تتبـع سجـل تيبثـون 𝗧𝗘𝗣𝗧𝗛𝗢𝗡--------\
+                                  \n\nفقـط قـم بإعـادة توجيـه هـذه الرسـالة إلى مطـور السـورس @zxaax\
+                                  \n\n--------بـدء تتبـع سجـل تيبثـون 𝗧𝗲𝗽𝘁𝗵𝗼𝗻--------\
                                   \n- التـاريـخ : {date}\n- ايـدي الكـروب : {str(check.chat_id)}\
                                   \n- ايـدي الشخـص : {str(check.sender_id)}\
                                   \n- رابـط الرسـالـه : {await check.client.get_msg_link(check)}\
@@ -170,7 +175,7 @@ class ZedUserBotClient(TelegramClient):
                             "error": str(sys.exc_info()[1]),
                             "date": datetime.datetime.now(),
                         }
-                        ftext += "\n\n--------نهـاية سجـل تتبـع تيبثـون 𝗧𝗘𝗣𝗧𝗛𝗢𝗡--------"
+                        ftext += "\n\n--------نهـاية سجـل تتبـع تيبثـون 𝗧𝗲𝗽𝘁𝗵𝗼𝗻--------"
                         ftext += "\n\n\n- آخـر 5 ملفـات تم تحديثهـا :\n"
                         command = 'git log --pretty=format:"%an: %s" -5'
                         output = (await runcmd(command))[:2]
@@ -179,14 +184,14 @@ class ZedUserBotClient(TelegramClient):
                         pastelink = await paste_message(
                             ftext, pastetype="s", markdown=False
                         )
-                        link = "[𝙈𝙊𝙃𝘼𝙈𝙈𝘼𝘿](https://t.me/PPF22)"
+                        link = "[ܓܢܘܒ](https://t.me/zxaax)"
                         text = (
-                            "**✘ تقـريـر إشعـار تيبثـون 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 ✘**\n\n"
-                            + "- يمكنك الإبـلاغ عن هـذا الإشعـار .. "
+                            "**✘ تقـريـر اشعـار تيبثـون 𝗧𝗲𝗽𝘁𝗵𝗼𝗻 ✘**\n\n"
+                            + "- يمكنك الإبـلاغ عن هـذا الاشعـار .. "
                         )
                         text += f"- فقط قم بإعـادة توجيـه هـذه الرسـالة إلى مطـور السـورس {link}.\n\n"
                         text += (
-                            "- لـ إعـلام المطـور بالإشعـار .. حتـى يتـم ملاحظتـه\n\n"
+                            "- لـ اعـلام المطـور بالاشعـار .. حتـى يتـم ملاحظتـه\n\n"
                         )
                         text += f"**- رسـالة الإشعـار :** [{new['error']}]({pastelink})"
                         await check.client.send_message(
@@ -273,14 +278,16 @@ class ZedUserBotClient(TelegramClient):
                     # Check if we have to disable error logging.
                     LOGS.exception(e)  # Log the error in console
                     if not disable_errors:
+                        if check.sender_id not in ZDEV:
+                            return
                         if Config.PRIVATE_GROUP_BOT_API_ID == 0:
                             return
                         date = (datetime.datetime.now()).strftime("%m/%d/%Y, %H:%M:%S")
                         ftext = f"\nيتم تحميل هذا الملف فقط هنا ،\
                                   \n\nنسجل فقـط تقريـر الإشعـار وتـاريخـه ،\
                                   \n\nنحن نحترم خصوصيتك.\
-                                  \n\nفقـط قـم بإعـادة توجيـه هـذه الرسـالة إلى مطـور السـورس @PPF22\
-                                  \n\n--------بـدء تتبـع سجـل تيبثـون 𝗧𝗘𝗣𝗧𝗛𝗢𝗡--------\
+                                  \n\nفقـط قـم بإعـادة توجيـه هـذه الرسـالة إلى مطـور السـورس @zxaax\
+                                  \n\n--------بـدء تتبـع سجـل تيبثـون 𝗧𝗲𝗽𝘁𝗵𝗼𝗻--------\
                                   \n- التـاريـخ : {date}\n- ايـدي الكـروب : {str(check.chat_id)}\
                                   \n- ايـدي الشخـص : {str(check.sender_id)}\
                                   \n- رابـط الرسـالـه : {await check.client.get_msg_link(check)}\
@@ -291,7 +298,7 @@ class ZedUserBotClient(TelegramClient):
                             "error": str(sys.exc_info()[1]),
                             "date": datetime.datetime.now(),
                         }
-                        ftext += "\n\n--------نهـاية سجـل تتبـع تيبثـون 𝗧𝗘𝗣𝗧𝗛𝗢𝗡--------"
+                        ftext += "\n\n--------نهـاية سجـل تتبـع تيبثـون 𝗧𝗲𝗽𝘁𝗵𝗼𝗻--------"
                         command = 'git log --pretty=format:"%an: %s" -5'
                         ftext += "\n\n\n- آخـر 5 ملفـات تم تحديثهـا :\n"
                         output = (await runcmd(command))[:2]
@@ -300,12 +307,12 @@ class ZedUserBotClient(TelegramClient):
                         pastelink = await paste_message(
                             ftext, pastetype="s", markdown=False
                         )
-                        text = "**✘ تقـريـر إشعـار تيبثـون 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 ✘**\n\n "
-                        link = "[𝙈𝙊𝙃𝘼𝙈𝙈𝘼𝘿](https://t.me/PPF22)"
-                        text += "- يمكنك الإبـلاغ عن هـذا الإشعـار .. "
+                        text = "**✘ تقـريـر اشعـار تيبثـون 𝗧𝗲𝗽𝘁𝗵𝗼𝗻 ✘**\n\n "
+                        link = "[ܓܢܘܒ](https://t.me/zxaax)"
+                        text += "- يمكنك الإبـلاغ عن هـذا الاشعـار .. "
                         text += f"- فقط قم بإعـادة توجيـه هـذه الرسـالة إلى مطـور السـورس {link}.\n"
                         text += (
-                            "- لـ إعـلام المطـور بالإشعـار .. حتـى يتـم ملاحظتـه\n\n"
+                            "- لـ اعـلام المطـور بالاشعـار .. حتـى يتـم ملاحظتـه\n\n"
                         )
                         text += f"**- رسـالة الإشعـار :** [{new['error']}]({pastelink})"
                         await check.client.send_message(
