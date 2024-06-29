@@ -125,17 +125,17 @@ class ZedUserBotClient(TelegramClient):
                 except MessageIdInvalidError:
                     LOGS.error("الرسالة تم حذفها او لم يتم العثور عليها")
                 except BotInlineDisabledError:
-                    await edit_delete(check, "**⌔∮ يجب عليك تفعيل وضع الانلاين اولاً**", 10)
+                    await edit_delete(check, "**⌔∮ يجب عليك تفعيل وضع الأونلاين أولًا**", 10)
                 except ChatSendStickersForbiddenError:
                     await edit_delete(
                         check, "**- هـذه المجمـوعـه لا تسمح بارسـال الملصقـات هنا**", 10
                     )
                 except BotResponseTimeoutError:
                     await edit_delete(
-                        check, "⪼ استخدم الميزه بعد وقت قليل لا يمكن الاستجابه الان", 10
+                        check, "⪼ استخدم الميزه بعد وقت قليل لا يمكن الاستجابة الآن", 10
                     )
                 except ChatSendMediaForbiddenError:
-                    await edit_delete(check, "**⪼ هذه المجموعه تمنع ارسال الميديا هنا 𓆰،**", 10)
+                    await edit_delete(check, "**⪼ هذه المجموعه تمنع إرسال الميديا هنا 𓆰،**", 10)
                 except AlreadyInConversationError:
                     await edit_delete(
                         check,
@@ -144,7 +144,7 @@ class ZedUserBotClient(TelegramClient):
                     )
                 except ChatSendInlineForbiddenError:
                     await edit_delete(
-                        check, "**- عـذراً .. الانـلايـن فـي هـذه المجمـوعـة مغـلق**", 10
+                        check, "**- عذرًا، الأونلاين فـي هـذه المجمـوعـة مغـلق**", 10
                     )
                 except FloodWaitError as e:
                     LOGS.error(
