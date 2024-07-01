@@ -18,12 +18,12 @@ from ..helpers.functions import zedalive, check_data_base_heal_th, get_readable_
 from ..helpers.utils import reply_id
 from ..sql_helper.globals import gvarstatus
 
-HELP = f"**🧑🏻‍💻┊مـࢪحبـاً عـزيـزي {mention}**\n**🛂┊في قائمـة المسـاعـده والشـروحـات\n🛃┊من هنـا يمكنـك ايجـاد شـرح لكـل اوامـر السـورس**\n\n[ᯓ 𝗭𝗧𝗵𝗼𝗻 𝗨𝘀𝗲𝗿𝗯𝗼𝘁 ♥️](https://t.me/ZThon)\n\n"
+HELP = f"**🧑🏻‍💻┊مرحبًـا عـزيـزي {mention}**\n**🛂┊في قائمـة المسـاعـده والشـروحـات\n🛃┊من هنـا يمكنـك إيجـاد شـرح لكـل أوامر السـورس**\n\n[ᯓ 𝗧𝗲𝗽𝘁𝗵𝗼𝗻 𝗨𝘀𝗲𝗿𝗯𝗼𝘁 ♥️](https://t.me/Tepthon)\n\n"
 
 ZelzalTZ_cmd = (
-    "𓆩 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 𝗧𝗶𝗺𝗲 **🝢 المنطقة الزمنية** 𓆪\n"
+    "𓆩 𝗧𝗲𝗽𝘁𝗵𝗼𝗻 𝗧𝗶𝗺𝗲 **🝢 المنطقة الزمنية** 𓆪\n"
     "**⋆┄─┄─┄─┄─┄─┄─┄─┄⋆**\n"
-    "**⎉╎قائمـة اوامر تغييـر المنطقـة الزمنيـة لـ ضبط الوقت ع زدثــون حسب توقيت دولتك 🌐:** \n\n"
+    "**⎉╎قائمـة اوامر تغييـر المنطقـة الزمنيـة لـ ضبط الوقت ع تيبثــون حسب توقيت دولتك 🌐:** \n\n"
     "⪼ `.وقت فلسطين` \n"
     "⪼ `.وقت اليمن` \n"
     "⪼ `.وقت العراق` \n"
@@ -59,16 +59,16 @@ ZelzalTZ_cmd = (
     "⪼ `.وقت الهند` \n"
     "⪼ `.وقت اندنوسيا` \n"
     "⪼ `.وقت ماليزيا` \n\n"
-    "**🛃 اذا لم تجد دولتك .. قم بالبحث عن اقرب دوله لها**\n"
-    "𓆩 [𝗧𝗘𝗣𝗧𝗛𝗢𝗡 𝗩𝗮𝗿𝘀 - قنـاة الفـارات](t.me/Tepthone1) 𓆪"
+    "**🛃 اذا لم تجد دولتك قم بالبحث عن أقرب دولة لها**\n"
+    "𓆩 [𝗧𝗲𝗽𝘁𝗵𝗼𝗻 𝗩𝗮𝗿𝘀 - قنـاة الفـارات](t.me/Tepthone1) 𓆪"
 )
 
 zed_temp = """
 ┏───────────────┓
-│ ◉ sᴏʀᴄᴇ ᴛᴇᴘᴛʜᴏɴ ɪs ʀᴜɴɴɪɴɢ ɴᴏᴡ
+│ ◉ ѕᴏụʀᴄᴇ ᴛᴇᴘᴛʜᴏɴ ɪs ʀᴜɴɴɪɴɢ ɴᴏᴡ
 ┣───────────────┫
 │ ● ɴᴀᴍᴇ ➪  {mention}
-│ ● ᴢᴛʜᴏɴ ➪ {telever}
+│ ● ᴛᴇᴘᴛʜᴏɴ ➪ {telever}
 │ ● ᴘʏᴛʜᴏɴ ➪ {pyver}
 │ ● ᴘʟᴀᴛғᴏʀᴍ ➪ 𐌺᧐yᥱδ
 │ ● ᴘɪɴɢ ➪ {ping}
@@ -87,7 +87,7 @@ if Config.TG_BOT_USERNAME is not None and tgbot is not None:
         result = None
         query = event.text
         await zedub.get_me()
-        if query.startswith("مساعده") and event.query.user_id == zedub.uid:
+        if query.startswith("مساعدة") and event.query.user_id == zedub.uid:
             buttons = [
                 [Button.inline("البـحـث والتحميـل 🪄", data="zdownload")],
                 [
@@ -95,7 +95,7 @@ if Config.TG_BOT_USERNAME is not None and tgbot is not None:
                     Button.inline("الحساب🎗", data="acccount"),
                 ],
                 [
-                    Button.inline("الكلايـش & التخصيص 🪁", data="kalaysh"),
+                    Button.inline("الكلايـش والتخصيص 🪁", data="kalaysh"),
                 ],
                 [
                     Button.inline("المجمـوعـة 🛗", data="groupvr"),
@@ -106,7 +106,7 @@ if Config.TG_BOT_USERNAME is not None and tgbot is not None:
                 ],
                 [
                     Button.inline("المرفقـات 🪁", data="extras"),
-                    Button.inline("الادوات 💡", data="toolzed"),
+                    Button.inline("الأدوات 💡", data="toolzed"),
                 ],
                 [
                     Button.inline("الذكـاء الاصطنـاعـي 🛸", data="zchatgpt"),
