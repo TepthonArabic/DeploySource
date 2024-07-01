@@ -1,14 +1,81 @@
 import re
+import random
+import time
+import psutil
+from datetime import datetime
+from platform import python_version
 
-from telethon import Button, events
+import requests
+from telethon import Button, events, version
 from telethon.events import CallbackQuery
-from ..core import check_owner, pool
 
-from Tepthon import zedub
+from . import StartTime, zedub, zedversion, mention
 
 from ..Config import Config
-from . import mention
-HELP = f"**🧑🏻‍💻┊مـࢪحبًا عـزيـزي {mention}**\n**🛂┊في قائمـة المسـاعـده والشـروحـات\n🛃┊من هنـا يمكنـك إيـجاد شـرح لكـل اوامـر السـورس**\n\n[ᯓ 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 ♥️](https://t.me/Tepthon)\n\n"
+from ..core.managers import edit_or_reply
+from ..core import check_owner, pool
+from ..helpers.functions import zedalive, check_data_base_heal_th, get_readable_time
+from ..helpers.utils import reply_id
+from ..sql_helper.globals import gvarstatus
+
+HELP = f"**🧑🏻‍💻┊مـࢪحبـاً عـزيـزي {mention}**\n**🛂┊في قائمـة المسـاعـده والشـروحـات\n🛃┊من هنـا يمكنـك ايجـاد شـرح لكـل اوامـر السـورس**\n\n[ᯓ 𝗭𝗧𝗵𝗼𝗻 𝗨𝘀𝗲𝗿𝗯𝗼𝘁 ♥️](https://t.me/ZThon)\n\n"
+
+ZelzalTZ_cmd = (
+    "𓆩 𝗧𝗘𝗣𝗧𝗛𝗢𝗡 𝗧𝗶𝗺𝗲 **🝢 المنطقة الزمنية** 𓆪\n"
+    "**⋆┄─┄─┄─┄─┄─┄─┄─┄⋆**\n"
+    "**⎉╎قائمـة اوامر تغييـر المنطقـة الزمنيـة لـ ضبط الوقت ع زدثــون حسب توقيت دولتك 🌐:** \n\n"
+    "⪼ `.وقت فلسطين` \n"
+    "⪼ `.وقت اليمن` \n"
+    "⪼ `.وقت العراق` \n"
+    "⪼ `.وقت السعودية` \n"
+    "⪼ `.وقت سوريا` \n"
+    "⪼ `.وقت الامارات` \n"
+    "⪼ `.وقت قطر` \n"
+    "⪼ `.وقت الكويت` \n"
+    "⪼ `.وقت البحرين` \n"
+    "⪼ `.وقت سلطنة عمان` \n"
+    "⪼ `.وقت الاردن` \n"
+    "⪼ `.وقت لبنان` \n"
+    "⪼ `.وقت مصر` \n"
+    "⪼ `.وقت السودان` \n"
+    "⪼ `.وقت ليبيا` \n"
+    "⪼ `.وقت الجزائر` \n"
+    "⪼ `.وقت المغرب` \n"
+    "⪼ `.وقت تونس` \n"
+    "⪼ `.وقت موريتانيا` \n"
+    "⪼ `.وقت ايران` \n"
+    "⪼ `.وقت تركيا` \n"
+    "⪼ `.وقت امريكا` \n"
+    "⪼ `.وقت روسيا` \n"
+    "⪼ `.وقت ايطاليا` \n"
+    "⪼ `.وقت المانيا` \n"
+    "⪼ `.وقت فرنسا` \n"
+    "⪼ `.وقت اسبانيا` \n"
+    "⪼ `.وقت بريطانيا` \n"
+    "⪼ `.وقت بلجيكا` \n"
+    "⪼ `.وقت النرويج` \n"
+    "⪼ `.وقت الصين` \n"
+    "⪼ `.وقت اليابان` \n"
+    "⪼ `.وقت الهند` \n"
+    "⪼ `.وقت اندنوسيا` \n"
+    "⪼ `.وقت ماليزيا` \n\n"
+    "**🛃 اذا لم تجد دولتك .. قم بالبحث عن اقرب دوله لها**\n"
+    "𓆩 [𝗧𝗘𝗣𝗧𝗛𝗢𝗡 𝗩𝗮𝗿𝘀 - قنـاة الفـارات](t.me/Tepthone1) 𓆪"
+)
+
+zed_temp = """
+┏───────────────┓
+│ ◉ sᴏʀᴄᴇ ᴛᴇᴘᴛʜᴏɴ ɪs ʀᴜɴɴɪɴɢ ɴᴏᴡ
+┣───────────────┫
+│ ● ɴᴀᴍᴇ ➪  {mention}
+│ ● ᴢᴛʜᴏɴ ➪ {telever}
+│ ● ᴘʏᴛʜᴏɴ ➪ {pyver}
+│ ● ᴘʟᴀᴛғᴏʀᴍ ➪ 𐌺᧐yᥱδ
+│ ● ᴘɪɴɢ ➪ {ping}
+│ ● ᴜᴘ ᴛɪᴍᴇ ➪ {uptime}
+│ ● ᴀʟɪᴠᴇ sɪɴᴇᴄ ➪ {zedda}
+│ ● ᴍʏ ᴄʜᴀɴɴᴇʟ ➪ [ᴄʟɪᴄᴋ ʜᴇʀᴇ](https://t.me/Tepthon)
+┗───────────────┛"""
 
 
 if Config.TG_BOT_USERNAME is not None and tgbot is not None:
@@ -22,13 +89,13 @@ if Config.TG_BOT_USERNAME is not None and tgbot is not None:
         await zedub.get_me()
         if query.startswith("مساعده") and event.query.user_id == zedub.uid:
             buttons = [
-                [Button.inline("𝗧𝗘𝗣𝗧𝗛𝗢𝗡 𝗨𝘀𝗲𝗿𝗯𝗼𝘁", data="ZAZ")],
+                [Button.inline("البـحـث والتحميـل 🪄", data="zdownload")],
                 [
                     Button.inline("البـوت 🤖", data="botvr"),
                     Button.inline("الحساب🎗", data="acccount"),
                 ],
                 [
-                    Button.inline("البـحـث والتحميـل 🪄", data="zdownload"),
+                    Button.inline("الكلايـش & التخصيص 🪁", data="kalaysh"),
                 ],
                 [
                     Button.inline("المجمـوعـة 🛗", data="groupvr"),
@@ -41,10 +108,57 @@ if Config.TG_BOT_USERNAME is not None and tgbot is not None:
                     Button.inline("المرفقـات 🪁", data="extras"),
                     Button.inline("الادوات 💡", data="toolzed"),
                 ],
+                [
+                    Button.inline("الذكـاء الاصطنـاعـي 🛸", data="zchatgpt"),
+                ],
+                [
+                    Button.inline("السوبـرات 🎡", data="superzzz"),
+                    Button.inline("التجميـع 🛗", data="pointzzz"),
+                ],
             ]
             result = builder.article(
                 title="zedub",
                 text=HELP,
+                buttons=buttons,
+                link_preview=False,
+            )
+        if query.startswith("الفحص") and event.query.user_id == zedub.uid:
+            uptime = await get_readable_time((time.time() - StartTime))
+            boot_time_timestamp = psutil.boot_time()
+            bt = datetime.fromtimestamp(boot_time_timestamp)
+            start = datetime.now()
+            end = datetime.now()
+            ms = (end - start).microseconds / 1000
+            _, check_sgnirts = check_data_base_heal_th()
+            if gvarstatus("z_date") is not None:
+                zzd = gvarstatus("z_date")
+                zzt = gvarstatus("z_time")
+                zedda = f"{zzd}┊{zzt}"
+            else:
+                zedda = f"{bt.year}/{bt.month}/{bt.day}"
+            zme = await zedub.get_me()
+            z_name = f"{zme.first_name}{zme.last_name}" if zme.last_name else zme.first_name
+            z_username = zme.username if zme.username else "ZThon"
+            USERID = zedub.uid if Config.OWNER_ID == 0 else Config.OWNER_ID
+            ALIVE_NAME = gvarstatus("ALIVE_NAME") if gvarstatus("ALIVE_NAME") else "-"
+            mention = f"[{ALIVE_NAME}](tg://user?id={USERID})"
+            zed_caption = gvarstatus("ALIVE_TEMPLATE") or zed_temp
+            caption = zed_caption.format(
+                mention=mention,
+                uptime=uptime,
+                zedda=zzd,
+                zzd=zzd,
+                zzt=zzt,
+                telever=version.__version__,
+                zdver=zedversion,
+                pyver=python_version(),
+                dbhealth=check_sgnirts,
+                ping=ms,
+            )
+            buttons = [[Button.url(z_name, f"https://t.me/{z_username}")]]
+            result = builder.article(
+                title="zedub",
+                text=caption,
                 buttons=buttons,
                 link_preview=False,
             )
@@ -56,6 +170,15 @@ async def help(event):
     if event.reply_to_msg_id:
         await event.get_reply_message()
     response = await zedub.inline_query(Config.TG_BOT_USERNAME, "مساعده")
+    await response[0].click(event.chat_id)
+    await event.delete()
+
+
+@zedub.zed_cmd(pattern="الفحص")
+async def help(event):
+    if event.reply_to_msg_id:
+        await event.get_reply_message()
+    response = await zedub.inline_query(Config.TG_BOT_USERNAME, "الفحص")
     await response[0].click(event.chat_id)
     await event.delete()
 
