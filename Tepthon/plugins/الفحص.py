@@ -96,36 +96,3 @@ zed_temp = """{ALIVE_TEXT}
 **{Z_EMOJI} وقت التنصيب :** `{zzt}`
 **{Z_EMOJI} المسـتخـدم:** {mention}
 **{Z_EMOJI} قنـاة السـورس :** [اضغـط هنـا](https://t.me/Tepthon)"""
-
-
-@zedub.zed_cmd(
-    pattern="الفحص$",
-    command=("الفحص", plugin_category),
-    info={
-        "header": "- لـ التحـقق من ان البـوت يعمـل بنجـاح .. بخـاصيـة الانـلايـن ✓",
-        "الاسـتخـدام": [
-            "{tr}الفحص",
-        ],
-    },
-)
-async def z_alive(event):
-    "A kind of showing bot details by your inline bot"
-    reply_to_id = await reply_id(event)
-    Z_EMOJI = gvarstatus("ALIVE_EMOJI") or "✥┊"
-    USERID = zedub.uid if Config.OWNER_ID == 0 else Config.OWNER_ID
-    ALIVE_NAME = gvarstatus("ALIVE_NAME") if gvarstatus("ALIVE_NAME") else "-"
-    mention = f"[{ALIVE_NAME}](tg://user?id={USERID})"
-    zed_caption = "** بـوت  تيبثــون 𝗧𝗘𝗣𝗧𝗛𝗢𝗡  يعمـل .. بنجـاح ☑️ 𓆩 **\n"
-    zed_caption += f"**{Z_EMOJI} إصـدار التـيليثون :** `{version.__version__}\n`"
-    zed_caption += f"**{Z_EMOJI} إصـدار تيبثــون :** `{zedversion}`\n"
-    zed_caption += f"**{Z_EMOJI} إصـدار البـايثون :** `{python_version()}\n`"
-    zed_caption += f"**{Z_EMOJI} المسـتخدم :** {mention}\n"
-    results = await event.client.inline_query(Config.TG_BOT_USERNAME, zed_caption)
-    await results[0].click(event.chat_id, reply_to=reply_to_id, hide_via=True)
-    await event.delete()
-
-
-@zedub.tgbot.on(CallbackQuery(data=re.compile(b"stats")))
-async def on_plug_in_callback_query_handler(event):
-    statstext = await zedalive(StartTime)
-    await event.answer(statstext, cache_time=0, alert=True)
