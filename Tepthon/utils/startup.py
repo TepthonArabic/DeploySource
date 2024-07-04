@@ -45,7 +45,7 @@ LOGS = logging.getLogger("Tepthon")
 cmdhr = Config.COMMAND_HAND_LER
 Zed_Vip = (1260465030, 6269925462, 6550930943, 5993018048, 5809896714, 1985225531, 6886550001, 925972505, 6038855721)
 Zed_Dev = (1260465030, 925953505, 574554340, 5003408173, 6227995448, 2093357462, 5133749470, 542605871)
-zchannel = {"@Tepthon", "@Tws_Tepthon", "@Tepthone1", "@Tepthon_Support", "@VVV5P", "@PPYNY"}
+zchannel = {"@Tepthon", "@Tws_Tepthon", "@Tepthone1", "@TepthonHelp", "@VVV5P", "@PPYNY"}
 heroku_api = "https://api.heroku.com"
 if Config.HEROKU_APP_NAME is not None and Config.HEROKU_API_KEY is not None:
     Heroku = heroku3.from_key(Config.HEROKU_API_KEY)
