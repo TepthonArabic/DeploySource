@@ -21,7 +21,7 @@ LOGS = logging.getLogger("تيبثــون")
 bot = zedub
 
 StartTime = time.time()
-zedversion = "3.3.3"
+tepversion = "3.3.3"
 
 if Config.UPSTREAM_REPO == "zel":
     UPSTREAM_REPO_URL = "https://github.com/RRYR7/thesource"
