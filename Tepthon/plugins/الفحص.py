@@ -14,7 +14,7 @@ from telethon.errors.rpcerrorlist import (
 )
 from telethon.events import CallbackQuery
 
-from . import StartTime, zedub, zedversion
+from . import StartTime, zedub, tepversion
 
 from ..Config import Config
 from ..core.managers import edit_or_reply
@@ -59,7 +59,7 @@ async def zed_alive(event):
         zzd=zzd,
         zzt=zzt,
         telever=version.__version__,
-        tepver=zedversion,
+        tepver=tepversion,
         pyver=python_version(),
         dbhealth=check_sgnirts,
         ping=ms,
