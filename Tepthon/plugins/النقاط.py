@@ -25,15 +25,15 @@ ZelzalCoins_cmd = (
     "`.المليار`\n"
     "**⪼ لـ تجميـع النقـاط مـن بـوت المليـار ( @EEOBot ) .. تلقـائيًّـا ✓**\n\n"
     "`.العرب`\n"
-    "**⪼ لـ تجميـع النقـاط مـن بـوت العـرب ( @xnsex21bot ) .. تلقـائيًّــا ✓**\n\n"
+    "**⪼ لـ تجميـع النقـاط مـن بـوت العـرب ( @TTZBoT ) .. تلقـائيًّــا ✓**\n\n"
     "`.دعمكم`\n"
     "**⪼ لـ تجميـع النقـاط مـن بـوت دعمكـم ( @DamKombot ) .. تلقـائيًّــا ✓**\n\n"
     "`.الجوكر`\n"
     "**⪼ لـ تجميـع النقـاط مـن بـوت الجوكـر ( @A_MAN9300BOT ) .. تلقائيًّـا ✓**\n\n"
     "`.الجنرال`\n"
-    "**⪼ لـ تجميـع النقـاط مـن بـوت العقــاب ( @MARKTEBOT ) .. تلقائيًّـا ✓**\n\n"
+    "**⪼ لـ تجميـع النقـاط مـن بـوت العقــاب ( @TTNBOT ) .. تلقائيًّـا ✓**\n\n"
       "`.آسياسيل`\n"
-    "**⪼ لـ تجميـع النقـاط مـن بـوت آسياسيـل ( @MARKTEBOT ) .. تلقائيًّـا ✓**\n\n"
+    "**⪼ لـ تجميـع النقـاط مـن بـوت آسياسيـل ( @yynnurybot ) .. تلقائيًّـا ✓**\n\n"
     "`.المليون`\n"
     "**⪼ لـ تجميـع النقـاط مـن بـوت المليــون ( @qweqwe1919bot ) .. تلقائيًّـا ✓**\n\n\n"
     "`.سمسم`\n"
@@ -57,7 +57,7 @@ ZelzalCoins_cmd = (
     "`.اضف بوت التجميع`\n"
     "**⪼ بالـرد على معـرف البـوت الجديـد لـ إضافته لـ السـورس ..**\n\n"
     "`.تجميع`\n"
-    "**⪼ لـ تجميـع النقـاط مـن البـوت المضاف لـ الفـارات .. تلقـائيًــا ✓**\n\n"
+    "**⪼ لـ تجميـع النقـاط مـن البـوت المضاف لـ الفـارات .. تلقائيًّا ✓**\n\n"
     "`.تجميع ايقاف`\n"
     "**⪼ لـ ايقـاف عمليـة تجميـع النقـاط من البوت المضاف للفـارات ..**\n\n"
     "`.بوت التجميع`\n"
@@ -67,12 +67,12 @@ ZelzalCoins_cmd = (
     "`.راتب وعد`\n"
     "`.استثمار وعد`\n"
     "`.كلمات وعد`\n"
-    "**⪼ لـ تجميـع نقـاط العـاب في بوت وعـد تلقائيًــا ✓ ..قم بـ إضافة البوت في مجموعة جديدة ثم ارسل**\n"
-    "**الامـر + عـدد الاعـادة للامـر**\n"
+    "**⪼ لـ تجميـع نقـاط العـاب في بوت وعـد تلقائيًــا ✓ ..قم بـ إضافة البوت في مجموعة جديدة ثم أرسل**\n"
+    "**الأمـر + عـدد الإعادة للأمـر**\n"
     "**⪼ مثــال :**\n"
     "`.راتب وعد 50`\n\n\n"
     "**- ملاحظـة :**\n"
-    "**⪼ سيتم إضـافـة المزيـد من البوتـات بالتحديثـات القادمـة .. اذا تريـد اضافـة بـوت محـدد راسـل مطـور السـورس @PPF22**"
+    "**⪼ سيتم إضـافـة المزيـد من البوتـات بالتحديثـات القادمـة .. إذا تريـد إضـافة بـوت محـدد راسـل مطـور السـورس @zxaax**"
 )
 
 @zedub.zed_cmd(pattern="بوت المليار$")
@@ -125,19 +125,19 @@ async def _(event):
 
 @zedub.zed_cmd(pattern="بوت العرب$")
 async def _(event):
-    await event.edit('@xnsex21bot')
+    await event.edit('@TTZBoT')
 
 @zedub.zed_cmd(pattern="(العرب|تجميع العرب)(?: |$)(.*)")
 async def _(event):
     con = event.pattern_match.group(1).lower()
-    await event.edit("**⎉╎حسنًـا .. تأكـد من أنـك مشتـرك بـ قنـوات الاشتـراك الإجبـاري لتجنب الأخطـاء @xnsex21bot**")
-    channel_entity = await zedub.get_entity('@xnsex21bot')
-    await zedub.send_message('@xnsex21bot', '/start')
+    await event.edit("**⎉╎حسنًـا .. تأكـد من أنـك مشتـرك بـ قنـوات الاشتـراك الإجبـاري لتجنب الأخطـاء @TTZBoT**")
+    channel_entity = await zedub.get_entity('@TTZBoT')
+    await zedub.send_message('@TTZBoT', '/start')
     await asyncio.sleep(4)
-    msg0 = await zedub.get_messages('@xnsex21bot', limit=1)
+    msg0 = await zedub.get_messages('@TTZBoT', limit=1)
     await msg0[0].click(2)
     await asyncio.sleep(4)
-    msg1 = await zedub.get_messages('@xnsex21bot', limit=1)
+    msg1 = await zedub.get_messages('@TTZBoT', limit=1)
     await msg1[0].click(0)
     chs = 1
     for i in range(100):
@@ -157,12 +157,12 @@ async def _(event):
             except:
                 bott = url.split('/')[-1]
                 await zedub(ImportChatInviteRequest(bott))
-            msg2 = await zedub.get_messages('@xnsex21bot', limit=1)
+            msg2 = await zedub.get_messages('@TTZBoT', limit=1)
             await msg2[0].click(text='تحقق')
             chs += 1
             await event.edit(f"**⎉╎تم الاشتـراك في القنـاة  {chs} ...✓**")
         except: #Code by T.me/zzzzl1l
-            msg2 = await zedub.get_messages('@xnsex21bot', limit=1)
+            msg2 = await zedub.get_messages('@TTZBoT', limit=1)
             await msg2[0].click(text='التالي')
             chs += 1
             await event.edit(f"**⎉╎القنـاة رقـم {chs} .. يمكـن تبنـدت**")
@@ -274,20 +274,20 @@ async def _(event):
 
 @zedub.zed_cmd(pattern="بوت الجنرال$")
 async def _(event):
-    await event.edit('@MARKTEBOT')
+    await event.edit('@TTNBOT')
 
 # Copyright (C) 2022 Zed-Thon . All Rights Reserved
 @zedub.zed_cmd(pattern="(الجنرال|تجميع الجنرال)(?: |$)(.*)")
 async def _(event):
     con = event.pattern_match.group(1).lower()
-    await event.edit("**⎉╎حسنًـا .. تأكـد من أنـك مشتـرك بـ قنـوات الاشتـراك الإجبـاري لتجنب الأخطـاء @MARKTEBOT**")
-    channel_entity = await zedub.get_entity('@MARKTEBOT')
-    await zedub.send_message('@MARKTEBOT', '/start')
+    await event.edit("**⎉╎حسنًـا .. تأكـد من أنـك مشتـرك بـ قنـوات الاشتـراك الإجبـاري لتجنب الأخطـاء @TTNBOT**")
+    channel_entity = await zedub.get_entity('@TTNBOT')
+    await zedub.send_message('@TTNBOT', '/start')
     await asyncio.sleep(4)
-    msg0 = await zedub.get_messages('@MARKTEBOT', limit=1)
+    msg0 = await zedub.get_messages('@TTNBOT', limit=1)
     await msg0[0].click(2)
     await asyncio.sleep(4)
-    msg1 = await zedub.get_messages('@MARKTEBOT', limit=1)
+    msg1 = await zedub.get_messages('@TTNBOT', limit=1)
     await msg1[0].click(0)
     chs = 1
     for i in range(100):
@@ -307,12 +307,12 @@ async def _(event):
             except:
                 bott = url.split('/')[-1]
                 await zedub(ImportChatInviteRequest(bott))
-            msg2 = await zedub.get_messages('@MARKTEBOT', limit=1)
+            msg2 = await zedub.get_messages('@TTNBOT', limit=1)
             await msg2[0].click(text='تحقق')
             chs += 1
             await event.edit(f"**⎉╎تم الاشتـراك في القنـاة  {chs} ...✓**")
         except: #Code by T.me/zzzzl1l
-            msg2 = await zedub.get_messages('@MARKTEBOT', limit=1)
+            msg2 = await zedub.get_messages('@TTNBOT', limit=1)
             await msg2[0].click(text='التالي')
             chs += 1
             await event.edit(f"**⎉╎القنـاة رقـم {chs} .. يمكـن تبنـدت**")
@@ -368,20 +368,20 @@ async def _(event):
     
 @zedub.zed_cmd(pattern="بوت العقاب$")
 async def _(event):
-    await event.edit('@MARKTEBOT')
+    await event.edit('@TTNBOT')
 
 # Copyright (C) 2022 Zed-Thon . All Rights Reserved
 @zedub.zed_cmd(pattern="(العقاب|تجميع العقاب)(?: |$)(.*)")
 async def _(event):
     con = event.pattern_match.group(1).lower()
-    await event.edit("**⎉╎حسنًـا .. تأكـد من أنـك مشتـرك بـ قنـوات الاشتـراك الإجبـاري لتجنب الأخطـاء @MARKTEBOT**")
-    channel_entity = await zedub.get_entity('@MARKTEBOT')
-    await zedub.send_message('@MARKTEBOT', '/start')
+    await event.edit("**⎉╎حسنًـا .. تأكـد من أنـك مشتـرك بـ قنـوات الاشتـراك الإجبـاري لتجنب الأخطـاء @TTNBOT**")
+    channel_entity = await zedub.get_entity('@TTNBOT')
+    await zedub.send_message('@TTNBOT', '/start')
     await asyncio.sleep(4)
-    msg0 = await zedub.get_messages('@MARKTEBOT', limit=1)
+    msg0 = await zedub.get_messages('@TTNBOT', limit=1)
     await msg0[0].click(2)
     await asyncio.sleep(4)
-    msg1 = await zedub.get_messages('@MARKTEBOT', limit=1)
+    msg1 = await zedub.get_messages('@TTNBOT', limit=1)
     await msg1[0].click(0)
     chs = 1
     for i in range(100):
@@ -401,12 +401,12 @@ async def _(event):
             except:
                 bott = url.split('/')[-1]
                 await zedub(ImportChatInviteRequest(bott))
-            msg2 = await zedub.get_messages('@MARKTEBOT', limit=1)
+            msg2 = await zedub.get_messages('@TTNBOT', limit=1)
             await msg2[0].click(text='تحقق')
             chs += 1
             await event.edit(f"**⎉╎تم الاشتـراك في القنـاة  {chs} ...✓**")
         except: #Code by T.me/zzzzl1l
-            msg2 = await zedub.get_messages('@MARKTEBOT', limit=1)
+            msg2 = await zedub.get_messages('@TTNBOT', limit=1)
             await msg2[0].click(text='التالي')
             chs += 1
             await event.edit(f"**⎉╎القنـاة رقـم {chs} .. يمكـن تبنـدت**")
