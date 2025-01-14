@@ -125,7 +125,7 @@ async def variable(event):
     input_str = event.pattern_match.group(1)
     reply = await event.get_reply_message()
     vinfo = reply.text
-    rep = await edit_or_reply(event, "**⎉╎جـاري إضـافة الفـار إلـى بـوتك ...**")
+    zed = await edit_or_reply(event, "**⎉╎جـاري إضـافة الفـار إلـى بـوتك ...**")
     # All Rights Reserved for "Tepthon" "باقر"
     if input_str == "كليشة الفحص" or input_str == "كليشه الفحص":
         variable = "ALIVE_TEMPLATE"
@@ -478,7 +478,7 @@ async def variable(event):
     input_str = event.text[9:]
     if (input_str == "من" or input_str == "إلى" or input_str == "الترحيب") or "رسائلي" in input_str or "رسائله" in input_str:
         return
-    rep = await edit_or_reply(event, "**⎉╎جـاري حـذف الفـار مـن بـوتك 🚮...**")
+    zed = await edit_or_reply(event, "**⎉╎جـاري حـذف الفـار مـن بـوتك 🚮...**")
     # All Rights Reserved for "Tepthon" "باقر"
     if input_str == "كليشة الفحص" or input_str == "كليشه الفحص":
         variable = gvarstatus("ALIVE_TEMPLATE")
@@ -798,7 +798,7 @@ async def variable(event):
 @zedub.zed_cmd(pattern="جلب فار(?:\\s|$)([\\s\\S]*)")
 async def custom_rep(event):
     input_str = event.text[9:]
-    rep = await edit_or_reply(event, "**⎉╎جــاري جلـب معلـومـات الفــار 🛂. . .**")
+    zed = await edit_or_reply(event, "**⎉╎جــاري جلـب معلـومـات الفــار 🛂. . .**")
     if (input_str == "كليشة الحماية" or input_str == "كليشة الحمايه" or input_str == "كليشه الحماية" or input_str == "كليشه الحمايه"):
         variable = gvarstatus("pmpermit_txt")
         if variable is None:
@@ -1148,7 +1148,7 @@ async def variable(event):
     vamerica = "America/Washington"
     vmalaysia = "Asia/Kuala_Lumpur"
     vdeutschland = "Europe/Berlin"
-    rep = await edit_or_reply(event, "**⎉╎جـاري إعــداد المنطقـة الزمنيــــة لـ تيبثـون 🌐...**")
+    zed = await edit_or_reply(event, "**⎉╎جـاري إعــداد المنطقـة الزمنيــــة لـ تيبثـون 🌐...**")
     # All Rights Reserved for "Tepthon" "باقر"
     if input_str == "العراق" or input_str == "اليمن" or input_str == "سوريا" or input_str == "السعودية" or input_str == "لبنان" or input_str == "الاردن":
         variable = "TZ"
@@ -1553,7 +1553,7 @@ async def variable(event):
     input_str = event.pattern_match.group(1)
     reply = await event.get_reply_message()
     vinfo = reply.text
-    rep = await edit_or_reply(event, "**⎉╎جـاري إضـافة الفـار إلـى بـوتك ...**")
+    zed = await edit_or_reply(event, "**⎉╎جـاري إضـافة الفـار إلـى بـوتك ...**")
     # All Rights Reserved for "Tepthon" "باقر"
     if input_str == "كليشة الفحص" or input_str == "كليشه الفحص":
         variable = "ALIVE_TEMPLATE"
@@ -1906,7 +1906,7 @@ async def variable(event):
     input_str = event.text[9:]
     if (input_str == "من" or input_str == "إلى" or input_str == "الترحيب") or "رسائلي" in input_str or "رسائله" in input_str:
         return
-    rep = await edit_or_reply(event, "**⎉╎جـاري حـذف الفـار مـن بـوتك 🚮...**")
+    zed = await edit_or_reply(event, "**⎉╎جـاري حـذف الفـار مـن بـوتك 🚮...**")
     # All Rights Reserved for "Tepthon" "باقر"
     if input_str == "كليشة الفحص" or input_str == "كليشه الفحص":
         variable = gvarstatus("ALIVE_TEMPLATE")
@@ -2226,7 +2226,7 @@ async def variable(event):
 @zedub.zed_cmd(pattern="جلب فار(?:\\s|$)([\\s\\S]*)")
 async def custom_rep(event):
     input_str = event.text[9:]
-    rep = await edit_or_reply(event, "**⎉╎جــاري جلـب معلـومـات الفــار 🛂. . .**")
+    zed = await edit_or_reply(event, "**⎉╎جــاري جلـب معلـومـات الفــار 🛂. . .**")
     if (input_str == "كليشة الحماية" or input_str == "كليشة الحمايه" or input_str == "كليشه الحماية" or input_str == "كليشه الحمايه"):
         variable = gvarstatus("pmpermit_txt")
         if variable is None:
@@ -2576,7 +2576,7 @@ async def variable(event):
     vamerica = "America/Washington"
     vmalaysia = "Asia/Kuala_Lumpur"
     vdeutschland = "Europe/Berlin"
-    rep = await edit_or_reply(event, "**⎉╎جـاري إعــداد المنطقـة الزمنيــــة لـ تيبثـون 🌐...**")
+    zed = await edit_or_reply(event, "**⎉╎جـاري إعــداد المنطقـة الزمنيــــة لـ تيبثـون 🌐...**")
     # All Rights Reserved for "Tepthon" "باقر"
     if input_str == "العراق" or input_str == "اليمن" or input_str == "سوريا" or input_str == "السعودية" or input_str == "لبنان" or input_str == "الاردن":
         variable = "TZ"
@@ -2988,7 +2988,7 @@ async def variable(event):
     input_str = event.pattern_match.group(1)
     reply = await event.get_reply_message()
     vinfo = reply.text
-    rep = await edit_or_reply(event, "**⎉╎جـاري إضـافة الفـار إلـى بـوتك ...**")
+    zed = await edit_or_reply(event, "**⎉╎جـاري إضـافة الفـار إلـى بـوتك ...**")
     # All Rights Reserved for "Tepthon" "باقر"
     if input_str == "كليشة الفحص" or input_str == "كليشه الفحص":
         variable = "ALIVE_TEMPLATE"
@@ -3341,7 +3341,7 @@ async def variable(event):
     input_str = event.text[9:]
     if (input_str == "من" or input_str == "إلى" or input_str == "الترحيب") or "رسائلي" in input_str or "رسائله" in input_str:
         return
-    rep = await edit_or_reply(event, "**⎉╎جـاري حـذف الفـار مـن بـوتك 🚮...**")
+    zed = await edit_or_reply(event, "**⎉╎جـاري حـذف الفـار مـن بـوتك 🚮...**")
     # All Rights Reserved for "Tepthon" "باقر"
     if input_str == "كليشة الفحص" or input_str == "كليشه الفحص":
         variable = gvarstatus("ALIVE_TEMPLATE")
@@ -3661,7 +3661,7 @@ async def variable(event):
 @zedub.zed_cmd(pattern="جلب فار(?:\\s|$)([\\s\\S]*)")
 async def custom_rep(event):
     input_str = event.text[9:]
-    rep = await edit_or_reply(event, "**⎉╎جــاري جلـب معلـومـات الفــار 🛂. . .**")
+    zed = await edit_or_reply(event, "**⎉╎جــاري جلـب معلـومـات الفــار 🛂. . .**")
     if (input_str == "كليشة الحماية" or input_str == "كليشة الحمايه" or input_str == "كليشه الحماية" or input_str == "كليشه الحمايه"):
         variable = gvarstatus("pmpermit_txt")
         if variable is None:
@@ -4011,7 +4011,7 @@ async def variable(event):
     vamerica = "America/Washington"
     vmalaysia = "Asia/Kuala_Lumpur"
     vdeutschland = "Europe/Berlin"
-    rep = await edit_or_reply(event, "**⎉╎جـاري إعــداد المنطقـة الزمنيــــة لـ تيبثـون 🌐...**")
+    zed = await edit_or_reply(event, "**⎉╎جـاري إعــداد المنطقـة الزمنيــــة لـ تيبثـون 🌐...**")
     # All Rights Reserved for "Tepthon" "باقر"
     if input_str == "العراق" or input_str == "اليمن" or input_str == "سوريا" or input_str == "السعودية" or input_str == "لبنان" or input_str == "الاردن":
         variable = "TZ"
@@ -4416,7 +4416,7 @@ async def variable(event):
     input_str = event.pattern_match.group(1)
     reply = await event.get_reply_message()
     vinfo = reply.text
-    rep = await edit_or_reply(event, "**⎉╎جـاري إضـافة الفـار إلـى بـوتك ...**")
+    zed = await edit_or_reply(event, "**⎉╎جـاري إضـافة الفـار إلـى بـوتك ...**")
     # All Rights Reserved for "Tepthon" "باقر"
     if input_str == "كليشة الفحص" or input_str == "كليشه الفحص":
         variable = "ALIVE_TEMPLATE"
@@ -4769,7 +4769,7 @@ async def variable(event):
     input_str = event.text[9:]
     if (input_str == "من" or input_str == "إلى" or input_str == "الترحيب") or "رسائلي" in input_str or "رسائله" in input_str:
         return
-    rep = await edit_or_reply(event, "**⎉╎جـاري حـذف الفـار مـن بـوتك 🚮...**")
+    zed = await edit_or_reply(event, "**⎉╎جـاري حـذف الفـار مـن بـوتك 🚮...**")
     # All Rights Reserved for "Tepthon" "باقر"
     if input_str == "كليشة الفحص" or input_str == "كليشه الفحص":
         variable = gvarstatus("ALIVE_TEMPLATE")
@@ -5089,7 +5089,7 @@ async def variable(event):
 @zedub.zed_cmd(pattern="جلب فار(?:\\s|$)([\\s\\S]*)")
 async def custom_rep(event):
     input_str = event.text[9:]
-    rep = await edit_or_reply(event, "**⎉╎جــاري جلـب معلـومـات الفــار 🛂. . .**")
+    zed = await edit_or_reply(event, "**⎉╎جــاري جلـب معلـومـات الفــار 🛂. . .**")
     if (input_str == "كليشة الحماية" or input_str == "كليشة الحمايه" or input_str == "كليشه الحماية" or input_str == "كليشه الحمايه"):
         variable = gvarstatus("pmpermit_txt")
         if variable is None:
@@ -5439,7 +5439,7 @@ async def variable(event):
     vamerica = "America/Washington"
     vmalaysia = "Asia/Kuala_Lumpur"
     vdeutschland = "Europe/Berlin"
-    rep = await edit_or_reply(event, "**⎉╎جـاري إعــداد المنطقـة الزمنيــــة لـ تيبثـون 🌐...**")
+    zed = await edit_or_reply(event, "**⎉╎جـاري إعــداد المنطقـة الزمنيــــة لـ تيبثـون 🌐...**")
     # All Rights Reserved for "Tepthon" "باقر"
     if input_str == "العراق" or input_str == "اليمن" or input_str == "سوريا" or input_str == "السعودية" or input_str == "لبنان" or input_str == "الاردن":
         variable = "TZ"
