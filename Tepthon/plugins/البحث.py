@@ -1,5 +1,7 @@
 import base64
+from yt_dlp import YoutubeDL
 import contextlib
+import glob
 import io
 import os
 
@@ -11,6 +13,7 @@ from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 from validators.url import url
 
 from ..core.logger import logging
+from your_yt_search_module import yt_search
 from ..core.managers import edit_delete, edit_or_reply
 from ..helpers.functions import delete_conv, yt_search
 from ..helpers.tools import media_type
@@ -31,20 +34,18 @@ SONG_SENDING_STRING = "<b>╮ جـارِ تحميـل الشيء الذي بحث
 # =========================================================== #
 
 
-@zedub.zed_cmd(
-    pattern="بحث(320)?(?:\s|$)([\s\S]*)",
-    command=("بحث", plugin_category),
-    info={
-        "header": "لـ تحميـل الاغـانـي مـن يـوتيـوب",
-        "امـر مضـاف": {
-            "320": "لـ البحـث عـن الاغـانـي وتحميـلهـا بـدقـه عـاليـه 320k",
-        },
-        "الاسـتخـدام": "{tr}بحث + اسـم الاغنيـه",
-        "مثــال": "{tr}بحث حسين الجسمي احبك",
-    },
-)
+
+
+def get_cookies_file():
+    folder_path = f"{os.getcwd()}/rcookies"
+    txt_files = glob.glob(os.path.join(folder_path, '*.txt'))
+    if not txt_files:
+        raise FileNotFoundError("No .txt files found in the specified folder.")
+    cookie_txt_file = random.choice(txt_files)
+    return cookie_txt_file
+
+@zedub.on(events.NewMessage(pattern='بحث(320)?(?:\s|$)([\s\S]*)'))
 async def song(event):
-    "لـ تحميـل الاغـانـي مـن يـوتيـوب"
     reply_to_id = await reply_id(event)
     reply = await event.get_reply_message()
     if event.pattern_match.group(2):
@@ -52,75 +53,49 @@ async def song(event):
     elif reply and reply.message:
         query = reply.message
     else:
-        return await edit_or_reply(event, "**⎉╎قم باضافـة الشيء المراد البحث عنه ..**")
-    zed = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
-    zedevent = await edit_or_reply(event, "**╮ جـارِ البحث ؏ـن الشيء المطلـوب**")
-    video_link = await yt_search(str(query))
+        return await edit_or_reply(event, "⎉╎قم باضافـة الشيء المراد البحث عنه ..")
+
+    zed = base64.b64decode("QUFBQUFGRV9vWjV5XVE5bVRtd0Y1Yw==")
+    zedevent = await edit_or_reply(event, "╮ جـارِ البحث ؏ـن الشيء المطلـوب")
+
+    # إعداد الكوكيز
+    cookie_file = get_cookies_file()
+    
+    video_link = await yt_search(str(query), cookies=cookie_file)  # تمرير الكوكيز عند البحث
     if not url(video_link):
-        return await zedevent.edit(
-            f"**⎉╎عـذراً .. لـم استطـع ايجـاد** {query}"
-        )
+        return await zedevent.edit(f"⎉╎عـذراً .. لـم استطـع ايجـاد {query}")
+
     cmd = event.pattern_match.group(1)
     q = "320k" if cmd == "320" else "128k"
-    song_file, zedthumb, title = await song_download(video_link, zedevent, quality=q)
-    await event.client.send_file(
-        event.chat_id,
-        song_file,
-        force_document=False,
-        caption=f"**⎉╎البحث :** `{title}`",
-        thumb=zedthumb,
-        supports_streaming=True,
-        reply_to=reply_to_id,
-    )
+
+    ydl_opts = {
+        "format": "best",
+        "outtmpl": "%(title)s.%(ext)s",
+        "cookiefile": cookie_file,
+    }
+
+    with YoutubeDL(ydl_opts) as ydl:
+        try:
+            info = ydl.extract_info(video_link, download=True)
+
+            # تحقق من وجود 'title' في المعلومات المستخرجة
+            if 'title' not in info or 'ext' not in info:
+                return await zedevent.edit("❌ لم أتمكن من استخراج معلومات الفيديو.")
+
+            title = info['title']
+            filename = f"{title}.{info['ext']}"
+
+            await zedevent.edit(f"࿊ تم تحميـل الفيديو: {title}\n⇜ انتظـر المعالجة جارية...")
+
+            # إرسال الملف إلى تيليجرام
+            await event.client.send_file(event.chat_id, filename, force_document=False)
+
+            # حذف الملف بعد الإرسال
+            os.remove(filename)
+        except Exception as e:
+            await zedevent.edit(f"خطـــأ ❌: {e}")
+
     await zedevent.delete()
-    for files in (zedthumb, song_file):
-        if files and os.path.exists(files):
-            os.remove(files)
-
-
-@zedub.zed_cmd(
-    pattern="فيديو(?:\s|$)([\s\S]*)",
-    command=("فيديو", plugin_category),
-    info={
-        "header": "لـ تحميـل مقـاطـع الفيـديـو مـن يـوتيـوب",
-        "الاسـتخـدام": "{tr}فيديو + اسـم المقطـع",
-        "مثــال": "{tr}فيديو حالات واتس",
-    },
-)
-async def vsong(event):
-    "لـ تحميـل مقـاطـع الفيـديـو مـن يـوتيـوب"
-    reply_to_id = await reply_id(event)
-    reply = await event.get_reply_message()
-    if event.pattern_match.group(1):
-        query = event.pattern_match.group(1)
-    elif reply and reply.message:
-        query = reply.message
-    else:
-        return await edit_or_reply(event, "**⎉╎قم باضافـة الاغنيـه للامـر .. فيديو + اسـم الفيديـو**")
-    zed = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
-    zedevent = await edit_or_reply(event, "**╮ جـارِ البحث ؏ـن الفيديـو... 🎧♥️╰**")
-    video_link = await yt_search(str(query))
-    if not url(video_link):
-        return await zedevent.edit(
-            f"**⎉╎عـذراً .. لـم استطـع ايجـاد** {query}"
-        )
-    with contextlib.suppress(BaseException):
-        zed = Get(zed)
-        await event.client(zed)
-    vsong_file, zedthumb, title = await song_download(video_link, zedevent, video=True)
-    await event.client.send_file(
-        event.chat_id,
-        vsong_file,
-        caption=f"**⎉╎البحث :** `{title}`",
-        thumb=zedthumb,
-        supports_streaming=True,
-        reply_to=reply_to_id,
-    )
-    await zedevent.delete()
-    for files in (zedthumb, vsong_file):
-        if files and os.path.exists(files):
-            os.remove(files)
-
 
 @zedub.zed_cmd(
     pattern="ابحث(?:\ع|$)([\s\S]*)",
